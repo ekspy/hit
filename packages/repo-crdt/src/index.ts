@@ -1,1 +1,5 @@
-export const packageName = '@hit/repo-crdt'
+export { Repo, type RepoDoc } from './document.js'
+export type { ActiveClaim, Lang, OperationRecord, OpKind, TaskInput } from './operations.js'
+export { operationKey } from './history.js'
+export { syncPair } from './sync.js'
+export type { CrdtText, TextEdit } from './text.js'
