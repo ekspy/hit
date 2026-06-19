@@ -1,0 +1,12 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/repo-crdt" },
+    { "path": "./packages/semantic-indexer" },
+    { "path": "./packages/impact-engine" },
+    { "path": "./packages/coordinator" },
+    { "path": "./packages/agent" },
+    { "path": "./packages/cli" },
+    { "path": "./packages/eval" }
+  ]
+}

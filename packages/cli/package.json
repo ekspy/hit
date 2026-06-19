@@ -1,0 +1,22 @@
+{
+  "name": "@hit/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "hit": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@hit/agent": "workspace:*",
+    "@hit/coordinator": "workspace:*",
+    "@hit/eval": "workspace:*",
+    "@hit/impact-engine": "workspace:*",
+    "@hit/repo-crdt": "workspace:*",
+    "@hit/semantic-indexer": "workspace:*",
+    "commander": "12.1.0",
+    "tsx": "4.16.2"
+  }
+}

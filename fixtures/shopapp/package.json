@@ -1,0 +1,16 @@
+{
+  "name": "shopapp-fixture",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/react": "18.3.3",
+    "typescript": "5.5.3",
+    "vitest": "1.6.0"
+  },
+  "devDependencies": {}
+}
