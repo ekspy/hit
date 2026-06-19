@@ -1,0 +1,9 @@
+{
+  "id": "09-union-value-removed",
+  "title": "Payment status union removes failed while implementation still returns it",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": ["agent-a", "agent-b"],
+  "maxSteps": 8
+}

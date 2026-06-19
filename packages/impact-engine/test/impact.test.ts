@@ -2,7 +2,7 @@ import { Repo } from '@hit/repo-crdt'
 import { SemanticIndex, semanticDiff } from '@hit/semantic-indexer'
 import { describe, expect, it } from 'vitest'
 
-import { ImpactEngine, scoreConflicts } from '../src/index.js'
+import { ImpactEngine, groupLogicalConflicts, scoreConflicts, type Conflict } from '../src/index.js'
 
 function repoWith(content: string, consumer = "import { createPayment } from './payments'\nexport const checkout = createPayment({ orderId: 'ord_1', amountCents: 100 }).status\n"): Repo {
   const repo = Repo.create('test')
@@ -33,17 +33,37 @@ describe('ImpactEngine', () => {
     expect(conflicts.map((conflict) => conflict.rule)).toEqual(expect.arrayContaining(['R2', 'R3']))
   })
 
-  it('scores labels by rule, origin symbol, and affected file', () => {
+  it('scores labels by logical conflict rather than raw rule firings', () => {
     const report = scoreConflicts(
       [
         {
-          id: 'one',
+          id: 'r1',
           rule: 'R1',
           level: 1,
           severity: 'medium',
           origin: { file: 'src/payments.ts', symbolId: 'src/payments.ts#createPayment' },
           affected: [{ file: 'src/checkout.ts' }],
           reason: 'changed',
+          status: 'pending',
+        },
+        {
+          id: 'r4',
+          rule: 'R4',
+          level: 1,
+          severity: 'high',
+          origin: { file: 'src/checkout.ts' },
+          affected: [{ file: 'src/checkout.ts' }],
+          reason: "TypeScript diagnostic 2339: Property 'status' does not exist on type 'PaymentResult'.",
+          status: 'pending',
+        },
+        {
+          id: 'r5',
+          rule: 'R5',
+          level: 2,
+          severity: 'medium',
+          origin: { file: 'src/payments.ts', symbolId: 'src/payments.ts#createPayment' },
+          affected: [{ file: 'src/checkout.ts', symbolId: 'src/payments.ts#createPayment' }],
+          reason: 'Return shape changed for createPayment',
           status: 'pending',
         },
       ],
@@ -58,6 +78,90 @@ describe('ImpactEngine', () => {
     )
 
     expect(report.precision).toBe(1)
+    expect(report.recall).toBe(1)
+    expect(report.logicalConflicts).toHaveLength(1)
+    expect(report.matches[0]).toEqual(expect.objectContaining({ expectedRule: 'R1' }))
+    expect(report.matches[0]?.rawRules).toEqual(expect.arrayContaining(['R1', 'R4', 'R5']))
+  })
+
+  it('groups rename diagnostics with removed symbol conflicts', () => {
+    const conflicts: Conflict[] = [
+      {
+        id: 'r2',
+        rule: 'R2',
+        level: 1,
+        severity: 'medium',
+        origin: { file: 'src/payments.ts', symbolId: 'src/payments.ts#createPayment' },
+        affected: [{ file: 'src/checkout.ts' }],
+        reason: 'Exported symbol createPayment was removed or renamed',
+        status: 'pending',
+      },
+      {
+        id: 'r3',
+        rule: 'R3',
+        level: 1,
+        severity: 'high',
+        origin: { file: 'src/checkout.ts' },
+        affected: [{ file: 'src/checkout.ts' }],
+        reason: "TypeScript diagnostic 2305: Module './payments' has no exported member 'createPayment'.",
+        status: 'pending',
+      },
+    ]
+
+    const grouped = groupLogicalConflicts(conflicts)
+
+    expect(grouped).toHaveLength(1)
+    expect(grouped[0]?.conflicts.map((conflict) => conflict.rule)).toEqual(['R2', 'R3'])
+  })
+
+  it('matches diagnostic-only removed field evidence through quoted identifiers', () => {
+    const report = scoreConflicts(
+      [
+        {
+          id: 'r4',
+          rule: 'R4',
+          level: 1,
+          severity: 'high',
+          origin: { file: 'src/lib/orders.ts' },
+          affected: [{ file: 'src/lib/orders.ts' }],
+          reason: "TypeScript diagnostic 2339: Property 'customerEmail' does not exist on type 'OrderRecord'.",
+          status: 'pending',
+        },
+      ],
+      [
+        {
+          rule: 'R4',
+          level: 1,
+          rationale: 'Consumer receives TS 2339 after OrderRecord.customerEmail is renamed.',
+          origin: { file: 'src/lib/db.ts', symbol: 'OrderRecord.customerEmail' },
+          affected: [{ file: 'src/lib/orders.ts', symbol: 'customerEmail' }],
+        },
+      ],
+    )
+
+    expect(report.truePositives).toBe(1)
+    expect(report.falseNegatives).toBe(0)
+  })
+
+  it('counts logical conflicts as false positives in zero-label controls', () => {
+    const report = scoreConflicts(
+      [
+        {
+          id: 'r9',
+          rule: 'R9',
+          level: 3,
+          severity: 'high',
+          origin: { file: 'src/app.ts' },
+          affected: [{ file: 'src/app.ts' }],
+          reason: "TypeScript diagnostic 2304: Cannot find name 'missing'.",
+          status: 'pending',
+        },
+      ],
+      [],
+    )
+
+    expect(report.truePositives).toBe(0)
+    expect(report.falsePositives).toBe(1)
     expect(report.recall).toBe(1)
   })
 })

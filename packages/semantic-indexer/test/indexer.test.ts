@@ -54,4 +54,42 @@ describe('SemanticIndex', () => {
 
     expect(diff.changed.map((change) => change.before.id)).toContain('src/lib/payments.ts#createPayment')
   })
+
+  it('keeps incremental update output equivalent to a full rebuild', () => {
+    const repo = shopRepo()
+    const incrementalStart = SemanticIndex.build(repo)
+    const payments = repo.fileContent('src/lib/payments.ts')
+    repo.editFile('src/lib/payments.ts', {
+      start: payments.indexOf("status: 'created' | 'failed'"),
+      deleteCount: "status: 'created' | 'failed'".length,
+      insert: "state: 'created' | 'failed'",
+    })
+    repo.editFile('src/lib/payments.ts', {
+      start: repo.fileContent('src/lib/payments.ts').indexOf('status: input.amountCents'),
+      deleteCount: 'status: input.amountCents'.length,
+      insert: 'state: input.amountCents',
+    })
+    const checkout = repo.fileContent('src/app/checkout/page.tsx')
+    repo.editFile('src/app/checkout/page.tsx', {
+      start: checkout.indexOf('payment.status'),
+      deleteCount: 'payment.status'.length,
+      insert: 'payment.state',
+    })
+
+    const incremental = incrementalStart.update(repo, ['src/lib/payments.ts', 'src/app/checkout/page.tsx'])
+    const full = SemanticIndex.build(repo)
+
+    expect(serializeIndex(incremental)).toEqual(serializeIndex(full))
+  })
 })
+
+function serializeIndex(index: SemanticIndex): unknown {
+  return {
+    symbols: index.symbols(),
+    references: index.symbols().flatMap((symbol) => index.consumersOf(symbol.id)),
+    graph: [...index.dependencyGraph()]
+      .map(([file, dependencies]) => [file, [...dependencies].sort()])
+      .sort(([left], [right]) => String(left).localeCompare(String(right))),
+    diagnostics: index.diagnostics(),
+  }
+}

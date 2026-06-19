@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { ImpactEngine, scoreConflicts, type Conflict, type LabelsFile } from '@hit/impact-engine'
+import { ImpactEngine, scoreConflicts, type Conflict, type LabelsFile, type LogicalConflict, type QualityReport } from '@hit/impact-engine'
 import { Repo } from '@hit/repo-crdt'
 import { SemanticIndex, semanticDiff } from '@hit/semantic-indexer'
 
@@ -17,6 +17,11 @@ const scenarios = [
   '03-removed-field',
   '04-symbol-move',
   '05-optional-to-required',
+  '06-widen-to-narrow-type',
+  '07-async-contract-change',
+  '08-import-path-change',
+  '09-union-value-removed',
+  '10-compatible-change-control',
 ]
 
 const here = path.dirname(fileURLToPath(import.meta.url))
@@ -93,16 +98,25 @@ function writeDetectorQualityReport(): void {
     const score = scoreConflicts(actual, expected)
     return { id, actual, expected, score }
   })
-  const allActual = rows.flatMap((row) => row.actual)
-  const allExpected = rows.flatMap((row) => row.expected)
-  const overall = scoreConflicts(allActual, allExpected)
+  const overall = aggregateQuality(rows.map((row) => row.score))
   const json = {
     seed: 1701,
-    overall,
+    overall: {
+      conflictLevel: overall.conflictLevel,
+      ruleAttribution: overall.ruleAttribution,
+      rawRuleFirings: overall.rawRuleFirings,
+    },
     scenarios: rows.map((row) => ({
       id: row.id,
-      score: row.score,
-      conflicts: row.actual,
+      labels: row.expected,
+      rawConflicts: row.actual,
+      logicalConflicts: row.score.logicalConflicts.map(serializeLogicalConflict),
+      matches: row.score.matches,
+      score: {
+        conflictLevel: conflictLevelScore(row.score),
+        ruleAttribution: row.score.ruleAttribution,
+        rawRuleFirings: row.score.rawRuleFirings,
+      },
     })),
   }
 
@@ -111,11 +125,16 @@ function writeDetectorQualityReport(): void {
     json,
     `# Detector Quality
 
-Precision: ${overall.precision.toFixed(2)}
-Recall: ${overall.recall.toFixed(2)}
-F1: ${overall.f1.toFixed(2)}
+Conflict-level precision: ${overall.conflictLevel.precision.toFixed(2)}
+Conflict-level recall: ${overall.conflictLevel.recall.toFixed(2)}
+Conflict-level F1: ${overall.conflictLevel.f1.toFixed(2)}
+Rule-attribution accuracy: ${overall.ruleAttribution.accuracy.toFixed(2)}
 
 ${table(['Scenario', 'Precision', 'Recall', 'F1', 'TP', 'FP', 'FN'], rows.map((row) => [row.id, row.score.precision.toFixed(2), row.score.recall.toFixed(2), row.score.f1.toFixed(2), row.score.truePositives, row.score.falsePositives, row.score.falseNegatives]))}
+
+## Raw Rule-Firing Table
+
+${table(['Rule', 'Expected', 'Actual', 'Matched'], Object.entries(overall.rawRuleFirings).map(([rule, value]) => [rule, value.expected, value.actual, value.matched]))}
 `,
   )
 }
@@ -136,14 +155,95 @@ function loadLabels(id: string): LabelsFile {
   return JSON.parse(readFileSync(path.resolve(here, '..', 'scenarios', id, 'labels.json'), 'utf8')) as LabelsFile
 }
 
+function conflictLevelScore(score: QualityReport): Pick<QualityReport, 'precision' | 'recall' | 'f1' | 'truePositives' | 'falsePositives' | 'falseNegatives'> {
+  return {
+    precision: score.precision,
+    recall: score.recall,
+    f1: score.f1,
+    truePositives: score.truePositives,
+    falsePositives: score.falsePositives,
+    falseNegatives: score.falseNegatives,
+  }
+}
+
+function aggregateQuality(scores: QualityReport[]): {
+  conflictLevel: Pick<QualityReport, 'precision' | 'recall' | 'f1' | 'truePositives' | 'falsePositives' | 'falseNegatives'>
+  ruleAttribution: QualityReport['ruleAttribution']
+  rawRuleFirings: QualityReport['rawRuleFirings']
+} {
+  const truePositives = scores.reduce((sum, score) => sum + score.truePositives, 0)
+  const falsePositives = scores.reduce((sum, score) => sum + score.falsePositives, 0)
+  const falseNegatives = scores.reduce((sum, score) => sum + score.falseNegatives, 0)
+  const precision = truePositives + falsePositives === 0 ? 1 : truePositives / (truePositives + falsePositives)
+  const recall = truePositives + falseNegatives === 0 ? 1 : truePositives / (truePositives + falseNegatives)
+  const f1 = precision + recall === 0 ? 0 : (2 * precision * recall) / (precision + recall)
+  const correct = scores.reduce((sum, score) => sum + score.ruleAttribution.correct, 0)
+  const total = scores.reduce((sum, score) => sum + score.ruleAttribution.total, 0)
+  const rawRuleFirings: QualityReport['rawRuleFirings'] = {}
+
+  for (const score of scores) {
+    for (const [rule, value] of Object.entries(score.rawRuleFirings)) {
+      rawRuleFirings[rule] ??= { expected: 0, actual: 0, matched: 0 }
+      rawRuleFirings[rule].expected += value.expected
+      rawRuleFirings[rule].actual += value.actual
+      rawRuleFirings[rule].matched += value.matched
+    }
+  }
+
+  return {
+    conflictLevel: {
+      precision,
+      recall,
+      f1,
+      truePositives,
+      falsePositives,
+      falseNegatives,
+    },
+    ruleAttribution: {
+      correct,
+      total,
+      accuracy: total === 0 ? 1 : correct / total,
+    },
+    rawRuleFirings,
+  }
+}
+
+function serializeLogicalConflict(logical: LogicalConflict): unknown {
+  return {
+    id: logical.id,
+    primaryRule: logical.primaryRule,
+    level: logical.level,
+    severity: logical.severity,
+    evidence: {
+      files: [...logical.evidence.files].sort(),
+      symbolTokens: [...logical.evidence.symbolTokens].sort(),
+      bareSymbols: [...logical.evidence.bareSymbols].sort(),
+      filePairs: [...logical.evidence.filePairs].sort(),
+      rules: [...logical.evidence.rules].sort(),
+    },
+    conflicts: logical.conflicts,
+  }
+}
+
 function writePropagationLatencyReport(): void {
   const json = propagationBench()
+  const full = json.modes.fullRebuild.latencyMs
+  const incremental = json.modes.incremental.latencyMs
+  const comparison =
+    incremental.p50 < full.p50
+      ? `Incremental indexing is faster on this fixture by p50 (${incremental.p50.toFixed(2)} ms vs ${full.p50.toFixed(2)} ms).`
+      : `Incremental indexing is not faster on this 6-file fixture by p50 (${incremental.p50.toFixed(2)} ms vs ${full.p50.toFixed(2)} ms).`
   writeReport(
     'propagation-latency',
     json,
     `# Propagation Latency
 
-${table(['Files', 'Symbols', 'Full rebuild', 'p50 ms', 'p95 ms', 'min ms', 'max ms'], [[json.files, json.symbols, String(json.fullRebuild), json.latencyMs.p50.toFixed(2), json.latencyMs.p95.toFixed(2), json.latencyMs.min.toFixed(2), json.latencyMs.max.toFixed(2)]])}
+${table(['Mode', 'Files', 'Symbols', 'p50 ms', 'p95 ms', 'min ms', 'max ms'], [
+  ['fullRebuild', json.files, json.symbols, full.p50.toFixed(2), full.p95.toFixed(2), full.min.toFixed(2), full.max.toFixed(2)],
+  ['incremental', json.files, json.symbols, incremental.p50.toFixed(2), incremental.p95.toFixed(2), incremental.min.toFixed(2), incremental.max.toFixed(2)],
+])}
+
+${comparison}
 
 This measures Repo.editFile through rebuild, diff, and event-level impact analysis. It does not include LLM inference latency.
 `,

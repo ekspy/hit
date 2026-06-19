@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R4",
+      "level": 1,
+      "rationale": "Checkout passes 1299 after createPayment narrows its accepted amount to the literal 0.",
+      "origin": {
+        "file": "src/lib/payments.ts",
+        "symbol": "createPayment"
+      },
+      "affected": [
+        {
+          "file": "src/app/checkout/page.tsx",
+          "symbol": "createPayment"
+        }
+      ]
+    }
+  ]
+}

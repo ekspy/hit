@@ -26,7 +26,12 @@ function signatureConflicts(diff: SemanticDiff, index: SemanticIndex): Conflict[
         return []
       }
 
-      return makeConflict('R1', change.after.file, change.after.id, consumers, `Contract changed from ${change.before.signature} to ${change.after.signature}`)
+      const reason =
+        change.before.signature === change.after.signature
+          ? `Return shape changed for ${change.after.name} while signature text stayed ${change.after.signature}`
+          : `Contract changed from ${change.before.signature} to ${change.after.signature}`
+
+      return makeConflict('R1', change.after.file, change.after.id, consumers, reason)
     })
 }
 

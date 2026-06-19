@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R3",
+      "level": 1,
+      "rationale": "The payments module is deleted after being moved to billing, leaving checkout's import path stale.",
+      "origin": {
+        "file": "src/lib/payments.ts",
+        "symbol": "payments"
+      },
+      "affected": [
+        {
+          "file": "src/app/checkout/page.tsx",
+          "symbol": "payments"
+        }
+      ]
+    }
+  ]
+}

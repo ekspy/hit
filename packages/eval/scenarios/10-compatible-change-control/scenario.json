@@ -1,0 +1,9 @@
+{
+  "id": "10-compatible-change-control",
+  "title": "Compatible optional payment source control",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": ["agent-a", "agent-b"],
+  "maxSteps": 8
+}

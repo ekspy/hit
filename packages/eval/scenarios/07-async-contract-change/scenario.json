@@ -1,0 +1,9 @@
+{
+  "id": "07-async-contract-change",
+  "title": "Payment creator becomes async while checkout stays synchronous",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": ["agent-a", "agent-b"],
+  "maxSteps": 8
+}

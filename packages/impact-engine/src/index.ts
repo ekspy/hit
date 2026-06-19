@@ -4,7 +4,14 @@ import { exec as execCallback } from 'node:child_process'
 import { promisify } from 'node:util'
 
 import { type Conflict, conflictId } from './conflicts.js'
-import { scoreConflicts, type LabelConflict, type LabelsFile, type QualityReport } from './labels.js'
+import {
+  conflictEvidence,
+  groupLogicalConflicts,
+  labelEvidence,
+  type ConflictEvidence,
+  type LogicalConflict,
+} from './grouping.js'
+import { matchLabels, scoreConflicts, type LabelConflict, type LabelMatch, type LabelsFile, type QualityReport, type RuleAttributionReport } from './labels.js'
 import { propagationTargets } from './propagation.js'
 import { analyzeRules } from './rules.js'
 
@@ -45,6 +52,6 @@ export class ImpactEngine {
   }
 }
 
-export { propagationTargets, scoreConflicts }
-export type { Conflict, LabelConflict, LabelsFile, QualityReport }
+export { conflictEvidence, groupLogicalConflicts, labelEvidence, matchLabels, propagationTargets, scoreConflicts }
+export type { Conflict, ConflictEvidence, LabelConflict, LabelMatch, LabelsFile, LogicalConflict, QualityReport, RuleAttributionReport }
 export type { RuleId } from './conflicts.js'

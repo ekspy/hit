@@ -3,9 +3,10 @@
     {
       "rule": "R4",
       "level": 1,
+      "rationale": "Consumer receives TS 2339 after OrderRecord.customerEmail is renamed.",
       "origin": {
         "file": "src/lib/db.ts",
-        "symbol": "OrderRecord"
+        "symbol": "OrderRecord.customerEmail"
       },
       "affected": [
         {

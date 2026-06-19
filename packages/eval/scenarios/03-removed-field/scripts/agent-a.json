@@ -5,7 +5,8 @@
       "kind": "replace",
       "path": "src/lib/db.ts",
       "search": "customerEmail",
-      "replace": "email"
+      "replace": "email",
+      "occurrence": "all"
     }
   ]
 }

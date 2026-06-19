@@ -10,7 +10,10 @@ export async function gitPilot(): Promise<{
     hit: { earlyEvents: number; finalDiagnostics: number; repairActions: number }
   }>
 }> {
-  const id = '01-return-type-change'
+  const scenarioIds = ['01-return-type-change', '02-symbol-rename']
+  const scenarios = []
+
+  for (const id of scenarioIds) {
   const repo = loadFixtureRepo('shopapp', 'git-pilot')
   const before = SemanticIndex.build(repo)
   applyScript(repo, loadAgentScript(id, 'agent-a'))
@@ -18,10 +21,7 @@ export async function gitPilot(): Promise<{
   const after = SemanticIndex.build(repo)
   const baselineConflicts = new ImpactEngine().analyze(semanticDiff(before, after), after)
   const hit = await runScenario(id, 'scripted')
-
-  return {
-    scenarios: [
-      {
+    scenarios.push({
         id,
         gitBaseline: {
           textualMergeConflicts: 0,
@@ -33,7 +33,10 @@ export async function gitPilot(): Promise<{
           finalDiagnostics: hit.diagnostics.length,
           repairActions: hit.run.steps.flatMap((step) => step.actions).filter(({ action }) => action.kind === 'edit_file').length,
         },
-      },
-    ],
+      })
+  }
+
+  return {
+    scenarios,
   }
 }

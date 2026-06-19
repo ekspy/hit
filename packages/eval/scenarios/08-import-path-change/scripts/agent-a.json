@@ -1,0 +1,15 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "create_file",
+      "path": "src/lib/billing.ts",
+      "lang": "ts",
+      "content": "export interface PaymentInput {\n  orderId: string\n  amountCents: number\n}\n\nexport interface PaymentResult {\n  id: string\n  status: 'created' | 'failed'\n  redirectUrl?: string\n}\n\nexport function createPayment(input: PaymentInput): PaymentResult {\n  return {\n    id: `pay_${input.orderId}`,\n    status: input.amountCents > 0 ? 'created' : 'failed',\n    redirectUrl: `/checkout/${input.orderId}`,\n  }\n}\n"
+    },
+    {
+      "kind": "delete_file",
+      "path": "src/lib/payments.ts"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/payments.ts",
+      "search": "export function createPayment",
+      "replace": "export async function createPayment"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/payments.ts",
+      "search": "): PaymentResult",
+      "replace": "): Promise<PaymentResult>"
+    }
+  ]
+}

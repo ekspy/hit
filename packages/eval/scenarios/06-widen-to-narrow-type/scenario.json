@@ -1,0 +1,9 @@
+{
+  "id": "06-widen-to-narrow-type",
+  "title": "Payment input amount narrows to a literal",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": ["agent-a", "agent-b"],
+  "maxSteps": 8
+}

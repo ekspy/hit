@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R4",
+      "level": 1,
+      "rationale": "PaymentResult.status removes 'failed', producing a createPayment contract drift and concrete type errors.",
+      "origin": {
+        "file": "src/lib/payments.ts",
+        "symbol": "createPayment"
+      },
+      "affected": [
+        {
+          "file": "src/app/checkout/page.tsx",
+          "symbol": "createPayment"
+        }
+      ]
+    }
+  ]
+}

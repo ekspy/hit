@@ -1,0 +1,9 @@
+{
+  "id": "08-import-path-change",
+  "title": "Payment module moves while checkout import path remains stale",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": ["agent-a", "agent-b"],
+  "maxSteps": 8
+}

@@ -9,26 +9,22 @@ export function propagationBench(iterations = 25): {
   iterations: number
   files: number
   symbols: number
-  fullRebuild: boolean
-  latencyMs: ReturnType<typeof percentiles>
+  modes: {
+    fullRebuild: { latencyMs: ReturnType<typeof percentiles> }
+    incremental: { latencyMs: ReturnType<typeof percentiles> }
+  }
 } {
-  const values: number[] = []
+  const fullValues: number[] = []
+  const incrementalValues: number[] = []
   let files = 0
   let symbols = 0
 
   for (let index = 0; index < iterations; index += 1) {
-    const repo = loadFixtureRepo('shopapp', `bench-${index}`)
-    const before = SemanticIndex.build(repo)
-    const content = repo.fileContent('src/lib/payments.ts')
-    const start = performance.now()
-    repo.editFile('src/lib/payments.ts', {
-      start: content.indexOf("'created'"),
-      deleteCount: "'created'".length,
-      insert: "'started'",
-    })
+    fullValues.push(measure(index, 'fullRebuild'))
+    incrementalValues.push(measure(index, 'incremental'))
+
+    const repo = loadFixtureRepo('shopapp', `bench-count-${index}`)
     const after = SemanticIndex.build(repo)
-    new ImpactEngine().analyze(semanticDiff(before, after), after)
-    values.push(performance.now() - start)
     files = repo.listFiles().length
     symbols = after.symbols().length
   }
@@ -37,7 +33,24 @@ export function propagationBench(iterations = 25): {
     iterations,
     files,
     symbols,
-    fullRebuild: true,
-    latencyMs: percentiles(values),
+    modes: {
+      fullRebuild: { latencyMs: percentiles(fullValues) },
+      incremental: { latencyMs: percentiles(incrementalValues) },
+    },
   }
+}
+
+function measure(index: number, mode: 'fullRebuild' | 'incremental'): number {
+  const repo = loadFixtureRepo('shopapp', `bench-${mode}-${index}`)
+  const before = SemanticIndex.build(repo)
+  const content = repo.fileContent('src/lib/payments.ts')
+  const start = performance.now()
+  repo.editFile('src/lib/payments.ts', {
+    start: content.indexOf("'created'"),
+    deleteCount: "'created'".length,
+    insert: "'started'",
+  })
+  const after = mode === 'fullRebuild' ? SemanticIndex.build(repo) : before.update(repo, ['src/lib/payments.ts'])
+  new ImpactEngine().analyze(semanticDiff(before, after), after)
+  return performance.now() - start
 }

@@ -2,7 +2,7 @@ import { Repo } from '@hit/repo-crdt'
 import type { Project } from 'ts-morph'
 
 import { collectDependencies } from './internal-dependencies.js'
-import { createProjectFromRepo } from './project.js'
+import { createProjectFromRepo, updateProjectFromRepo } from './project.js'
 import { collectDiagnostics } from './diagnostics.js'
 import { collectReferences } from './references.js'
 import { collectSymbols } from './symbols.js'
@@ -20,6 +20,10 @@ export class SemanticIndex {
 
   static build(repo: Repo): SemanticIndex {
     const project = createProjectFromRepo(repo)
+    return SemanticIndex.fromProject(project, repo)
+  }
+
+  private static fromProject(project: Project, repo: Repo): SemanticIndex {
     const files = new Set(repo.listFiles())
     const sourceFiles = project.getSourceFiles()
     const symbols = sourceFiles.flatMap((sourceFile) => collectSymbols(sourceFile))
@@ -30,8 +34,9 @@ export class SemanticIndex {
     return new SemanticIndex(project, symbols, references, graph, diagnostics)
   }
 
-  update(repo: Repo, _changedPaths: string[]): SemanticIndex {
-    return SemanticIndex.build(repo)
+  update(repo: Repo, changedPaths: string[]): SemanticIndex {
+    updateProjectFromRepo(this.project, repo, changedPaths)
+    return SemanticIndex.fromProject(this.project, repo)
   }
 
   symbols(): SymbolInfo[] {

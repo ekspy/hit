@@ -17,8 +17,9 @@ export interface ScenarioConfig {
 }
 
 export type ScriptOperation =
-  | { kind: 'replace'; path: string; search: string; replace: string }
+  | { kind: 'replace'; path: string; search: string; replace: string; occurrence?: 'first' | 'all' }
   | { kind: 'create_file'; path: string; lang: Lang; content: string }
+  | { kind: 'delete_file'; path: string }
   | { kind: 'noop'; note: string }
 
 export interface AgentScript {
@@ -64,6 +65,11 @@ export function applyScript(repo: Repo, script: AgentScript): void {
       continue
     }
 
+    if (operation.kind === 'delete_file') {
+      repo.deleteFile(operation.path)
+      continue
+    }
+
     const content = repo.fileContent(operation.path)
     const start = content.indexOf(operation.search)
 
@@ -71,11 +77,19 @@ export function applyScript(repo: Repo, script: AgentScript): void {
       throw new Error(`Script ${script.agentId} could not find text in ${operation.path}: ${operation.search}`)
     }
 
-    repo.editFile(operation.path, {
-      start,
-      deleteCount: operation.search.length,
-      insert: operation.replace,
-    })
+    if (operation.occurrence === 'all') {
+      repo.editFile(operation.path, {
+        start: 0,
+        deleteCount: content.length,
+        insert: content.split(operation.search).join(operation.replace),
+      })
+    } else {
+      repo.editFile(operation.path, {
+        start,
+        deleteCount: operation.search.length,
+        insert: operation.replace,
+      })
+    }
   }
 }
 

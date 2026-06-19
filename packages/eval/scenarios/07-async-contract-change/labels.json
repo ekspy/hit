@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R1",
+      "level": 1,
+      "rationale": "createPayment now returns a Promise but checkout still reads the result synchronously.",
+      "origin": {
+        "file": "src/lib/payments.ts",
+        "symbol": "createPayment"
+      },
+      "affected": [
+        {
+          "file": "src/app/checkout/page.tsx",
+          "symbol": "createPayment"
+        }
+      ]
+    }
+  ]
+}

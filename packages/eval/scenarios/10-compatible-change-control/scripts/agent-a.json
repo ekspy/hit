@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/payments.ts",
+      "search": "createPayment(input: PaymentInput)",
+      "replace": "createPayment(input: PaymentInput, source = 'web')"
+    }
+  ]
+}

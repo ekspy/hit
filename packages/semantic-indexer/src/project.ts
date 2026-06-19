@@ -22,3 +22,24 @@ export function createProjectFromRepo(repo: Repo): Project {
 
   return project
 }
+
+export function updateProjectFromRepo(project: Project, repo: Repo, changedPaths: string[]): Project {
+  for (const file of changedPaths) {
+    const sourcePath = `/${file}`
+    const sourceFile = project.getSourceFile(sourcePath)
+
+    try {
+      const content = repo.fileContent(file)
+
+      if (sourceFile) {
+        sourceFile.replaceWithText(content)
+      } else {
+        project.createSourceFile(sourcePath, content, { overwrite: true })
+      }
+    } catch {
+      sourceFile?.deleteImmediatelySync()
+    }
+  }
+
+  return project
+}
