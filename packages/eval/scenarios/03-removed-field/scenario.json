@@ -1,0 +1,9 @@
+{
+  "id": "03-removed-field",
+  "title": "Removed order field affects order rendering",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": ["agent-a", "agent-b"],
+  "maxSteps": 8
+}

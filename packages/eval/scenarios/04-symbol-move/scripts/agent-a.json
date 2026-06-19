@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "create_file",
+      "path": "src/lib/summaries.ts",
+      "lang": "ts",
+      "content": "import { findOrder } from './db'\n\nexport function orderSummary(id: string): string {\n  const order = findOrder(id)\n\n  if (!order) {\n    return 'Missing order'\n  }\n\n  return `${order.customerEmail}: ${order.status}`\n}\n"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/orders.ts",
+      "search": "export function orderSummary(id: string): string {\n  const order = findOrder(id)\n\n  if (!order) {\n    return 'Missing order'\n  }\n\n  return `${order.customerEmail}: ${order.status}`\n}\n",
+      "replace": ""
+    }
+  ]
+}

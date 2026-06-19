@@ -1,0 +1,9 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "noop",
+      "note": "Orders page keeps importing from src/lib/orders"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "conflicts": [
+    {
+      "rule": "R1",
+      "level": 1,
+      "origin": {
+        "file": "src/lib/payments.ts",
+        "symbol": "createPayment"
+      },
+      "affected": [
+        {
+          "file": "src/app/checkout/page.tsx",
+          "symbol": "createPayment"
+        }
+      ]
+    }
+  ]
+}

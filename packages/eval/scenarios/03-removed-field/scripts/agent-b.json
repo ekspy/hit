@@ -1,0 +1,9 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "noop",
+      "note": "Order summary keeps reading customerEmail"
+    }
+  ]
+}

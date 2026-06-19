@@ -1,0 +1,9 @@
+{
+  "id": "01-return-type-change",
+  "title": "Payment creator return type change affects checkout",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": ["agent-a", "agent-b"],
+  "maxSteps": 8
+}

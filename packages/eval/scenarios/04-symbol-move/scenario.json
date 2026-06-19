@@ -1,0 +1,9 @@
+{
+  "id": "04-symbol-move",
+  "title": "Symbol move changes import path",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": ["agent-a", "agent-b"],
+  "maxSteps": 8
+}

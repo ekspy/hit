@@ -1,0 +1,9 @@
+{
+  "id": "02-symbol-rename",
+  "title": "Exported payment function rename affects importer",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": ["agent-a", "agent-b"],
+  "maxSteps": 8
+}
