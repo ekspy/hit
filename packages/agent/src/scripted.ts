@@ -50,6 +50,20 @@ export class ScriptedAgent implements Agent {
       this.applied.add(key)
     }
 
-    return actions.length > 0 ? actions : [{ kind: 'noop', note: `${this.id} had no scripted reaction` }]
+    return actions.length > 0 ? sortEditsForStableOffsets(actions) : [{ kind: 'noop', note: `${this.id} had no scripted reaction` }]
   }
+}
+
+function sortEditsForStableOffsets(actions: AgentAction[]): AgentAction[] {
+  return [...actions].sort((left, right) => {
+    if (left.kind !== 'edit_file' || right.kind !== 'edit_file') {
+      return 0
+    }
+
+    if (left.path !== right.path) {
+      return left.path.localeCompare(right.path)
+    }
+
+    return right.edit.start - left.edit.start
+  })
 }

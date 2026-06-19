@@ -1,5 +1,6 @@
 import {
   Node,
+  type Type,
   type ClassDeclaration,
   type FunctionDeclaration,
   type InterfaceDeclaration,
@@ -43,7 +44,7 @@ function functionSymbol(node: FunctionDeclaration): SymbolInfo {
     kind: 'function',
     file,
     signature: `${name}(${node.getParameters().map((param) => param.getText()).join(', ')}): ${returnType.getText(node)}`,
-    returnShape: typeShape(returnType.getText(node), returnType.getProperties().map((property) => [property.getName(), property.getValueDeclaration()?.getType().getText(node) ?? 'unknown'])),
+    returnShape: returnTypeShape(returnType, node),
     exported: true,
   }
 }
@@ -102,6 +103,30 @@ function constSymbol(node: VariableDeclaration): SymbolInfo {
     signature: `const ${name}: ${node.getType().getText(node)}`,
     exported: true,
   }
+}
+
+function returnTypeShape(returnType: Type, node: FunctionDeclaration): TypeShape | undefined {
+  if (
+    returnType.isString() ||
+    returnType.isNumber() ||
+    returnType.isBoolean() ||
+    returnType.isVoid() ||
+    returnType.isUndefined() ||
+    returnType.isNull() ||
+    returnType.isNever()
+  ) {
+    return undefined
+  }
+
+  const properties = returnType
+    .getProperties()
+    .map((property) => [property.getName(), property.getValueDeclaration()?.getType().getText(node) ?? 'unknown'] as [string, string])
+
+  if (properties.length === 0) {
+    return undefined
+  }
+
+  return typeShape(returnType.getText(node), properties)
 }
 
 function typeShape(text: string, properties: Array<[string, string]>): TypeShape {
