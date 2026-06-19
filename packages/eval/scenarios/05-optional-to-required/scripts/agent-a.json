@@ -4,8 +4,8 @@
     {
       "kind": "replace",
       "path": "src/lib/payments.ts",
-      "search": "amountCents: number",
-      "replace": "amountCents: number\n  currency: string"
+      "search": "createPayment(input: PaymentInput)",
+      "replace": "createPayment(input: PaymentInput, currency: string)"
     }
   ]
 }

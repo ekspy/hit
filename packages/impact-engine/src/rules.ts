@@ -18,7 +18,7 @@ export function analyzeRules(diff: SemanticDiff, index: SemanticIndex): Conflict
 
 function signatureConflicts(diff: SemanticDiff, index: SemanticIndex): Conflict[] {
   return diff.changed
-    .filter((change) => change.before.signature !== change.after.signature)
+    .filter((change) => change.before.signature !== change.after.signature || JSON.stringify(change.before.returnShape) !== JSON.stringify(change.after.returnShape))
     .flatMap((change) => {
       const consumers = index.consumersOf(change.after.id)
 
@@ -26,7 +26,7 @@ function signatureConflicts(diff: SemanticDiff, index: SemanticIndex): Conflict[
         return []
       }
 
-      return makeConflict('R1', change.after.file, change.after.id, consumers, `Signature changed from ${change.before.signature} to ${change.after.signature}`)
+      return makeConflict('R1', change.after.file, change.after.id, consumers, `Contract changed from ${change.before.signature} to ${change.after.signature}`)
     })
 }
 
