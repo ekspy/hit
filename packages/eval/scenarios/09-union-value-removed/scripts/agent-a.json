@@ -6,6 +6,12 @@
       "path": "src/lib/payments.ts",
       "search": "status: 'created' | 'failed'",
       "replace": "status: 'created'"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/payments.ts",
+      "search": "status: input.amountCents > 0 ? 'created' : 'failed',",
+      "replace": "status: 'created',"
     }
   ]
 }

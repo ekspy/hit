@@ -1,5 +1,5 @@
 export const DEFAULT_TIMEOUT_MS = 120_000
-export const DEFAULT_RETRIES = 3
+export const DEFAULT_RETRIES = 6
 
 export interface RetryOptions {
   retries?: number
@@ -56,6 +56,23 @@ export function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
   })
 }
 
+export function retryAfterMs(error: unknown): number | undefined {
+  if (!error || typeof error !== 'object') {
+    return undefined
+  }
+  const headers = (error as { headers?: Record<string, string> | { get?: (name: string) => string | null } }).headers
+  const headerValue = headers && typeof (headers as { get?: unknown }).get === 'function' ? (headers as { get: (name: string) => string | null }).get('retry-after') : (headers as Record<string, string> | undefined)?.['retry-after']
+  if (headerValue && Number.isFinite(Number(headerValue))) {
+    return Number(headerValue) * 1000
+  }
+  const message = String((error as { message?: unknown }).message ?? '')
+  const match = message.match(/retry in ([0-9.]+)\s*(ms|s)\b/i)
+  if (match) {
+    return Number(match[1]) * (match[2].toLowerCase() === 'ms' ? 1 : 1000)
+  }
+  return undefined
+}
+
 /** Runs `fn` with a timeout and exponential backoff on 429/5xx/timeouts. Returns the value and the number of attempts. */
 export async function withRetry<T>(fn: () => Promise<T>, options: RetryOptions = {}): Promise<{ value: T; attempts: number }> {
   const retries = options.retries ?? DEFAULT_RETRIES
@@ -74,7 +91,10 @@ export async function withRetry<T>(fn: () => Promise<T>, options: RetryOptions =
         throw error
       }
       options.onRetry?.(attempt, error)
-      await sleep(baseDelayMs * 2 ** (attempt - 1) + Math.random() * 250)
+      const backoff = baseDelayMs * 2 ** (attempt - 1) + Math.random() * 250
+      // Rate-limit responses often say how long to wait ("retry in 50.6s", retry-after); honour it, capped at 120 s.
+      const hinted = retryAfterMs(error)
+      await sleep(Math.min(Math.max(backoff, hinted ?? 0), 120_000))
     }
   }
 }

@@ -96,7 +96,6 @@ function producerFiles(scenarioId: string): string[] {
 export async function executeRun(spec: RunSpec, options: RunOptions): Promise<RunResult> {
   const startedAt = new Date().toISOString()
   const started = performance.now()
-  const callsBefore = options.provider.logs.length
   const parentLog = options.log
   options = { ...options, log: (line) => parentLog(`[${spec.scenario} ${spec.condition} #${spec.rep}] ${line}`) }
   let partial: PartialLike = { agents: [] }
@@ -108,7 +107,8 @@ export async function executeRun(spec: RunSpec, options: RunOptions): Promise<Ru
     error = caught instanceof Error ? (caught.stack ?? caught.message) : String(caught)
   }
 
-  const calls = options.provider.logs.slice(callsBefore)
+  // Per-call logs live in each session's turn records; the shared provider log is not per-run under concurrency.
+  const calls: LlmCallLog[] = []
   const sessions = partial.agents.flatMap((agent) => agent.sessions)
   const latencies = sessions.flatMap((session) => session.latenciesMs)
   const metrics: RunMetrics = {
@@ -124,7 +124,7 @@ export async function executeRun(spec: RunSpec, options: RunOptions): Promise<Ru
     costUsd: sessions.reduce((sum, session) => sum + session.costUsd, 0),
     wallClockMs: performance.now() - started,
     latencyP50Ms: percentiles(latencies).p50,
-    llmCalls: calls.length,
+    llmCalls: sessions.reduce((sum, session) => sum + session.latenciesMs.length, 0),
     eventsDelivered: (partial.eventsDelivered ?? []).reduce((sum, delivery) => sum + delivery.events.length, 0),
     actedAfterEvent: sessions.some(actedAfterEvent),
     mergeConflicts: partial.metrics?.mergeConflicts ?? 0,
