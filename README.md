@@ -14,9 +14,9 @@ Symbols, references, dependencies and conflicts are derived views, recomputed de
 - `semantic-indexer` — ts-morph symbol / reference / dependency index
 - `impact-engine` — semantic conflict detection (rules R1–R9)
 - `coordinator` — observation-driven runtime and events
-- `agent` — agent interface, scripted agents, LLM stub
+- `agent` — agent interface, scripted agents, LLM agents (Anthropic / OpenAI / Google providers)
 - `cli` — `hit` command-line interface
-- `eval` — labeled scenarios, metrics, reports
+- `eval` — 16 labeled scenarios, task pairs, real git worktree baseline, mode 1/2 experiment runners, reports
 
 ## Usage
 
@@ -24,9 +24,19 @@ Symbols, references, dependencies and conflicts are derived views, recomputed de
 pnpm install
 pnpm test          # unit + property (convergence) tests
 pnpm typecheck
-pnpm eval          # regenerates reports/
+pnpm eval          # regenerates reports/ (convergence, detector quality, latency)
 pnpm --filter @hit/cli run dev -- run 01-return-type-change --agents scripted
+
+# Experiments with real LLM agents (keys in .env: OPENAI_API_KEY, GEMINI_API_KEY, ANTHROPIC_API_KEY or `ant auth login`)
+pnpm eval:smoke                                   # one cheap run per available model
+pnpm eval:mode1 --models gpt-5.6-terra            # scripted breaking change + LLM repair, hit vs git (real worktrees)
+pnpm eval:mode2 --models gpt-5.6-terra            # two LLM agents on colliding natural-language tasks
+pnpm eval:mode1 --aggregate-only                  # rebuild reports/mode1.{json,md} from reports/runs/
+# flags: --models a,b --reps N --scenarios 01,03 --conditions hit,git --concurrency 4 --budget 15 --dry-run
 ```
+
+Transcripts of every run are written to `reports/runs/<mode>/<model>/<scenario>/<condition>/<rep>.json`.
+Gemini free-tier keys are limited to 250 requests/day per model; use `--concurrency 2` and a paid project for full batches.
 
 ## Stack
 
