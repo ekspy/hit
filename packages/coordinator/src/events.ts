@@ -10,7 +10,10 @@ export type SemanticEvent =
 
 export interface Subscription {
   type: SemanticEvent['type'] | '*'
+  /** Matches when the file is the origin or one of the affected files of the event. */
   file?: string
+  /** Matches only when the file is among the affected (consumer) files of the event, never by origin alone. */
+  affectedFile?: string
   symbolId?: string
 }
 
@@ -48,7 +51,29 @@ export function eventMatches(subscription: Subscription, event: SemanticEvent): 
     return false
   }
 
+  if (subscription.affectedFile && !eventAffectedFiles(event).includes(subscription.affectedFile)) {
+    return false
+  }
+
   return true
+}
+
+/** Files on the consumer side of an event: affected files of a conflict, or consumers of a symbol change. */
+export function eventAffectedFiles(event: SemanticEvent): string[] {
+  if (event.type === 'consumer_impacted' || event.type === 'test_invalidated') {
+    return event.conflict.affected.map((affected) => affected.file)
+  }
+
+  return event.consumers
+}
+
+/** Stable identity of an event, used to deliver each event at most once per agent. */
+export function eventKey(event: SemanticEvent): string {
+  if (event.type === 'consumer_impacted' || event.type === 'test_invalidated') {
+    return `${event.type}:${event.conflict.id}`
+  }
+
+  return `${event.type}:${event.symbolId}:${'to' in event ? event.to : ''}`
 }
 
 export function eventFiles(event: SemanticEvent): string[] {

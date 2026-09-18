@@ -12,6 +12,8 @@ export {
 } from './multi-runtime.js'
 export {
   eventFiles,
+  eventAffectedFiles,
+  eventKey,
   eventMatches,
   eventSymbolId,
   type Agent,

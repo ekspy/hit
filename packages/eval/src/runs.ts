@@ -254,7 +254,7 @@ async function mode2Hit(spec: RunSpec, options: RunOptions): Promise<PartialResu
   const maxTurns = pair.maxTurns ?? options.maxTurns
   const members = pair.agents.map((definition) => {
     const repo = fork(seed, definition.id)
-    const agent = new LlmAgent({ id: definition.id, provider: options.provider, workspace: new RepoWorkspace(repo), ownFiles: definition.ownFiles, readOnlyFiles: otherFiles(pair, definition.id), maxTurns, log: options.log })
+    const agent = new LlmAgent({ id: definition.id, provider: options.provider, workspace: new RepoWorkspace(repo), ownFiles: definition.ownFiles, readOnlyFiles: otherFiles(pair, definition.id), maxTurns, log: options.log, subscriptions: definition.ownFiles.map((file) => ({ type: '*' as const, affectedFile: file })) })
     agent.beginTask(definition.task)
     return { id: definition.id, repo, agent, ownFiles: definition.ownFiles }
   })

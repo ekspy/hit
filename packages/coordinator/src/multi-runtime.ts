@@ -2,7 +2,7 @@ import { ImpactEngine, type Conflict } from '@hit/impact-engine'
 import type { Repo } from '@hit/repo-crdt'
 import { SemanticIndex, semanticDiff } from '@hit/semantic-indexer'
 
-import { eventMatches, type Agent, type AgentAction, type AgentContext, type SemanticEvent } from './events.js'
+import { eventKey, eventMatches, type Agent, type AgentAction, type AgentContext, type SemanticEvent } from './events.js'
 import { eventsFromDiffAndConflicts } from './watcher.js'
 
 /** Agents that prefer receiving all events of a step at once (one repair session instead of one per event). */
@@ -58,6 +58,8 @@ export class MultiReplicaRuntime {
   private readonly impact = new ImpactEngine()
   private stepNumber = 0
   readonly eventsDelivered: Array<{ memberId: string; events: SemanticEvent[] }> = []
+  /** Event keys already delivered to each member: a persistent conflict is reported once, not on every turn. */
+  private readonly deliveredKeys = new Map<string, Set<string>>()
 
   constructor(readonly members: Member[]) {
     for (const member of members) {
@@ -85,6 +87,19 @@ export class MultiReplicaRuntime {
         this.members[index]!.repo.syncWith(this.members[index - 1]!.repo)
       }
     }
+  }
+
+  private undelivered(memberId: string, events: SemanticEvent[]): SemanticEvent[] {
+    const seen = this.deliveredKeys.get(memberId) ?? new Set<string>()
+    this.deliveredKeys.set(memberId, seen)
+    return events.filter((event) => {
+      const key = eventKey(event)
+      if (seen.has(key)) {
+        return false
+      }
+      seen.add(key)
+      return true
+    })
   }
 
   converged(): boolean {
@@ -184,7 +199,7 @@ export class MultiReplicaRuntime {
           const { events } = this.observe(other.id)
           this.markSeen(other.id)
           const target = other.agent
-          const relevant = target ? events.filter((event) => target.subscriptions.some((subscription) => eventMatches(subscription, event))) : []
+          const relevant = target ? this.undelivered(other.id, events.filter((event) => target.subscriptions.some((subscription) => eventMatches(subscription, event)))) : []
           if (target && isTaskAgent(target) && relevant.length > 0) {
             target.pushEvents(relevant)
             this.eventsDelivered.push({ memberId: other.id, events: relevant })

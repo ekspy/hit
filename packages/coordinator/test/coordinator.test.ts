@@ -146,3 +146,31 @@ describe('MultiReplicaRuntime', () => {
     expect(repoB.fileContent('src/api.ts')).toContain('number')
   })
 })
+
+describe('event subscriptions and delivery identity', () => {
+  it('affectedFile subscriptions ignore events where the file is only the origin', async () => {
+    const { eventMatches } = await import('../src/events.js')
+    const event = {
+      type: 'consumer_impacted' as const,
+      conflict: {
+        id: 'R4:src/lib/db.ts:x:src/lib/orders.ts',
+        rule: 'R4' as const,
+        level: 1 as const,
+        severity: 'high' as const,
+        origin: { file: 'src/lib/db.ts' },
+        affected: [{ file: 'src/lib/orders.ts' }],
+        reason: 'test',
+        status: 'pending' as const,
+      },
+    }
+    expect(eventMatches({ type: '*', affectedFile: 'src/lib/orders.ts' }, event)).toBe(true)
+    expect(eventMatches({ type: '*', affectedFile: 'src/lib/db.ts' }, event)).toBe(false)
+    expect(eventMatches({ type: '*', file: 'src/lib/db.ts' }, event)).toBe(true)
+  })
+
+  it('eventKey is stable for the same conflict', async () => {
+    const { eventKey } = await import('../src/events.js')
+    const conflict = { id: 'R4:a:b:c', rule: 'R4' as const, level: 1 as const, severity: 'high' as const, origin: { file: 'a' }, affected: [{ file: 'c' }], reason: 'r', status: 'pending' as const }
+    expect(eventKey({ type: 'consumer_impacted', conflict })).toBe(eventKey({ type: 'consumer_impacted', conflict: { ...conflict, reason: 'other' } }))
+  })
+})
