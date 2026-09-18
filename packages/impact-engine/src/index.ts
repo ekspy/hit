@@ -3,6 +3,7 @@ import { SemanticIndex, type SemanticDiff } from '@hit/semantic-indexer'
 import { exec as execCallback } from 'node:child_process'
 import { promisify } from 'node:util'
 
+import { classifyChange, parseParameters, unionMembersOf, type Compatibility, type CompatibilityFinding, type CompatibilityVerdict } from './compatibility.js'
 import { type Conflict, conflictId } from './conflicts.js'
 import {
   conflictEvidence,
@@ -52,6 +53,7 @@ export class ImpactEngine {
   }
 }
 
-export { conflictEvidence, groupLogicalConflicts, labelEvidence, matchLabels, propagationTargets, scoreConflicts }
+export { classifyChange, conflictEvidence, groupLogicalConflicts, labelEvidence, matchLabels, parseParameters, propagationTargets, scoreConflicts, unionMembersOf }
+export type { Compatibility, CompatibilityFinding, CompatibilityVerdict }
 export type { Conflict, ConflictEvidence, LabelConflict, LabelMatch, LabelsFile, LogicalConflict, QualityReport, RuleAttributionReport }
 export type { RuleId } from './conflicts.js'

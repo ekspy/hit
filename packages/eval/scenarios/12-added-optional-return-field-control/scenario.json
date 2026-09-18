@@ -1,0 +1,12 @@
+{
+  "id": "12-added-optional-return-field-control",
+  "title": "Compatible optional return field control",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

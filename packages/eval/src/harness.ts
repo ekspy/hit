@@ -22,6 +22,12 @@ const scenarios = [
   '08-import-path-change',
   '09-union-value-removed',
   '10-compatible-change-control',
+  '11-added-optional-param-control',
+  '12-added-optional-return-field-control',
+  '13-widened-param-type-control',
+  '14-interface-field-rename',
+  '15-enum-like-union-added-and-consumer-exhaustive',
+  '16-two-producers-one-consumer',
 ]
 
 const here = path.dirname(fileURLToPath(import.meta.url))

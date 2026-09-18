@@ -61,4 +61,4 @@ export class SemanticIndex {
 }
 
 export { semanticDiff }
-export type { Diagnostic, Loc, Reference, SemanticDiff, SymbolChange, SymbolInfo, TypeShape } from './types.js'
+export type { Diagnostic, Loc, ParameterInfo, Reference, SemanticDiff, SymbolChange, SymbolInfo, TypeShape } from './types.js'

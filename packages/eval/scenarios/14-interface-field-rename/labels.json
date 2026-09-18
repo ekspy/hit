@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R4",
+      "level": 1,
+      "rationale": "orders.ts still reads order.customerEmail after OrderRecord renames the field to email; the consumer is edited concurrently but keeps the stale property read.",
+      "origin": {
+        "file": "src/lib/db.ts",
+        "symbol": "OrderRecord.customerEmail"
+      },
+      "affected": [
+        {
+          "file": "src/lib/orders.ts",
+          "symbol": "customerEmail"
+        }
+      ]
+    }
+  ]
+}

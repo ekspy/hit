@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/payments.ts",
+      "search": "export function createPayment(input: PaymentInput): PaymentResult {\n  return {\n    id: `pay_${input.orderId}`,\n    status: input.amountCents > 0 ? 'created' : 'failed',\n    redirectUrl: `/checkout/${input.orderId}`,\n  }\n}",
+      "replace": "export function createPayment(input: PaymentInput | string): PaymentResult {\n  const orderId = typeof input === 'string' ? input : input.orderId\n  const amountCents = typeof input === 'string' ? 0 : input.amountCents\n\n  return {\n    id: `pay_${orderId}`,\n    status: amountCents > 0 ? 'created' : 'failed',\n    redirectUrl: `/checkout/${orderId}`,\n  }\n}"
+    }
+  ]
+}

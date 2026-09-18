@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/db.ts",
+      "search": "customerEmail: string",
+      "replace": "email: string"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/db.ts",
+      "search": "customerEmail: 'ana@example.com'",
+      "replace": "email: 'ana@example.com'"
+    }
+  ]
+}

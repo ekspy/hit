@@ -1,0 +1,34 @@
+{
+  "conflicts": [
+    {
+      "rule": "R1",
+      "level": 1,
+      "rationale": "createPayment's result drops status/redirectUrl in favour of state while checkout still reads the old fields.",
+      "origin": {
+        "file": "src/lib/payments.ts",
+        "symbol": "createPayment"
+      },
+      "affected": [
+        {
+          "file": "src/app/checkout/page.tsx",
+          "symbol": "createPayment"
+        }
+      ]
+    },
+    {
+      "rule": "R4",
+      "level": 1,
+      "rationale": "OrderRecord.customerEmail is renamed to email while orders.ts still reads customerEmail.",
+      "origin": {
+        "file": "src/lib/db.ts",
+        "symbol": "OrderRecord.customerEmail"
+      },
+      "affected": [
+        {
+          "file": "src/lib/orders.ts",
+          "symbol": "customerEmail"
+        }
+      ]
+    }
+  ]
+}

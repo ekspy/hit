@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/db.ts",
+      "search": "status: 'pending' | 'paid'",
+      "replace": "status: 'pending' | 'paid' | 'refunded'"
+    }
+  ]
+}

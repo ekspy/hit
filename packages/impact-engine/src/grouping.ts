@@ -18,7 +18,6 @@ export interface LogicalConflict {
   conflicts: Conflict[]
 }
 
-const ruleOrder: RuleId[] = ['R1', 'R2', 'R3', 'R4', 'R5', 'R6', 'R8', 'R9']
 const severityRank = new Map([
   ['high', 3],
   ['medium', 2],
@@ -237,13 +236,36 @@ function hasSignal(evidence: ConflictEvidence): boolean {
   return evidence.symbolTokens.size > 0 || evidence.bareSymbols.size > 0
 }
 
+/**
+ * Primary-rule selection inside a logical conflict, by certainty first:
+ * a diff-derived rule proven breaking beats concrete compiler evidence, which
+ * beats a diff-derived rule the classifier could not decide (`unknown`),
+ * which beats generic diagnostics. Ties fall back to rule precedence
+ * (call-site invalidating rules first), then level, severity and id.
+ */
 function comparePrimary(left: Conflict, right: Conflict): number {
   return (
+    certaintyRank(left) - certaintyRank(right) ||
+    primaryPrecedence.indexOf(left.rule) - primaryPrecedence.indexOf(right.rule) ||
     left.level - right.level ||
     (severityRank.get(right.severity) ?? 0) - (severityRank.get(left.severity) ?? 0) ||
-    ruleOrder.indexOf(left.rule) - ruleOrder.indexOf(right.rule) ||
     left.id.localeCompare(right.id)
   )
+}
+
+const primaryPrecedence: RuleId[] = ['R2', 'R6', 'R1', 'R5', 'R3', 'R4', 'R9', 'R8']
+const diffDerivedRules = new Set<RuleId>(['R1', 'R2', 'R5', 'R6'])
+
+function certaintyRank(conflict: Conflict): number {
+  if (diffDerivedRules.has(conflict.rule)) {
+    return conflict.classification === 'unknown' ? 2 : 0
+  }
+
+  if (conflict.rule === 'R3' || conflict.rule === 'R4') {
+    return 1
+  }
+
+  return 3
 }
 
 function find(parent: number[], index: number): number {

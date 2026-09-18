@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/orders.ts",
+      "search": "return 'Missing order'",
+      "replace": "return `Missing order ${id}`"
+    }
+  ]
+}

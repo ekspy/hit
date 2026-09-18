@@ -1,0 +1,12 @@
+{
+  "id": "13-widened-param-type-control",
+  "title": "Compatible widened parameter type control",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

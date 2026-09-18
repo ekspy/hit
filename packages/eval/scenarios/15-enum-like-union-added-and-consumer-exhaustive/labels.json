@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R4",
+      "level": 1,
+      "rationale": "Adding 'refunded' to OrderRecord.status is only breaking because the concurrently written describeStatus switch is exhaustive (never check).",
+      "origin": {
+        "file": "src/lib/db.ts",
+        "symbol": "OrderRecord.status"
+      },
+      "affected": [
+        {
+          "file": "src/lib/orders.ts",
+          "symbol": "describeStatus"
+        }
+      ]
+    }
+  ]
+}

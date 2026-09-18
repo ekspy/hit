@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/payments.ts",
+      "search": "redirectUrl?: string\n}",
+      "replace": "redirectUrl?: string\n  receiptUrl?: string\n}"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/payments.ts",
+      "search": "redirectUrl: `/checkout/${input.orderId}`,\n",
+      "replace": "redirectUrl: `/checkout/${input.orderId}`,\n    receiptUrl: `/receipts/${input.orderId}`,\n"
+    }
+  ]
+}

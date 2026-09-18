@@ -1,16 +1,18 @@
 import {
   Node,
+  SymbolFlags,
   type Type,
   type ClassDeclaration,
   type FunctionDeclaration,
   type InterfaceDeclaration,
+  type ParameterDeclaration,
   type SourceFile,
   type TypeAliasDeclaration,
   type VariableDeclaration,
 } from 'ts-morph'
 
 import { repoPath } from './dependencies.js'
-import type { SymbolInfo, TypeShape } from './types.js'
+import type { ParameterInfo, SymbolInfo, TypeShape } from './types.js'
 
 export function collectSymbols(sourceFile: SourceFile): SymbolInfo[] {
   return [
@@ -46,6 +48,8 @@ function functionSymbol(node: FunctionDeclaration): SymbolInfo {
     signature: `${name}(${node.getParameters().map((param) => param.getText()).join(', ')}): ${returnType.getText(node)}`,
     returnShape: returnTypeShape(returnType, node),
     exported: true,
+    parameters: node.getParameters().map((param) => parameterInfo(param)),
+    returnTypeText: returnType.getText(node),
   }
 }
 
@@ -74,6 +78,7 @@ function interfaceSymbol(node: InterfaceDeclaration): SymbolInfo {
     file,
     signature: node.getText(),
     exported: true,
+    shape: objectShape(node.getType(), node),
   }
 }
 
@@ -88,6 +93,7 @@ function typeAliasSymbol(node: TypeAliasDeclaration): SymbolInfo {
     file,
     signature: node.getText(),
     exported: true,
+    shape: objectShape(node.getType(), node),
   }
 }
 
@@ -105,33 +111,68 @@ function constSymbol(node: VariableDeclaration): SymbolInfo {
   }
 }
 
+function parameterInfo(param: ParameterDeclaration): ParameterInfo {
+  const type = param.getType()
+  const typeText = param.getTypeNode()?.getText() ?? type.getText(param)
+  const members = type.isUnion() ? type.getUnionTypes().map((member) => member.getText(param)) : [type.getText(param)]
+
+  return {
+    name: param.getName(),
+    optional: param.isOptional(),
+    typeText,
+    unionMembers: [...new Set(members)].sort(),
+  }
+}
+
 function returnTypeShape(returnType: Type, node: FunctionDeclaration): TypeShape | undefined {
+  const unwrapped = unwrapPromise(returnType)
+
   if (
-    returnType.isString() ||
-    returnType.isNumber() ||
-    returnType.isBoolean() ||
-    returnType.isVoid() ||
-    returnType.isUndefined() ||
-    returnType.isNull() ||
-    returnType.isNever()
+    unwrapped.isString() ||
+    unwrapped.isNumber() ||
+    unwrapped.isBoolean() ||
+    unwrapped.isVoid() ||
+    unwrapped.isUndefined() ||
+    unwrapped.isNull() ||
+    unwrapped.isNever()
   ) {
     return undefined
   }
 
-  const properties = returnType
-    .getProperties()
-    .map((property) => [property.getName(), property.getValueDeclaration()?.getType().getText(node) ?? 'unknown'] as [string, string])
+  return objectShape(unwrapped, node)
+}
+
+/** `Promise<T>` contributes the shape of `T`; the async wrapper itself is captured by `returnTypeText`. */
+function unwrapPromise(type: Type): Type {
+  if (type.getSymbol()?.getName() === 'Promise') {
+    return type.getTypeArguments()[0] ?? type
+  }
+
+  return type
+}
+
+function objectShape(type: Type, node: Node): TypeShape | undefined {
+  const symbols = type.getProperties()
+  const properties = symbols.map(
+    (property) => [property.getName(), property.getValueDeclaration()?.getType().getText(node) ?? 'unknown'] as [string, string],
+  )
 
   if (properties.length === 0) {
     return undefined
   }
 
-  return typeShape(returnType.getText(node), properties)
+  const optional = symbols
+    .filter((property) => property.hasFlags(SymbolFlags.Optional))
+    .map((property) => property.getName())
+    .sort()
+
+  return typeShape(type.getText(node), properties, optional)
 }
 
-function typeShape(text: string, properties: Array<[string, string]>): TypeShape {
+function typeShape(text: string, properties: Array<[string, string]>, optional: string[]): TypeShape {
   return {
     text,
     properties: Object.fromEntries(properties.sort(([left], [right]) => left.localeCompare(right))),
+    ...(optional.length > 0 ? { optional } : {}),
   }
 }

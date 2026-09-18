@@ -1,0 +1,12 @@
+{
+  "id": "16-two-producers-one-consumer",
+  "title": "Concurrent breaking changes in payments.ts and db.ts hit checkout and orders",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

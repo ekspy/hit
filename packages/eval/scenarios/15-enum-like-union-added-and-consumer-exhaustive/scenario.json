@@ -1,0 +1,12 @@
+{
+  "id": "15-enum-like-union-added-and-consumer-exhaustive",
+  "title": "Union member added to OrderRecord.status while orders.ts adopts an exhaustive switch",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

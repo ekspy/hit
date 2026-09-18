@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/payments.ts",
+      "search": "status: 'created' | 'failed'\n  redirectUrl?: string",
+      "replace": "state: 'created' | 'failed'"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/payments.ts",
+      "search": "status: input.amountCents > 0 ? 'created' : 'failed',\n    redirectUrl: `/checkout/${input.orderId}`,",
+      "replace": "state: input.amountCents > 0 ? 'created' : 'failed',"
+    }
+  ]
+}

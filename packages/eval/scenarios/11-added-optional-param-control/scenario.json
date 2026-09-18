@@ -1,0 +1,12 @@
+{
+  "id": "11-added-optional-param-control",
+  "title": "Compatible trailing optional parameter control",
+  "fixture": "shopapp",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "testCommand": "pnpm test",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

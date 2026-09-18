@@ -11,6 +11,12 @@ export interface Conflict {
   affected: Array<{ file: string; loc?: Loc; symbolId?: string }>
   reason: string
   status: 'pending' | 'reconciled'
+  /**
+   * How certain the rule is that the change breaks consumers. Diff-derived
+   * rules never fire on `compatible` changes; `unknown` means the classifier
+   * could not prove either way and the conflict is treated as breaking.
+   */
+  classification?: 'breaking' | 'unknown'
 }
 
 export function diagnosticAffected(diagnostic: Diagnostic): { file: string; loc?: Loc } | undefined {
