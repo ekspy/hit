@@ -5,6 +5,6 @@
     "rootDir": ".",
     "outDir": "dist"
   },
-  "references": [{ "path": "../repo-crdt" }, { "path": "../coordinator" }],
+  "references": [{ "path": "../repo-crdt" }, { "path": "../coordinator" }, { "path": "../semantic-indexer" }],
   "include": ["src/**/*.ts", "test/**/*.ts"]
 }

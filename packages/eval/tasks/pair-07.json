@@ -1,0 +1,19 @@
+{
+  "id": "pair-07",
+  "title": "Payment creation becomes async while checkout adds retry messaging",
+  "fixture": "shopapp",
+  "derivedFrom": "07-async-contract-change",
+  "maxTurns": 12,
+  "agents": [
+    {
+      "id": "agent-a",
+      "ownFiles": ["src/lib/payments.ts"],
+      "task": "In src/lib/payments.ts, make createPayment asynchronous: declare it `async` and change its return type to `Promise<PaymentResult>`, simulating a gateway call with `await Promise.resolve()` before building the result. Keep the PaymentResult shape unchanged. Do not touch other files."
+    },
+    {
+      "id": "agent-b",
+      "ownFiles": ["src/app/checkout/page.tsx", "src/tests/checkout.test.ts"],
+      "task": "In src/app/checkout/page.tsx, extend CheckoutPage so that when the payment failed it returns `Payment failed, please retry (order <orderId>)` where orderId is the order id used for the payment ('ord_1'), and when it succeeds it keeps returning the redirect URL. Update src/tests/checkout.test.ts so it still passes and also covers the failed branch (you may add an optional amountCents parameter to CheckoutPage defaulting to 1299; createPayment fails when amountCents is 0). Do not touch src/lib/payments.ts."
+    }
+  ]
+}

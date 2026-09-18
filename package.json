@@ -7,7 +7,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc -b",
-    "eval": "pnpm --filter @hit/eval run analyses"
+    "eval": "pnpm --filter @hit/eval run analyses",
+    "eval:mode1": "tsx --tsconfig packages/eval/tsconfig.json packages/eval/src/mode1.ts",
+    "eval:mode2": "tsx --tsconfig packages/eval/tsconfig.json packages/eval/src/mode2.ts",
+    "eval:smoke": "tsx --tsconfig packages/eval/tsconfig.json packages/eval/src/smoke.ts"
   },
   "devDependencies": {
     "@types/node": "20.14.10",

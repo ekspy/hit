@@ -1,0 +1,19 @@
+{
+  "id": "pair-03",
+  "title": "Order record field renamed while the order summary grows",
+  "fixture": "shopapp",
+  "derivedFrom": "03-removed-field",
+  "maxTurns": 12,
+  "agents": [
+    {
+      "id": "agent-a",
+      "ownFiles": ["src/lib/db.ts"],
+      "task": "In src/lib/db.ts, rename the OrderRecord property `customerEmail` to `email` everywhere in that file (interface and seed data). Do not touch other files."
+    },
+    {
+      "id": "agent-b",
+      "ownFiles": ["src/lib/orders.ts", "src/app/orders/page.tsx"],
+      "task": "In src/lib/orders.ts, make orderSummary richer: it must return `<customerEmail> - <total in dollars with two decimals> - <status>` (e.g. `ana@example.com - 12.99 - pending`), using the order's customerEmail, totalCents and status fields. Keep the 'Missing order' branch. Do not touch src/lib/db.ts."
+    }
+  ]
+}

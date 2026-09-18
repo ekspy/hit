@@ -12,7 +12,9 @@
   },
   "scripts": {
     "build": "tsc -b",
-    "analyses": "tsx src/harness.ts"
+    "analyses": "tsx src/harness.ts",
+    "mode1": "tsx src/mode1.ts",
+    "mode2": "tsx src/mode2.ts"
   },
   "dependencies": {
     "@hit/agent": "workspace:*",
@@ -20,6 +22,7 @@
     "@hit/impact-engine": "workspace:*",
     "@hit/repo-crdt": "workspace:*",
     "@hit/semantic-indexer": "workspace:*",
+    "commander": "12.1.0",
     "simple-git": "3.25.0",
     "tsx": "4.16.2"
   }

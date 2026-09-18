@@ -1,5 +1,16 @@
 export { Runtime, type RunReport, type StepReport } from './runtime.js'
 export {
+  MultiReplicaRuntime,
+  isBatchAgent,
+  isTaskAgent,
+  type BatchAgent,
+  type Member,
+  type MemberStepReport,
+  type MultiStepReport,
+  type TaskAgent,
+  type TaskRoundReport,
+} from './multi-runtime.js'
+export {
   eventFiles,
   eventMatches,
   eventSymbolId,

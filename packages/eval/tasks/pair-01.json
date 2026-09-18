@@ -1,0 +1,19 @@
+{
+  "id": "pair-01",
+  "title": "Payment result reshaped while checkout grows a failure branch",
+  "fixture": "shopapp",
+  "derivedFrom": "01-return-type-change",
+  "maxTurns": 12,
+  "agents": [
+    {
+      "id": "agent-a",
+      "ownFiles": ["src/lib/payments.ts"],
+      "task": "In src/lib/payments.ts, simplify the PaymentResult contract: rename the `status` property to `state` (same union type 'created' | 'failed') and remove the `redirectUrl` property entirely, since redirects are now handled by the gateway. Update createPayment accordingly so the module type-checks on its own. Do not touch other files."
+    },
+    {
+      "id": "agent-b",
+      "ownFiles": ["src/app/checkout/page.tsx", "src/tests/checkout.test.ts"],
+      "task": "In src/app/checkout/page.tsx, improve CheckoutPage: when the payment failed, return the string `Payment failed (<payment id>)` using the payment's `id`; when the payment was created, keep returning the redirect URL if present and 'Payment created' otherwise. Add a second test in src/tests/checkout.test.ts covering the failed branch (createPayment fails when amountCents is 0, so you may need to make CheckoutPage accept an optional amountCents parameter defaulting to 1299). Do not touch src/lib/payments.ts."
+    }
+  ]
+}

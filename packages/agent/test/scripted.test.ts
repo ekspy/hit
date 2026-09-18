@@ -1,7 +1,7 @@
 import { Repo } from '@hit/repo-crdt'
 import { describe, expect, it } from 'vitest'
 
-import { LlmAgent, ScriptedAgent } from '../src/index.js'
+import { ScriptedAgent } from '../src/index.js'
 
 describe('ScriptedAgent', () => {
   it('returns deterministic edit actions for matching events', async () => {
@@ -38,23 +38,5 @@ describe('ScriptedAgent', () => {
         edit: { start: 21, deleteCount: 7, insert: 'newName' },
       },
     ])
-  })
-
-  it('builds prompts without calling a provider', async () => {
-    const repo = Repo.create('llm')
-    const agent = new LlmAgent('llm')
-    const actions = await agent.onEvent({
-      repo,
-      index: undefined as never,
-      myClaims: [],
-      event: {
-        type: 'symbol_removed',
-        symbolId: 'src/a.ts#a',
-        consumers: [],
-      },
-    })
-
-    expect(actions[0]).toEqual({ kind: 'noop', note: 'LLM provider calls are disabled in the preliminary prototype' })
-    expect(agent.prompts).toHaveLength(1)
   })
 })
