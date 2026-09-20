@@ -1,0 +1,17 @@
+{
+  "seed": 1701,
+  "cases": [
+    {
+      "replicas": 2,
+      "visibleFilesEqual": true,
+      "operationsEqual": true,
+      "activeClaimsEqual": true
+    },
+    {
+      "replicas": 3,
+      "visibleFilesEqual": true,
+      "operationsEqual": true,
+      "activeClaimsEqual": true
+    }
+  ]
+}

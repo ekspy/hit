@@ -61,7 +61,11 @@ export class MultiReplicaRuntime {
   /** Event keys already delivered to each member: a persistent conflict is reported once, not on every turn. */
   private readonly deliveredKeys = new Map<string, Set<string>>()
 
-  constructor(readonly members: Member[]) {
+  /** When false (ablation), replicas still sync after every turn but no impact events are pushed to agents. */
+  private readonly deliverEvents: boolean
+
+  constructor(readonly members: Member[], options: { deliverEvents?: boolean } = {}) {
+    this.deliverEvents = options.deliverEvents ?? true
     for (const member of members) {
       this.lastSeen.set(member.id, SemanticIndex.build(member.repo))
     }
@@ -200,7 +204,7 @@ export class MultiReplicaRuntime {
           this.markSeen(other.id)
           const target = other.agent
           const relevant = target ? this.undelivered(other.id, events.filter((event) => target.subscriptions.some((subscription) => eventMatches(subscription, event)))) : []
-          if (target && isTaskAgent(target) && relevant.length > 0) {
+          if (target && isTaskAgent(target) && relevant.length > 0 && this.deliverEvents) {
             target.pushEvents(relevant)
             this.eventsDelivered.push({ memberId: other.id, events: relevant })
             deliveredTo.push({ memberId: other.id, events: relevant })

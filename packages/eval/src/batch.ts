@@ -43,7 +43,7 @@ export function parseBatchArgs(mode: Mode, argv: string[]): BatchOptions {
     .name(`eval:${mode}`)
     .option('--models <list>', 'comma-separated model ids', MODELS.join(','))
     .option('--scenarios <list>', mode === 'mode1' ? 'comma-separated scenario ids (prefix allowed, e.g. 01)' : 'comma-separated task pair ids (e.g. pair-01 or 01)', defaults.scenarios.join(','))
-    .option('--conditions <list>', 'hit,git', 'hit,git')
+    .option('--conditions <list>', 'hit,git,hit-silent (hit-silent: mode2 ablation without events)', 'hit,git')
     .option('--reps <n>', 'repetitions per cell', String(defaults.reps))
     .option('--concurrency <n>', 'parallel runs', '4')
     .option('--budget <usd>', 'per-model budget guard in USD', '15')
@@ -62,7 +62,7 @@ export function parseBatchArgs(mode: Mode, argv: string[]): BatchOptions {
   }
   const conditions = splitList(raw.conditions) as Condition[]
   for (const condition of conditions) {
-    if (condition !== 'hit' && condition !== 'git') {
+    if (condition !== 'hit' && condition !== 'git' && condition !== 'hit-silent') {
       throw new Error(`Unknown condition ${condition}`)
     }
   }

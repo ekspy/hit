@@ -1,0 +1,19 @@
+{
+  "id": "pair-10",
+  "title": "Order lookup becomes async two hops away from the page being extended",
+  "fixture": "shopapp",
+  "derivedFrom": "07-async-contract-change",
+  "maxTurns": 12,
+  "agents": [
+    {
+      "id": "agent-a",
+      "ownFiles": ["src/lib/db.ts"],
+      "task": "In src/lib/db.ts, make findOrder asynchronous: declare it `async` and change its return type to `Promise<OrderRecord | undefined>`, simulating a database round trip with `await Promise.resolve()` before the lookup. Keep OrderRecord and the seed data unchanged. Do not touch other files."
+    },
+    {
+      "id": "agent-b",
+      "ownFiles": ["src/lib/orders.ts", "src/app/orders/page.tsx"],
+      "task": "In src/app/orders/page.tsx, extend OrdersPage so it takes an optional list of order ids (defaulting to ['ord_1']) and returns one line per order, each line being the result of orderSummary for that id, joined with '\\n'; when the list is empty return 'No orders'. Keep orderSummary in src/lib/orders.ts working. Do not touch src/lib/db.ts."
+    }
+  ]
+}

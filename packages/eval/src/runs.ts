@@ -13,7 +13,8 @@ import { scenarioDir, tasksDir } from './paths.js'
 import { applyScript, loadAgentScript, loadFixtureRepo, loadScenario } from './scenario.js'
 
 export type Mode = 'mode1' | 'mode2'
-export type Condition = 'hit' | 'git'
+/** `hit-silent` is the ablation: Hit runtime, same sync and turn alternation, but no impact events delivered (Mode 2 only). */
+export type Condition = 'hit' | 'git' | 'hit-silent'
 
 export interface RunSpec {
   mode: Mode
@@ -102,7 +103,10 @@ export async function executeRun(spec: RunSpec, options: RunOptions): Promise<Ru
   let error: string | undefined
 
   try {
-    partial = spec.mode === 'mode1' ? await (spec.condition === 'hit' ? mode1Hit(spec, options) : mode1Git(spec, options)) : await (spec.condition === 'hit' ? mode2Hit(spec, options) : mode2Git(spec, options))
+    if (spec.mode === 'mode1' && spec.condition === 'hit-silent') {
+      throw new Error('hit-silent is only defined for mode2')
+    }
+    partial = spec.mode === 'mode1' ? await (spec.condition === 'hit' ? mode1Hit(spec, options) : mode1Git(spec, options)) : await (spec.condition === 'git' ? mode2Git(spec, options) : mode2Hit(spec, options))
   } catch (caught) {
     error = caught instanceof Error ? (caught.stack ?? caught.message) : String(caught)
   }
@@ -258,7 +262,7 @@ async function mode2Hit(spec: RunSpec, options: RunOptions): Promise<PartialResu
     agent.beginTask(definition.task)
     return { id: definition.id, repo, agent, ownFiles: definition.ownFiles }
   })
-  const runtime = new MultiReplicaRuntime(members.map(({ id, repo, agent }) => ({ id, repo, agent })))
+  const runtime = new MultiReplicaRuntime(members.map(({ id, repo, agent }) => ({ id, repo, agent })), { deliverEvents: spec.condition !== 'hit-silent' })
   await runtime.runTasks(maxTurns + 1)
 
   const checks = await finalChecks(members[0]!.repo, pair.fixture, { converged: runtime.converged() })

@@ -1,0 +1,581 @@
+{
+  "spec": {
+    "mode": "mode2",
+    "model": "gpt-5.6-terra",
+    "scenario": "pair-07",
+    "condition": "hit",
+    "rep": 2
+  },
+  "startedAt": "2026-09-18T12:03:52.427Z",
+  "finishedAt": "2026-09-18T12:04:40.503Z",
+  "metrics": {
+    "typecheckPass": true,
+    "diagnostics": 0,
+    "testsPass": true,
+    "testsPassed": 2,
+    "testsFailed": 0,
+    "edits": 3,
+    "turns": 12,
+    "inputTokens": 15619,
+    "outputTokens": 1123,
+    "costUsd": 0.044714,
+    "wallClockMs": 48076.227979999996,
+    "latencyP50Ms": 2338.933800000028,
+    "llmCalls": 12,
+    "eventsDelivered": 4,
+    "actedAfterEvent": true,
+    "mergeConflicts": 0,
+    "converged": true
+  },
+  "eventsDelivered": [
+    {
+      "memberId": "agent-b",
+      "events": [
+        {
+          "type": "symbol_signature_changed",
+          "symbolId": "src/lib/payments.ts#createPayment",
+          "from": "createPayment(input: PaymentInput): PaymentResult",
+          "to": "createPayment(input: PaymentInput): Promise<PaymentResult>",
+          "consumers": [
+            "src/app/checkout/page.tsx"
+          ]
+        },
+        {
+          "type": "consumer_impacted",
+          "conflict": {
+            "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+            "rule": "R1",
+            "level": 1,
+            "severity": "medium",
+            "origin": {
+              "file": "src/lib/payments.ts",
+              "symbolId": "src/lib/payments.ts#createPayment"
+            },
+            "affected": [
+              {
+                "file": "src/app/checkout/page.tsx",
+                "loc": {
+                  "line": 1,
+                  "column": 1
+                },
+                "symbolId": "src/lib/payments.ts#createPayment"
+              }
+            ],
+            "reason": "Contract changed from createPayment(input: PaymentInput): PaymentResult to createPayment(input: PaymentInput): Promise<PaymentResult> (return became asynchronous (Promise))",
+            "status": "pending",
+            "classification": "breaking"
+          }
+        },
+        {
+          "type": "consumer_impacted",
+          "conflict": {
+            "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2339",
+            "rule": "R4",
+            "level": 1,
+            "severity": "high",
+            "origin": {
+              "file": "src/lib/payments.ts",
+              "symbolId": "src/lib/payments.ts#createPayment"
+            },
+            "affected": [
+              {
+                "file": "src/app/checkout/page.tsx",
+                "loc": {
+                  "line": 10,
+                  "column": 18
+                }
+              }
+            ],
+            "reason": "TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'Promise<PaymentResult>'.",
+            "status": "pending",
+            "classification": "breaking"
+          }
+        }
+      ]
+    },
+    {
+      "memberId": "agent-b",
+      "events": [
+        {
+          "type": "consumer_impacted",
+          "conflict": {
+            "id": "R4:src/app/checkout/page.tsx:-:src/app/checkout/page.tsx:2339",
+            "rule": "R4",
+            "level": 1,
+            "severity": "high",
+            "origin": {
+              "file": "src/app/checkout/page.tsx"
+            },
+            "affected": [
+              {
+                "file": "src/app/checkout/page.tsx",
+                "loc": {
+                  "line": 10,
+                  "column": 18
+                }
+              }
+            ],
+            "reason": "TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'Promise<PaymentResult>'.",
+            "status": "pending",
+            "classification": "breaking"
+          }
+        }
+      ]
+    }
+  ],
+  "finalDiagnostics": [],
+  "testOutput": "",
+  "agents": [
+    {
+      "id": "agent-a",
+      "ownFiles": [
+        "src/lib/payments.ts"
+      ],
+      "sessions": [
+        {
+          "kind": "task",
+          "system": "You are a software engineer working on a small TypeScript project shared with other agents through a replicated repository. You own these files: src/lib/payments.ts. These files belong to another agent and must not be edited: src/app/checkout/page.tsx, src/tests/checkout.test.ts.\nImplement the task you are given. Other agents may change other files concurrently; if you receive an \"[hit] impact event\" message, reconcile your work with the change before continuing.\nRules:\n- Use the tools; do not answer with prose only. Read a file before editing it.\n- edit_file replaces exactly one occurrence of `search`; copy the text verbatim from read_file output. If it fails, re-read the file and retry with a smaller, unique snippet.\n- Run run_typecheck before finishing; it must report 0 diagnostics. Tests that encode the old contract may be updated to match the new one.\n- Do not create new files or reformat unrelated code. Keep changes minimal.\n- Finish by calling done with a short summary.",
+          "turns": 6,
+          "edits": 1,
+          "done": true,
+          "usage": {
+            "input": 5652,
+            "output": 456
+          },
+          "costUsd": 0.016776,
+          "latenciesMs": [
+            2338.933800000028,
+            1651.2509100000025,
+            2317.647250000009,
+            5355.738844999985,
+            2399.4109300000127,
+            2047.1317920000001
+          ],
+          "turnRecords": [
+            {
+              "turn": 0,
+              "userMessage": "Task: In src/lib/payments.ts, make createPayment asynchronous: declare it `async` and change its return type to `Promise<PaymentResult>`, simulating a gateway call with `await Promise.resolve()` before building the result. Keep the PaymentResult shape unchanged. Do not touch other files.\n\nFiles in the repository:\nsrc/app/checkout/page.tsx\nsrc/app/orders/page.tsx\nsrc/lib/db.ts\nsrc/lib/orders.ts\nsrc/lib/payments.ts\nsrc/tests/checkout.test.ts",
+              "assistantText": "",
+              "toolCalls": [],
+              "usage": {
+                "input": 0,
+                "output": 0
+              },
+              "latencyMs": 0,
+              "costUsd": 0
+            },
+            {
+              "turn": 1,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "read_file",
+                  "args": {
+                    "path": "src/lib/payments.ts"
+                  },
+                  "output": "export interface PaymentInput {\n  orderId: string\n  amountCents: number\n}\n\nexport interface PaymentResult {\n  id: string\n  status: 'created' | 'failed'\n  redirectUrl?: string\n}\n\nexport function createPayment(input: PaymentInput): PaymentResult {\n  return {\n    id: `pay_${input.orderId}`,\n    status: input.amountCents > 0 ? 'created' : 'failed',\n    redirectUrl: `/checkout/${input.orderId}`,\n  }\n}\n",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 581,
+                "output": 35
+              },
+              "latencyMs": 2338.933800000028,
+              "costUsd": 0.001582
+            },
+            {
+              "turn": 2,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "edit_file",
+                  "args": {
+                    "path": "src/lib/payments.ts",
+                    "search": "export function createPayment(input: PaymentInput): PaymentResult {\n  return {\n",
+                    "replace": "export async function createPayment(input: PaymentInput): Promise<PaymentResult> {\n  await Promise.resolve()\n\n  return {\n"
+                  },
+                  "output": "ok: edited src/lib/payments.ts",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 730,
+                "output": 83
+              },
+              "latencyMs": 1651.2509100000025,
+              "costUsd": 0.002456
+            },
+            {
+              "turn": 3,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "run_typecheck",
+                  "args": {},
+                  "output": "Typecheck failed: 2 diagnostic(s).\nsrc/app/checkout/page.tsx:6:15 TS2339 Property 'status' does not exist on type 'Promise<PaymentResult>'.\nsrc/app/checkout/page.tsx:10:18 TS2339 Property 'redirectUrl' does not exist on type 'Promise<PaymentResult>'.",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 832,
+                "output": 50
+              },
+              "latencyMs": 2317.647250000009,
+              "costUsd": 0.002264
+            },
+            {
+              "turn": 4,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "read_file",
+                  "args": {
+                    "path": "src/app/checkout/page.tsx"
+                  },
+                  "output": "import { createPayment } from '../../lib/payments'\n\nexport async function CheckoutPage(amountCents = 1299): Promise<string> {\n  const orderId = 'ord_1'\n  const payment = await createPayment({ orderId, amountCents })\n\n  if (payment.status === 'failed') {\n    return `Payment failed, please retry (order ${orderId})`\n  }\n\n  return payment.redirectUrl ?? 'Payment created'\n}\n",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 962,
+                "output": 172
+              },
+              "latencyMs": 5355.738844999985,
+              "costUsd": 0.003988
+            },
+            {
+              "turn": 5,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "run_typecheck",
+                  "args": {},
+                  "output": "Typecheck passed: 0 diagnostics.",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 1236,
+                "output": 55
+              },
+              "latencyMs": 2399.4109300000127,
+              "costUsd": 0.003132
+            },
+            {
+              "turn": 6,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "done",
+                  "args": {
+                    "summary": "Updated createPayment to be async, return Promise<PaymentResult>, and yield once via await Promise.resolve() before constructing the unchanged payment result. Typecheck passes with 0 diagnostics."
+                  },
+                  "output": "ok",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 1311,
+                "output": 61
+              },
+              "latencyMs": 2047.1317920000001,
+              "costUsd": 0.003354
+            }
+          ],
+          "summary": "Updated createPayment to be async, return Promise<PaymentResult>, and yield once via await Promise.resolve() before constructing the unchanged payment result. Typecheck passes with 0 diagnostics."
+        }
+      ]
+    },
+    {
+      "id": "agent-b",
+      "ownFiles": [
+        "src/app/checkout/page.tsx",
+        "src/tests/checkout.test.ts"
+      ],
+      "sessions": [
+        {
+          "kind": "task",
+          "system": "You are a software engineer working on a small TypeScript project shared with other agents through a replicated repository. You own these files: src/app/checkout/page.tsx, src/tests/checkout.test.ts. These files belong to another agent and must not be edited: src/lib/payments.ts.\nImplement the task you are given. Other agents may change other files concurrently; if you receive an \"[hit] impact event\" message, reconcile your work with the change before continuing.\nRules:\n- Use the tools; do not answer with prose only. Read a file before editing it.\n- edit_file replaces exactly one occurrence of `search`; copy the text verbatim from read_file output. If it fails, re-read the file and retry with a smaller, unique snippet.\n- Run run_typecheck before finishing; it must report 0 diagnostics. Tests that encode the old contract may be updated to match the new one.\n- Do not create new files or reformat unrelated code. Keep changes minimal.\n- Finish by calling done with a short summary.",
+          "turns": 6,
+          "edits": 2,
+          "done": true,
+          "usage": {
+            "input": 9967,
+            "output": 667
+          },
+          "costUsd": 0.027937999999999998,
+          "latenciesMs": [
+            2730.7847519999777,
+            1802.1291239999991,
+            2992.2647949999955,
+            3953.6208600000245,
+            1983.9770510000235,
+            2902.238378000009
+          ],
+          "turnRecords": [
+            {
+              "turn": 0,
+              "userMessage": "Task: In src/app/checkout/page.tsx, extend CheckoutPage so that when the payment failed it returns `Payment failed, please retry (order <orderId>)` where orderId is the order id used for the payment ('ord_1'), and when it succeeds it keeps returning the redirect URL. Update src/tests/checkout.test.ts so it still passes and also covers the failed branch (you may add an optional amountCents parameter to CheckoutPage defaulting to 1299; createPayment fails when amountCents is 0). Do not touch src/lib/payments.ts.\n\nFiles in the repository:\nsrc/app/checkout/page.tsx\nsrc/app/orders/page.tsx\nsrc/lib/db.ts\nsrc/lib/orders.ts\nsrc/lib/payments.ts\nsrc/tests/checkout.test.ts",
+              "assistantText": "",
+              "toolCalls": [],
+              "usage": {
+                "input": 0,
+                "output": 0
+              },
+              "latencyMs": 0,
+              "costUsd": 0
+            },
+            {
+              "turn": 1,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "read_file",
+                  "args": {
+                    "path": "src/app/checkout/page.tsx"
+                  },
+                  "output": "import { createPayment } from '../../lib/payments'\n\nexport function CheckoutPage(): string {\n  const payment = createPayment({ orderId: 'ord_1', amountCents: 1299 })\n\n  if (payment.status === 'failed') {\n    return 'Payment failed'\n  }\n\n  return payment.redirectUrl ?? 'Payment created'\n}\n",
+                  "isError": false
+                },
+                {
+                  "name": "read_file",
+                  "args": {
+                    "path": "src/tests/checkout.test.ts"
+                  },
+                  "output": "import { describe, expect, it } from 'vitest'\n\nimport { CheckoutPage } from '../app/checkout/page'\n\ndescribe('checkout fixture', () => {\n  it('renders the checkout redirect', () => {\n    expect(CheckoutPage()).toBe('/checkout/ord_1')\n  })\n})\n",
+                  "isError": false
+                },
+                {
+                  "name": "read_file",
+                  "args": {
+                    "path": "src/lib/payments.ts"
+                  },
+                  "output": "export interface PaymentInput {\n  orderId: string\n  amountCents: number\n}\n\nexport interface PaymentResult {\n  id: string\n  status: 'created' | 'failed'\n  redirectUrl?: string\n}\n\nexport function createPayment(input: PaymentInput): PaymentResult {\n  return {\n    id: `pay_${input.orderId}`,\n    status: input.amountCents > 0 ? 'created' : 'failed',\n    redirectUrl: `/checkout/${input.orderId}`,\n  }\n}\n",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 639,
+                "output": 97
+              },
+              "latencyMs": 2730.7847519999777,
+              "costUsd": 0.002442
+            },
+            {
+              "turn": 2,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "read_file",
+                  "args": {
+                    "path": "src/app/checkout/page.tsx"
+                  },
+                  "output": "import { createPayment } from '../../lib/payments'\n\nexport function CheckoutPage(): string {\n  const payment = createPayment({ orderId: 'ord_1', amountCents: 1299 })\n\n  if (payment.status === 'failed') {\n    return 'Payment failed'\n  }\n\n  return payment.redirectUrl ?? 'Payment created'\n}\n",
+                  "isError": false
+                },
+                {
+                  "name": "read_file",
+                  "args": {
+                    "path": "src/tests/checkout.test.ts"
+                  },
+                  "output": "import { describe, expect, it } from 'vitest'\n\nimport { CheckoutPage } from '../app/checkout/page'\n\ndescribe('checkout fixture', () => {\n  it('renders the checkout redirect', () => {\n    expect(CheckoutPage()).toBe('/checkout/ord_1')\n  })\n})\n",
+                  "isError": false
+                },
+                {
+                  "name": "read_file",
+                  "args": {
+                    "path": "src/lib/payments.ts"
+                  },
+                  "output": "export interface PaymentInput {\n  orderId: string\n  amountCents: number\n}\n\nexport interface PaymentResult {\n  id: string\n  status: 'created' | 'failed'\n  redirectUrl?: string\n}\n\nexport async function createPayment(input: PaymentInput): Promise<PaymentResult> {\n  await Promise.resolve()\n\n  return {\n    id: `pay_${input.orderId}`,\n    status: input.amountCents > 0 ? 'created' : 'failed',\n    redirectUrl: `/checkout/${input.orderId}`,\n  }\n}\n",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 1254,
+                "output": 92
+              },
+              "latencyMs": 1802.1291239999991,
+              "costUsd": 0.003612,
+              "injectedEvents": [
+                {
+                  "type": "symbol_signature_changed",
+                  "symbolId": "src/lib/payments.ts#createPayment",
+                  "from": "createPayment(input: PaymentInput): PaymentResult",
+                  "to": "createPayment(input: PaymentInput): Promise<PaymentResult>",
+                  "consumers": [
+                    "src/app/checkout/page.tsx"
+                  ]
+                },
+                {
+                  "type": "consumer_impacted",
+                  "conflict": {
+                    "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+                    "rule": "R1",
+                    "level": 1,
+                    "severity": "medium",
+                    "origin": {
+                      "file": "src/lib/payments.ts",
+                      "symbolId": "src/lib/payments.ts#createPayment"
+                    },
+                    "affected": [
+                      {
+                        "file": "src/app/checkout/page.tsx",
+                        "loc": {
+                          "line": 1,
+                          "column": 1
+                        },
+                        "symbolId": "src/lib/payments.ts#createPayment"
+                      }
+                    ],
+                    "reason": "Contract changed from createPayment(input: PaymentInput): PaymentResult to createPayment(input: PaymentInput): Promise<PaymentResult> (return became asynchronous (Promise))",
+                    "status": "pending",
+                    "classification": "breaking"
+                  }
+                },
+                {
+                  "type": "consumer_impacted",
+                  "conflict": {
+                    "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2339",
+                    "rule": "R4",
+                    "level": 1,
+                    "severity": "high",
+                    "origin": {
+                      "file": "src/lib/payments.ts",
+                      "symbolId": "src/lib/payments.ts#createPayment"
+                    },
+                    "affected": [
+                      {
+                        "file": "src/app/checkout/page.tsx",
+                        "loc": {
+                          "line": 10,
+                          "column": 18
+                        }
+                      }
+                    ],
+                    "reason": "TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'Promise<PaymentResult>'.",
+                    "status": "pending",
+                    "classification": "breaking"
+                  }
+                }
+              ],
+              "userMessage": "[hit] impact event(s) from concurrent work by another agent just arrived in your replica:\nImpact events (3):\n- symbol_signature_changed: src/lib/payments.ts#createPayment\n    before: createPayment(input: PaymentInput): PaymentResult\n    after:  createPayment(input: PaymentInput): Promise<PaymentResult>\n    consumers: src/app/checkout/page.tsx\n- consumer_impacted [rule R1, severity medium]: origin src/lib/payments.ts (src/lib/payments.ts#createPayment)\n    affected: src/app/checkout/page.tsx:1:1 (src/lib/payments.ts#createPayment)\n    reason: Contract changed from createPayment(input: PaymentInput): PaymentResult to createPayment(input: PaymentInput): Promise<PaymentResult> (return became asynchronous (Promise))\n- consumer_impacted [rule R4, severity high]: origin src/lib/payments.ts (src/lib/payments.ts#createPayment)\n    affected: src/app/checkout/page.tsx:10:18\n    reason: TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'Promise<PaymentResult>'.\nReconcile your work with these changes (re-read affected files before editing) and continue your task."
+            },
+            {
+              "turn": 3,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "edit_file",
+                  "args": {
+                    "path": "src/app/checkout/page.tsx",
+                    "search": "export function CheckoutPage(): string {\n  const payment = createPayment({ orderId: 'ord_1', amountCents: 1299 })\n\n  if (payment.status === 'failed') {\n    return 'Payment failed'\n  }\n\n  return payment.redirectUrl ?? 'Payment created'\n}\n",
+                    "replace": "export async function CheckoutPage(amountCents = 1299): Promise<string> {\n  const orderId = 'ord_1'\n  const payment = await createPayment({ orderId, amountCents })\n\n  if (payment.status === 'failed') {\n    return `Payment failed, please retry (order ${orderId})`\n  }\n\n  return payment.redirectUrl ?? 'Payment created'\n}\n"
+                  },
+                  "output": "ok: edited src/app/checkout/page.tsx",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 1729,
+                "output": 222
+              },
+              "latencyMs": 2992.2647949999955,
+              "costUsd": 0.006122,
+              "injectedEvents": [
+                {
+                  "type": "consumer_impacted",
+                  "conflict": {
+                    "id": "R4:src/app/checkout/page.tsx:-:src/app/checkout/page.tsx:2339",
+                    "rule": "R4",
+                    "level": 1,
+                    "severity": "high",
+                    "origin": {
+                      "file": "src/app/checkout/page.tsx"
+                    },
+                    "affected": [
+                      {
+                        "file": "src/app/checkout/page.tsx",
+                        "loc": {
+                          "line": 10,
+                          "column": 18
+                        }
+                      }
+                    ],
+                    "reason": "TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'Promise<PaymentResult>'.",
+                    "status": "pending",
+                    "classification": "breaking"
+                  }
+                }
+              ],
+              "userMessage": "[hit] impact event(s) from concurrent work by another agent just arrived in your replica:\nImpact events (1):\n- consumer_impacted [rule R4, severity high]: origin src/app/checkout/page.tsx\n    affected: src/app/checkout/page.tsx:10:18\n    reason: TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'Promise<PaymentResult>'.\nReconcile your work with these changes (re-read affected files before editing) and continue your task."
+            },
+            {
+              "turn": 4,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "edit_file",
+                  "args": {
+                    "path": "src/tests/checkout.test.ts",
+                    "search": "describe('checkout fixture', () => {\n  it('renders the checkout redirect', () => {\n    expect(CheckoutPage()).toBe('/checkout/ord_1')\n  })\n})\n",
+                    "replace": "describe('checkout fixture', () => {\n  it('renders the checkout redirect', async () => {\n    await expect(CheckoutPage()).resolves.toBe('/checkout/ord_1')\n  })\n\n  it('renders a retry message when payment fails', async () => {\n    await expect(CheckoutPage(0)).resolves.toBe('Payment failed, please retry (order ord_1)')\n  })\n})\n"
+                  },
+                  "output": "ok: edited src/tests/checkout.test.ts",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 1972,
+                "output": 172
+              },
+              "latencyMs": 3953.6208600000245,
+              "costUsd": 0.006008
+            },
+            {
+              "turn": 5,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "run_typecheck",
+                  "args": {},
+                  "output": "Typecheck passed: 0 diagnostics.",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 2164,
+                "output": 25
+              },
+              "latencyMs": 1983.9770510000235,
+              "costUsd": 0.004628
+            },
+            {
+              "turn": 6,
+              "assistantText": "",
+              "toolCalls": [
+                {
+                  "name": "done",
+                  "args": {
+                    "summary": "Updated CheckoutPage for asynchronous payment creation, including configurable amounts and the required order-specific failure message. Updated checkout tests for async success and failed-payment behavior; typecheck passes."
+                  },
+                  "output": "ok",
+                  "isError": false
+                }
+              ],
+              "usage": {
+                "input": 2209,
+                "output": 59
+              },
+              "latencyMs": 2902.238378000009,
+              "costUsd": 0.005126
+            }
+          ],
+          "summary": "Updated CheckoutPage for asynchronous payment creation, including configurable amounts and the required order-specific failure message. Updated checkout tests for async success and failed-payment behavior; typecheck passes."
+        }
+      ]
+    }
+  ],
+  "calls": [],
+  "transcriptPath": "runs/mode2/gpt-5.6-terra/pair-07/hit/2.json"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "pair-16",
+  "title": "Two producers change at once while checkout starts showing the order summary",
+  "fixture": "shopapp",
+  "derivedFrom": "16-two-producers-one-consumer",
+  "maxTurns": 12,
+  "agents": [
+    {
+      "id": "agent-a",
+      "ownFiles": ["src/lib/payments.ts", "src/lib/db.ts"],
+      "task": "Two contract clean-ups. (1) In src/lib/payments.ts, rename the PaymentResult property `status` to `state` (same union type) and update createPayment accordingly. (2) In src/lib/db.ts, rename the OrderRecord property `customerEmail` to `email` everywhere in that file (interface and seed data). Do not touch other files."
+    },
+    {
+      "id": "agent-b",
+      "ownFiles": ["src/app/checkout/page.tsx", "src/lib/orders.ts", "src/tests/checkout.test.ts"],
+      "task": "In src/app/checkout/page.tsx, make CheckoutPage return `<order summary> | <payment status>` where the order summary is orderSummary('ord_1') from src/lib/orders.ts and the payment status is the payment's `status` field, e.g. `ana@example.com: pending | created`. Update src/tests/checkout.test.ts so it asserts the new output. Do not touch src/lib/payments.ts or src/lib/db.ts."
+    }
+  ]
+}

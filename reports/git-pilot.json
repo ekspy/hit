@@ -1,0 +1,30 @@
+{
+  "scenarios": [
+    {
+      "id": "01-return-type-change",
+      "gitBaseline": {
+        "textualMergeConflicts": 0,
+        "diagnosticsAfterIntegration": 2,
+        "repairSteps": 3
+      },
+      "hit": {
+        "earlyEvents": 3,
+        "finalDiagnostics": 0,
+        "repairActions": 3
+      }
+    },
+    {
+      "id": "02-symbol-rename",
+      "gitBaseline": {
+        "textualMergeConflicts": 0,
+        "diagnosticsAfterIntegration": 1,
+        "repairSteps": 2
+      },
+      "hit": {
+        "earlyEvents": 3,
+        "finalDiagnostics": 1,
+        "repairActions": 0
+      }
+    }
+  ]
+}

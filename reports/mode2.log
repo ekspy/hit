@@ -1,0 +1,577 @@
+$ tsx --tsconfig packages/eval/tsconfig.json packages/eval/src/mode2.ts --models gpt-5.6-terra,gemini-3.1-pro-preview
+11:54:31 mode2: 36 run(s) planned; models [gpt-5.6-terra, gemini-3.1-pro-preview], scenarios [pair-01, pair-03, pair-07], conditions [hit, git], reps 3, concurrency 4, budget $15/model
+11:54:31 start gpt-5.6-terra pair-01 hit #1
+11:54:32 start gpt-5.6-terra pair-01 hit #2
+11:54:33 start gpt-5.6-terra pair-01 hit #3
+11:54:33 start gpt-5.6-terra pair-01 git #1
+(node:704319) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+11:54:35   llm gpt-5.6-terra: in 595 out 33 tokens, 3375 ms, $0.0016 [cum $0.002]
+11:54:35 [pair-01 hit #1] [agent-a/gpt-5.6-terra] turn 1: read_file in 3375 ms
+11:54:36   llm gpt-5.6-terra: in 595 out 35 tokens, 3733 ms, $0.0016 [cum $0.003]
+11:54:36 [pair-01 hit #2] [agent-a/gpt-5.6-terra] turn 1: read_file in 3733 ms
+11:54:37   llm gpt-5.6-terra: in 595 out 35 tokens, 3654 ms, $0.0016 [cum $0.005]
+11:54:37 [pair-01 git #1] [agent-a/gpt-5.6-terra] turn 1: read_file in 3654 ms
+11:54:37   llm gpt-5.6-terra: in 636 out 87 tokens, 3655 ms, $0.0023 [cum $0.007]
+11:54:37 [pair-01 git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 3655 ms
+11:54:37   llm gpt-5.6-terra: in 595 out 36 tokens, 4109 ms, $0.0016 [cum $0.009]
+11:54:37 [pair-01 hit #3] [agent-a/gpt-5.6-terra] turn 1: read_file in 4109 ms
+11:54:39   llm gpt-5.6-terra: in 636 out 97 tokens, 2161 ms, $0.0024 [cum $0.011]
+11:54:39 [pair-01 hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 2161 ms
+11:54:40   llm gpt-5.6-terra: in 636 out 100 tokens, 1701 ms, $0.0025 [cum $0.014]
+11:54:40 [pair-01 hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 1701 ms
+11:54:41   llm gpt-5.6-terra: in 987 out 198 tokens, 3859 ms, $0.0043 [cum $0.018]
+11:54:41 [pair-01 git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3859 ms
+11:54:42   llm gpt-5.6-terra: in 742 out 211 tokens, 2518 ms, $0.0040 [cum $0.022]
+11:54:42 [pair-01 hit #1] [agent-a/gpt-5.6-terra] turn 2: edit_file in 2518 ms
+11:54:43   llm gpt-5.6-terra: in 636 out 89 tokens, 5581 ms, $0.0023 [cum $0.024]
+11:54:43 [pair-01 hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 5581 ms
+11:54:44   llm gpt-5.6-terra: in 744 out 212 tokens, 6614 ms, $0.0040 [cum $0.028]
+11:54:44 [pair-01 git #1] [agent-a/gpt-5.6-terra] turn 2: edit_file in 6614 ms
+11:54:44   llm gpt-5.6-terra: in 1206 out 140 tokens, 2754 ms, $0.0041 [cum $0.032]
+11:54:44 [pair-01 git #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2754 ms
+11:54:44   llm gpt-5.6-terra: in 745 out 211 tokens, 2764 ms, $0.0040 [cum $0.037]
+11:54:44 [pair-01 hit #3] [agent-a/gpt-5.6-terra] turn 2: edit_file in 2764 ms
+11:54:45   llm gpt-5.6-terra: in 1286 out 91 tokens, 2079 ms, $0.0037 [cum $0.040]
+11:54:45 [pair-01 hit #1] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file, read_file in 2079 ms
+11:54:46   llm gpt-5.6-terra: in 975 out 15 tokens, 2060 ms, $0.0021 [cum $0.042]
+11:54:46 [pair-01 git #1] [agent-a/gpt-5.6-terra] turn 3: run_typecheck in 2060 ms
+11:54:46   llm gpt-5.6-terra: in 1366 out 24 tokens, 2402 ms, $0.0030 [cum $0.045]
+11:54:46 [pair-01 git #1] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 2402 ms
+11:54:47   llm gpt-5.6-terra: in 744 out 221 tokens, 2750 ms, $0.0041 [cum $0.049]
+11:54:47 [pair-01 hit #2] [agent-a/gpt-5.6-terra] turn 2: edit_file in 2750 ms
+11:54:48   llm gpt-5.6-terra: in 1289 out 91 tokens, 2736 ms, $0.0037 [cum $0.053]
+11:54:48 [pair-01 hit #3] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file, read_file in 2736 ms
+11:54:49   llm gpt-5.6-terra: in 1080 out 62 tokens, 2733 ms, $0.0029 [cum $0.056]
+11:54:49 [pair-01 hit #1] [agent-a/gpt-5.6-terra] turn 3: read_file in 2733 ms
+11:54:50   llm gpt-5.6-terra: in 1410 out 51 tokens, 3072 ms, $0.0034 [cum $0.059]
+11:54:50 [pair-01 git #1] [agent-b/gpt-5.6-terra] turn 5: done in 3072 ms
+11:54:50   llm gpt-5.6-terra: in 1278 out 90 tokens, 2080 ms, $0.0036 [cum $0.063]
+11:54:50 [pair-01 hit #2] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file, read_file in 2080 ms
+11:54:51   llm gpt-5.6-terra: in 1066 out 143 tokens, 4555 ms, $0.0038 [cum $0.067]
+11:54:51 [pair-01 git #1] [agent-a/gpt-5.6-terra] turn 4: done in 4555 ms
+11:54:51   llm gpt-5.6-terra: in 1083 out 60 tokens, 2194 ms, $0.0029 [cum $0.070]
+11:54:51 [pair-01 hit #3] [agent-a/gpt-5.6-terra] turn 3: read_file in 2194 ms
+11:54:53   llm gpt-5.6-terra: in 1092 out 60 tokens, 1618 ms, $0.0029 [cum $0.073]
+11:54:53 [pair-01 hit #2] [agent-a/gpt-5.6-terra] turn 3: read_file in 1618 ms
+11:54:54   llm gpt-5.6-terra: in 620 out 92 tokens, 1594 ms, $0.0023 [cum $0.075]
+11:54:54 [pair-01 git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 1594 ms
+11:54:55   llm gpt-5.6-terra: in 1732 out 233 tokens, 4925 ms, $0.0063 [cum $0.081]
+11:54:55 [pair-01 hit #1] [agent-b/gpt-5.6-terra] turn 3: read_file in 4925 ms
+11:54:57   llm gpt-5.6-terra: in 1002 out 158 tokens, 2903 ms, $0.0039 [cum $0.085]
+11:54:57 [pair-01 git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2903 ms
+11:54:57   llm gpt-5.6-terra: in 1331 out 53 tokens, 1535 ms, $0.0033 [cum $0.089]
+11:54:57 [pair-01 hit #1] [agent-a/gpt-5.6-terra] turn 4: run_typecheck in 1535 ms
+11:54:59   llm gpt-5.6-terra: in 1735 out 451 tokens, 6820 ms, $0.0089 [cum $0.097]
+11:54:59 [pair-01 hit #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 6820 ms
+11:55:00   llm gpt-5.6-terra: in 1181 out 99 tokens, 2977 ms, $0.0036 [cum $0.101]
+11:55:00 [pair-01 git #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2977 ms
+11:55:01   llm gpt-5.6-terra: in 1723 out 479 tokens, 7116 ms, $0.0092 [cum $0.110]
+11:55:01 [pair-01 hit #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 7116 ms
+11:55:02   llm gpt-5.6-terra: in 1300 out 15 tokens, 1865 ms, $0.0028 [cum $0.113]
+11:55:02 [pair-01 git #1] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1865 ms
+11:55:02   llm gpt-5.6-terra: in 1322 out 42 tokens, 2199 ms, $0.0031 [cum $0.116]
+11:55:02 [pair-01 hit #3] [agent-a/gpt-5.6-terra] turn 4: read_file in 2199 ms
+11:55:03   llm gpt-5.6-terra: in 2154 out 38 tokens, 4244 ms, $0.0048 [cum $0.121]
+11:55:03 [pair-01 hit #1] [agent-b/gpt-5.6-terra] turn 4: read_file in 4244 ms
+11:55:04   llm gpt-5.6-terra: in 1331 out 38 tokens, 2247 ms, $0.0031 [cum $0.124]
+11:55:04 [pair-01 hit #2] [agent-a/gpt-5.6-terra] turn 4: read_file in 2247 ms
+11:55:06   llm gpt-5.6-terra: in 1335 out 51 tokens, 3390 ms, $0.0033 [cum $0.127]
+11:55:06 [pair-01 git #1] [agent-b/gpt-5.6-terra] turn 5: done in 3390 ms
+11:55:06   llm gpt-5.6-terra: in 1568 out 82 tokens, 2038 ms, $0.0041 [cum $0.131]
+11:55:06 [pair-01 hit #1] [agent-a/gpt-5.6-terra] turn 5: read_file in 2038 ms
+11:55:07 done  gpt-5.6-terra pair-01 git #1: typecheck PASS (0 diag), tests PASS (2/2), 14 turns, 5 edits, 0 events, $0.0447, 34.0 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-01/git/1.json
+11:55:07 start gpt-5.6-terra pair-01 git #2
+11:55:07   llm gpt-5.6-terra: in 2223 out 132 tokens, 2300 ms, $0.0060 [cum $0.137]
+11:55:07 [pair-01 hit #2] [agent-b/gpt-5.6-terra] turn 4: edit_file in 2300 ms
+11:55:08   llm gpt-5.6-terra: in 2207 out 206 tokens, 5316 ms, $0.0069 [cum $0.144]
+11:55:08 [pair-01 hit #3] [agent-b/gpt-5.6-terra] turn 4: edit_file in 5316 ms
+11:55:11   llm gpt-5.6-terra: in 1471 out 49 tokens, 1778 ms, $0.0035 [cum $0.148]
+11:55:11 [pair-01 hit #3] [agent-a/gpt-5.6-terra] turn 5: run_typecheck in 1778 ms
+11:55:13   llm gpt-5.6-terra: in 1487 out 64 tokens, 4146 ms, $0.0037 [cum $0.152]
+11:55:13 [pair-01 hit #2] [agent-a/gpt-5.6-terra] turn 5: run_typecheck in 4146 ms
+11:55:14   llm gpt-5.6-terra: in 636 out 88 tokens, 4132 ms, $0.0023 [cum $0.154]
+11:55:14 [pair-01 git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 4132 ms
+11:55:14   llm gpt-5.6-terra: in 595 out 36 tokens, 4133 ms, $0.0016 [cum $0.156]
+11:55:14 [pair-01 git #2] [agent-a/gpt-5.6-terra] turn 1: read_file in 4133 ms
+11:55:14   llm gpt-5.6-terra: in 2433 out 24 tokens, 1481 ms, $0.0052 [cum $0.161]
+11:55:14 [pair-01 hit #3] [agent-b/gpt-5.6-terra] turn 5: run_typecheck in 1481 ms
+11:55:15   llm gpt-5.6-terra: in 2375 out 25 tokens, 1544 ms, $0.0050 [cum $0.166]
+11:55:15 [pair-01 hit #2] [agent-b/gpt-5.6-terra] turn 5: run_typecheck in 1544 ms
+11:55:17   llm gpt-5.6-terra: in 2381 out 539 tokens, 9475 ms, $0.0112 [cum $0.177]
+11:55:17 [pair-01 hit #1] [agent-b/gpt-5.6-terra] turn 5: edit_file, edit_file in 9475 ms
+11:55:18   llm gpt-5.6-terra: in 988 out 174 tokens, 3874 ms, $0.0041 [cum $0.181]
+11:55:18 [pair-01 git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3874 ms
+11:55:18   llm gpt-5.6-terra: in 745 out 212 tokens, 3875 ms, $0.0040 [cum $0.185]
+11:55:18 [pair-01 git #2] [agent-a/gpt-5.6-terra] turn 2: edit_file in 3875 ms
+11:55:18   llm gpt-5.6-terra: in 1540 out 63 tokens, 2339 ms, $0.0038 [cum $0.189]
+11:55:18 [pair-01 hit #3] [agent-a/gpt-5.6-terra] turn 6: done in 2339 ms
+11:55:19   llm gpt-5.6-terra: in 1571 out 36 tokens, 1908 ms, $0.0036 [cum $0.192]
+11:55:19 [pair-01 hit #2] [agent-a/gpt-5.6-terra] turn 6: read_file in 1908 ms
+11:55:20   llm gpt-5.6-terra: in 1829 out 35 tokens, 1877 ms, $0.0041 [cum $0.197]
+11:55:20 [pair-01 hit #1] [agent-a/gpt-5.6-terra] turn 6: read_file in 1877 ms
+11:55:21   llm gpt-5.6-terra: in 976 out 56 tokens, 2828 ms, $0.0026 [cum $0.199]
+11:55:21 [pair-01 git #2] [agent-a/gpt-5.6-terra] turn 3: run_typecheck in 2828 ms
+11:55:21   llm gpt-5.6-terra: in 1183 out 135 tokens, 3145 ms, $0.0040 [cum $0.203]
+11:55:21 [pair-01 git #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 3145 ms
+11:55:21   llm gpt-5.6-terra: in 2477 out 72 tokens, 2222 ms, $0.0058 [cum $0.209]
+11:55:21 [pair-01 hit #3] [agent-b/gpt-5.6-terra] turn 6: done in 2222 ms
+11:55:22   llm gpt-5.6-terra: in 2959 out 25 tokens, 1604 ms, $0.0062 [cum $0.215]
+11:55:22 [pair-01 hit #1] [agent-b/gpt-5.6-terra] turn 6: run_typecheck in 1604 ms
+11:55:24 done  gpt-5.6-terra pair-01 hit #3: typecheck PASS (0 diag), tests PASS (2/2), 12 turns, 3 edits, 6 events, $0.0519, 51.2 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-01/hit/3.json
+11:55:24 start gpt-5.6-terra pair-01 git #3
+11:55:24   llm gpt-5.6-terra: in 2420 out 116 tokens, 4230 ms, $0.0062 [cum $0.221]
+11:55:24 [pair-01 hit #2] [agent-b/gpt-5.6-terra] turn 6: done in 4230 ms
+11:55:25   llm gpt-5.6-terra: in 1338 out 15 tokens, 3960 ms, $0.0029 [cum $0.224]
+11:55:25 [pair-01 git #2] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 3960 ms
+11:55:25   llm gpt-5.6-terra: in 1108 out 122 tokens, 4292 ms, $0.0037 [cum $0.228]
+11:55:25 [pair-01 git #2] [agent-a/gpt-5.6-terra] turn 4: done in 4292 ms
+11:55:26   llm gpt-5.6-terra: in 1982 out 44 tokens, 1872 ms, $0.0045 [cum $0.232]
+11:55:26 [pair-01 hit #1] [agent-a/gpt-5.6-terra] turn 7: run_typecheck in 1872 ms
+11:55:27   llm gpt-5.6-terra: in 1704 out 48 tokens, 2187 ms, $0.0040 [cum $0.236]
+11:55:27 [pair-01 hit #2] [agent-a/gpt-5.6-terra] turn 7: done in 2187 ms
+11:55:28   llm gpt-5.6-terra: in 595 out 34 tokens, 2791 ms, $0.0016 [cum $0.238]
+11:55:28 [pair-01 git #3] [agent-a/gpt-5.6-terra] turn 1: read_file in 2791 ms
+11:55:28   llm gpt-5.6-terra: in 636 out 89 tokens, 2792 ms, $0.0023 [cum $0.240]
+11:55:28 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 2792 ms
+11:55:28   llm gpt-5.6-terra: in 1373 out 55 tokens, 3236 ms, $0.0034 [cum $0.244]
+11:55:28 [pair-01 git #2] [agent-b/gpt-5.6-terra] turn 5: done in 3236 ms
+11:55:29   llm gpt-5.6-terra: in 3004 out 64 tokens, 1937 ms, $0.0068 [cum $0.251]
+11:55:29 [pair-01 hit #1] [agent-b/gpt-5.6-terra] turn 7: done in 1937 ms
+11:55:30 done  gpt-5.6-terra pair-01 hit #2: typecheck PASS (0 diag), tests PASS (2/2), 13 turns, 3 edits, 6 events, $0.0556, 58.3 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-01/hit/2.json
+11:55:30 start gpt-5.6-terra pair-03 hit #1
+11:55:31   llm gpt-5.6-terra: in 743 out 212 tokens, 2395 ms, $0.0040 [cum $0.255]
+11:55:31 [pair-01 git #3] [agent-a/gpt-5.6-terra] turn 2: edit_file in 2395 ms
+11:55:31   llm gpt-5.6-terra: in 989 out 179 tokens, 2652 ms, $0.0041 [cum $0.259]
+11:55:31 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2652 ms
+11:55:32   llm gpt-5.6-terra: in 974 out 15 tokens, 986 ms, $0.0021 [cum $0.261]
+11:55:32 [pair-01 git #3] [agent-a/gpt-5.6-terra] turn 3: run_typecheck in 986 ms
+11:55:32   llm gpt-5.6-terra: in 553 out 21 tokens, 1355 ms, $0.0014 [cum $0.262]
+11:55:32 [pair-03 hit #1] [agent-a/gpt-5.6-terra] turn 1: read_file in 1355 ms
+11:55:33   llm gpt-5.6-terra: in 2046 out 79 tokens, 3069 ms, $0.0050 [cum $0.267]
+11:55:33 [pair-01 hit #1] [agent-a/gpt-5.6-terra] turn 8: done in 3069 ms
+11:55:35   llm gpt-5.6-terra: in 620 out 105 tokens, 5555 ms, $0.0025 [cum $0.270]
+11:55:35 [pair-01 git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, list_files in 5555 ms
+11:55:35   llm gpt-5.6-terra: in 1189 out 135 tokens, 3470 ms, $0.0040 [cum $0.274]
+11:55:35 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 3470 ms
+11:55:35   llm gpt-5.6-terra: in 596 out 46 tokens, 1786 ms, $0.0017 [cum $0.275]
+11:55:35 [pair-03 hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file in 1786 ms
+11:55:36 done  gpt-5.6-terra pair-01 hit #1: typecheck PASS (0 diag), tests PASS (2/2), 15 turns, 3 edits, 10 events, $0.0709, 65.3 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-01/hit/1.json
+11:55:36 start gpt-5.6-terra pair-03 hit #2
+11:55:37   llm gpt-5.6-terra: in 1344 out 15 tokens, 2170 ms, $0.0029 [cum $0.278]
+11:55:37 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 2170 ms
+11:55:37   llm gpt-5.6-terra: in 1065 out 142 tokens, 4911 ms, $0.0038 [cum $0.282]
+11:55:37 [pair-01 git #3] [agent-a/gpt-5.6-terra] turn 4: done in 4911 ms
+11:55:37   llm gpt-5.6-terra: in 692 out 36 tokens, 1451 ms, $0.0018 [cum $0.284]
+11:55:37 [pair-03 hit #1] [agent-a/gpt-5.6-terra] turn 2: edit_file in 1451 ms
+11:55:39   llm gpt-5.6-terra: in 1058 out 265 tokens, 3970 ms, $0.0053 [cum $0.289]
+11:55:39 [pair-01 git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file in 3970 ms
+11:55:39   llm gpt-5.6-terra: in 553 out 34 tokens, 1801 ms, $0.0015 [cum $0.291]
+11:55:39 [pair-03 hit #2] [agent-a/gpt-5.6-terra] turn 1: read_file in 1801 ms
+11:55:40   llm gpt-5.6-terra: in 1379 out 52 tokens, 2533 ms, $0.0034 [cum $0.294]
+11:55:40 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 5: done in 2533 ms
+11:55:40   llm gpt-5.6-terra: in 878 out 89 tokens, 1897 ms, $0.0028 [cum $0.297]
+11:55:40 [pair-03 hit #1] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file, read_file in 1897 ms
+11:55:42   llm gpt-5.6-terra: in 1362 out 25 tokens, 3024 ms, $0.0030 [cum $0.300]
+11:55:42 [pair-01 git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 3024 ms
+11:55:42   llm gpt-5.6-terra: in 596 out 33 tokens, 2294 ms, $0.0016 [cum $0.302]
+11:55:42 [pair-03 hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file in 2294 ms
+11:55:43   llm gpt-5.6-terra: in 620 out 98 tokens, 2801 ms, $0.0024 [cum $0.304]
+11:55:43 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 2801 ms
+11:55:43   llm gpt-5.6-terra: in 910 out 54 tokens, 1516 ms, $0.0025 [cum $0.306]
+11:55:43 [pair-03 hit #1] [agent-a/gpt-5.6-terra] turn 3: read_file, read_file in 1516 ms
+11:55:44   llm gpt-5.6-terra: in 705 out 45 tokens, 1551 ms, $0.0019 [cum $0.308]
+11:55:44 [pair-03 hit #2] [agent-a/gpt-5.6-terra] turn 2: edit_file in 1551 ms
+11:55:46   llm gpt-5.6-terra: in 1407 out 51 tokens, 3620 ms, $0.0034 [cum $0.312]
+11:55:46 [pair-01 git #2] [agent-b/gpt-5.6-terra] turn 4: done in 3620 ms
+11:55:47   llm gpt-5.6-terra: in 1346 out 138 tokens, 2695 ms, $0.0043 [cum $0.316]
+11:55:47 [pair-03 hit #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2695 ms
+11:55:48 done  gpt-5.6-terra pair-01 git #2: typecheck PASS (0 diag), tests PASS (2/2), 13 turns, 5 edits, 0 events, $0.0428, 40.7 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-01/git/2.json
+11:55:48 start gpt-5.6-terra pair-03 hit #3
+11:55:49   llm gpt-5.6-terra: in 1005 out 173 tokens, 5869 ms, $0.0041 [cum $0.320]
+11:55:49 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file in 5869 ms
+11:55:49   llm gpt-5.6-terra: in 865 out 73 tokens, 3260 ms, $0.0026 [cum $0.323]
+11:55:49 [pair-03 hit #2] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file in 3260 ms
+11:55:51   llm gpt-5.6-terra: in 1307 out 91 tokens, 2520 ms, $0.0037 [cum $0.327]
+11:55:51 [pair-03 hit #1] [agent-a/gpt-5.6-terra] turn 4: edit_file in 2520 ms
+11:55:52   llm gpt-5.6-terra: in 553 out 21 tokens, 2831 ms, $0.0014 [cum $0.328]
+11:55:52 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 1: read_file in 2831 ms
+11:55:53   llm gpt-5.6-terra: in 932 out 96 tokens, 2907 ms, $0.0030 [cum $0.331]
+11:55:53 [pair-03 hit #2] [agent-a/gpt-5.6-terra] turn 3: read_file, read_file in 2907 ms
+11:55:54   llm gpt-5.6-terra: in 1278 out 145 tokens, 4932 ms, $0.0043 [cum $0.335]
+11:55:54 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 4932 ms
+11:55:54   llm gpt-5.6-terra: in 1604 out 69 tokens, 2109 ms, $0.0040 [cum $0.339]
+11:55:54 [pair-03 hit #1] [agent-b/gpt-5.6-terra] turn 4: read_file, read_file in 2109 ms
+11:55:55   llm gpt-5.6-terra: in 596 out 95 tokens, 2050 ms, $0.0023 [cum $0.342]
+11:55:55 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 2050 ms
+11:55:56   llm gpt-5.6-terra: in 1444 out 93 tokens, 2780 ms, $0.0040 [cum $0.346]
+11:55:56 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 4: edit_file in 2780 ms
+11:55:57   llm gpt-5.6-terra: in 1518 out 89 tokens, 1828 ms, $0.0041 [cum $0.350]
+11:55:57 [pair-03 hit #1] [agent-a/gpt-5.6-terra] turn 5: read_file, read_file, run_typecheck in 1828 ms
+11:55:58   llm gpt-5.6-terra: in 1281 out 128 tokens, 4414 ms, $0.0041 [cum $0.354]
+11:55:58 [pair-03 hit #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 4414 ms
+11:55:59   llm gpt-5.6-terra: in 1557 out 15 tokens, 2645 ms, $0.0033 [cum $0.357]
+11:55:59 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 5: run_typecheck in 2645 ms
+11:55:59   llm gpt-5.6-terra: in 692 out 36 tokens, 3545 ms, $0.0018 [cum $0.359]
+11:55:59 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 2: edit_file in 3545 ms
+11:56:02   llm gpt-5.6-terra: in 1079 out 72 tokens, 1641 ms, $0.0030 [cum $0.362]
+11:56:02 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file in 1641 ms
+11:56:03   llm gpt-5.6-terra: in 1371 out 93 tokens, 4157 ms, $0.0039 [cum $0.366]
+11:56:03 [pair-03 hit #2] [agent-a/gpt-5.6-terra] turn 4: edit_file in 4157 ms
+11:56:04   llm gpt-5.6-terra: in 1969 out 202 tokens, 6197 ms, $0.0064 [cum $0.372]
+11:56:04 [pair-03 hit #1] [agent-b/gpt-5.6-terra] turn 5: run_typecheck in 6197 ms
+11:56:06   llm gpt-5.6-terra: in 1592 out 52 tokens, 6142 ms, $0.0038 [cum $0.376]
+11:56:06 [pair-01 git #3] [agent-b/gpt-5.6-terra] turn 6: done in 6142 ms
+11:56:06   llm gpt-5.6-terra: in 910 out 93 tokens, 2354 ms, $0.0029 [cum $0.379]
+11:56:06 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 3: read_file, read_file in 2354 ms
+11:56:07   llm gpt-5.6-terra: in 1529 out 67 tokens, 3066 ms, $0.0039 [cum $0.383]
+11:56:07 [pair-03 hit #2] [agent-b/gpt-5.6-terra] turn 4: read_file, read_file in 3066 ms
+11:56:09 done  gpt-5.6-terra pair-01 git #3: typecheck PASS (0 diag), tests PASS (2/2), 15 turns, 5 edits, 0 events, $0.0502, 44.8 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-01/git/3.json
+11:56:09 start gpt-5.6-terra pair-03 git #1
+11:56:09   llm gpt-5.6-terra: in 1494 out 107 tokens, 1951 ms, $0.0043 [cum $0.387]
+11:56:09 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 3: read_file, read_file in 1951 ms
+11:56:10   llm gpt-5.6-terra: in 1947 out 80 tokens, 4302 ms, $0.0049 [cum $0.392]
+11:56:10 [pair-03 hit #1] [agent-a/gpt-5.6-terra] turn 6: read_file in 4302 ms
+11:56:11   llm gpt-5.6-terra: in 1584 out 86 tokens, 2464 ms, $0.0042 [cum $0.396]
+11:56:11 [pair-03 hit #2] [agent-a/gpt-5.6-terra] turn 5: read_file in 2464 ms
+11:56:12   llm gpt-5.6-terra: in 1346 out 79 tokens, 2417 ms, $0.0036 [cum $0.400]
+11:56:12 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 4: read_file, read_file in 2417 ms
+11:56:13   llm gpt-5.6-terra: in 2319 out 68 tokens, 2317 ms, $0.0055 [cum $0.405]
+11:56:13 [pair-03 hit #1] [agent-b/gpt-5.6-terra] turn 6: read_file in 2317 ms
+11:56:15   llm gpt-5.6-terra: in 596 out 83 tokens, 1591 ms, $0.0022 [cum $0.407]
+11:56:15 [pair-03 git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 1591 ms
+11:56:15   llm gpt-5.6-terra: in 553 out 33 tokens, 1703 ms, $0.0015 [cum $0.409]
+11:56:15 [pair-03 git #1] [agent-a/gpt-5.6-terra] turn 1: read_file in 1703 ms
+11:56:16   llm gpt-5.6-terra: in 704 out 36 tokens, 1107 ms, $0.0018 [cum $0.411]
+11:56:16 [pair-03 git #1] [agent-a/gpt-5.6-terra] turn 2: edit_file in 1107 ms
+11:56:17   llm gpt-5.6-terra: in 895 out 94 tokens, 1891 ms, $0.0029 [cum $0.414]
+11:56:17 [pair-03 git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1891 ms
+11:56:17   llm gpt-5.6-terra: in 758 out 44 tokens, 1293 ms, $0.0020 [cum $0.416]
+11:56:17 [pair-03 git #1] [agent-a/gpt-5.6-terra] turn 3: edit_file in 1293 ms
+11:56:18   llm gpt-5.6-terra: in 2209 out 92 tokens, 3272 ms, $0.0055 [cum $0.421]
+11:56:18 [pair-03 hit #1] [agent-a/gpt-5.6-terra] turn 7: run_typecheck in 3272 ms
+11:56:19   llm gpt-5.6-terra: in 1944 out 218 tokens, 6182 ms, $0.0065 [cum $0.428]
+11:56:19 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 4: edit_file in 6182 ms
+11:56:20   llm gpt-5.6-terra: in 1007 out 15 tokens, 3647 ms, $0.0022 [cum $0.430]
+11:56:20 [pair-03 git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 3647 ms
+11:56:21   llm gpt-5.6-terra: in 820 out 15 tokens, 3355 ms, $0.0018 [cum $0.432]
+11:56:21 [pair-03 git #1] [agent-a/gpt-5.6-terra] turn 4: run_typecheck in 3355 ms
+11:56:21   llm gpt-5.6-terra: in 1892 out 467 tokens, 8940 ms, $0.0094 [cum $0.441]
+11:56:21 [pair-03 hit #2] [agent-b/gpt-5.6-terra] turn 5: run_typecheck in 8940 ms
+11:56:23   llm gpt-5.6-terra: in 1768 out 85 tokens, 2566 ms, $0.0046 [cum $0.446]
+11:56:23 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 5: read_file, read_file in 2566 ms
+11:56:24   llm gpt-5.6-terra: in 1042 out 48 tokens, 3401 ms, $0.0027 [cum $0.448]
+11:56:24 [pair-03 git #1] [agent-b/gpt-5.6-terra] turn 4: done in 3401 ms
+11:56:24   llm gpt-5.6-terra: in 2569 out 223 tokens, 4806 ms, $0.0078 [cum $0.456]
+11:56:24 [pair-03 hit #1] [agent-b/gpt-5.6-terra] turn 7: edit_file in 4806 ms
+11:56:25   llm gpt-5.6-terra: in 1852 out 55 tokens, 2661 ms, $0.0044 [cum $0.461]
+11:56:25 [pair-03 hit #2] [agent-a/gpt-5.6-terra] turn 6: run_typecheck in 2661 ms
+11:56:27   llm gpt-5.6-terra: in 881 out 217 tokens, 5453 ms, $0.0044 [cum $0.465]
+11:56:27 [pair-03 git #1] [agent-a/gpt-5.6-terra] turn 5: done in 5453 ms
+11:56:27   llm gpt-5.6-terra: in 2344 out 163 tokens, 3194 ms, $0.0066 [cum $0.472]
+11:56:27 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 5: read_file, read_file in 3194 ms
+11:56:29   llm gpt-5.6-terra: in 2347 out 92 tokens, 3604 ms, $0.0058 [cum $0.477]
+11:56:29 [pair-03 hit #1] [agent-a/gpt-5.6-terra] turn 8: done in 3604 ms
+11:56:30   llm gpt-5.6-terra: in 2507 out 131 tokens, 3419 ms, $0.0066 [cum $0.484]
+11:56:30 [pair-03 hit #2] [agent-b/gpt-5.6-terra] turn 6: read_file in 3419 ms
+11:56:31   llm gpt-5.6-terra: in 586 out 141 tokens, 4011 ms, $0.0029 [cum $0.487]
+11:56:31 [pair-03 git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 4011 ms
+11:56:31   llm gpt-5.6-terra: in 2212 out 68 tokens, 2491 ms, $0.0052 [cum $0.492]
+11:56:31 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 6: edit_file in 2491 ms
+11:56:32   llm gpt-5.6-terra: in 2810 out 47 tokens, 2048 ms, $0.0062 [cum $0.498]
+11:56:32 [pair-03 hit #1] [agent-b/gpt-5.6-terra] turn 8: run_typecheck in 2048 ms
+11:56:34   llm gpt-5.6-terra: in 1219 out 102 tokens, 2532 ms, $0.0037 [cum $0.502]
+11:56:34 [pair-03 git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2532 ms
+11:56:34   llm gpt-5.6-terra: in 2055 out 137 tokens, 2889 ms, $0.0058 [cum $0.508]
+11:56:34 [pair-03 hit #2] [agent-a/gpt-5.6-terra] turn 7: read_file in 2889 ms
+11:56:35   llm gpt-5.6-terra: in 1339 out 15 tokens, 1546 ms, $0.0029 [cum $0.511]
+11:56:35 [pair-03 git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1546 ms
+11:56:37   llm gpt-5.6-terra: in 2804 out 242 tokens, 4589 ms, $0.0085 [cum $0.519]
+11:56:37 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 6: read_file in 4589 ms
+11:56:38   llm gpt-5.6-terra: in 1374 out 44 tokens, 2236 ms, $0.0033 [cum $0.522]
+11:56:38 [pair-03 git #1] [agent-b/gpt-5.6-terra] turn 4: done in 2236 ms
+11:56:38   llm gpt-5.6-terra: in 2877 out 67 tokens, 4630 ms, $0.0066 [cum $0.529]
+11:56:38 [pair-03 hit #1] [agent-b/gpt-5.6-terra] turn 9: done in 4630 ms
+11:56:40   llm gpt-5.6-terra: in 2820 out 143 tokens, 4746 ms, $0.0074 [cum $0.536]
+11:56:40 [pair-03 hit #2] [agent-b/gpt-5.6-terra] turn 7: edit_file in 4746 ms
+11:56:41 done  gpt-5.6-terra pair-03 hit #1: typecheck PASS (0 diag), tests PASS (1/1), 17 turns, 4 edits, 15 events, $0.0750, 70.9 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-03/hit/1.json
+11:56:41 start gpt-5.6-terra pair-03 git #2
+11:56:41 done  gpt-5.6-terra pair-03 git #1: typecheck PASS (0 diag), tests PASS (1/1), 13 turns, 4 edits, 0 events, $0.0342, 32.4 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-03/git/1.json
+11:56:41 start gpt-5.6-terra pair-03 git #3
+11:56:41   llm gpt-5.6-terra: in 2400 out 44 tokens, 3438 ms, $0.0053 [cum $0.542]
+11:56:41 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 7: read_file in 3438 ms
+11:56:43   llm gpt-5.6-terra: in 2272 out 81 tokens, 2429 ms, $0.0055 [cum $0.547]
+11:56:43 [pair-03 hit #2] [agent-a/gpt-5.6-terra] turn 8: done in 2429 ms
+11:56:45   llm gpt-5.6-terra: in 3228 out 38 tokens, 2818 ms, $0.0069 [cum $0.554]
+11:56:45 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 7: read_file in 2818 ms
+11:56:46   llm gpt-5.6-terra: in 553 out 35 tokens, 3438 ms, $0.0015 [cum $0.555]
+11:56:46 [pair-03 git #2] [agent-a/gpt-5.6-terra] turn 1: read_file in 3438 ms
+11:56:46   llm gpt-5.6-terra: in 553 out 34 tokens, 3421 ms, $0.0015 [cum $0.557]
+11:56:46 [pair-03 git #3] [agent-a/gpt-5.6-terra] turn 1: read_file in 3421 ms
+11:56:46   llm gpt-5.6-terra: in 596 out 85 tokens, 3440 ms, $0.0022 [cum $0.559]
+11:56:46 [pair-03 git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 3440 ms
+11:56:46   llm gpt-5.6-terra: in 596 out 70 tokens, 3422 ms, $0.0020 [cum $0.561]
+11:56:46 [pair-03 git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file in 3422 ms
+11:56:46   llm gpt-5.6-terra: in 2981 out 23 tokens, 1172 ms, $0.0062 [cum $0.567]
+11:56:46 [pair-03 hit #2] [agent-b/gpt-5.6-terra] turn 8: run_typecheck in 1172 ms
+11:56:48   llm gpt-5.6-terra: in 706 out 52 tokens, 2150 ms, $0.0020 [cum $0.570]
+11:56:48 [pair-03 git #2] [agent-a/gpt-5.6-terra] turn 2: edit_file in 2150 ms
+11:56:48   llm gpt-5.6-terra: in 766 out 87 tokens, 2149 ms, $0.0026 [cum $0.572]
+11:56:48 [pair-03 git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2149 ms
+11:56:48   llm gpt-5.6-terra: in 897 out 87 tokens, 2151 ms, $0.0028 [cum $0.575]
+11:56:48 [pair-03 git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2151 ms
+11:56:48   llm gpt-5.6-terra: in 705 out 65 tokens, 2153 ms, $0.0022 [cum $0.577]
+11:56:48 [pair-03 git #3] [agent-a/gpt-5.6-terra] turn 2: edit_file in 2153 ms
+11:56:49   llm gpt-5.6-terra: in 2626 out 87 tokens, 2550 ms, $0.0063 [cum $0.583]
+11:56:49 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 8: read_file, run_typecheck in 2550 ms
+11:56:50   llm gpt-5.6-terra: in 871 out 15 tokens, 2184 ms, $0.0019 [cum $0.585]
+11:56:50 [pair-03 git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2184 ms
+11:56:51   llm gpt-5.6-terra: in 1002 out 15 tokens, 2580 ms, $0.0022 [cum $0.588]
+11:56:51 [pair-03 git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2580 ms
+11:56:51   llm gpt-5.6-terra: in 776 out 44 tokens, 2988 ms, $0.0021 [cum $0.590]
+11:56:51 [pair-03 git #2] [agent-a/gpt-5.6-terra] turn 3: edit_file in 2988 ms
+11:56:51   llm gpt-5.6-terra: in 788 out 48 tokens, 2985 ms, $0.0022 [cum $0.592]
+11:56:51 [pair-03 git #3] [agent-a/gpt-5.6-terra] turn 3: edit_file in 2985 ms
+11:56:51   llm gpt-5.6-terra: in 3024 out 91 tokens, 2995 ms, $0.0071 [cum $0.599]
+11:56:51 [pair-03 hit #2] [agent-b/gpt-5.6-terra] turn 9: done in 2995 ms
+11:56:53   llm gpt-5.6-terra: in 1037 out 49 tokens, 1704 ms, $0.0027 [cum $0.602]
+11:56:53 [pair-03 git #2] [agent-b/gpt-5.6-terra] turn 4: done in 1704 ms
+11:56:53   llm gpt-5.6-terra: in 854 out 51 tokens, 1742 ms, $0.0023 [cum $0.604]
+11:56:53 [pair-03 git #3] [agent-a/gpt-5.6-terra] turn 4: run_typecheck in 1742 ms
+11:56:53   llm gpt-5.6-terra: in 3448 out 149 tokens, 3161 ms, $0.0087 [cum $0.613]
+11:56:53 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 8: edit_file in 3161 ms
+11:56:55   llm gpt-5.6-terra: in 906 out 47 tokens, 3924 ms, $0.0024 [cum $0.615]
+11:56:55 [pair-03 git #3] [agent-b/gpt-5.6-terra] turn 4: done in 3924 ms
+11:56:55 done  gpt-5.6-terra pair-03 hit #2: typecheck PASS (0 diag), tests PASS (1/1), 17 turns, 4 edits, 15 events, $0.0790, 78.6 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-03/hit/2.json
+11:56:55 start gpt-5.6-terra pair-07 hit #1
+11:56:55   llm gpt-5.6-terra: in 838 out 73 tokens, 4229 ms, $0.0026 [cum $0.618]
+11:56:55 [pair-03 git #2] [agent-a/gpt-5.6-terra] turn 4: run_typecheck in 4229 ms
+11:56:56   llm gpt-5.6-terra: in 3000 out 40 tokens, 1506 ms, $0.0065 [cum $0.624]
+11:56:56 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 9: read_file in 1506 ms
+11:56:57   llm gpt-5.6-terra: in 951 out 129 tokens, 3724 ms, $0.0034 [cum $0.627]
+11:56:57 [pair-03 git #3] [agent-a/gpt-5.6-terra] turn 5: run_typecheck in 3724 ms
+11:56:58   llm gpt-5.6-terra: in 581 out 34 tokens, 2178 ms, $0.0016 [cum $0.629]
+11:56:58 [pair-07 hit #1] [agent-a/gpt-5.6-terra] turn 1: read_file in 2178 ms
+11:56:59   llm gpt-5.6-terra: in 3742 out 75 tokens, 2335 ms, $0.0084 [cum $0.637]
+11:56:59 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 9: read_file, read_file in 2335 ms
+11:57:01   llm gpt-5.6-terra: in 639 out 89 tokens, 2693 ms, $0.0023 [cum $0.640]
+11:57:01 [pair-07 hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 2693 ms
+11:57:02   llm gpt-5.6-terra: in 1126 out 176 tokens, 4730 ms, $0.0044 [cum $0.644]
+11:57:02 [pair-03 git #3] [agent-a/gpt-5.6-terra] turn 6: done in 4730 ms
+11:57:02   llm gpt-5.6-terra: in 957 out 298 tokens, 6488 ms, $0.0055 [cum $0.650]
+11:57:02 [pair-03 git #2] [agent-a/gpt-5.6-terra] turn 5: read_file in 6488 ms
+11:57:03   llm gpt-5.6-terra: in 3283 out 45 tokens, 2249 ms, $0.0071 [cum $0.657]
+11:57:03 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 10: run_typecheck in 2249 ms
+11:57:05   llm gpt-5.6-terra: in 729 out 195 tokens, 2633 ms, $0.0038 [cum $0.660]
+11:57:05 [pair-07 hit #1] [agent-a/gpt-5.6-terra] turn 2: edit_file in 2633 ms
+11:57:06   llm gpt-5.6-terra: in 586 out 93 tokens, 3215 ms, $0.0023 [cum $0.663]
+11:57:06 [pair-03 git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 3215 ms
+11:57:08   llm gpt-5.6-terra: in 909 out 95 tokens, 1853 ms, $0.0030 [cum $0.666]
+11:57:08 [pair-03 git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1853 ms
+11:57:08   llm gpt-5.6-terra: in 1246 out 91 tokens, 1983 ms, $0.0036 [cum $0.669]
+11:57:08 [pair-07 hit #1] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file, read_file in 1983 ms
+11:57:09   llm gpt-5.6-terra: in 1319 out 216 tokens, 6712 ms, $0.0052 [cum $0.675]
+11:57:09 [pair-03 git #2] [agent-a/gpt-5.6-terra] turn 6: run_typecheck in 6712 ms
+11:57:09   llm gpt-5.6-terra: in 4158 out 215 tokens, 5206 ms, $0.0109 [cum $0.685]
+11:57:09 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 10: read_file in 5206 ms
+11:57:10   llm gpt-5.6-terra: in 1022 out 15 tokens, 2639 ms, $0.0022 [cum $0.688]
+11:57:10 [pair-03 git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2639 ms
+11:57:11   llm gpt-5.6-terra: in 1053 out 64 tokens, 1918 ms, $0.0029 [cum $0.691]
+11:57:11 [pair-07 hit #1] [agent-a/gpt-5.6-terra] turn 3: read_file in 1918 ms
+11:57:12   llm gpt-5.6-terra: in 1057 out 44 tokens, 1324 ms, $0.0026 [cum $0.693]
+11:57:12 [pair-03 git #3] [agent-b/gpt-5.6-terra] turn 4: done in 1324 ms
+11:57:12   llm gpt-5.6-terra: in 3526 out 50 tokens, 2088 ms, $0.0077 [cum $0.701]
+11:57:12 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 11: read_file in 2088 ms
+11:57:14 done  gpt-5.6-terra pair-03 git #3: typecheck PASS (0 diag), tests PASS (1/1), 14 turns, 4 edits, 0 events, $0.0350, 32.7 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-03/git/3.json
+11:57:14 start gpt-5.6-terra pair-07 hit #2
+11:57:15   llm gpt-5.6-terra: in 1720 out 227 tokens, 3119 ms, $0.0062 [cum $0.707]
+11:57:15 [pair-07 hit #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 3119 ms
+11:57:16   llm gpt-5.6-terra: in 581 out 36 tokens, 1635 ms, $0.0016 [cum $0.709]
+11:57:16 [pair-07 hit #2] [agent-a/gpt-5.6-terra] turn 1: read_file in 1635 ms
+11:57:17   llm gpt-5.6-terra: in 4600 out 92 tokens, 3342 ms, $0.0103 [cum $0.719]
+11:57:17 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 11: edit_file in 3342 ms
+11:57:18   llm gpt-5.6-terra: in 1385 out 103 tokens, 2128 ms, $0.0040 [cum $0.723]
+11:57:18 [pair-07 hit #1] [agent-a/gpt-5.6-terra] turn 4: read_file, read_file, read_file in 2128 ms
+11:57:20   llm gpt-5.6-terra: in 3794 out 39 tokens, 1573 ms, $0.0081 [cum $0.731]
+11:57:20 [pair-03 hit #3] [agent-a/gpt-5.6-terra] turn 12: read_file in 1573 ms
+11:57:21   llm gpt-5.6-terra: in 639 out 89 tokens, 3643 ms, $0.0023 [cum $0.733]
+11:57:21 [pair-07 hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 3643 ms
+11:57:22   llm gpt-5.6-terra: in 1968 out 178 tokens, 2580 ms, $0.0061 [cum $0.739]
+11:57:22 [pair-07 hit #1] [agent-b/gpt-5.6-terra] turn 4: edit_file in 2580 ms
+11:57:23   llm gpt-5.6-terra: in 4812 out 38 tokens, 2035 ms, $0.0101 [cum $0.749]
+11:57:23 [pair-03 hit #3] [agent-b/gpt-5.6-terra] turn 12: read_file in 2035 ms
+11:57:24   llm gpt-5.6-terra: in 731 out 84 tokens, 2390 ms, $0.0025 [cum $0.752]
+11:57:24 [pair-07 hit #2] [agent-a/gpt-5.6-terra] turn 2: edit_file in 2390 ms
+11:57:25 done  gpt-5.6-terra pair-03 hit #3: typecheck FAIL (1 diag), tests PASS (1/1), 24 turns, 5 edits, 30 events, $0.1470, 97.3 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-03/hit/3.json
+11:57:25 start gpt-5.6-terra pair-07 hit #3
+11:57:26   llm gpt-5.6-terra: in 1782 out 48 tokens, 3312 ms, $0.0041 [cum $0.756]
+11:57:26 [pair-07 hit #1] [agent-a/gpt-5.6-terra] turn 5: run_typecheck in 3312 ms
+11:57:27   llm gpt-5.6-terra: in 1246 out 97 tokens, 2161 ms, $0.0037 [cum $0.760]
+11:57:27 [pair-07 hit #2] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file, read_file in 2161 ms
+11:57:29   llm gpt-5.6-terra: in 2166 out 25 tokens, 1165 ms, $0.0046 [cum $0.764]
+11:57:29 [pair-07 hit #1] [agent-b/gpt-5.6-terra] turn 5: run_typecheck in 1165 ms
+11:57:30   llm gpt-5.6-terra: in 581 out 34 tokens, 3929 ms, $0.0016 [cum $0.766]
+11:57:30 [pair-07 hit #3] [agent-a/gpt-5.6-terra] turn 1: read_file in 3929 ms
+11:57:31   llm gpt-5.6-terra: in 1581 out 852 tokens, 21629 ms, $0.0134 [cum $0.779]
+11:57:31 [pair-03 git #2] [agent-a/gpt-5.6-terra] turn 7: read_file in 21629 ms
+11:57:31   llm gpt-5.6-terra: in 944 out 97 tokens, 2436 ms, $0.0031 [cum $0.782]
+11:57:31 [pair-07 hit #2] [agent-a/gpt-5.6-terra] turn 3: read_file, read_file in 2436 ms
+11:57:32   llm gpt-5.6-terra: in 1850 out 76 tokens, 1957 ms, $0.0046 [cum $0.787]
+11:57:32 [pair-07 hit #1] [agent-a/gpt-5.6-terra] turn 6: done in 1957 ms
+11:57:33   llm gpt-5.6-terra: in 639 out 101 tokens, 2133 ms, $0.0025 [cum $0.789]
+11:57:33 [pair-07 hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 2133 ms
+11:57:35   llm gpt-5.6-terra: in 2211 out 55 tokens, 2017 ms, $0.0051 [cum $0.795]
+11:57:35 [pair-07 hit #1] [agent-b/gpt-5.6-terra] turn 6: done in 2017 ms
+11:57:36   llm gpt-5.6-terra: in 1726 out 241 tokens, 4501 ms, $0.0063 [cum $0.801]
+11:57:36 [pair-07 hit #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 4501 ms
+11:57:38   llm gpt-5.6-terra: in 729 out 93 tokens, 3523 ms, $0.0026 [cum $0.803]
+11:57:38 [pair-07 hit #3] [agent-a/gpt-5.6-terra] turn 2: edit_file in 3523 ms
+11:57:39 done  gpt-5.6-terra pair-07 hit #1: typecheck PASS (0 diag), tests PASS (2/2), 12 turns, 3 edits, 7 events, $0.0489, 43.9 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-07/hit/1.json
+11:57:39 start gpt-5.6-terra pair-07 git #1
+11:57:39   llm gpt-5.6-terra: in 2497 out 361 tokens, 7917 ms, $0.0093 [cum $0.813]
+11:57:39 [pair-03 git #2] [agent-a/gpt-5.6-terra] turn 8: done in 7917 ms
+11:57:41   llm gpt-5.6-terra: in 581 out 32 tokens, 1180 ms, $0.0015 [cum $0.814]
+11:57:41 [pair-07 git #1] [agent-a/gpt-5.6-terra] turn 1: read_file in 1180 ms
+11:57:41   llm gpt-5.6-terra: in 1258 out 95 tokens, 2016 ms, $0.0037 [cum $0.818]
+11:57:41 [pair-07 hit #3] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file, read_file in 2016 ms
+11:57:42   llm gpt-5.6-terra: in 1430 out 92 tokens, 4059 ms, $0.0040 [cum $0.822]
+11:57:42 [pair-07 hit #2] [agent-a/gpt-5.6-terra] turn 4: read_file, read_file in 4059 ms
+11:57:43   llm gpt-5.6-terra: in 639 out 98 tokens, 3254 ms, $0.0025 [cum $0.824]
+11:57:43 [pair-07 git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 3254 ms
+11:57:43   llm gpt-5.6-terra: in 586 out 103 tokens, 3339 ms, $0.0024 [cum $0.827]
+11:57:43 [pair-03 git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file in 3339 ms
+11:57:43   llm gpt-5.6-terra: in 727 out 181 tokens, 2226 ms, $0.0036 [cum $0.830]
+11:57:43 [pair-07 git #1] [agent-a/gpt-5.6-terra] turn 2: edit_file in 2226 ms
+11:57:43   llm gpt-5.6-terra: in 951 out 62 tokens, 1441 ms, $0.0026 [cum $0.833]
+11:57:43 [pair-07 hit #3] [agent-a/gpt-5.6-terra] turn 3: read_file in 1441 ms
+11:57:44   llm gpt-5.6-terra: in 927 out 15 tokens, 1291 ms, $0.0020 [cum $0.835]
+11:57:44 [pair-07 git #1] [agent-a/gpt-5.6-terra] turn 3: run_typecheck in 1291 ms
+11:57:45   llm gpt-5.6-terra: in 1988 out 168 tokens, 2391 ms, $0.0060 [cum $0.841]
+11:57:45 [pair-07 hit #2] [agent-b/gpt-5.6-terra] turn 4: edit_file in 2391 ms
+11:57:46   llm gpt-5.6-terra: in 990 out 96 tokens, 3392 ms, $0.0031 [cum $0.844]
+11:57:46 [pair-03 git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3392 ms
+11:57:46   llm gpt-5.6-terra: in 1001 out 181 tokens, 3394 ms, $0.0042 [cum $0.848]
+11:57:46 [pair-07 git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3394 ms
+11:57:47   llm gpt-5.6-terra: in 1104 out 15 tokens, 1017 ms, $0.0024 [cum $0.851]
+11:57:47 [pair-03 git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1017 ms
+11:57:47   llm gpt-5.6-terra: in 1695 out 31 tokens, 1352 ms, $0.0038 [cum $0.855]
+11:57:47 [pair-07 hit #2] [agent-a/gpt-5.6-terra] turn 5: run_typecheck in 1352 ms
+11:57:49   llm gpt-5.6-terra: in 1022 out 143 tokens, 4294 ms, $0.0038 [cum $0.858]
+11:57:49 [pair-07 git #1] [agent-a/gpt-5.6-terra] turn 4: run_typecheck in 4294 ms
+11:57:49   llm gpt-5.6-terra: in 1736 out 211 tokens, 5037 ms, $0.0060 [cum $0.864]
+11:57:49 [pair-07 hit #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 5037 ms
+11:57:50   llm gpt-5.6-terra: in 1139 out 38 tokens, 2739 ms, $0.0027 [cum $0.867]
+11:57:50 [pair-03 git #2] [agent-b/gpt-5.6-terra] turn 4: done in 2739 ms
+11:57:50   llm gpt-5.6-terra: in 1203 out 140 tokens, 4094 ms, $0.0041 [cum $0.871]
+11:57:50 [pair-07 git #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 4094 ms
+11:57:50   llm gpt-5.6-terra: in 2176 out 25 tokens, 1349 ms, $0.0047 [cum $0.876]
+11:57:50 [pair-07 hit #2] [agent-b/gpt-5.6-terra] turn 5: run_typecheck in 1349 ms
+11:57:52   llm gpt-5.6-terra: in 1281 out 50 tokens, 1877 ms, $0.0032 [cum $0.879]
+11:57:52 [pair-07 hit #3] [agent-a/gpt-5.6-terra] turn 4: read_file in 1877 ms
+11:57:53 done  gpt-5.6-terra pair-03 git #2: typecheck PASS (0 diag), tests PASS (1/1), 16 turns, 4 edits, 0 events, $0.0622, 72.2 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-03/git/2.json
+11:57:53 start gpt-5.6-terra pair-07 git #2
+11:57:53   llm gpt-5.6-terra: in 1363 out 24 tokens, 3105 ms, $0.0030 [cum $0.882]
+11:57:53 [pair-07 git #1] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 3105 ms
+11:57:54   llm gpt-5.6-terra: in 1245 out 94 tokens, 4453 ms, $0.0036 [cum $0.886]
+11:57:54 [pair-07 git #1] [agent-a/gpt-5.6-terra] turn 5: done in 4453 ms
+11:57:54   llm gpt-5.6-terra: in 1746 out 67 tokens, 2509 ms, $0.0043 [cum $0.890]
+11:57:54 [pair-07 hit #2] [agent-a/gpt-5.6-terra] turn 6: done in 2509 ms
+11:57:55   llm gpt-5.6-terra: in 1407 out 55 tokens, 1896 ms, $0.0035 [cum $0.893]
+11:57:55 [pair-07 git #1] [agent-b/gpt-5.6-terra] turn 5: done in 1896 ms
+11:57:56   llm gpt-5.6-terra: in 581 out 33 tokens, 1065 ms, $0.0016 [cum $0.895]
+11:57:56 [pair-07 git #2] [agent-a/gpt-5.6-terra] turn 1: read_file in 1065 ms
+11:57:57   llm gpt-5.6-terra: in 639 out 89 tokens, 1566 ms, $0.0023 [cum $0.897]
+11:57:57 [pair-07 git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 1566 ms
+11:57:57   llm gpt-5.6-terra: in 2221 out 55 tokens, 1720 ms, $0.0051 [cum $0.902]
+11:57:57 [pair-07 hit #2] [agent-b/gpt-5.6-terra] turn 6: done in 1720 ms
+11:57:58   llm gpt-5.6-terra: in 625 out 109 tokens, 2228 ms, $0.0026 [cum $0.905]
+11:57:58 [pair-07 git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file in 2228 ms
+11:57:58   llm gpt-5.6-terra: in 728 out 86 tokens, 1976 ms, $0.0025 [cum $0.907]
+11:57:58 [pair-07 git #2] [agent-a/gpt-5.6-terra] turn 2: edit_file in 1976 ms
+11:57:59   llm gpt-5.6-terra: in 992 out 173 tokens, 2151 ms, $0.0041 [cum $0.911]
+11:57:59 [pair-07 git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2151 ms
+11:57:59   llm gpt-5.6-terra: in 1968 out 172 tokens, 5619 ms, $0.0060 [cum $0.917]
+11:57:59 [pair-07 hit #3] [agent-b/gpt-5.6-terra] turn 4: edit_file in 5619 ms
+11:58:00 done  gpt-5.6-terra pair-07 hit #2: typecheck PASS (0 diag), tests PASS (2/2), 12 turns, 3 edits, 7 events, $0.0472, 46.2 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-07/hit/2.json
+11:58:00 start gpt-5.6-terra pair-07 git #3
+11:58:00   llm gpt-5.6-terra: in 833 out 50 tokens, 1780 ms, $0.0023 [cum $0.920]
+11:58:00 [pair-07 git #2] [agent-a/gpt-5.6-terra] turn 3: run_typecheck in 1780 ms
+11:58:01   llm gpt-5.6-terra: in 1186 out 140 tokens, 2225 ms, $0.0041 [cum $0.924]
+11:58:01 [pair-07 git #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2225 ms
+11:58:02   llm gpt-5.6-terra: in 1098 out 241 tokens, 3426 ms, $0.0051 [cum $0.929]
+11:58:02 [pair-07 git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3426 ms
+11:58:02   llm gpt-5.6-terra: in 1433 out 25 tokens, 1805 ms, $0.0032 [cum $0.932]
+11:58:02 [pair-07 hit #3] [agent-a/gpt-5.6-terra] turn 5: run_typecheck in 1805 ms
+11:58:03   llm gpt-5.6-terra: in 1346 out 25 tokens, 2065 ms, $0.0030 [cum $0.935]
+11:58:03 [pair-07 git #2] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 2065 ms
+11:58:03   llm gpt-5.6-terra: in 581 out 34 tokens, 2773 ms, $0.0016 [cum $0.937]
+11:58:03 [pair-07 git #3] [agent-a/gpt-5.6-terra] turn 1: read_file in 2773 ms
+11:58:03   llm gpt-5.6-terra: in 639 out 96 tokens, 2773 ms, $0.0024 [cum $0.939]
+11:58:03 [pair-07 git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 2773 ms
+11:58:03   llm gpt-5.6-terra: in 963 out 103 tokens, 3181 ms, $0.0032 [cum $0.942]
+11:58:03 [pair-07 git #2] [agent-a/gpt-5.6-terra] turn 4: run_typecheck in 3181 ms
+11:58:04   llm gpt-5.6-terra: in 1360 out 198 tokens, 2377 ms, $0.0051 [cum $0.947]
+11:58:04 [pair-07 git #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2377 ms
+11:58:04   llm gpt-5.6-terra: in 2160 out 25 tokens, 1265 ms, $0.0046 [cum $0.952]
+11:58:04 [pair-07 hit #3] [agent-b/gpt-5.6-terra] turn 5: run_typecheck in 1265 ms
+11:58:06   llm gpt-5.6-terra: in 729 out 88 tokens, 2247 ms, $0.0025 [cum $0.954]
+11:58:06 [pair-07 git #3] [agent-a/gpt-5.6-terra] turn 2: edit_file in 2247 ms
+11:58:07   llm gpt-5.6-terra: in 836 out 15 tokens, 1022 ms, $0.0019 [cum $0.956]
+11:58:07 [pair-07 git #3] [agent-a/gpt-5.6-terra] turn 3: run_typecheck in 1022 ms
+11:58:07   llm gpt-5.6-terra: in 1391 out 53 tokens, 3597 ms, $0.0034 [cum $0.960]
+11:58:07 [pair-07 git #2] [agent-b/gpt-5.6-terra] turn 5: done in 3597 ms
+11:58:07   llm gpt-5.6-terra: in 1146 out 104 tokens, 3464 ms, $0.0035 [cum $0.963]
+11:58:07 [pair-07 git #2] [agent-a/gpt-5.6-terra] turn 5: done in 3464 ms
+11:58:08   llm gpt-5.6-terra: in 1578 out 15 tokens, 3727 ms, $0.0033 [cum $0.967]
+11:58:08 [pair-07 git #1] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 3727 ms
+11:58:08   llm gpt-5.6-terra: in 999 out 328 tokens, 4566 ms, $0.0059 [cum $0.973]
+11:58:08 [pair-07 git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file in 4566 ms
+11:58:08   llm gpt-5.6-terra: in 1478 out 62 tokens, 2328 ms, $0.0037 [cum $0.976]
+11:58:08 [pair-07 hit #3] [agent-a/gpt-5.6-terra] turn 6: done in 2328 ms
+11:58:09   llm gpt-5.6-terra: in 625 out 96 tokens, 1740 ms, $0.0024 [cum $0.979]
+11:58:09 [pair-07 git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file in 1740 ms
+11:58:10   llm gpt-5.6-terra: in 1366 out 25 tokens, 1608 ms, $0.0030 [cum $0.982]
+11:58:10 [pair-07 git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1608 ms
+11:58:10   llm gpt-5.6-terra: in 931 out 99 tokens, 2915 ms, $0.0031 [cum $0.985]
+11:58:10 [pair-07 git #3] [agent-a/gpt-5.6-terra] turn 4: read_file in 2915 ms
+11:58:10   llm gpt-5.6-terra: in 1613 out 49 tokens, 1944 ms, $0.0038 [cum $0.989]
+11:58:10 [pair-07 git #1] [agent-b/gpt-5.6-terra] turn 5: done in 1944 ms
+11:58:11   llm gpt-5.6-terra: in 2205 out 55 tokens, 2237 ms, $0.0051 [cum $0.994]
+11:58:11 [pair-07 hit #3] [agent-b/gpt-5.6-terra] turn 6: done in 2237 ms
+11:58:13 done  gpt-5.6-terra pair-07 git #1: typecheck PASS (0 diag), tests PASS (2/2), 15 turns, 5 edits, 0 events, $0.0517, 34.1 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-07/git/1.json
+11:58:13 start gemini-3.1-pro-preview pair-01 hit #1
+11:58:14   llm gpt-5.6-terra: in 1411 out 55 tokens, 3718 ms, $0.0035 [cum $0.997]
+11:58:14 [pair-07 git #3] [agent-b/gpt-5.6-terra] turn 4: done in 3718 ms
+11:58:14   llm gpt-5.6-terra: in 1049 out 141 tokens, 4264 ms, $0.0038 [cum $1.001]
+11:58:14 [pair-07 git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 4264 ms
+11:58:14 done  gpt-5.6-terra pair-07 hit #3: typecheck PASS (0 diag), tests PASS (2/2), 12 turns, 3 edits, 7 events, $0.0447, 48.3 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-07/hit/3.json
+11:58:14 start gemini-3.1-pro-preview pair-01 hit #2
+11:58:15   llm gpt-5.6-terra: in 1111 out 207 tokens, 4666 ms, $0.0047 [cum $1.006]
+11:58:15 [pair-07 git #3] [agent-a/gpt-5.6-terra] turn 5: done in 4666 ms
+11:58:16   llm gpt-5.6-terra: in 1211 out 189 tokens, 2585 ms, $0.0047 [cum $1.010]
+11:58:16 [pair-07 git #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2585 ms
+11:58:17   llm gpt-5.6-terra: in 625 out 111 tokens, 1755 ms, $0.0026 [cum $1.013]
+11:58:17 [pair-07 git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file in 1755 ms
+11:58:17   llm gpt-5.6-terra: in 1420 out 15 tokens, 1089 ms, $0.0030 [cum $1.016]
+11:58:17 [pair-07 git #2] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1089 ms
+11:58:20   llm gpt-5.6-terra: in 1455 out 43 tokens, 2344 ms, $0.0034 [cum $1.019]
+11:58:20 [pair-07 git #2] [agent-b/gpt-5.6-terra] turn 5: done in 2344 ms
+11:58:20   llm gpt-5.6-terra: in 1100 out 247 tokens, 3339 ms, $0.0052 [cum $1.024]
+11:58:20 [pair-07 git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3339 ms
+11:58:21 done  gpt-5.6-terra pair-07 git #2: typecheck PASS (0 diag), tests PASS (2/2), 15 turns, 5 edits, 0 events, $0.0472, 28.3 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-07/git/2.json
+11:58:21 start gemini-3.1-pro-preview pair-01 hit #3
+11:58:23   llm gpt-5.6-terra: in 1368 out 217 tokens, 2853 ms, $0.0053 [cum $1.030]
+11:58:23 [pair-07 git #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2853 ms
+11:58:24   llm gpt-5.6-terra: in 1605 out 15 tokens, 1020 ms, $0.0034 [cum $1.033]
+11:58:24 [pair-07 git #3] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1020 ms
+11:58:26   llm gpt-5.6-terra: in 1640 out 48 tokens, 1959 ms, $0.0039 [cum $1.037]
+11:58:26 [pair-07 git #3] [agent-b/gpt-5.6-terra] turn 5: done in 1959 ms
+11:58:28 done  gpt-5.6-terra pair-07 git #3: typecheck PASS (0 diag), tests PASS (2/2), 14 turns, 5 edits, 0 events, $0.0489, 27.8 s -> /home/es/code/hit/reports/runs/mode2/gpt-5.6-terra/pair-07/git/3.json
+11:58:28 start gemini-3.1-pro-preview pair-01 git #1
+11:58:30   llm gemini-3.1-pro-preview: in 0 out 0 tokens, 16113 ms, $0.0000 (attempt 4) ERROR {"error":{"code":429,"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\nPlease retry in 12h1m29.874098705s.","status":"RESOURCE_EXHAUSTED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_requests_per_model_per_day","quotaId":"GenerateRequestsPerDayPerProjectPerModel","quotaDimensions":{"location":"global","model":"gemini-3.1-pro"},"quotaValue":"250"}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"43289s"}]}} [cum $0.000]
+11:58:32   llm gemini-3.1-pro-preview: in 0 out 0 tokens, 17626 ms, $0.0000 (attempt 4) ERROR {"error":{"code":429,"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\nPlease retry in 12h1m27.651548207s.","status":"RESOURCE_EXHAUSTED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_requests_per_model_per_day","quotaId":"GenerateRequestsPerDayPerProjectPerModel","quotaDimensions":{"location":"global","model":"gemini-3.1-pro"},"quotaValue":"250"}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"43287s"}]}} [cum $0.000]
+11:58:37   llm gemini-3.1-pro-preview: in 0 out 0 tokens, 15248 ms, $0.0000 (attempt 4) ERROR {"error":{"code":429,"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\nPlease retry in 12h1m22.159198732s.","status":"RESOURCE_EXHAUSTED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_requests_per_model_per_day","quotaId":"GenerateRequestsPerDayPerProjectPerModel","quotaDimensions":{"location":"global","model":"gemini-3.1-pro"},"quotaValue":"250"}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"43282s"}]}} [cum $0.000]
+11:58:44   llm gemini-3.1-pro-preview: in 0 out 0 tokens, 16265 ms, $0.0000 (attempt 4) ERROR {"error":{"code":429,"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\nPlease retry in 12h1m15.223546406s.","status":"RESOURCE_EXHAUSTED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_requests_per_model_per_day","quotaId":"GenerateRequestsPerDayPerProjectPerModel","quotaDimensions":{"location":"global","model":"gemini-3.1-pro"},"quotaValue":"250"}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"43275s"}]}} [cum $0.000]
+11:58:45   llm gemini-3.1-pro-preview: in 0 out 0 tokens, 17003 ms, $0.0000 (attempt 4) ERROR {"error":{"code":429,"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\nPlease retry in 12h1m14.485362662s.","status":"RESOURCE_EXHAUSTED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_requests_per_model_per_day","quotaId":"GenerateRequestsPerDayPerProjectPerModel","quotaDimensions":{"location":"global","model":"gemini-3.1-pro"},"quotaValue":"250"}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"43274s"}]}} [cum $0.000]
+11:58:47 done  gemini-3.1-pro-preview pair-01 git #1: typecheck PASS (0 diag), tests PASS (1/1), 2 turns, 0 edits, 0 events, $0.0000, 19.2 s, ERROR: {"error":{"code":429,"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 250, model: gemini-3.1-pro\nPlease retry in 12h1m15.223546406s.","status":"RESOURCE_EXHAUSTED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_requests_per_model_per_day","quotaId":"GenerateRequestsPerDayPerProjectPerModel","quotaDimensions":{"location":"global","model":"gemini-3.1-pro"},"quotaValue":"250"}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"43275s"}]}} -> /home/es/code/hit/reports/runs/mode2/gemini-3.1-pro-preview/pair-01/git/1.json
+11:58:47 start gemini-3.1-pro-preview pair-01 git #2

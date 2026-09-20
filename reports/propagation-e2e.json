@@ -1,0 +1,12 @@
+{
+  "script": "packages/eval/src/bench-e2e.ts",
+  "commit": "135a0f9 (working tree: bench-e2e.ts added)",
+  "iterations": 25,
+  "eventsPerIteration": 3,
+  "stagesMs": {
+    "edit": { "min": 0.40, "max": 2.49, "p50": 0.44, "p95": 0.50 },
+    "sync": { "min": 2.40, "max": 5.92, "p50": 2.68, "p95": 2.88 },
+    "observe": { "min": 297.70, "max": 412.95, "p50": 328.68, "p95": 353.19 }
+  },
+  "totalMs": { "min": 300.62, "max": 416.04, "p50": 331.98, "p95": 358.82 }
+}

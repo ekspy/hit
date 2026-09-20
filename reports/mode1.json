@@ -1,0 +1,4051 @@
+{
+  "mode": "mode1",
+  "generatedAt": "2026-09-18T12:05:46.927Z",
+  "runs": 120,
+  "groups": [
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "01-return-type-change",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 2,
+          "sd": 0,
+          "min": 2,
+          "max": 2
+        },
+        "turns": {
+          "n": 5,
+          "mean": 5,
+          "sd": 0,
+          "min": 5,
+          "max": 5
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 6355,
+          "sd": 76.82122102648461,
+          "min": 6265,
+          "max": 6457
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 446.4,
+          "sd": 30.262187627466723,
+          "min": 413,
+          "max": 487
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0180668,
+          "sd": 0.0005152991364246596,
+          "min": 0.017486,
+          "max": 0.018758
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 16964.7722302,
+          "sd": 3222.6690437698308,
+          "min": 14003.484934999997,
+          "max": 22003.393677
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 2161.646711400002,
+          "sd": 246.99304220871747,
+          "min": 1795.8534260000015,
+          "max": 2407.4983519999987
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "02-symbol-rename",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4674.2,
+          "sd": 21.85634919193963,
+          "min": 4653,
+          "max": 4704
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 341.2,
+          "sd": 8.814760348415604,
+          "min": 332,
+          "max": 353
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.013442800000000001,
+          "sd": 0.0001492956797767443,
+          "min": 0.013292,
+          "max": 0.013644000000000002
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 13414.015451000003,
+          "sd": 1661.3186150631093,
+          "min": 11424.418572000002,
+          "max": 15939.346588
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1914.271774600001,
+          "sd": 224.38662495399538,
+          "min": 1525.5357400000066,
+          "max": 2103.336374000006
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "03-removed-field",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4496,
+          "sd": 10.488088481701515,
+          "min": 4484,
+          "max": 4508
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 268.8,
+          "sd": 9.038805230781334,
+          "min": 260,
+          "max": 283
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0122176,
+          "sd": 0.00012808122422900228,
+          "min": 0.012088,
+          "max": 0.012412
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 12761.349212200003,
+          "sd": 2122.5600978364755,
+          "min": 10941.707882000002,
+          "max": 15472.401372000008
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1787.7902414000012,
+          "sd": 308.9431700789798,
+          "min": 1499.8805620000057,
+          "max": 2148.5372050000005
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "04-symbol-move",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4683.2,
+          "sd": 18.322117781522966,
+          "min": 4658,
+          "max": 4709
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 292,
+          "sd": 4.847679857416329,
+          "min": 287,
+          "max": 298
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0128704,
+          "sd": 0.00009025962552548177,
+          "min": 0.012771999999999999,
+          "max": 0.012994000000000002
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 12521.725829400006,
+          "sd": 2911.4789948384987,
+          "min": 10377.988945000005,
+          "max": 17622.194927000004
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1871.2480305999984,
+          "sd": 245.03349898267936,
+          "min": 1641.7005430000136,
+          "max": 2255.516113999998
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "05-optional-to-required",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4631.6,
+          "sd": 32.94389169481954,
+          "min": 4593,
+          "max": 4666
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 323.6,
+          "sd": 13.66747965061591,
+          "min": 310,
+          "max": 338
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.013146399999999999,
+          "sd": 0.00022948376848918982,
+          "min": 0.012906,
+          "max": 0.013388
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 13076.278492000001,
+          "sd": 1616.6138359900967,
+          "min": 11343.814247000002,
+          "max": 15510.160876999988
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1970.0446710000047,
+          "sd": 222.35864439409053,
+          "min": 1610.1252760000061,
+          "max": 2156.106700000004
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "06-widen-to-narrow-type",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 2,
+          "sd": 0,
+          "min": 2,
+          "max": 2
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4.8,
+          "sd": 0.44721359549995787,
+          "min": 4,
+          "max": 5
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 6267.8,
+          "sd": 696.1391383911696,
+          "min": 5049,
+          "max": 6762
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 515.8,
+          "sd": 52.45664876829247,
+          "min": 456,
+          "max": 587
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0187252,
+          "sd": 0.0016997297432239046,
+          "min": 0.016158,
+          "max": 0.020568
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 15482.026698200003,
+          "sd": 1214.533675665638,
+          "min": 13986.191919000004,
+          "max": 17026.72003300002
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 2099.6619400000027,
+          "sd": 419.0450812073001,
+          "min": 1816.232870000007,
+          "max": 2840.4482890000218
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "07-async-contract-change",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 2,
+          "sd": 0,
+          "min": 2,
+          "max": 2
+        },
+        "turns": {
+          "n": 5,
+          "mean": 5,
+          "sd": 0,
+          "min": 5,
+          "max": 5
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 6601.2,
+          "sd": 112.02321188039558,
+          "min": 6405,
+          "max": 6675
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 490.4,
+          "sd": 38.30535210646157,
+          "min": 424,
+          "max": 517
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0190872,
+          "sd": 0.0006832475393296344,
+          "min": 0.017898,
+          "max": 0.019554000000000002
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 15945.189055,
+          "sd": 4531.636133174063,
+          "min": 12909.377869999997,
+          "max": 23898.08619499998
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 2203.9894886000025,
+          "sd": 575.6036107871938,
+          "min": 1689.3497640000132,
+          "max": 3163.551309000002
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "08-import-path-change",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4.2,
+          "sd": 0.4472135954999579,
+          "min": 4,
+          "max": 5
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 5031,
+          "sd": 657.2556580205301,
+          "min": 4692,
+          "max": 6204
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 341.2,
+          "sd": 22.44326179502436,
+          "min": 307,
+          "max": 368
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0141564,
+          "sd": 0.0015062804519743334,
+          "min": 0.01322,
+          "max": 0.016824000000000002
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 14474.731472200016,
+          "sd": 2800.582866967178,
+          "min": 10803.002347000001,
+          "max": 17996.807017000043
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1946.055738199991,
+          "sd": 471.07901133797316,
+          "min": 1422.6435709999641,
+          "max": 2423.420366000035
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "09-union-value-removed",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4534,
+          "sd": 14.035668847618199,
+          "min": 4515,
+          "max": 4550
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 283,
+          "sd": 6.442049363362563,
+          "min": 275,
+          "max": 292
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.012464,
+          "sd": 0.00010488088481701523,
+          "min": 0.01233,
+          "max": 0.012604
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 11022.368405199999,
+          "sd": 574.2996163577471,
+          "min": 10402.042633000001,
+          "max": 11939.352874000004
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1747.6744988000005,
+          "sd": 153.55745526373067,
+          "min": 1561.081040000001,
+          "max": 1986.0869779999994
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "14-interface-field-rename",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4501.6,
+          "sd": 9.126883367283707,
+          "min": 4491,
+          "max": 4516
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 270,
+          "sd": 3.3166247903554,
+          "min": 266,
+          "max": 273
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0122432,
+          "sd": 0.00005228001530221667,
+          "min": 0.012186,
+          "max": 0.012308
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 11399.774503800005,
+          "sd": 1020.2414663403607,
+          "min": 10547.844849000045,
+          "max": 12541.514712999982
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1747.9588703999993,
+          "sd": 275.34138905334686,
+          "min": 1491.0524179999484,
+          "max": 2212.9579010000452
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4799.2,
+          "sd": 4.381780460041329,
+          "min": 4797,
+          "max": 4807
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 304.6,
+          "sd": 3.847076812334269,
+          "min": 301,
+          "max": 311
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.013253599999999999,
+          "sd": 0.00005437646549749296,
+          "min": 0.013205999999999999,
+          "max": 0.013346
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 12683.089955199986,
+          "sd": 1559.609401554303,
+          "min": 11055.053951999987,
+          "max": 15098.639275999973
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1893.0897193999845,
+          "sd": 131.6679572440459,
+          "min": 1729.2081059999764,
+          "max": 2061.5146079999977
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "git",
+      "scenario": "16-two-producers-one-consumer",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4.8,
+          "sd": 1.0954451150103321,
+          "min": 4,
+          "max": 6
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 6356,
+          "sd": 1594.0749668695007,
+          "min": 5163,
+          "max": 8105
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 505.6,
+          "sd": 22.897598127314577,
+          "min": 488,
+          "max": 543
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.018779200000000003,
+          "sd": 0.0030574883810081757,
+          "min": 0.016182000000000002,
+          "max": 0.022137999999999998
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 14279.54208059999,
+          "sd": 1291.9256817586058,
+          "min": 12884.151209999982,
+          "max": 15625.29001399997
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1876.5546459999982,
+          "sd": 197.36983847530098,
+          "min": 1585.6100030000089,
+          "max": 2034.6662540000398
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "01-return-type-change",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 2,
+          "sd": 0,
+          "min": 2,
+          "max": 2
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4.6,
+          "sd": 0.5477225575051661,
+          "min": 4,
+          "max": 5
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 6424.4,
+          "sd": 822.4468371876688,
+          "min": 5505,
+          "max": 7051
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 442.6,
+          "sd": 16.45600194457937,
+          "min": 422,
+          "max": 466
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.01816,
+          "sd": 0.0014837290857835199,
+          "min": 0.01641,
+          "max": 0.01937
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 17687.883349800002,
+          "sd": 2968.8727609224206,
+          "min": 13769.866339,
+          "max": 21453.697713
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 2139.9292287999997,
+          "sd": 264.66120260509064,
+          "min": 1843.224737999999,
+          "max": 2421.944277999999
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "02-symbol-rename",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4950,
+          "sd": 19.4164878389476,
+          "min": 4923,
+          "max": 4971
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 338.8,
+          "sd": 11.122050170719424,
+          "min": 324,
+          "max": 353
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0139656,
+          "sd": 0.0001718161808445298,
+          "min": 0.013734,
+          "max": 0.014178000000000001
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 12819.644805,
+          "sd": 774.5154310283482,
+          "min": 11945.338304000004,
+          "max": 13843.122373999999
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1974.1124150000003,
+          "sd": 229.26747353198135,
+          "min": 1631.3221720000001,
+          "max": 2188.2964620000057
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "03-removed-field",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4458,
+          "sd": 9.797958971132712,
+          "min": 4447,
+          "max": 4471
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 266.8,
+          "sd": 6.180614856144977,
+          "min": 259,
+          "max": 275
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0121176,
+          "sd": 0.00008607438643406127,
+          "min": 0.012001999999999999,
+          "max": 0.01221
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 13445.290482600001,
+          "sd": 1487.558696434821,
+          "min": 11431.327535000004,
+          "max": 14702.868212000001
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1697.4650797999989,
+          "sd": 178.31266250019974,
+          "min": 1479.2760680000065,
+          "max": 1914.656569999992
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "04-symbol-move",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4955,
+          "sd": 17.592612085759182,
+          "min": 4936,
+          "max": 4973
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 292.6,
+          "sd": 4.878524367060187,
+          "min": 287,
+          "max": 298
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0134212,
+          "sd": 0.0000926779369645221,
+          "min": 0.013324,
+          "max": 0.013522
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 14240.981879399993,
+          "sd": 1300.0378547332866,
+          "min": 12172.74487699999,
+          "max": 15775.509635999988
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 2132.319174599991,
+          "sd": 279.96879246710034,
+          "min": 1877.2224449999921,
+          "max": 2577.45954299999
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "05-optional-to-required",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 5388.4,
+          "sd": 19.73068675946177,
+          "min": 5365,
+          "max": 5408
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 302.8,
+          "sd": 8.757853618324527,
+          "min": 292,
+          "max": 311
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0144104,
+          "sd": 0.00014439806092880894,
+          "min": 0.014234,
+          "max": 0.014548
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 13554.240386799991,
+          "sd": 1125.4722838344353,
+          "min": 11752.319961000001,
+          "max": 14488.283242000005
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1837.558230599988,
+          "sd": 436.95030781382184,
+          "min": 1380.6062450000027,
+          "max": 2423.6719989999838
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "06-widen-to-narrow-type",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 2,
+          "sd": 0,
+          "min": 2,
+          "max": 2
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4.4,
+          "sd": 0.5477225575051662,
+          "min": 4,
+          "max": 5
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 6147,
+          "sd": 861.249383163785,
+          "min": 5484,
+          "max": 7129
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 431.4,
+          "sd": 14.39791651594077,
+          "min": 413,
+          "max": 452
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0174708,
+          "sd": 0.00166713202836488,
+          "min": 0.01608,
+          "max": 0.019502
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 15503.501812200004,
+          "sd": 1730.3821164725991,
+          "min": 13547.933242,
+          "max": 18240.601775000017
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1962.7234232000017,
+          "sd": 391.5858657079595,
+          "min": 1644.0425019999966,
+          "max": 2613.382987000019
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "07-async-contract-change",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 2,
+          "sd": 0,
+          "min": 2,
+          "max": 2
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4.8,
+          "sd": 0.4472135954999579,
+          "min": 4,
+          "max": 5
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 6617.8,
+          "sd": 673.6510224144249,
+          "min": 5413,
+          "max": 6934
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 429,
+          "sd": 5.049752469181039,
+          "min": 421,
+          "max": 433
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.0183836,
+          "sd": 0.001322736103688109,
+          "min": 0.016022,
+          "max": 0.019052
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 15634.613649000017,
+          "sd": 1377.0204019158211,
+          "min": 14313.090222000028,
+          "max": 17729.742239000014
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 2313.410234800004,
+          "sd": 397.56134190868465,
+          "min": 1840.6790620000102,
+          "max": 2911.0274849999987
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "08-import-path-change",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4698.4,
+          "sd": 66.94998132934766,
+          "min": 4604,
+          "max": 4771
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 352.2,
+          "sd": 16.589153082662175,
+          "min": 335,
+          "max": 371
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.013623200000000002,
+          "sd": 0.0003166973318485655,
+          "min": 0.013323999999999999,
+          "max": 0.013994000000000001
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 13797.854116599989,
+          "sd": 1096.633777702005,
+          "min": 12162.515252000012,
+          "max": 15010.227170999977
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1932.1352861999999,
+          "sd": 456.4910138070471,
+          "min": 1492.6193939999794,
+          "max": 2649.9571609999985
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "09-union-value-removed",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 5164.8,
+          "sd": 25.232915011944222,
+          "min": 5143,
+          "max": 5206
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 288,
+          "sd": 13.285330255586423,
+          "min": 276,
+          "max": 310
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.013785599999999999,
+          "sd": 0.0002098065775899312,
+          "min": 0.013597999999999999,
+          "max": 0.014131999999999999
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 15874.8368116,
+          "sd": 3997.4471355693254,
+          "min": 11294.212144000001,
+          "max": 19985.916039
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1862.1472338000003,
+          "sd": 435.4578952883165,
+          "min": 1378.555923,
+          "max": 2342.0167440000005
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "14-interface-field-rename",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 4475.6,
+          "sd": 13.08816259067712,
+          "min": 4464,
+          "max": 4497
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 271,
+          "sd": 5.787918451395113,
+          "min": 265,
+          "max": 280
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.012203199999999999,
+          "sd": 0.00009500105262574753,
+          "min": 0.012107999999999999,
+          "max": 0.012354
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 12728.231606799993,
+          "sd": 1008.2945606692958,
+          "min": 11173.455101999978,
+          "max": 13754.019244000025
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1709.1873104000115,
+          "sd": 185.4770967606386,
+          "min": 1471.483704000013,
+          "max": 1969.2716979999677
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 5681.8,
+          "sd": 191.041095055488,
+          "min": 5341,
+          "max": 5789
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 295.4,
+          "sd": 12.381437719424994,
+          "min": 279,
+          "max": 312
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.014908399999999999,
+          "sd": 0.0005074709843922107,
+          "min": 0.01403,
+          "max": 0.015321999999999999
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 12711.12929799999,
+          "sd": 1170.63665785389,
+          "min": 10622.954391999985,
+          "max": 13357.723277000012
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 1733.2162881999975,
+          "sd": 126.84888394545887,
+          "min": 1653.3260499999742,
+          "max": 1957.0745899999747
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "condition": "hit",
+      "scenario": "16-two-producers-one-consumer",
+      "runs": 5,
+      "errors": 0,
+      "metrics": {
+        "typecheckPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "testsPass": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "edits": {
+          "n": 5,
+          "mean": 3,
+          "sd": 0,
+          "min": 3,
+          "max": 3
+        },
+        "turns": {
+          "n": 5,
+          "mean": 4.4,
+          "sd": 0.8944271909999159,
+          "min": 4,
+          "max": 6
+        },
+        "inputTokens": {
+          "n": 5,
+          "mean": 6596.4,
+          "sd": 1372.8030812902482,
+          "min": 5959,
+          "max": 9052
+        },
+        "outputTokens": {
+          "n": 5,
+          "mean": 556.6,
+          "sd": 40.0099987503124,
+          "min": 486,
+          "max": 582
+        },
+        "costUsd": {
+          "n": 5,
+          "mean": 0.019871999999999997,
+          "sd": 0.002274178093289971,
+          "min": 0.018685999999999998,
+          "max": 0.023936000000000002
+        },
+        "wallClockMs": {
+          "n": 5,
+          "mean": 16385.023085000004,
+          "sd": 1240.3892406578195,
+          "min": 15256.322924999986,
+          "max": 18488.67339900002
+        },
+        "latencyP50Ms": {
+          "n": 5,
+          "mean": 2510.362141599995,
+          "sd": 535.5441206235852,
+          "min": 1674.9237720000092,
+          "max": 3134.296488999971
+        },
+        "eventsDelivered": {
+          "n": 5,
+          "mean": 4,
+          "sd": 0,
+          "min": 4,
+          "max": 4
+        },
+        "actedAfterEvent": {
+          "n": 5,
+          "mean": 1,
+          "sd": 0,
+          "min": 1,
+          "max": 1
+        },
+        "mergeConflicts": {
+          "n": 5,
+          "mean": 0,
+          "sd": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    }
+  ],
+  "paired": [
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "01-return-type-change",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.01816,
+        "wallClockMs": 17687.883349800002,
+        "turns": 4.6
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0180668,
+        "wallClockMs": 16964.7722302,
+        "turns": 5
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "02-symbol-rename",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0139656,
+        "wallClockMs": 12819.644805,
+        "turns": 4
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.013442800000000001,
+        "wallClockMs": 13414.015451000003,
+        "turns": 4
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "03-removed-field",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0121176,
+        "wallClockMs": 13445.290482600001,
+        "turns": 4
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0122176,
+        "wallClockMs": 12761.349212200003,
+        "turns": 4
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "04-symbol-move",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0134212,
+        "wallClockMs": 14240.981879399993,
+        "turns": 4
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0128704,
+        "wallClockMs": 12521.725829400006,
+        "turns": 4
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "05-optional-to-required",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0144104,
+        "wallClockMs": 13554.240386799991,
+        "turns": 4
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.013146399999999999,
+        "wallClockMs": 13076.278492000001,
+        "turns": 4
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "06-widen-to-narrow-type",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0174708,
+        "wallClockMs": 15503.501812200004,
+        "turns": 4.4
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0187252,
+        "wallClockMs": 15482.026698200003,
+        "turns": 4.8
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "07-async-contract-change",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0183836,
+        "wallClockMs": 15634.613649000017,
+        "turns": 4.8
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0190872,
+        "wallClockMs": 15945.189055,
+        "turns": 5
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "08-import-path-change",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.013623200000000002,
+        "wallClockMs": 13797.854116599989,
+        "turns": 4
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0141564,
+        "wallClockMs": 14474.731472200016,
+        "turns": 4.2
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "09-union-value-removed",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.013785599999999999,
+        "wallClockMs": 15874.8368116,
+        "turns": 4
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.012464,
+        "wallClockMs": 11022.368405199999,
+        "turns": 4
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "14-interface-field-rename",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.012203199999999999,
+        "wallClockMs": 12728.231606799993,
+        "turns": 4
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.0122432,
+        "wallClockMs": 11399.774503800005,
+        "turns": 4
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.014908399999999999,
+        "wallClockMs": 12711.12929799999,
+        "turns": 4
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.013253599999999999,
+        "wallClockMs": 12683.089955199986,
+        "turns": 4
+      }
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "16-two-producers-one-consumer",
+      "hit": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.019871999999999997,
+        "wallClockMs": 16385.023085000004,
+        "turns": 4.4
+      },
+      "git": {
+        "runs": 5,
+        "typecheckPass": 1,
+        "testsPass": 1,
+        "costUsd": 0.018779200000000003,
+        "wallClockMs": 14279.54208059999,
+        "turns": 4.8
+      }
+    }
+  ],
+  "costByModel": {
+    "gpt-5.6-terra": {
+      "runs": 120,
+      "costUsd": 1.8038719999999995,
+      "inputTokens": 642442,
+      "outputTokens": 43249
+    }
+  },
+  "runIndex": [
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "01-return-type-change",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/01-return-type-change/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018248
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "01-return-type-change",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/01-return-type-change/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.017486
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "01-return-type-change",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/01-return-type-change/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018213999999999998
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "01-return-type-change",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/01-return-type-change/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.017627999999999998
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "01-return-type-change",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/01-return-type-change/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018758
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "01-return-type-change",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/01-return-type-change/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01937
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "01-return-type-change",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/01-return-type-change/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01641
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "01-return-type-change",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/01-return-type-change/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01931
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "01-return-type-change",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/01-return-type-change/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.019032
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "01-return-type-change",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/01-return-type-change/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.016678
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "02-symbol-rename",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/02-symbol-rename/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013538
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "02-symbol-rename",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/02-symbol-rename/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013314
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "02-symbol-rename",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/02-symbol-rename/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013426
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "02-symbol-rename",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/02-symbol-rename/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013644000000000002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "02-symbol-rename",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/02-symbol-rename/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013292
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "02-symbol-rename",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/02-symbol-rename/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01393
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "02-symbol-rename",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/02-symbol-rename/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.014178000000000001
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "02-symbol-rename",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/02-symbol-rename/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013902
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "02-symbol-rename",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/02-symbol-rename/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013734
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "02-symbol-rename",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/02-symbol-rename/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.014084
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "03-removed-field",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/03-removed-field/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012240000000000001
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "03-removed-field",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/03-removed-field/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012116
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "03-removed-field",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/03-removed-field/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012412
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "03-removed-field",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/03-removed-field/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012232
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "03-removed-field",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/03-removed-field/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012088
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "03-removed-field",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/03-removed-field/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012182
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "03-removed-field",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/03-removed-field/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012001999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "03-removed-field",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/03-removed-field/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012134
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "03-removed-field",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/03-removed-field/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01206
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "03-removed-field",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/03-removed-field/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01221
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "04-symbol-move",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/04-symbol-move/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012928
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "04-symbol-move",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/04-symbol-move/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012771999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "04-symbol-move",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/04-symbol-move/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01285
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "04-symbol-move",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/04-symbol-move/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012808
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "04-symbol-move",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/04-symbol-move/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012994000000000002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "04-symbol-move",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/04-symbol-move/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013328
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "04-symbol-move",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/04-symbol-move/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013324
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "04-symbol-move",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/04-symbol-move/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013498
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "04-symbol-move",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/04-symbol-move/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013522
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "04-symbol-move",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/04-symbol-move/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013434
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "05-optional-to-required",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/05-optional-to-required/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013096
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "05-optional-to-required",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/05-optional-to-required/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013384
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "05-optional-to-required",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/05-optional-to-required/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013388
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "05-optional-to-required",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/05-optional-to-required/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012906
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "05-optional-to-required",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/05-optional-to-required/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012957999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "05-optional-to-required",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/05-optional-to-required/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.014456
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "05-optional-to-required",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/05-optional-to-required/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.014548
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "05-optional-to-required",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/05-optional-to-required/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.014282
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "05-optional-to-required",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/05-optional-to-required/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.014532
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "05-optional-to-required",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/05-optional-to-required/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.014234
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "06-widen-to-narrow-type",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.016158
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "06-widen-to-narrow-type",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.019889999999999998
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "06-widen-to-narrow-type",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.020568
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "06-widen-to-narrow-type",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018746
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "06-widen-to-narrow-type",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018264
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "06-widen-to-narrow-type",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.019056000000000003
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "06-widen-to-narrow-type",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.016174
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "06-widen-to-narrow-type",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01608
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "06-widen-to-narrow-type",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.019502
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "06-widen-to-narrow-type",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.016542
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "07-async-contract-change",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/07-async-contract-change/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.019554000000000002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "07-async-contract-change",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/07-async-contract-change/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.019522
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "07-async-contract-change",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/07-async-contract-change/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.017898
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "07-async-contract-change",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/07-async-contract-change/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.019280000000000002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "07-async-contract-change",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/07-async-contract-change/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.019181999999999998
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "07-async-contract-change",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/07-async-contract-change/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018846
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "07-async-contract-change",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/07-async-contract-change/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.019052
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "07-async-contract-change",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/07-async-contract-change/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.016022
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "07-async-contract-change",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/07-async-contract-change/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01904
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "07-async-contract-change",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/07-async-contract-change/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018958000000000003
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "08-import-path-change",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/08-import-path-change/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01344
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "08-import-path-change",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/08-import-path-change/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013484
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "08-import-path-change",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/08-import-path-change/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.016824000000000002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "08-import-path-change",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/08-import-path-change/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013814000000000002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "08-import-path-change",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/08-import-path-change/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01322
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "08-import-path-change",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/08-import-path-change/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013936
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "08-import-path-change",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/08-import-path-change/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013994000000000001
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "08-import-path-change",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/08-import-path-change/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013466
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "08-import-path-change",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/08-import-path-change/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013323999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "08-import-path-change",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/08-import-path-change/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013396
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "09-union-value-removed",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/09-union-value-removed/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012604
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "09-union-value-removed",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/09-union-value-removed/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012398
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "09-union-value-removed",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/09-union-value-removed/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012506
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "09-union-value-removed",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/09-union-value-removed/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01233
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "09-union-value-removed",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/09-union-value-removed/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012482
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "09-union-value-removed",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/09-union-value-removed/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013672
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "09-union-value-removed",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/09-union-value-removed/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013822
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "09-union-value-removed",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/09-union-value-removed/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.014131999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "09-union-value-removed",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/09-union-value-removed/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013597999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "09-union-value-removed",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/09-union-value-removed/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013704000000000001
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "14-interface-field-rename",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/14-interface-field-rename/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012278
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "14-interface-field-rename",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/14-interface-field-rename/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012308
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "14-interface-field-rename",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/14-interface-field-rename/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012186
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "14-interface-field-rename",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/14-interface-field-rename/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012247999999999998
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "14-interface-field-rename",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/14-interface-field-rename/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012195999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "14-interface-field-rename",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/14-interface-field-rename/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012228
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "14-interface-field-rename",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/14-interface-field-rename/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012178
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "14-interface-field-rename",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/14-interface-field-rename/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012148
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "14-interface-field-rename",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/14-interface-field-rename/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012354
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "14-interface-field-rename",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/14-interface-field-rename/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.012107999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013346
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013232
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013253999999999998
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013205999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.013229999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.015024
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.015321999999999999
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.015164
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.01403
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "15-enum-like-union-added-and-consumer-exhaustive",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.015002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "16-two-producers-one-consumer",
+        "condition": "git",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/git/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.022137999999999998
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "16-two-producers-one-consumer",
+        "condition": "git",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/git/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.022090000000000002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "16-two-producers-one-consumer",
+        "condition": "git",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/git/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.016506
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "16-two-producers-one-consumer",
+        "condition": "git",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/git/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.016980000000000002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "16-two-producers-one-consumer",
+        "condition": "git",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/git/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.016182000000000002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "16-two-producers-one-consumer",
+        "condition": "hit",
+        "rep": 1
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/hit/1.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018923999999999996
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "16-two-producers-one-consumer",
+        "condition": "hit",
+        "rep": 2
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/hit/2.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018864000000000002
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "16-two-producers-one-consumer",
+        "condition": "hit",
+        "rep": 3
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/hit/3.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018685999999999998
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "16-two-producers-one-consumer",
+        "condition": "hit",
+        "rep": 4
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/hit/4.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.018949999999999998
+    },
+    {
+      "spec": {
+        "mode": "mode1",
+        "model": "gpt-5.6-terra",
+        "scenario": "16-two-producers-one-consumer",
+        "condition": "hit",
+        "rep": 5
+      },
+      "transcriptPath": "runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/hit/5.json",
+      "typecheckPass": true,
+      "testsPass": true,
+      "costUsd": 0.023936000000000002
+    }
+  ]
+}
