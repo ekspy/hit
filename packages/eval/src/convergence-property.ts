@@ -237,7 +237,7 @@ function applySteps(state: { replicas: Replica[]; taskIds: string[] }, steps: St
     const replica = state.replicas[step.replica]!
     const repo = replica.repo
     const visible = new Set(repo.listFiles())
-    const path = filePool[step.file]!
+    const path = 'file' in step ? filePool[step.file]! : ''
     let record: (typeof history)[number] | undefined
 
     if (step.kind === 'edit') {
