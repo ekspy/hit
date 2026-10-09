@@ -81,6 +81,59 @@ describe('SemanticIndex', () => {
 
     expect(serializeIndex(incremental)).toEqual(serializeIndex(full))
   })
+
+  it('resolves diagnostics to the producer declaration with the checker', () => {
+    const repo = Repo.create('producers')
+    repo.createFile('src/model.ts', 'export interface Row { id: string; size: string }\nexport enum Mode { On = "on" }\n', 'ts')
+    repo.createFile(
+      'src/api.ts',
+      [
+        "import type { Row } from './model'",
+        'export function scale(value: number): number',
+        'export function scale(value: number, by?: number): number { return value * (by ?? 1) }',
+        'export function load() { return [{ id: "a", size: "1" }] as Row[] }',
+        '',
+      ].join('\n'),
+      'ts',
+    )
+    repo.createFile(
+      'src/use.ts',
+      [
+        "import scaleDefault from './api'",
+        "import { scale, load } from './api'",
+        "import { Mode } from './model'",
+        'export const a = scale(1, 2)',
+        'export function b(): boolean {',
+        '  const [first] = load()',
+        '  const { size } = first!',
+        '  return size > 3',
+        '}',
+        'export function c(mode: Mode): string {',
+        '  switch (mode) {',
+        '    case Mode.Off:',
+        "      return 'off'",
+        '  }',
+        '}',
+        'export const d = scaleDefault',
+        '',
+      ].join('\n'),
+      'ts',
+    )
+
+    const producers = SemanticIndex.build(repo)
+      .diagnostics()
+      .map((diagnostic) => [diagnostic.code, diagnostic.producer])
+
+    expect(producers).toEqual(
+      expect.arrayContaining([
+        [1192, { file: 'src/api.ts', via: 'import' }],
+        [2554, { file: 'src/api.ts', symbol: 'scale', via: 'call' }],
+        [2365, { file: 'src/model.ts', symbol: 'Row', member: 'size', via: 'reference' }],
+        [2339, { file: 'src/model.ts', symbol: 'Mode', via: 'reference' }],
+        [2366, { file: 'src/model.ts', symbol: 'Mode', via: 'cascade' }],
+      ]),
+    )
+  })
 })
 
 function serializeIndex(index: SemanticIndex): unknown {

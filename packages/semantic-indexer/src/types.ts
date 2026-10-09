@@ -40,12 +40,27 @@ export interface Reference {
   loc: Loc
 }
 
+/**
+ * Declaration in another project file that the code flagged by a diagnostic uses, resolved with the type checker.
+ * `symbol` is the top-level declaration name in `file`, `member` the path inside it (`Item` + `quantity`).
+ * `via`: `call` (argument of a call to it), `import` (the import itself fails), `reference` (identifier, member
+ * access or destructuring, possibly through local initializers), `cascade` (the diagnostic resolves to nothing,
+ * and inherits the producer of another diagnostic in the same function).
+ */
+export interface DiagnosticProducer {
+  file: string
+  symbol?: string
+  member?: string
+  via: 'call' | 'import' | 'reference' | 'cascade'
+}
+
 export interface Diagnostic {
   file?: string
   line?: number
   column?: number
   code: number
   message: string
+  producer?: DiagnosticProducer
 }
 
 export interface SymbolChange {

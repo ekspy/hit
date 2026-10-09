@@ -114,7 +114,7 @@ describe('ImpactEngine', () => {
     expect(grouped[0]?.conflicts.map((conflict) => conflict.rule)).toEqual(['R2', 'R3'])
   })
 
-  it('keeps distinct unresolved diagnostics on the same file pair as separate conflicts', () => {
+  it('keeps distinct diagnostics on the same file pair as separate conflicts', () => {
     const before = Repo.create('test')
     before.createFile('src/inventory.ts', "export enum Status { A = 'a', B = 'b' }\nexport class Service {\n  reserve(): boolean { return true }\n}\n", 'ts')
     before.createFile(
@@ -126,10 +126,11 @@ describe('ImpactEngine', () => {
     before.editFile('src/inventory.ts', { start: 0, deleteCount: before.fileContent('src/inventory.ts').length, insert: "export enum Status { A = 'a' }\nexport class Service {\n  hold(): boolean { return true }\n}\n" })
     const current = SemanticIndex.build(before)
     const conflicts = new ImpactEngine().analyze(semanticDiff(previous, current), current)
-    const unresolved = conflicts.filter((conflict) => conflict.rule === 'R4' && !conflict.origin.symbolId)
+    const mismatches = conflicts.filter((conflict) => conflict.rule === 'R4')
 
-    expect(unresolved).toHaveLength(2)
-    expect(groupLogicalConflicts(unresolved)).toHaveLength(2)
+    // The checker resolves each break to its own producer declaration (the enum and the class), which keeps them apart.
+    expect(mismatches.map((conflict) => conflict.origin.symbolId).sort()).toEqual(['src/inventory.ts#Service', 'src/inventory.ts#Status'])
+    expect(groupLogicalConflicts(mismatches)).toHaveLength(2)
   })
 
   it('reports rule attribution strictly and accepting alternative label rules', () => {

@@ -152,6 +152,12 @@ function connected(left: ConflictEvidence, right: ConflictEvidence): boolean {
     return true
   }
 
+  // Both sides name their producer symbol and the symbols differ: two breaks between the same pair of files are
+  // still two phenomena (a removed enum member and a renamed method in the same module, for instance).
+  if (left.symbolTokens.size > 0 && right.symbolTokens.size > 0) {
+    return false
+  }
+
   if ((left.symbolTokens.size > 0 && right.symbolTokens.size === 0) || (right.symbolTokens.size > 0 && left.symbolTokens.size === 0)) {
     return intersects(left.files, right.files)
   }
