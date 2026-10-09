@@ -28,6 +28,18 @@ function change(before: Partial<SymbolInfo>, after: Partial<SymbolInfo>): Symbol
 }
 
 describe('classifyChange', () => {
+  it('classifies overloads and type parameter constraints', () => {
+    const one = { text: '(value: number): string', arity: 1 }
+    const two = { text: '(value: number, unit: string): string', arity: 2 }
+    const wide = { text: '(value: string): string', arity: 1 }
+
+    expect(classifyChange(change({ overloads: [one, two] }, { overloads: [one] })).classification).toBe('breaking')
+    expect(classifyChange(change({ overloads: [one, two] }, { overloads: [one, two, wide] })).classification).toBe('compatible')
+    expect(classifyChange(change({ overloads: [one, two] }, { overloads: [wide, two] })).classification).toBe('unknown')
+    expect(classifyChange(change({ typeParameters: [{ name: 'T' }] }, { typeParameters: [{ name: 'T', constraint: '{ id: string }' }] })).classification).toBe('breaking')
+    expect(classifyChange(change({ typeParameters: [{ name: 'T', constraint: '{ id: string }' }] }, { typeParameters: [{ name: 'T' }] })).classification).toBe('compatible')
+  })
+
   it('treats an added trailing optional parameter as compatible', () => {
     const verdict = classifyChange(
       change(

@@ -28,6 +28,13 @@ export interface SymbolInfo {
   exported: boolean
   /** Structured parameter list (functions only). */
   parameters?: ParameterInfo[]
+  /** Type parameters with their constraint text (generic functions only). */
+  typeParameters?: Array<{ name: string; constraint?: string }>
+  /**
+   * Public call signatures of an overloaded function (the implementation signature is not callable from outside),
+   * each as `(params): return`. Absent for functions without overloads.
+   */
+  overloads?: Array<{ text: string; arity: number }>
   /** Declared return type text (functions only), e.g. `Promise<PaymentResult>`. */
   returnTypeText?: string
   /** Property shape of interfaces and object-like type aliases. */

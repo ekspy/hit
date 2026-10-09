@@ -3,7 +3,7 @@ import type { ParameterInfo, SymbolChange, SymbolInfo, TypeShape } from '@hit/se
 export type Compatibility = 'breaking' | 'compatible' | 'unknown'
 
 export interface CompatibilityFinding {
-  aspect: 'parameters' | 'return' | 'shape'
+  aspect: 'parameters' | 'return' | 'shape' | 'overloads'
   verdict: Compatibility
   detail: string
 }
@@ -21,20 +21,26 @@ export interface CompatibilityVerdict {
  * which rules treat as breaking but tag so reports can show the uncertainty.
  */
 export function classifyChange(change: SymbolChange): CompatibilityVerdict {
-  const findings = [...parameterFindings(change), ...returnFindings(change), ...shapeFindings(change)]
+  const findings = [...parameterFindings(change), ...overloadFindings(change), ...returnFindings(change), ...shapeFindings(change)]
 
   return { classification: overall(findings), findings }
 }
 
 export function parameterFindings(change: SymbolChange): CompatibilityFinding[] {
+  const findings: CompatibilityFinding[] = [...typeParameterFindings(change)]
+
+  // With overloads, the implementation's parameters are not callable from outside; the overloads are compared instead.
+  if (change.before.overloads || change.after.overloads) {
+    return findings
+  }
+
   const before = parametersOf(change.before)
   const after = parametersOf(change.after)
 
   if (!before || !after) {
-    return []
+    return findings
   }
 
-  const findings: CompatibilityFinding[] = []
   const shared = Math.min(before.length, after.length)
 
   for (let index = 0; index < shared; index += 1) {
@@ -63,6 +69,91 @@ export function parameterFindings(change: SymbolChange): CompatibilityFinding[] 
   }
 
   return findings
+}
+
+/**
+ * Type parameter constraints are part of the parameter contract: a constraint added where there was none narrows the
+ * accepted arguments, a removed one widens them, and a changed one is undecided without a type relation.
+ */
+function typeParameterFindings(change: SymbolChange): CompatibilityFinding[] {
+  const before = change.before.typeParameters ?? []
+  const after = change.after.typeParameters ?? []
+  const findings: CompatibilityFinding[] = []
+
+  for (let index = 0; index < Math.min(before.length, after.length); index += 1) {
+    const previous = before[index]!
+    const next = after[index]!
+
+    if (previous.constraint === next.constraint) {
+      continue
+    }
+
+    if (previous.constraint === undefined) {
+      findings.push(finding('parameters', 'breaking', `type parameter ${next.name} gained constraint ${next.constraint}`))
+    } else if (next.constraint === undefined) {
+      findings.push(finding('parameters', 'compatible', `type parameter ${next.name} lost constraint ${previous.constraint}`))
+    } else {
+      findings.push(finding('parameters', 'unknown', `type parameter ${next.name} constraint changed from ${previous.constraint} to ${next.constraint}`))
+    }
+  }
+
+  if (before.length !== after.length) {
+    findings.push(finding('parameters', 'unknown', `type parameter count changed from ${before.length} to ${after.length}`))
+  }
+
+  return findings
+}
+
+/**
+ * Compares the public call signatures (the overloads, or the single signature of a function without overloads). An
+ * added signature is compatible. A removed one breaks calls when no remaining signature takes as many arguments
+ * (those calls can no longer resolve); otherwise a remaining signature may still accept them, which is undecided.
+ */
+export function overloadFindings(change: SymbolChange): CompatibilityFinding[] {
+  if (!change.before.overloads && !change.after.overloads) {
+    return []
+  }
+
+  const before = callSignatures(change.before)
+  const after = callSignatures(change.after)
+
+  if (!before || !after) {
+    return []
+  }
+
+  const afterTexts = new Set(after.map((signature) => signature.text))
+  const beforeTexts = new Set(before.map((signature) => signature.text))
+  const maxAfterArity = Math.max(...after.map((signature) => signature.arity))
+  const findings: CompatibilityFinding[] = []
+
+  for (const signature of before.filter((item) => !afterTexts.has(item.text))) {
+    findings.push(
+      signature.arity > maxAfterArity
+        ? finding('overloads', 'breaking', `call signature ${change.after.name}${signature.text} was removed and no remaining signature takes ${signature.arity} arguments`)
+        : finding('overloads', 'unknown', `call signature ${change.after.name}${signature.text} was removed`),
+    )
+  }
+
+  for (const signature of after.filter((item) => !beforeTexts.has(item.text))) {
+    findings.push(finding('overloads', 'compatible', `call signature ${change.after.name}${signature.text} was added`))
+  }
+
+  return findings
+}
+
+function callSignatures(symbol: SymbolInfo): Array<{ text: string; arity: number }> | undefined {
+  if (symbol.overloads) {
+    return symbol.overloads
+  }
+
+  const parameters = parametersOf(symbol)
+
+  if (!parameters) {
+    return undefined
+  }
+
+  // A function without overloads has its own signature as the single public one (`name<T>(params): return`).
+  return [{ text: symbol.signature.slice(symbol.name.length), arity: parameters.length }]
 }
 
 export function returnFindings(change: SymbolChange): CompatibilityFinding[] {
