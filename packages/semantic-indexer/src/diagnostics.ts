@@ -1,12 +1,12 @@
 import type { Project } from 'ts-morph'
-import ts from 'typescript'
+import { ts } from 'ts-morph'
 
 import type { Diagnostic } from './types.js'
 
 export function collectDiagnostics(project: Project): Diagnostic[] {
   return project
     .getPreEmitDiagnostics()
-    .filter((diagnostic) => !isExternalModuleResolutionDiagnostic(diagnostic.getCode(), flattenMessage(diagnostic.getMessageText())))
+    .filter((diagnostic) => !isExternalModuleResolutionDiagnostic(diagnostic.getCode(), flattenMessage(diagnostic.compilerObject.messageText)))
     .map((diagnostic) => {
       const sourceFile = diagnostic.getSourceFile()
       const start = diagnostic.getStart()
@@ -17,7 +17,7 @@ export function collectDiagnostics(project: Project): Diagnostic[] {
         line: loc?.line,
         column: loc?.column,
         code: diagnostic.getCode(),
-        message: flattenMessage(diagnostic.getMessageText()),
+        message: flattenMessage(diagnostic.compilerObject.messageText),
       }
     })
 }
@@ -31,6 +31,10 @@ function isExternalModuleResolutionDiagnostic(code: number, message: string): bo
   return moduleName !== undefined && !moduleName.startsWith('.')
 }
 
-function flattenMessage(message: unknown): string {
-  return typeof message === 'string' ? message : ts.flattenDiagnosticMessageText(message as ts.DiagnosticMessageChain, ' ')
+/**
+ * Reads the compiler's own message (a string or a `ts.DiagnosticMessageChain`). ts-morph's `getMessageText()` wraps chains
+ * in its own class, which `ts.flattenDiagnosticMessageText` does not understand (it yielded the text `undefined`).
+ */
+function flattenMessage(message: string | ts.DiagnosticMessageChain): string {
+  return ts.flattenDiagnosticMessageText(message, ' ')
 }
