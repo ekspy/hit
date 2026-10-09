@@ -1,0 +1,314 @@
+{
+  "library": "fast-check 3.22.0 (fc.sample for the case sequence, fc.check for shrinking)",
+  "automerge": "@automerge/automerge 2.2.9",
+  "config": {
+    "seed": 1701,
+    "numRuns": 500,
+    "maxSteps": 40,
+    "finalOrders": 3,
+    "replicas": [
+      2,
+      3
+    ],
+    "baseFiles": [
+      "src/a.ts",
+      "src/b.ts"
+    ],
+    "filePool": [
+      "src/a.ts",
+      "src/b.ts",
+      "src/c.ts",
+      "src/d.ts",
+      "src/e.ts"
+    ],
+    "tasks": 2,
+    "regionsPerFile": 3
+  },
+  "elapsedMs": 72644.676104,
+  "compared": "visible files with content and language, operation log, active claim per task, Automerge heads",
+  "cases": [
+    {
+      "replicas": 2,
+      "seed": 1701,
+      "cases": 500,
+      "stateConvergence": {
+        "passed": 500,
+        "failed": 0
+      },
+      "viewConvergence": {
+        "passed": 500,
+        "failed": 0
+      },
+      "stepsPerCase": {
+        "min": 10,
+        "median": 24,
+        "max": 40,
+        "mean": 24.266,
+        "total": 12133
+      },
+      "appliedOperationsPerCase": {
+        "min": 3,
+        "median": 13.5,
+        "max": 28,
+        "mean": 14.024,
+        "total": 7012
+      },
+      "operationsByKind": {
+        "edit": 3774,
+        "claim": 1583,
+        "rename": 214,
+        "delete": 389,
+        "create": 823,
+        "release": 229
+      },
+      "skippedOperations": 3521,
+      "intermediateSyncs": 1600,
+      "finalOrdersPerCase": 3,
+      "finalOrdersTested": 1500,
+      "distinctFinalOrders": 4,
+      "possibleFinalOrders": 4,
+      "syncsPerFinalOrder": 2,
+      "concurrency": {
+        "casesWithConcurrentSameFileEdits": 374,
+        "concurrentSameRegionEditPairs": 363,
+        "casesWithConcurrentSameRegionEdits": 215,
+        "concurrentSamePathCreates": 56,
+        "casesWithConcurrentSamePathCreates": 53,
+        "casesWithConcurrentClaimsOnSameTask": 164,
+        "casesWithEditDeleteRace": 135
+      }
+    },
+    {
+      "replicas": 3,
+      "seed": 1701,
+      "cases": 500,
+      "stateConvergence": {
+        "passed": 500,
+        "failed": 0
+      },
+      "viewConvergence": {
+        "passed": 498,
+        "failed": 2,
+        "firstFailureIndex": 235,
+        "firstFailureReason": "replicas differ after an order"
+      },
+      "viewCounterexample": {
+        "shrinks": 38,
+        "steps": [
+          {
+            "kind": "delete",
+            "replica": 0,
+            "file": 1
+          },
+          {
+            "kind": "delete",
+            "replica": 1,
+            "file": 1
+          },
+          {
+            "kind": "create",
+            "replica": 0,
+            "file": 1,
+            "content": ""
+          },
+          {
+            "kind": "create",
+            "replica": 1,
+            "file": 1,
+            "content": ""
+          },
+          {
+            "kind": "release",
+            "replica": 0,
+            "task": 0
+          },
+          {
+            "kind": "rename",
+            "replica": 0,
+            "file": 0,
+            "to": 0
+          },
+          {
+            "kind": "sync",
+            "left": 0,
+            "right": 2
+          },
+          {
+            "kind": "release",
+            "replica": 0,
+            "task": 0
+          },
+          {
+            "kind": "release",
+            "replica": 0,
+            "task": 0
+          },
+          {
+            "kind": "rename",
+            "replica": 0,
+            "file": 1,
+            "to": 2
+          },
+          {
+            "kind": "edit",
+            "replica": 0,
+            "file": 0,
+            "region": 0,
+            "offset": 0,
+            "deleteCount": 0,
+            "insert": ""
+          },
+          {
+            "kind": "release",
+            "replica": 0,
+            "task": 0
+          },
+          {
+            "kind": "create",
+            "replica": 0,
+            "file": 1,
+            "content": "a"
+          },
+          {
+            "kind": "edit",
+            "replica": 0,
+            "file": 0,
+            "region": 0,
+            "offset": 0,
+            "deleteCount": 0,
+            "insert": ""
+          }
+        ],
+        "orders": [
+          [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ]
+        ],
+        "views": [
+          "{\"claims\":[null,null],\"files\":[[\"src/a.ts\",\"export const value = 1\\nexport function f(x: number): number {\\n  return x + 1\\n}\\n\",\"ts\"],[\"src/b.ts\",\"export const created = 'a'\\n\",\"ts\"],[\"src/c.ts\",\"export const created = ''\\n\",\"ts\"]],\"heads\":[\"278c4edfbb2a69a9dbe2af1d22401df1d0473c3146cd76b0001e9b89dbb18c80\",\"e1febd55f1295a37365f5334003222deabef288151960c9a831de0e7b57d8575\"],\"operations\":[{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":1,\"summary\":\"Create src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"delete_file\",\"logicalTime\":1,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":3,\"summary\":\"Task 0\",\"target\":\"task:agent-a:3\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":4,\"summary\":\"Task 1\",\"target\":\"task:agent-a:4\"},{\"actorId\":\"agent-a\",\"kind\":\"delete_file\",\"logicalTime\":5,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":6,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"rename_file\",\"logicalTime\":7,\"summary\":\"Rename src/b.ts to src/c.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":8,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":9,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":10,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"}]}",
+          "{\"claims\":[null,null],\"files\":[[\"src/a.ts\",\"export const value = 1\\nexport function f(x: number): number {\\n  return x + 1\\n}\\n\",\"ts\"],[\"src/b.ts\",\"export const created = ''\\n\",\"ts\"],[\"src/c.ts\",\"export const created = ''\\n\",\"ts\"]],\"heads\":[\"278c4edfbb2a69a9dbe2af1d22401df1d0473c3146cd76b0001e9b89dbb18c80\",\"e1febd55f1295a37365f5334003222deabef288151960c9a831de0e7b57d8575\"],\"operations\":[{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":1,\"summary\":\"Create src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"delete_file\",\"logicalTime\":1,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":3,\"summary\":\"Task 0\",\"target\":\"task:agent-a:3\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":4,\"summary\":\"Task 1\",\"target\":\"task:agent-a:4\"},{\"actorId\":\"agent-a\",\"kind\":\"delete_file\",\"logicalTime\":5,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":6,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"rename_file\",\"logicalTime\":7,\"summary\":\"Rename src/b.ts to src/c.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":8,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":9,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":10,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"}]}",
+          "{\"claims\":[null,null],\"files\":[[\"src/a.ts\",\"export const value = 1\\nexport function f(x: number): number {\\n  return x + 1\\n}\\n\",\"ts\"],[\"src/b.ts\",\"export const created = 'a'\\n\",\"ts\"],[\"src/c.ts\",\"export const created = ''\\n\",\"ts\"]],\"heads\":[\"278c4edfbb2a69a9dbe2af1d22401df1d0473c3146cd76b0001e9b89dbb18c80\",\"e1febd55f1295a37365f5334003222deabef288151960c9a831de0e7b57d8575\"],\"operations\":[{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":1,\"summary\":\"Create src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"delete_file\",\"logicalTime\":1,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":3,\"summary\":\"Task 0\",\"target\":\"task:agent-a:3\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":4,\"summary\":\"Task 1\",\"target\":\"task:agent-a:4\"},{\"actorId\":\"agent-a\",\"kind\":\"delete_file\",\"logicalTime\":5,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":6,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"rename_file\",\"logicalTime\":7,\"summary\":\"Rename src/b.ts to src/c.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":8,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":9,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":10,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"}]}",
+          "{\"claims\":[null,null],\"files\":[[\"src/a.ts\",\"export const value = 1\\nexport function f(x: number): number {\\n  return x + 1\\n}\\n\",\"ts\"],[\"src/b.ts\",\"export const created = 'a'\\n\",\"ts\"],[\"src/c.ts\",\"export const created = ''\\n\",\"ts\"]],\"heads\":[\"278c4edfbb2a69a9dbe2af1d22401df1d0473c3146cd76b0001e9b89dbb18c80\",\"e1febd55f1295a37365f5334003222deabef288151960c9a831de0e7b57d8575\"],\"operations\":[{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":1,\"summary\":\"Create src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"delete_file\",\"logicalTime\":1,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":3,\"summary\":\"Task 0\",\"target\":\"task:agent-a:3\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":4,\"summary\":\"Task 1\",\"target\":\"task:agent-a:4\"},{\"actorId\":\"agent-a\",\"kind\":\"delete_file\",\"logicalTime\":5,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":6,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"rename_file\",\"logicalTime\":7,\"summary\":\"Rename src/b.ts to src/c.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":8,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":9,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":10,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"}]}",
+          "{\"claims\":[null,null],\"files\":[[\"src/a.ts\",\"export const value = 1\\nexport function f(x: number): number {\\n  return x + 1\\n}\\n\",\"ts\"],[\"src/b.ts\",\"export const created = ''\\n\",\"ts\"],[\"src/c.ts\",\"export const created = ''\\n\",\"ts\"]],\"heads\":[\"278c4edfbb2a69a9dbe2af1d22401df1d0473c3146cd76b0001e9b89dbb18c80\",\"e1febd55f1295a37365f5334003222deabef288151960c9a831de0e7b57d8575\"],\"operations\":[{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":1,\"summary\":\"Create src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"delete_file\",\"logicalTime\":1,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":3,\"summary\":\"Task 0\",\"target\":\"task:agent-a:3\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":4,\"summary\":\"Task 1\",\"target\":\"task:agent-a:4\"},{\"actorId\":\"agent-a\",\"kind\":\"delete_file\",\"logicalTime\":5,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":6,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"rename_file\",\"logicalTime\":7,\"summary\":\"Rename src/b.ts to src/c.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":8,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":9,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":10,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"}]}",
+          "{\"claims\":[null,null],\"files\":[[\"src/a.ts\",\"export const value = 1\\nexport function f(x: number): number {\\n  return x + 1\\n}\\n\",\"ts\"],[\"src/b.ts\",\"export const created = 'a'\\n\",\"ts\"],[\"src/c.ts\",\"export const created = ''\\n\",\"ts\"]],\"heads\":[\"278c4edfbb2a69a9dbe2af1d22401df1d0473c3146cd76b0001e9b89dbb18c80\",\"e1febd55f1295a37365f5334003222deabef288151960c9a831de0e7b57d8575\"],\"operations\":[{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":1,\"summary\":\"Create src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"delete_file\",\"logicalTime\":1,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":3,\"summary\":\"Task 0\",\"target\":\"task:agent-a:3\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":4,\"summary\":\"Task 1\",\"target\":\"task:agent-a:4\"},{\"actorId\":\"agent-a\",\"kind\":\"delete_file\",\"logicalTime\":5,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":6,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"rename_file\",\"logicalTime\":7,\"summary\":\"Rename src/b.ts to src/c.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":8,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":9,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":10,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"}]}",
+          "{\"claims\":[null,null],\"files\":[[\"src/a.ts\",\"export const value = 1\\nexport function f(x: number): number {\\n  return x + 1\\n}\\n\",\"ts\"],[\"src/b.ts\",\"export const created = 'a'\\n\",\"ts\"],[\"src/c.ts\",\"export const created = ''\\n\",\"ts\"]],\"heads\":[\"278c4edfbb2a69a9dbe2af1d22401df1d0473c3146cd76b0001e9b89dbb18c80\",\"e1febd55f1295a37365f5334003222deabef288151960c9a831de0e7b57d8575\"],\"operations\":[{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":1,\"summary\":\"Create src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"delete_file\",\"logicalTime\":1,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":3,\"summary\":\"Task 0\",\"target\":\"task:agent-a:3\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":4,\"summary\":\"Task 1\",\"target\":\"task:agent-a:4\"},{\"actorId\":\"agent-a\",\"kind\":\"delete_file\",\"logicalTime\":5,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":6,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"rename_file\",\"logicalTime\":7,\"summary\":\"Rename src/b.ts to src/c.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":8,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":9,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":10,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"}]}",
+          "{\"claims\":[null,null],\"files\":[[\"src/a.ts\",\"export const value = 1\\nexport function f(x: number): number {\\n  return x + 1\\n}\\n\",\"ts\"],[\"src/b.ts\",\"export const created = ''\\n\",\"ts\"],[\"src/c.ts\",\"export const created = ''\\n\",\"ts\"]],\"heads\":[\"278c4edfbb2a69a9dbe2af1d22401df1d0473c3146cd76b0001e9b89dbb18c80\",\"e1febd55f1295a37365f5334003222deabef288151960c9a831de0e7b57d8575\"],\"operations\":[{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":1,\"summary\":\"Create src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"delete_file\",\"logicalTime\":1,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":3,\"summary\":\"Task 0\",\"target\":\"task:agent-a:3\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":4,\"summary\":\"Task 1\",\"target\":\"task:agent-a:4\"},{\"actorId\":\"agent-a\",\"kind\":\"delete_file\",\"logicalTime\":5,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":6,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"rename_file\",\"logicalTime\":7,\"summary\":\"Rename src/b.ts to src/c.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":8,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":9,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":10,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"}]}",
+          "{\"claims\":[null,null],\"files\":[[\"src/a.ts\",\"export const value = 1\\nexport function f(x: number): number {\\n  return x + 1\\n}\\n\",\"ts\"],[\"src/b.ts\",\"export const created = ''\\n\",\"ts\"],[\"src/c.ts\",\"export const created = ''\\n\",\"ts\"]],\"heads\":[\"278c4edfbb2a69a9dbe2af1d22401df1d0473c3146cd76b0001e9b89dbb18c80\",\"e1febd55f1295a37365f5334003222deabef288151960c9a831de0e7b57d8575\"],\"operations\":[{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":1,\"summary\":\"Create src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"delete_file\",\"logicalTime\":1,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-b\",\"kind\":\"create_file\",\"logicalTime\":2,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":3,\"summary\":\"Task 0\",\"target\":\"task:agent-a:3\"},{\"actorId\":\"agent-a\",\"kind\":\"create_task\",\"logicalTime\":4,\"summary\":\"Task 1\",\"target\":\"task:agent-a:4\"},{\"actorId\":\"agent-a\",\"kind\":\"delete_file\",\"logicalTime\":5,\"summary\":\"Delete src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":6,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"rename_file\",\"logicalTime\":7,\"summary\":\"Rename src/b.ts to src/c.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":8,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"create_file\",\"logicalTime\":9,\"summary\":\"Create src/b.ts\",\"target\":\"src/b.ts\"},{\"actorId\":\"agent-a\",\"kind\":\"edit_file\",\"logicalTime\":10,\"summary\":\"Edit src/a.ts\",\"target\":\"src/a.ts\"}]}"
+        ]
+      },
+      "stepsPerCase": {
+        "min": 10,
+        "median": 24,
+        "max": 40,
+        "mean": 24.266,
+        "total": 12133
+      },
+      "appliedOperationsPerCase": {
+        "min": 2,
+        "median": 14,
+        "max": 30,
+        "mean": 14.212,
+        "total": 7106
+      },
+      "operationsByKind": {
+        "edit": 3960,
+        "claim": 1604,
+        "delete": 329,
+        "create": 851,
+        "rename": 187,
+        "release": 175
+      },
+      "skippedOperations": 3411,
+      "intermediateSyncs": 1616,
+      "finalOrdersPerCase": 3,
+      "finalOrdersTested": 1500,
+      "distinctFinalOrders": 1103,
+      "possibleFinalOrders": 2304,
+      "syncsPerFinalOrder": 6,
+      "concurrency": {
+        "casesWithConcurrentSameFileEdits": 440,
+        "concurrentSameRegionEditPairs": 805,
+        "casesWithConcurrentSameRegionEdits": 339,
+        "concurrentSamePathCreates": 120,
+        "casesWithConcurrentSamePathCreates": 94,
+        "casesWithConcurrentClaimsOnSameTask": 242,
+        "casesWithEditDeleteRace": 178
+      }
+    }
+  ]
+}
