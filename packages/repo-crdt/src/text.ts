@@ -8,8 +8,23 @@ export interface TextEdit {
   insert: string
 }
 
-export function createText(content: string): CrdtText {
-  return new Text(content)
+/** Characters per insert call: Automerge inserts spread each character as an argument, which overflows the stack on large files. */
+const CHUNK = 8192
+
+/** An empty text; fill it with `fillText` once it is attached to the document (large contents cannot go through the constructor). */
+export function createText(): CrdtText {
+  return new Text()
+}
+
+export function fillText(text: CrdtText, content: string): void {
+  insertChunked(text, 0, content)
+}
+
+function insertChunked(text: CrdtText, start: number, content: string): void {
+  const chars = Array.from(content)
+  for (let offset = 0; offset < chars.length; offset += CHUNK) {
+    text.insertAt(start + offset, ...chars.slice(offset, offset + CHUNK))
+  }
 }
 
 export function applyTextEdit(text: CrdtText, edit: TextEdit): void {
@@ -22,7 +37,7 @@ export function applyTextEdit(text: CrdtText, edit: TextEdit): void {
   }
 
   if (edit.insert.length > 0) {
-    text.insertAt(edit.start, ...Array.from(edit.insert))
+    insertChunked(text, edit.start, edit.insert)
   }
 }
 

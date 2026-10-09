@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R1",
+      "level": 1,
+      "rationale": "The public call signatures of formatQuantity lose the (value, unit) overload (the implementation signature is unchanged and not callable from outside); labels/page.tsx still calls it with two arguments.",
+      "origin": {
+        "file": "src/lib/format.ts",
+        "symbol": "formatQuantity"
+      },
+      "affected": [
+        {
+          "file": "src/app/labels/page.tsx",
+          "symbol": "formatQuantity"
+        }
+      ]
+    }
+  ]
+}

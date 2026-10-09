@@ -27,7 +27,8 @@ export class SemanticIndex {
     const files = new Set(repo.listFiles())
     const sourceFiles = project.getSourceFiles()
     const symbols = sourceFiles.flatMap((sourceFile) => collectSymbols(sourceFile))
-    const references = sourceFiles.flatMap((sourceFile) => collectReferences(sourceFile, files, symbols))
+    const symbolIds = new Set(symbols.map((symbol) => symbol.id))
+    const references = sourceFiles.flatMap((sourceFile) => collectReferences(sourceFile, files, symbolIds))
     const graph = collectDependencies(sourceFiles, files)
     const diagnostics = collectDiagnostics(project)
 

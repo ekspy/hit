@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R4",
+      "level": 1,
+      "rationale": "ShipmentOptions.tracking.notify (nested inside an optional object) becomes required; dispatch/page.tsx still builds a ShipmentOptions literal whose tracking object omits notify, a type incompatibility at the point of use.",
+      "origin": {
+        "file": "src/lib/shipping.ts",
+        "symbol": "ShipmentOptions.tracking.notify"
+      },
+      "affected": [
+        {
+          "file": "src/app/dispatch/page.tsx",
+          "symbol": "ShipmentOptions"
+        }
+      ]
+    }
+  ]
+}

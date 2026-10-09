@@ -1,0 +1,11 @@
+{
+  "id": "h06-two-conflicts-same-pair-no-symbol",
+  "title": "Two independent breaks between inventory.ts and stock page: enum member removed (switch) and class method renamed",
+  "fixture": "warehouse",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

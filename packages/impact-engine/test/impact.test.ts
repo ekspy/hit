@@ -114,6 +114,48 @@ describe('ImpactEngine', () => {
     expect(grouped[0]?.conflicts.map((conflict) => conflict.rule)).toEqual(['R2', 'R3'])
   })
 
+  it('keeps distinct unresolved diagnostics on the same file pair as separate conflicts', () => {
+    const before = Repo.create('test')
+    before.createFile('src/inventory.ts', "export enum Status { A = 'a', B = 'b' }\nexport class Service {\n  reserve(): boolean { return true }\n}\n", 'ts')
+    before.createFile(
+      'src/page.ts',
+      "import { Service, Status } from './inventory'\nexport function label(s: Status): string {\n  if (s === Status.B) return 'b'\n  return 'a'\n}\nexport const ok = new Service().reserve()\n",
+      'ts',
+    )
+    const previous = SemanticIndex.build(before)
+    before.editFile('src/inventory.ts', { start: 0, deleteCount: before.fileContent('src/inventory.ts').length, insert: "export enum Status { A = 'a' }\nexport class Service {\n  hold(): boolean { return true }\n}\n" })
+    const current = SemanticIndex.build(before)
+    const conflicts = new ImpactEngine().analyze(semanticDiff(previous, current), current)
+    const unresolved = conflicts.filter((conflict) => conflict.rule === 'R4' && !conflict.origin.symbolId)
+
+    expect(unresolved).toHaveLength(2)
+    expect(groupLogicalConflicts(unresolved)).toHaveLength(2)
+  })
+
+  it('reports rule attribution strictly and accepting alternative label rules', () => {
+    const conflict: Conflict = {
+      id: 'r1',
+      rule: 'R1',
+      level: 1,
+      severity: 'medium',
+      origin: { file: 'src/payments.ts', symbolId: 'src/payments.ts#createPayment' },
+      affected: [{ file: 'src/checkout.ts' }],
+      reason: 'Contract changed',
+      status: 'pending',
+      classification: 'breaking',
+    }
+    const label = { rule: 'R4' as const, level: 1 as const, origin: { file: 'src/payments.ts', symbol: 'createPayment' }, affected: [{ file: 'src/checkout.ts', symbol: 'createPayment' }] }
+
+    const strict = scoreConflicts([conflict], [label])
+    const lenient = scoreConflicts([conflict], [{ ...label, acceptableRules: ['R1'] }])
+
+    expect(strict.ruleAttribution.correct).toBe(0)
+    expect(strict.ruleAttributionAcceptable.correct).toBe(0)
+    expect(lenient.ruleAttribution.correct).toBe(0)
+    expect(lenient.ruleAttributionAcceptable.correct).toBe(1)
+    expect(lenient.truePositives).toBe(1)
+  })
+
   it('matches diagnostic-only removed field evidence through quoted identifiers', () => {
     const report = scoreConflicts(
       [

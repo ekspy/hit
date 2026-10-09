@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/shipping.ts",
+      "search": "  carrier: string\n",
+      "replace": "  carrier?: string\n"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/shipping.ts",
+      "search": "via ${options.carrier}",
+      "replace": "via ${options.carrier ?? 'standard'}"
+    }
+  ]
+}

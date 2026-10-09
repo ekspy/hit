@@ -14,7 +14,9 @@
     "build": "tsc -b",
     "analyses": "tsx src/harness.ts",
     "mode1": "tsx src/mode1.ts",
-    "mode2": "tsx src/mode2.ts"
+    "mode2": "tsx src/mode2.ts",
+    "detector": "tsx src/harness.ts detector",
+    "convergence-property": "node --expose-gc --import tsx src/convergence-property.ts"
   },
   "dependencies": {
     "@hit/agent": "workspace:*",

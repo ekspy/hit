@@ -111,7 +111,10 @@ function diagnosticConflicts(diff: SemanticDiff, index: SemanticIndex): Conflict
     const rule: RuleId = diagnostic.code === 2307 || diagnostic.code === 2305 ? 'R3' : typeMismatchCodes.has(diagnostic.code) ? 'R4' : 'R9'
     const origin = diagnosticOrigin(diagnostic, affected.file, diff, index) ?? { file: affected.file }
     conflicts.push({
-      id: conflictId(rule, origin.file, origin.symbolId, [affected.file, String(diagnostic.code)]),
+      // Without a resolved producer symbol, the diagnostic position is part of the identity:
+      // otherwise two distinct diagnostics with the same code in the same consumer collapse
+      // into one conflict at deduplication. Resolved conflicts keep their position-free id.
+      id: conflictId(rule, origin.file, origin.symbolId, [affected.file, String(diagnostic.code), ...(origin.symbolId ? [] : [diagnosticPosition(affected)])]),
       rule,
       level: ruleLevel(rule),
       severity: ruleSeverity(rule),
@@ -176,6 +179,10 @@ function missingModuleFile(message: string, consumerFile: string, removed: Symbo
 
   const resolved = path.posix.normalize(path.posix.join(path.posix.dirname(consumerFile), specifier))
   return removed.map((symbol) => symbol.file).find((file) => file === resolved || file.replace(/\.[cm]?[tj]sx?$/, '') === resolved)
+}
+
+function diagnosticPosition(affected: { loc?: { line: number; column: number } }): string {
+  return affected.loc ? `${affected.loc.line}:${affected.loc.column}` : '-'
 }
 
 function isRemoved(symbol: SymbolInfo, diff: SemanticDiff): boolean {

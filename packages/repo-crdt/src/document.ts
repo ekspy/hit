@@ -1,6 +1,6 @@
 import * as Automerge from '@automerge/automerge'
 
-import { applyTextEdit, createText, textToString, type CrdtText, type TextEdit } from './text.js'
+import { applyTextEdit, createText, fillText, textToString, type CrdtText, type TextEdit } from './text.js'
 import type { ActiveClaim, Lang, OperationRecord, TaskInput } from './operations.js'
 
 interface FileRecord {
@@ -83,7 +83,8 @@ export class Repo {
 
   createFile(path: string, content: string, lang: Lang): void {
     this.commit('create_file', path, `Create ${path}`, (doc) => {
-      doc.files[path] = { content: createText(content), lang }
+      doc.files[path] = { content: createText(), lang }
+      fillText(doc.files[path].content, content)
     })
   }
 
@@ -119,10 +120,8 @@ export class Repo {
         throw new Error(`Cannot rename missing file: ${from}`)
       }
 
-      doc.files[to] = {
-        content: createText(textToString(file.content)),
-        lang: file.lang,
-      }
+      doc.files[to] = { content: createText(), lang: file.lang }
+      fillText(doc.files[to].content, textToString(file.content))
       file.deleted = true
     })
   }

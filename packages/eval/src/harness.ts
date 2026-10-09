@@ -1,6 +1,4 @@
-import { readFileSync } from 'node:fs'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 
 import { ImpactEngine, scoreConflicts, type Conflict, type LabelsFile, type LogicalConflict, type QualityReport } from '@hit/impact-engine'
 import { Repo } from '@hit/repo-crdt'
@@ -9,7 +7,7 @@ import { SemanticIndex, semanticDiff } from '@hit/semantic-indexer'
 import { propagationBench } from './bench.js'
 import { gitPilot } from './git-baseline.js'
 import { table, writeReport } from './report.js'
-import { applyScript, loadAgentScript, loadFixtureRepo, runScenario } from './scenario.js'
+import { applyScript, listScenarioIds, loadAgentScript, loadFixtureRepo, loadLabelsFile, loadScenario, runScenario, type ScenarioSet } from './scenario.js'
 
 const scenarios = [
   '01-return-type-change',
@@ -30,7 +28,6 @@ const scenarios = [
   '16-two-producers-one-consumer',
 ]
 
-const here = path.dirname(fileURLToPath(import.meta.url))
 
 export async function runAnalyses(): Promise<void> {
   writeConvergenceReport()
@@ -97,19 +94,22 @@ function convergenceCase(actorIds: string[]): {
   }
 }
 
-function writeDetectorQualityReport(): void {
-  const rows = scenarios.map((id) => {
-    const actual = detectorConflicts(id)
-    const expected = loadLabels(id).conflicts
+export function writeDetectorQualityReport(set: ScenarioSet = 'dev', reportName = 'detector-quality'): void {
+  const ids = set === 'dev' ? scenarios : listScenarioIds(set)
+  const rows = ids.map((id) => {
+    const actual = detectorConflicts(id, set)
+    const expected = loadLabels(id, set).conflicts
     const score = scoreConflicts(actual, expected)
     return { id, actual, expected, score }
   })
   const overall = aggregateQuality(rows.map((row) => row.score))
   const json = {
     seed: 1701,
+    scenarioSet: set,
     overall: {
       conflictLevel: overall.conflictLevel,
       ruleAttribution: overall.ruleAttribution,
+      ruleAttributionAcceptable: overall.ruleAttributionAcceptable,
       rawRuleFirings: overall.rawRuleFirings,
     },
     scenarios: rows.map((row) => ({
@@ -121,22 +121,24 @@ function writeDetectorQualityReport(): void {
       score: {
         conflictLevel: conflictLevelScore(row.score),
         ruleAttribution: row.score.ruleAttribution,
+        ruleAttributionAcceptable: row.score.ruleAttributionAcceptable,
         rawRuleFirings: row.score.rawRuleFirings,
       },
     })),
   }
 
   writeReport(
-    'detector-quality',
+    reportName,
     json,
-    `# Detector Quality
+    `# Detector Quality (${set} set)
 
 Conflict-level precision: ${overall.conflictLevel.precision.toFixed(2)}
 Conflict-level recall: ${overall.conflictLevel.recall.toFixed(2)}
 Conflict-level F1: ${overall.conflictLevel.f1.toFixed(2)}
-Rule-attribution accuracy: ${overall.ruleAttribution.accuracy.toFixed(2)}
+Rule-attribution accuracy (strict, label rule only): ${overall.ruleAttribution.accuracy.toFixed(2)} (${overall.ruleAttribution.correct}/${overall.ruleAttribution.total})
+Rule-attribution accuracy (accepting acceptableRules): ${overall.ruleAttributionAcceptable.accuracy.toFixed(2)} (${overall.ruleAttributionAcceptable.correct}/${overall.ruleAttributionAcceptable.total})
 
-${table(['Scenario', 'Precision', 'Recall', 'F1', 'TP', 'FP', 'FN'], rows.map((row) => [row.id, row.score.precision.toFixed(2), row.score.recall.toFixed(2), row.score.f1.toFixed(2), row.score.truePositives, row.score.falsePositives, row.score.falseNegatives]))}
+${table(['Scenario', 'Precision', 'Recall', 'F1', 'TP', 'FP', 'FN', 'Rule (strict)', 'Rule (acceptable)'], rows.map((row) => [row.id, row.score.precision.toFixed(2), row.score.recall.toFixed(2), row.score.f1.toFixed(2), row.score.truePositives, row.score.falsePositives, row.score.falseNegatives, `${row.score.ruleAttribution.correct}/${row.score.ruleAttribution.total}`, `${row.score.ruleAttributionAcceptable.correct}/${row.score.ruleAttributionAcceptable.total}`]))}
 
 ## Raw Rule-Firing Table
 
@@ -145,20 +147,20 @@ ${table(['Rule', 'Expected', 'Actual', 'Matched'], Object.entries(overall.rawRul
   )
 }
 
-function detectorConflicts(id: string): Conflict[] {
-  const repo = loadFixtureRepo('shopapp', `detector-${id}`)
+function detectorConflicts(id: string, set: ScenarioSet): Conflict[] {
+  const repo = loadFixtureRepo(loadScenario(id, set).fixture, `detector-${id}`)
   const before = SemanticIndex.build(repo)
 
   for (const agentId of ['agent-a', 'agent-b']) {
-    applyScript(repo, loadAgentScript(id, agentId))
+    applyScript(repo, loadAgentScript(id, agentId, set))
   }
 
   const after = SemanticIndex.build(repo)
   return new ImpactEngine().analyze(semanticDiff(before, after), after)
 }
 
-function loadLabels(id: string): LabelsFile {
-  return JSON.parse(readFileSync(path.resolve(here, '..', 'scenarios', id, 'labels.json'), 'utf8')) as LabelsFile
+function loadLabels(id: string, set: ScenarioSet): LabelsFile {
+  return loadLabelsFile<LabelsFile>(id, set)
 }
 
 function conflictLevelScore(score: QualityReport): Pick<QualityReport, 'precision' | 'recall' | 'f1' | 'truePositives' | 'falsePositives' | 'falseNegatives'> {
@@ -175,6 +177,7 @@ function conflictLevelScore(score: QualityReport): Pick<QualityReport, 'precisio
 function aggregateQuality(scores: QualityReport[]): {
   conflictLevel: Pick<QualityReport, 'precision' | 'recall' | 'f1' | 'truePositives' | 'falsePositives' | 'falseNegatives'>
   ruleAttribution: QualityReport['ruleAttribution']
+  ruleAttributionAcceptable: QualityReport['ruleAttributionAcceptable']
   rawRuleFirings: QualityReport['rawRuleFirings']
 } {
   const truePositives = scores.reduce((sum, score) => sum + score.truePositives, 0)
@@ -185,6 +188,7 @@ function aggregateQuality(scores: QualityReport[]): {
   const f1 = precision + recall === 0 ? 0 : (2 * precision * recall) / (precision + recall)
   const correct = scores.reduce((sum, score) => sum + score.ruleAttribution.correct, 0)
   const total = scores.reduce((sum, score) => sum + score.ruleAttribution.total, 0)
+  const correctAcceptable = scores.reduce((sum, score) => sum + score.ruleAttributionAcceptable.correct, 0)
   const rawRuleFirings: QualityReport['rawRuleFirings'] = {}
 
   for (const score of scores) {
@@ -209,6 +213,11 @@ function aggregateQuality(scores: QualityReport[]): {
       correct,
       total,
       accuracy: total === 0 ? 1 : correct / total,
+    },
+    ruleAttributionAcceptable: {
+      correct: correctAcceptable,
+      total,
+      accuracy: total === 0 ? 1 : correctAcceptable / total,
     },
     rawRuleFirings,
   }
@@ -271,5 +280,17 @@ This is a pilot comparison on scripted operations, not a wall-clock comparison o
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  await runAnalyses()
+  const argv = process.argv.slice(2)
+
+  if (argv[0] === 'detector') {
+    // Detector-quality report only: `harness.ts detector [--set dev|heldout] [--out <report-name>]`.
+    const option = (name: string): string | undefined => {
+      const index = argv.indexOf(name)
+      return index === -1 ? undefined : argv[index + 1]
+    }
+    const set = (option('--set') ?? 'dev') as ScenarioSet
+    writeDetectorQualityReport(set, option('--out') ?? (set === 'dev' ? 'detector-quality' : `detector-quality-${set}`))
+  } else {
+    await runAnalyses()
+  }
 }

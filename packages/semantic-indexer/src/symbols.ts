@@ -170,9 +170,18 @@ function objectShape(type: Type, node: Node): TypeShape | undefined {
 }
 
 function typeShape(text: string, properties: Array<[string, string]>, optional: string[]): TypeShape {
+  const stable = properties.map(([name, type]) => [stableName(name), stableName(type)] as [string, string])
   return {
-    text,
-    properties: Object.fromEntries(properties.sort(([left], [right]) => left.localeCompare(right))),
-    ...(optional.length > 0 ? { optional } : {}),
+    text: stableName(text),
+    properties: Object.fromEntries(stable.sort(([left], [right]) => left.localeCompare(right))),
+    ...(optional.length > 0 ? { optional: optional.map(stableName).sort() } : {}),
   }
+}
+
+/**
+ * The checker names symbol-keyed members `__@iterator@352`, with a numeric suffix that changes between builds of the same
+ * program; without this, two builds of identical content would report a changed return shape (and spurious R1/R5 conflicts).
+ */
+function stableName(text: string): string {
+  return text.replace(/__@([A-Za-z_$][\w$]*)@\d+/g, '[Symbol.$1]')
 }

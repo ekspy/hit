@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R3",
+      "level": 1,
+      "rationale": "pricing.ts no longer has a default export; labels/page.tsx (edited concurrently on an unrelated line) still uses `import priceOf from '../../lib/pricing'`, so the import no longer resolves.",
+      "origin": {
+        "file": "src/lib/pricing.ts",
+        "symbol": "priceOf"
+      },
+      "affected": [
+        {
+          "file": "src/app/labels/page.tsx",
+          "symbol": "priceOf"
+        }
+      ]
+    }
+  ]
+}

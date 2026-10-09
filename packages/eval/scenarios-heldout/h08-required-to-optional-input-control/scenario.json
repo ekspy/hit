@@ -1,0 +1,11 @@
+{
+  "id": "h08-required-to-optional-input-control",
+  "title": "Control: ShipmentOptions.carrier becomes optional; dispatch only constructs options",
+  "fixture": "warehouse",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

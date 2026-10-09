@@ -1,0 +1,9 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "noop",
+      "note": "Dispatch keeps passing carrier explicitly; it never reads ShipmentOptions.carrier"
+    }
+  ]
+}

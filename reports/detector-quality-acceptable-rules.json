@@ -1,0 +1,2579 @@
+{
+  "seed": 1701,
+  "scenarioSet": "dev",
+  "overall": {
+    "conflictLevel": {
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "truePositives": 13,
+      "falsePositives": 0,
+      "falseNegatives": 0
+    },
+    "ruleAttribution": {
+      "correct": 12,
+      "total": 13,
+      "accuracy": 0.9230769230769231
+    },
+    "ruleAttributionAcceptable": {
+      "correct": 13,
+      "total": 13,
+      "accuracy": 1
+    },
+    "rawRuleFirings": {
+      "R1": {
+        "expected": 3,
+        "actual": 7,
+        "matched": 3
+      },
+      "R4": {
+        "expected": 6,
+        "actual": 9,
+        "matched": 1
+      },
+      "R5": {
+        "expected": 0,
+        "actual": 3,
+        "matched": 0
+      },
+      "R2": {
+        "expected": 2,
+        "actual": 2,
+        "matched": 2
+      },
+      "R3": {
+        "expected": 1,
+        "actual": 3,
+        "matched": 0
+      },
+      "R6": {
+        "expected": 1,
+        "actual": 1,
+        "matched": 1
+      },
+      "R9": {
+        "expected": 0,
+        "actual": 1,
+        "matched": 0
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "01-return-type-change",
+      "labels": [
+        {
+          "rule": "R1",
+          "level": 1,
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbol": "createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "symbol": "createPayment"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/payments.ts#createPayment"
+            }
+          ],
+          "reason": "Return shape changed for createPayment while signature text stayed createPayment(input: PaymentInput): PaymentResult (property redirectUrl was removed or renamed; property status was removed or renamed; required property state was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2339",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 10,
+                "column": 18
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'PaymentResult'.",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R5:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/payments.ts#createPayment"
+            }
+          ],
+          "reason": "Return shape changed for createPayment (property redirectUrl was removed or renamed; property status was removed or renamed; required property state was added)",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:PaymentResult,createPayment,redirectUrl",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/checkout/page.tsx",
+              "src/lib/payments.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/payments.ts#createPayment"
+            ],
+            "bareSymbols": [
+              "PaymentResult",
+              "createPayment",
+              "redirectUrl"
+            ],
+            "filePairs": [
+              "src/app/checkout/page.tsx<->src/lib/payments.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4",
+              "R5"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/payments.ts#createPayment"
+                }
+              ],
+              "reason": "Return shape changed for createPayment while signature text stayed createPayment(input: PaymentInput): PaymentResult (property redirectUrl was removed or renamed; property status was removed or renamed; required property state was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2339",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 10,
+                    "column": 18
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'PaymentResult'.",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/payments.ts#createPayment"
+                }
+              ],
+              "reason": "Return shape changed for createPayment (property redirectUrl was removed or renamed; property status was removed or renamed; required property state was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:PaymentResult,createPayment,redirectUrl",
+          "score": 100,
+          "expectedRule": "R1",
+          "acceptableRules": [],
+          "primaryRule": "R1",
+          "rawRules": [
+            "R1",
+            "R4",
+            "R5"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          },
+          "R4": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "02-symbol-rename",
+      "labels": [
+        {
+          "rule": "R2",
+          "level": 1,
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbol": "createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "symbol": "createPayment"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R2:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R2",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 10
+              }
+            }
+          ],
+          "reason": "Exported symbol createPayment was removed or renamed",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R3:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2305",
+          "rule": "R3",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 10
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2305: Module '\"../../lib/payments\"' has no exported member 'createPayment'.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:createPayment",
+          "primaryRule": "R2",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/checkout/page.tsx",
+              "src/lib/payments.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/payments.ts#createPayment"
+            ],
+            "bareSymbols": [
+              "createPayment"
+            ],
+            "filePairs": [
+              "src/app/checkout/page.tsx<->src/lib/payments.ts"
+            ],
+            "rules": [
+              "R2",
+              "R3"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R2:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R2",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 10
+                  }
+                }
+              ],
+              "reason": "Exported symbol createPayment was removed or renamed",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R3:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2305",
+              "rule": "R3",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 10
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2305: Module '\"../../lib/payments\"' has no exported member 'createPayment'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:createPayment",
+          "score": 100,
+          "expectedRule": "R2",
+          "acceptableRules": [],
+          "primaryRule": "R2",
+          "rawRules": [
+            "R2",
+            "R3"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R2": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          },
+          "R3": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "03-removed-field",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "Consumer receives TS 2339 after OrderRecord.customerEmail is renamed.",
+          "origin": {
+            "file": "src/lib/db.ts",
+            "symbol": "OrderRecord.customerEmail"
+          },
+          "affected": [
+            {
+              "file": "src/lib/orders.ts",
+              "symbol": "customerEmail"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R4:src/lib/db.ts:src/lib/db.ts#OrderRecord:src/lib/orders.ts:2339",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/db.ts",
+            "symbolId": "src/lib/db.ts#OrderRecord"
+          },
+          "affected": [
+            {
+              "file": "src/lib/orders.ts",
+              "loc": {
+                "line": 10,
+                "column": 19
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'customerEmail' does not exist on type 'OrderRecord'.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/lib/db.ts,src/lib/orders.ts:OrderRecord,customerEmail",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/lib/db.ts",
+              "src/lib/orders.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/db.ts#OrderRecord"
+            ],
+            "bareSymbols": [
+              "OrderRecord",
+              "customerEmail"
+            ],
+            "filePairs": [
+              "src/lib/db.ts<->src/lib/orders.ts"
+            ],
+            "rules": [
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R4:src/lib/db.ts:src/lib/db.ts#OrderRecord:src/lib/orders.ts:2339",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/db.ts",
+                "symbolId": "src/lib/db.ts#OrderRecord"
+              },
+              "affected": [
+                {
+                  "file": "src/lib/orders.ts",
+                  "loc": {
+                    "line": 10,
+                    "column": 19
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'customerEmail' does not exist on type 'OrderRecord'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/lib/db.ts,src/lib/orders.ts:OrderRecord,customerEmail",
+          "score": 80,
+          "expectedRule": "R4",
+          "acceptableRules": [],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R4": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "04-symbol-move",
+      "labels": [
+        {
+          "rule": "R2",
+          "level": 1,
+          "origin": {
+            "file": "src/lib/orders.ts",
+            "symbol": "orderSummary"
+          },
+          "affected": [
+            {
+              "file": "src/app/orders/page.tsx",
+              "symbol": "orderSummary"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R2:src/lib/orders.ts:src/lib/orders.ts#orderSummary:src/app/orders/page.tsx",
+          "rule": "R2",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/orders.ts",
+            "symbolId": "src/lib/orders.ts#orderSummary"
+          },
+          "affected": [
+            {
+              "file": "src/app/orders/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 10
+              }
+            }
+          ],
+          "reason": "Exported symbol orderSummary was removed or renamed",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R3:src/lib/orders.ts:src/lib/orders.ts#orderSummary:src/app/orders/page.tsx:2305",
+          "rule": "R3",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/orders.ts",
+            "symbolId": "src/lib/orders.ts#orderSummary"
+          },
+          "affected": [
+            {
+              "file": "src/app/orders/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 10
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2305: Module '\"../../lib/orders\"' has no exported member 'orderSummary'.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/orders/page.tsx,src/lib/orders.ts:orderSummary",
+          "primaryRule": "R2",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/orders/page.tsx",
+              "src/lib/orders.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/orders.ts#orderSummary"
+            ],
+            "bareSymbols": [
+              "orderSummary"
+            ],
+            "filePairs": [
+              "src/app/orders/page.tsx<->src/lib/orders.ts"
+            ],
+            "rules": [
+              "R2",
+              "R3"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R2:src/lib/orders.ts:src/lib/orders.ts#orderSummary:src/app/orders/page.tsx",
+              "rule": "R2",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/orders.ts",
+                "symbolId": "src/lib/orders.ts#orderSummary"
+              },
+              "affected": [
+                {
+                  "file": "src/app/orders/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 10
+                  }
+                }
+              ],
+              "reason": "Exported symbol orderSummary was removed or renamed",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R3:src/lib/orders.ts:src/lib/orders.ts#orderSummary:src/app/orders/page.tsx:2305",
+              "rule": "R3",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/orders.ts",
+                "symbolId": "src/lib/orders.ts#orderSummary"
+              },
+              "affected": [
+                {
+                  "file": "src/app/orders/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 10
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2305: Module '\"../../lib/orders\"' has no exported member 'orderSummary'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/orders/page.tsx,src/lib/orders.ts:orderSummary",
+          "score": 100,
+          "expectedRule": "R2",
+          "acceptableRules": [],
+          "primaryRule": "R2",
+          "rawRules": [
+            "R2",
+            "R3"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R2": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          },
+          "R3": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "05-optional-to-required",
+      "labels": [
+        {
+          "rule": "R6",
+          "level": 2,
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbol": "createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "symbol": "createPayment"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/payments.ts#createPayment"
+            }
+          ],
+          "reason": "Contract changed from createPayment(input: PaymentInput): PaymentResult to createPayment(input: PaymentInput, currency: string): PaymentResult (required parameter currency was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2554",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 4,
+                "column": 19
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2554: Expected 2 arguments, but got 1.",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R6:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R6",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/payments.ts#createPayment"
+            }
+          ],
+          "reason": "Parameter contract narrowed for createPayment (required parameter currency was added)",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:createPayment",
+          "primaryRule": "R6",
+          "level": 2,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/checkout/page.tsx",
+              "src/lib/payments.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/payments.ts#createPayment"
+            ],
+            "bareSymbols": [
+              "createPayment"
+            ],
+            "filePairs": [
+              "src/app/checkout/page.tsx<->src/lib/payments.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4",
+              "R6"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/payments.ts#createPayment"
+                }
+              ],
+              "reason": "Contract changed from createPayment(input: PaymentInput): PaymentResult to createPayment(input: PaymentInput, currency: string): PaymentResult (required parameter currency was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2554",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 4,
+                    "column": 19
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2554: Expected 2 arguments, but got 1.",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R6:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R6",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/payments.ts#createPayment"
+                }
+              ],
+              "reason": "Parameter contract narrowed for createPayment (required parameter currency was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:createPayment",
+          "score": 100,
+          "expectedRule": "R6",
+          "acceptableRules": [],
+          "primaryRule": "R6",
+          "rawRules": [
+            "R1",
+            "R4",
+            "R6"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R6": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "06-widen-to-narrow-type",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "Checkout passes 1299 after createPayment narrows its accepted amount to the literal 0.",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbol": "createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "symbol": "createPayment"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/payments.ts#createPayment"
+            }
+          ],
+          "reason": "Contract changed from createPayment(input: PaymentInput): PaymentResult to createPayment(input: PaymentInput & { amountCents: 0 }): PaymentResult (parameter input type changed from PaymentInput to PaymentInput & { amountCents: 0; })",
+          "status": "pending",
+          "classification": "unknown"
+        },
+        {
+          "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2322",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 4,
+                "column": 53
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2322: Type '1299' is not assignable to type '0'.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:createPayment",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/checkout/page.tsx",
+              "src/lib/payments.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/payments.ts#createPayment"
+            ],
+            "bareSymbols": [
+              "createPayment"
+            ],
+            "filePairs": [
+              "src/app/checkout/page.tsx<->src/lib/payments.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/payments.ts#createPayment"
+                }
+              ],
+              "reason": "Contract changed from createPayment(input: PaymentInput): PaymentResult to createPayment(input: PaymentInput & { amountCents: 0 }): PaymentResult (parameter input type changed from PaymentInput to PaymentInput & { amountCents: 0; })",
+              "status": "pending",
+              "classification": "unknown"
+            },
+            {
+              "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2322",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 4,
+                    "column": 53
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2322: Type '1299' is not assignable to type '0'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:createPayment",
+          "score": 100,
+          "expectedRule": "R4",
+          "acceptableRules": [],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R1",
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "07-async-contract-change",
+      "labels": [
+        {
+          "rule": "R1",
+          "level": 1,
+          "rationale": "createPayment now returns a Promise but checkout still reads the result synchronously.",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbol": "createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "symbol": "createPayment"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/payments.ts#createPayment"
+            }
+          ],
+          "reason": "Contract changed from createPayment(input: PaymentInput): PaymentResult to createPayment(input: PaymentInput): Promise<PaymentResult> (return became asynchronous (Promise))",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2339",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 10,
+                "column": 18
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'Promise<PaymentResult>'.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:createPayment,redirectUrl",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/checkout/page.tsx",
+              "src/lib/payments.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/payments.ts#createPayment"
+            ],
+            "bareSymbols": [
+              "createPayment",
+              "redirectUrl"
+            ],
+            "filePairs": [
+              "src/app/checkout/page.tsx<->src/lib/payments.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/payments.ts#createPayment"
+                }
+              ],
+              "reason": "Contract changed from createPayment(input: PaymentInput): PaymentResult to createPayment(input: PaymentInput): Promise<PaymentResult> (return became asynchronous (Promise))",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2339",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 10,
+                    "column": 18
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'Promise<PaymentResult>'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:createPayment,redirectUrl",
+          "score": 100,
+          "expectedRule": "R1",
+          "acceptableRules": [],
+          "primaryRule": "R1",
+          "rawRules": [
+            "R1",
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          },
+          "R4": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "08-import-path-change",
+      "labels": [
+        {
+          "rule": "R3",
+          "level": 1,
+          "rationale": "The payments module is deleted after being moved to billing, leaving checkout's import path stale.",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbol": "payments"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "symbol": "payments"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R3:src/lib/payments.ts:-:src/app/checkout/page.tsx:2307:1:31",
+          "rule": "R3",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/payments.ts"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 31
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2307: Cannot find module '../../lib/payments' or its corresponding type declarations.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:payments",
+          "primaryRule": "R3",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/checkout/page.tsx",
+              "src/lib/payments.ts"
+            ],
+            "symbolTokens": [],
+            "bareSymbols": [
+              "payments"
+            ],
+            "filePairs": [
+              "src/app/checkout/page.tsx<->src/lib/payments.ts"
+            ],
+            "rules": [
+              "R3"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R3:src/lib/payments.ts:-:src/app/checkout/page.tsx:2307:1:31",
+              "rule": "R3",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/payments.ts"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 31
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2307: Cannot find module '../../lib/payments' or its corresponding type declarations.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:payments",
+          "score": 80,
+          "expectedRule": "R3",
+          "acceptableRules": [],
+          "primaryRule": "R3",
+          "rawRules": [
+            "R3"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R3": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "09-union-value-removed",
+      "labels": [
+        {
+          "rule": "R4",
+          "acceptableRules": [
+            "R1"
+          ],
+          "level": 1,
+          "rationale": "PaymentResult.status removes 'failed', producing a createPayment contract drift and concrete type errors. R1 is also acceptable: the removed union value is provable from the diff of createPayment's return type, so a signature/contract change description is equally legitimate.",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbol": "createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "symbol": "createPayment"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/payments.ts#createPayment"
+            }
+          ],
+          "reason": "Return shape changed for createPayment while signature text stayed createPayment(input: PaymentInput): PaymentResult (property status type narrowed from \"created\" | \"failed\" to \"created\")",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R5:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/payments.ts#createPayment"
+            }
+          ],
+          "reason": "Return shape changed for createPayment (property status type narrowed from \"created\" | \"failed\" to \"created\")",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R9:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2367",
+          "rule": "R9",
+          "level": 3,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 6,
+                "column": 7
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2367: This comparison appears to be unintentional because the types '\"created\"' and '\"failed\"' have no overlap.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:createPayment",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/checkout/page.tsx",
+              "src/lib/payments.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/payments.ts#createPayment"
+            ],
+            "bareSymbols": [
+              "createPayment"
+            ],
+            "filePairs": [
+              "src/app/checkout/page.tsx<->src/lib/payments.ts"
+            ],
+            "rules": [
+              "R1",
+              "R5",
+              "R9"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/payments.ts#createPayment"
+                }
+              ],
+              "reason": "Return shape changed for createPayment while signature text stayed createPayment(input: PaymentInput): PaymentResult (property status type narrowed from \"created\" | \"failed\" to \"created\")",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/payments.ts#createPayment"
+                }
+              ],
+              "reason": "Return shape changed for createPayment (property status type narrowed from \"created\" | \"failed\" to \"created\")",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R9:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2367",
+              "rule": "R9",
+              "level": 3,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 6,
+                    "column": 7
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2367: This comparison appears to be unintentional because the types '\"created\"' and '\"failed\"' have no overlap.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:createPayment",
+          "score": 100,
+          "expectedRule": "R4",
+          "acceptableRules": [
+            "R1"
+          ],
+          "primaryRule": "R1",
+          "rawRules": [
+            "R1",
+            "R5",
+            "R9"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 1,
+          "accuracy": 0
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R9": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 1,
+            "actual": 0,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "10-compatible-change-control",
+      "labels": [],
+      "rawConflicts": [],
+      "logicalConflicts": [],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {}
+      }
+    },
+    {
+      "id": "11-added-optional-param-control",
+      "labels": [],
+      "rawConflicts": [],
+      "logicalConflicts": [],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {}
+      }
+    },
+    {
+      "id": "12-added-optional-return-field-control",
+      "labels": [],
+      "rawConflicts": [],
+      "logicalConflicts": [],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {}
+      }
+    },
+    {
+      "id": "13-widened-param-type-control",
+      "labels": [],
+      "rawConflicts": [],
+      "logicalConflicts": [],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {}
+      }
+    },
+    {
+      "id": "14-interface-field-rename",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "orders.ts still reads order.customerEmail after OrderRecord renames the field to email; the consumer is edited concurrently but keeps the stale property read.",
+          "origin": {
+            "file": "src/lib/db.ts",
+            "symbol": "OrderRecord.customerEmail"
+          },
+          "affected": [
+            {
+              "file": "src/lib/orders.ts",
+              "symbol": "customerEmail"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R4:src/lib/db.ts:src/lib/db.ts#OrderRecord:src/lib/orders.ts:2339",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/db.ts",
+            "symbolId": "src/lib/db.ts#OrderRecord"
+          },
+          "affected": [
+            {
+              "file": "src/lib/orders.ts",
+              "loc": {
+                "line": 10,
+                "column": 19
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'customerEmail' does not exist on type 'OrderRecord'.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/lib/db.ts,src/lib/orders.ts:OrderRecord,customerEmail",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/lib/db.ts",
+              "src/lib/orders.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/db.ts#OrderRecord"
+            ],
+            "bareSymbols": [
+              "OrderRecord",
+              "customerEmail"
+            ],
+            "filePairs": [
+              "src/lib/db.ts<->src/lib/orders.ts"
+            ],
+            "rules": [
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R4:src/lib/db.ts:src/lib/db.ts#OrderRecord:src/lib/orders.ts:2339",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/db.ts",
+                "symbolId": "src/lib/db.ts#OrderRecord"
+              },
+              "affected": [
+                {
+                  "file": "src/lib/orders.ts",
+                  "loc": {
+                    "line": 10,
+                    "column": 19
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'customerEmail' does not exist on type 'OrderRecord'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/lib/db.ts,src/lib/orders.ts:OrderRecord,customerEmail",
+          "score": 80,
+          "expectedRule": "R4",
+          "acceptableRules": [],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R4": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "15-enum-like-union-added-and-consumer-exhaustive",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "Adding 'refunded' to OrderRecord.status is only breaking because the concurrently written describeStatus switch is exhaustive (never check).",
+          "origin": {
+            "file": "src/lib/db.ts",
+            "symbol": "OrderRecord.status"
+          },
+          "affected": [
+            {
+              "file": "src/lib/orders.ts",
+              "symbol": "describeStatus"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/db.ts:src/lib/db.ts#OrderRecord:src/lib/orders.ts",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/db.ts",
+            "symbolId": "src/lib/db.ts#OrderRecord"
+          },
+          "affected": [
+            {
+              "file": "src/lib/orders.ts",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/db.ts#OrderRecord"
+            }
+          ],
+          "reason": "Contract changed from export interface OrderRecord {\n  id: string\n  customerEmail: string\n  totalCents: number\n  status: 'pending' | 'paid'\n} to export interface OrderRecord {\n  id: string\n  customerEmail: string\n  totalCents: number\n  status: 'pending' | 'paid' | 'refunded'\n} (property status type changed from \"paid\" | \"pending\" to \"paid\" | \"pending\" | \"refunded\")",
+          "status": "pending",
+          "classification": "unknown"
+        },
+        {
+          "id": "R4:src/lib/db.ts:src/lib/db.ts#OrderRecord:src/lib/orders.ts:2322",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/db.ts",
+            "symbolId": "src/lib/db.ts#OrderRecord"
+          },
+          "affected": [
+            {
+              "file": "src/lib/orders.ts",
+              "loc": {
+                "line": 10,
+                "column": 13
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2322: Type 'string' is not assignable to type 'never'.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/lib/db.ts,src/lib/orders.ts:OrderRecord,never,paid,pending,refunded,string",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/lib/db.ts",
+              "src/lib/orders.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/db.ts#OrderRecord"
+            ],
+            "bareSymbols": [
+              "OrderRecord",
+              "never",
+              "paid",
+              "pending",
+              "refunded",
+              "string"
+            ],
+            "filePairs": [
+              "src/lib/db.ts<->src/lib/orders.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/db.ts:src/lib/db.ts#OrderRecord:src/lib/orders.ts",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/db.ts",
+                "symbolId": "src/lib/db.ts#OrderRecord"
+              },
+              "affected": [
+                {
+                  "file": "src/lib/orders.ts",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/db.ts#OrderRecord"
+                }
+              ],
+              "reason": "Contract changed from export interface OrderRecord {\n  id: string\n  customerEmail: string\n  totalCents: number\n  status: 'pending' | 'paid'\n} to export interface OrderRecord {\n  id: string\n  customerEmail: string\n  totalCents: number\n  status: 'pending' | 'paid' | 'refunded'\n} (property status type changed from \"paid\" | \"pending\" to \"paid\" | \"pending\" | \"refunded\")",
+              "status": "pending",
+              "classification": "unknown"
+            },
+            {
+              "id": "R4:src/lib/db.ts:src/lib/db.ts#OrderRecord:src/lib/orders.ts:2322",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/db.ts",
+                "symbolId": "src/lib/db.ts#OrderRecord"
+              },
+              "affected": [
+                {
+                  "file": "src/lib/orders.ts",
+                  "loc": {
+                    "line": 10,
+                    "column": 13
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2322: Type 'string' is not assignable to type 'never'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/lib/db.ts,src/lib/orders.ts:OrderRecord,never,paid,pending,refunded,string",
+          "score": 60,
+          "expectedRule": "R4",
+          "acceptableRules": [],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R1",
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "16-two-producers-one-consumer",
+      "labels": [
+        {
+          "rule": "R1",
+          "level": 1,
+          "rationale": "createPayment's result drops status/redirectUrl in favour of state while checkout still reads the old fields.",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbol": "createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "symbol": "createPayment"
+            }
+          ]
+        },
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "OrderRecord.customerEmail is renamed to email while orders.ts still reads customerEmail.",
+          "origin": {
+            "file": "src/lib/db.ts",
+            "symbol": "OrderRecord.customerEmail"
+          },
+          "affected": [
+            {
+              "file": "src/lib/orders.ts",
+              "symbol": "customerEmail"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/payments.ts#createPayment"
+            }
+          ],
+          "reason": "Return shape changed for createPayment while signature text stayed createPayment(input: PaymentInput): PaymentResult (property redirectUrl was removed or renamed; property status was removed or renamed; required property state was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/db.ts:src/lib/db.ts#OrderRecord:src/lib/orders.ts:2339",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/db.ts",
+            "symbolId": "src/lib/db.ts#OrderRecord"
+          },
+          "affected": [
+            {
+              "file": "src/lib/orders.ts",
+              "loc": {
+                "line": 10,
+                "column": 19
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'customerEmail' does not exist on type 'OrderRecord'.",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2339",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 10,
+                "column": 18
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'PaymentResult'.",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R5:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/payments.ts",
+            "symbolId": "src/lib/payments.ts#createPayment"
+          },
+          "affected": [
+            {
+              "file": "src/app/checkout/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/payments.ts#createPayment"
+            }
+          ],
+          "reason": "Return shape changed for createPayment (property redirectUrl was removed or renamed; property status was removed or renamed; required property state was added)",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:PaymentResult,createPayment,redirectUrl",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/checkout/page.tsx",
+              "src/lib/payments.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/payments.ts#createPayment"
+            ],
+            "bareSymbols": [
+              "PaymentResult",
+              "createPayment",
+              "redirectUrl"
+            ],
+            "filePairs": [
+              "src/app/checkout/page.tsx<->src/lib/payments.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4",
+              "R5"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/payments.ts#createPayment"
+                }
+              ],
+              "reason": "Return shape changed for createPayment while signature text stayed createPayment(input: PaymentInput): PaymentResult (property redirectUrl was removed or renamed; property status was removed or renamed; required property state was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R4:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx:2339",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 10,
+                    "column": 18
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'redirectUrl' does not exist on type 'PaymentResult'.",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/payments.ts:src/lib/payments.ts#createPayment:src/app/checkout/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/payments.ts",
+                "symbolId": "src/lib/payments.ts#createPayment"
+              },
+              "affected": [
+                {
+                  "file": "src/app/checkout/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/payments.ts#createPayment"
+                }
+              ],
+              "reason": "Return shape changed for createPayment (property redirectUrl was removed or renamed; property status was removed or renamed; required property state was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        },
+        {
+          "id": "logical:2:src/lib/db.ts,src/lib/orders.ts:OrderRecord,customerEmail",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/lib/db.ts",
+              "src/lib/orders.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/db.ts#OrderRecord"
+            ],
+            "bareSymbols": [
+              "OrderRecord",
+              "customerEmail"
+            ],
+            "filePairs": [
+              "src/lib/db.ts<->src/lib/orders.ts"
+            ],
+            "rules": [
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R4:src/lib/db.ts:src/lib/db.ts#OrderRecord:src/lib/orders.ts:2339",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/db.ts",
+                "symbolId": "src/lib/db.ts#OrderRecord"
+              },
+              "affected": [
+                {
+                  "file": "src/lib/orders.ts",
+                  "loc": {
+                    "line": 10,
+                    "column": 19
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'customerEmail' does not exist on type 'OrderRecord'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/checkout/page.tsx,src/lib/payments.ts:PaymentResult,createPayment,redirectUrl",
+          "score": 100,
+          "expectedRule": "R1",
+          "acceptableRules": [],
+          "primaryRule": "R1",
+          "rawRules": [
+            "R1",
+            "R4",
+            "R5"
+          ]
+        },
+        {
+          "labelIndex": 1,
+          "logicalConflictId": "logical:2:src/lib/db.ts,src/lib/orders.ts:OrderRecord,customerEmail",
+          "score": 80,
+          "expectedRule": "R4",
+          "acceptableRules": [],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 2,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 2,
+          "total": 2,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 2,
+          "total": 2,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          },
+          "R4": {
+            "expected": 1,
+            "actual": 2,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    }
+  ]
+}

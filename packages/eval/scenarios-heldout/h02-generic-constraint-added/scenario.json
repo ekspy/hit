@@ -1,0 +1,11 @@
+{
+  "id": "h02-generic-constraint-added",
+  "title": "paginate gains a generic constraint that catalog's Item does not satisfy",
+  "fixture": "warehouse",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

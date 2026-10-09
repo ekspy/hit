@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/catalog.ts",
+      "search": "export function paginate<T>(rows: T[], size: number): Page<T> {",
+      "replace": "export function paginate<T extends { id: string }>(rows: T[], size: number): Page<T> {"
+    }
+  ]
+}

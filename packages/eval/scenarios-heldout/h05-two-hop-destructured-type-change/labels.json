@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R4",
+      "level": 1,
+      "rationale": "Item.quantity changes from number to string (producer also updates its seed data). item/page.tsx never imports Item: it reaches it through catalog.findItem's inferred return type (two hops) and, concurrently, starts destructuring quantity and comparing it with a number.",
+      "origin": {
+        "file": "src/lib/types.ts",
+        "symbol": "Item.quantity"
+      },
+      "affected": [
+        {
+          "file": "src/app/item/page.tsx",
+          "symbol": "quantity"
+        }
+      ]
+    }
+  ]
+}

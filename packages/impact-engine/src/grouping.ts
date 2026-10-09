@@ -7,6 +7,11 @@ export interface ConflictEvidence {
   bareSymbols: Set<string>
   filePairs: Set<string>
   rules: Set<RuleId>
+  /**
+   * Identity of the compiler diagnostics behind diagnostic-derived conflicts
+   * (`file:line:column:code`). Empty for diff-derived conflicts and labels.
+   */
+  diagnostics: Set<string>
 }
 
 export interface LogicalConflict {
@@ -48,6 +53,7 @@ export function conflictEvidence(conflict: Conflict): ConflictEvidence {
     bareSymbols,
     filePairs: filePairs(files),
     rules,
+    diagnostics: diagnosticKeys(conflict),
   }
 }
 
@@ -71,6 +77,7 @@ export function labelEvidence(label: LabelConflict): ConflictEvidence {
     bareSymbols,
     filePairs: filePairs(files),
     rules,
+    diagnostics: new Set<string>(),
   }
 }
 
@@ -132,6 +139,15 @@ function connected(left: ConflictEvidence, right: ConflictEvidence): boolean {
     return true
   }
 
+  // Two diagnostic-derived conflicts with no resolved symbol on either side are
+  // tied only by being the same diagnostic. Sharing files, a file pair or a
+  // name quoted in the message (often a type name, as in "Property 'x' does
+  // not exist on type 'T'") is not evidence of a single phenomenon: distinct
+  // breaks between the same producer and consumer would otherwise be fused.
+  if (unresolvedDiagnostic(left) && unresolvedDiagnostic(right) && !intersects(left.diagnostics, right.diagnostics)) {
+    return false
+  }
+
   if (intersects(left.bareSymbols, right.bareSymbols) && intersects(left.files, right.files)) {
     return true
   }
@@ -143,17 +159,34 @@ function connected(left: ConflictEvidence, right: ConflictEvidence): boolean {
   return intersects(left.filePairs, right.filePairs) && (hasSignal(left) || hasSignal(right))
 }
 
+function unresolvedDiagnostic(evidence: ConflictEvidence): boolean {
+  return evidence.symbolTokens.size === 0 && evidence.diagnostics.size > 0
+}
+
+const diagnosticRules = new Set<RuleId>(['R3', 'R4', 'R9'])
+
+function diagnosticKeys(conflict: Conflict): Set<string> {
+  if (!diagnosticRules.has(conflict.rule)) {
+    return new Set()
+  }
+
+  const code = conflict.reason.match(/^TypeScript diagnostic (\d+)/)?.[1] ?? '?'
+  return new Set(conflict.affected.map((affected) => `${affected.file}:${affected.loc?.line ?? '-'}:${affected.loc?.column ?? '-'}:${code}`))
+}
+
 function mergeEvidence(evidences: ConflictEvidence[]): ConflictEvidence {
   const files = new Set<string>()
   const symbolTokens = new Set<string>()
   const bareSymbols = new Set<string>()
   const rules = new Set<RuleId>()
+  const diagnostics = new Set<string>()
 
   for (const evidence of evidences) {
     for (const file of evidence.files) files.add(file)
     for (const token of evidence.symbolTokens) symbolTokens.add(token)
     for (const symbol of evidence.bareSymbols) bareSymbols.add(symbol)
     for (const rule of evidence.rules) rules.add(rule)
+    for (const diagnostic of evidence.diagnostics) diagnostics.add(diagnostic)
   }
 
   return {
@@ -162,6 +195,7 @@ function mergeEvidence(evidences: ConflictEvidence[]): ConflictEvidence {
     bareSymbols,
     filePairs: filePairs(files),
     rules,
+    diagnostics,
   }
 }
 

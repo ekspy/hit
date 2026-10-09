@@ -1,0 +1,636 @@
+{
+  "dev": {
+    "summary": {
+      "changedSymbols": 18,
+      "compatible": 5,
+      "incompatible": 11,
+      "unknown": 2,
+      "rawConflicts": 26,
+      "rawUnknown": 2,
+      "logicalConflicts": 13,
+      "logicalWithUnknown": 2,
+      "logicalOnlyUnknown": 0,
+      "falsePositives": 0,
+      "falsePositivesWithUnknown": 0,
+      "falsePositivesOnlyUnknown": 0
+    },
+    "scenarios": [
+      {
+        "id": "01-return-type-change",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/payments.ts#createPayment",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property redirectUrl was removed or renamed",
+              "breaking: property status was removed or renamed",
+              "unknown: required property state was added"
+            ]
+          },
+          {
+            "symbol": "src/lib/payments.ts#PaymentResult",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property redirectUrl was removed or renamed",
+              "breaking: property status was removed or renamed",
+              "unknown: required property state was added"
+            ]
+          }
+        ],
+        "rawConflicts": 3,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "02-symbol-rename",
+        "changedSymbols": [],
+        "rawConflicts": 2,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "03-removed-field",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/db.ts#OrderRecord",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property customerEmail was removed or renamed",
+              "unknown: required property email was added"
+            ]
+          }
+        ],
+        "rawConflicts": 1,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "04-symbol-move",
+        "changedSymbols": [],
+        "rawConflicts": 2,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "05-optional-to-required",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/payments.ts#createPayment",
+            "classification": "breaking",
+            "findings": [
+              "breaking: required parameter currency was added"
+            ]
+          }
+        ],
+        "rawConflicts": 3,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "06-widen-to-narrow-type",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/payments.ts#createPayment",
+            "classification": "unknown",
+            "findings": [
+              "unknown: parameter input type changed from PaymentInput to PaymentInput & { amountCents: 0; }"
+            ]
+          }
+        ],
+        "rawConflicts": 2,
+        "rawUnknown": 1,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 1,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "07-async-contract-change",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/payments.ts#createPayment",
+            "classification": "breaking",
+            "findings": [
+              "breaking: return became asynchronous (Promise)"
+            ]
+          }
+        ],
+        "rawConflicts": 2,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "08-import-path-change",
+        "changedSymbols": [],
+        "rawConflicts": 1,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "09-union-value-removed",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/payments.ts#createPayment",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property status type narrowed from \"created\" | \"failed\" to \"created\""
+            ]
+          },
+          {
+            "symbol": "src/lib/payments.ts#PaymentResult",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property status type narrowed from \"created\" | \"failed\" to \"created\""
+            ]
+          }
+        ],
+        "rawConflicts": 3,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "10-compatible-change-control",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/payments.ts#createPayment",
+            "classification": "compatible",
+            "findings": [
+              "compatible: optional parameter source was added"
+            ]
+          }
+        ],
+        "rawConflicts": 0,
+        "rawUnknown": 0,
+        "logicalConflicts": 0,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "11-added-optional-param-control",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/payments.ts#createPayment",
+            "classification": "compatible",
+            "findings": [
+              "compatible: optional parameter note was added"
+            ]
+          }
+        ],
+        "rawConflicts": 0,
+        "rawUnknown": 0,
+        "logicalConflicts": 0,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "12-added-optional-return-field-control",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/payments.ts#createPayment",
+            "classification": "compatible",
+            "findings": [
+              "compatible: optional property receiptUrl was added"
+            ]
+          },
+          {
+            "symbol": "src/lib/payments.ts#PaymentResult",
+            "classification": "compatible",
+            "findings": [
+              "compatible: optional property receiptUrl was added"
+            ]
+          }
+        ],
+        "rawConflicts": 0,
+        "rawUnknown": 0,
+        "logicalConflicts": 0,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "13-widened-param-type-control",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/payments.ts#createPayment",
+            "classification": "compatible",
+            "findings": [
+              "compatible: parameter input type widened from PaymentInput to PaymentInput | string"
+            ]
+          }
+        ],
+        "rawConflicts": 0,
+        "rawUnknown": 0,
+        "logicalConflicts": 0,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "14-interface-field-rename",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/db.ts#OrderRecord",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property customerEmail was removed or renamed",
+              "unknown: required property email was added"
+            ]
+          }
+        ],
+        "rawConflicts": 1,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "15-enum-like-union-added-and-consumer-exhaustive",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/db.ts#OrderRecord",
+            "classification": "unknown",
+            "findings": [
+              "unknown: property status type changed from \"paid\" | \"pending\" to \"paid\" | \"pending\" | \"refunded\""
+            ]
+          }
+        ],
+        "rawConflicts": 2,
+        "rawUnknown": 1,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 1,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "16-two-producers-one-consumer",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/db.ts#OrderRecord",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property customerEmail was removed or renamed",
+              "unknown: required property email was added"
+            ]
+          },
+          {
+            "symbol": "src/lib/payments.ts#createPayment",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property redirectUrl was removed or renamed",
+              "breaking: property status was removed or renamed",
+              "unknown: required property state was added"
+            ]
+          },
+          {
+            "symbol": "src/lib/payments.ts#PaymentResult",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property redirectUrl was removed or renamed",
+              "breaking: property status was removed or renamed",
+              "unknown: required property state was added"
+            ]
+          }
+        ],
+        "rawConflicts": 4,
+        "rawUnknown": 0,
+        "logicalConflicts": 2,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      }
+    ]
+  },
+  "heldout": {
+    "summary": {
+      "changedSymbols": 12,
+      "compatible": 1,
+      "incompatible": 8,
+      "unknown": 3,
+      "rawConflicts": 28,
+      "rawUnknown": 3,
+      "logicalConflicts": 17,
+      "logicalWithUnknown": 3,
+      "logicalOnlyUnknown": 2,
+      "falsePositives": 13,
+      "falsePositivesWithUnknown": 2,
+      "falsePositivesOnlyUnknown": 2
+    },
+    "scenarios": [
+      {
+        "id": "h01-nested-optional-to-required",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/catalog.ts#listItems",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property __@iterator@756341 was removed or renamed",
+              "breaking: property __@unscopables@756343 was removed or renamed",
+              "unknown: required property __@iterator@780046 was added",
+              "unknown: required property __@unscopables@780048 was added"
+            ]
+          },
+          {
+            "symbol": "src/lib/shipping.ts#ShipmentOptions",
+            "classification": "unknown",
+            "findings": [
+              "unknown: property tracking type changed from undefined | { number: string; notify?: boolean | undefined; } to undefined | { number: string; notify: boolean; }"
+            ]
+          }
+        ],
+        "rawConflicts": 4,
+        "rawUnknown": 1,
+        "logicalConflicts": 2,
+        "logicalWithUnknown": 1,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 1,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "h02-generic-constraint-added",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/catalog.ts#listItems",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property __@iterator@803752 was removed or renamed",
+              "breaking: property __@unscopables@803754 was removed or renamed",
+              "unknown: required property __@iterator@827457 was added",
+              "unknown: required property __@unscopables@827459 was added"
+            ]
+          }
+        ],
+        "rawConflicts": 4,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "h03-overload-removed",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/catalog.ts#listItems",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property __@iterator@851164 was removed or renamed",
+              "breaking: property __@unscopables@851166 was removed or renamed",
+              "unknown: required property __@iterator@874869 was added",
+              "unknown: required property __@unscopables@874871 was added"
+            ]
+          }
+        ],
+        "rawConflicts": 3,
+        "rawUnknown": 0,
+        "logicalConflicts": 2,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 2,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "h04-default-to-named-export",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/catalog.ts#listItems",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property __@iterator@898572 was removed or renamed",
+              "breaking: property __@unscopables@898574 was removed or renamed",
+              "unknown: required property __@iterator@922277 was added",
+              "unknown: required property __@unscopables@922279 was added"
+            ]
+          }
+        ],
+        "rawConflicts": 3,
+        "rawUnknown": 0,
+        "logicalConflicts": 2,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 2,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "h05-two-hop-destructured-type-change",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/catalog.ts#listItems",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property __@iterator@945981 was removed or renamed",
+              "breaking: property __@unscopables@945983 was removed or renamed",
+              "unknown: required property __@iterator@969686 was added",
+              "unknown: required property __@unscopables@969688 was added"
+            ]
+          },
+          {
+            "symbol": "src/lib/types.ts#Item",
+            "classification": "unknown",
+            "findings": [
+              "unknown: property quantity type changed from number to string"
+            ]
+          }
+        ],
+        "rawConflicts": 4,
+        "rawUnknown": 1,
+        "logicalConflicts": 3,
+        "logicalWithUnknown": 1,
+        "logicalOnlyUnknown": 1,
+        "falsePositives": 3,
+        "falsePositivesWithUnknown": 1,
+        "falsePositivesOnlyUnknown": 1,
+        "unknownFalsePositives": [
+          {
+            "logicalId": "logical:2:src/lib/catalog.ts,src/lib/pricing.ts,src/lib/types.ts:Item",
+            "rules": [
+              "R1(unknown)"
+            ],
+            "reasons": [
+              "Contract changed from export interface Item {\n  sku: string\n  name: string\n  quantity: number\n} to export interface Item {\n  sku: string\n  name: string\n  quanti"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "h06-two-conflicts-same-pair-no-symbol",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/catalog.ts#listItems",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property __@iterator@993393 was removed or renamed",
+              "breaking: property __@unscopables@993395 was removed or renamed",
+              "unknown: required property __@iterator@1017098 was added",
+              "unknown: required property __@unscopables@1017100 was added"
+            ]
+          }
+        ],
+        "rawConflicts": 5,
+        "rawUnknown": 0,
+        "logicalConflicts": 4,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 2,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "h07-overload-added-control",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/catalog.ts#listItems",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property __@iterator@1040801 was removed or renamed",
+              "breaking: property __@unscopables@1040803 was removed or renamed",
+              "unknown: required property __@iterator@1064506 was added",
+              "unknown: required property __@unscopables@1064508 was added"
+            ]
+          },
+          {
+            "symbol": "src/lib/format.ts#formatQuantity",
+            "classification": "compatible",
+            "findings": [
+              "compatible: parameter value type widened from number to number | string"
+            ]
+          }
+        ],
+        "rawConflicts": 2,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 1,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "h08-required-to-optional-input-control",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/catalog.ts#listItems",
+            "classification": "breaking",
+            "findings": [
+              "breaking: property __@iterator@1088212 was removed or renamed",
+              "breaking: property __@unscopables@1088214 was removed or renamed",
+              "unknown: required property __@iterator@1111917 was added",
+              "unknown: required property __@unscopables@1111919 was added"
+            ]
+          },
+          {
+            "symbol": "src/lib/shipping.ts#ShipmentOptions",
+            "classification": "unknown",
+            "findings": [
+              "unknown: property carrier type changed from string to string | undefined"
+            ]
+          }
+        ],
+        "rawConflicts": 3,
+        "rawUnknown": 1,
+        "logicalConflicts": 2,
+        "logicalWithUnknown": 1,
+        "logicalOnlyUnknown": 1,
+        "falsePositives": 2,
+        "falsePositivesWithUnknown": 1,
+        "falsePositivesOnlyUnknown": 1,
+        "unknownFalsePositives": [
+          {
+            "logicalId": "logical:2:src/app/dispatch/page.tsx,src/lib/shipping.ts:ShipmentOptions",
+            "rules": [
+              "R1(unknown)"
+            ],
+            "reasons": [
+              "Contract changed from export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify?: boolean\n  }\n} to export interface Ship"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
