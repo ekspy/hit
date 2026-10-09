@@ -1,0 +1,9 @@
+{
+  "title": "Hit: substrato de versionamento e coordenação baseado em CRDTs para agentes LLM",
+  "description": "Protótipo, cenários rotulados, registros das execuções com agentes LLM e scripts de avaliação do Trabalho de Conclusão de Curso \"Versionamento concorrente: CRDTs e coordenação semântica para agentes LLM\" (Bacharelado em Engenharia de Software, Universidade Estadual de Ponta Grossa, 2026).",
+  "upload_type": "software",
+  "creators": [{ "name": "Serenato, Enzo", "affiliation": "Universidade Estadual de Ponta Grossa" }],
+  "license": "MIT",
+  "keywords": ["CRDT", "LLM agents", "concurrent versioning", "semantic conflicts", "TypeScript"],
+  "language": "por"
+}
