@@ -1,0 +1,1316 @@
+$ tsx --tsconfig packages/eval/tsconfig.json packages/eval/src/mode1.ts --models gpt-5.6-terra --conditions hit,git --reps 5 --concurrency 4
+20:08:56 mode1: 120 run(s) planned; models [gpt-5.6-terra], scenarios [01-return-type-change, 02-symbol-rename, 03-removed-field, 04-symbol-move, 05-optional-to-required, 06-widen-to-narrow-type, 07-async-contract-change, 08-import-path-change, 09-union-value-removed, 14-interface-field-rename, 15-enum-like-union-added-and-consumer-exhaustive, 16-two-producers-one-consumer], conditions [hit, git], reps 5, concurrency 4, budget $15/model
+20:08:56 start gpt-5.6-terra 01-return-type-change git #1
+20:08:56 start gpt-5.6-terra 01-return-type-change hit #1
+20:08:58 start gpt-5.6-terra 02-symbol-rename hit #1
+20:09:00 start gpt-5.6-terra 02-symbol-rename git #1
+(node:3218361) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+20:09:02   llm gpt-5.6-terra: in 777 out 141 tokens, 3966 ms, $0.0032 [cum $0.003]
+20:09:02 [01-return-type-change hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3966 ms
+20:09:03   llm gpt-5.6-terra: in 681 out 141 tokens, 2543 ms, $0.0031 [cum $0.006]
+20:09:03 [02-symbol-rename hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2543 ms
+20:09:03   llm gpt-5.6-terra: in 611 out 143 tokens, 1831 ms, $0.0029 [cum $0.009]
+20:09:03 [02-symbol-rename git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1831 ms
+20:09:03   llm gpt-5.6-terra: in 637 out 141 tokens, 1567 ms, $0.0030 [cum $0.012]
+20:09:03 [01-return-type-change git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1567 ms
+20:09:04   llm gpt-5.6-terra: in 1379 out 141 tokens, 1970 ms, $0.0044 [cum $0.017]
+20:09:04 [01-return-type-change hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1970 ms
+20:09:05   llm gpt-5.6-terra: in 1300 out 140 tokens, 1873 ms, $0.0043 [cum $0.021]
+20:09:05 [02-symbol-rename hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1873 ms
+20:09:05   llm gpt-5.6-terra: in 1232 out 133 tokens, 1755 ms, $0.0041 [cum $0.025]
+20:09:05 [02-symbol-rename git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1755 ms
+20:09:06   llm gpt-5.6-terra: in 1239 out 150 tokens, 2387 ms, $0.0043 [cum $0.029]
+20:09:06 [01-return-type-change git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2387 ms
+20:09:06   llm gpt-5.6-terra: in 1461 out 15 tokens, 1026 ms, $0.0031 [cum $0.032]
+20:09:06 [02-symbol-rename hit #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1026 ms
+20:09:06   llm gpt-5.6-terra: in 1386 out 15 tokens, 1190 ms, $0.0030 [cum $0.035]
+20:09:06 [02-symbol-rename git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1190 ms
+20:09:06   llm gpt-5.6-terra: in 1541 out 89 tokens, 2091 ms, $0.0042 [cum $0.039]
+20:09:06 [01-return-type-change hit #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2091 ms
+20:09:07   llm gpt-5.6-terra: in 1410 out 89 tokens, 1662 ms, $0.0039 [cum $0.043]
+20:09:07 [01-return-type-change git #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1662 ms
+20:09:07   llm gpt-5.6-terra: in 1496 out 36 tokens, 1251 ms, $0.0034 [cum $0.047]
+20:09:07 [02-symbol-rename hit #1] [agent-b/gpt-5.6-terra] turn 4: done in 1251 ms
+20:09:08   llm gpt-5.6-terra: in 1650 out 15 tokens, 1612 ms, $0.0035 [cum $0.050]
+20:09:08 [01-return-type-change hit #1] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1612 ms
+20:09:08   llm gpt-5.6-terra: in 1421 out 39 tokens, 1997 ms, $0.0033 [cum $0.054]
+20:09:08 [02-symbol-rename git #1] [agent-b/gpt-5.6-terra] turn 4: done in 1997 ms
+20:09:08   llm gpt-5.6-terra: in 1519 out 15 tokens, 1168 ms, $0.0032 [cum $0.057]
+20:09:08 [01-return-type-change git #1] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1168 ms
+20:09:09 done  gpt-5.6-terra 02-symbol-rename hit #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0139, 10.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/02-symbol-rename/hit/1.json
+20:09:09 start gpt-5.6-terra 03-removed-field git #1
+20:09:10 done  gpt-5.6-terra 02-symbol-rename git #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0133, 10.3 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/02-symbol-rename/git/1.json
+20:09:10 start gpt-5.6-terra 03-removed-field hit #1
+20:09:12   llm gpt-5.6-terra: in 1554 out 47 tokens, 3235 ms, $0.0037 [cum $0.060]
+20:09:12 [01-return-type-change git #1] [agent-b/gpt-5.6-terra] turn 5: done in 3235 ms
+20:09:12   llm gpt-5.6-terra: in 1685 out 48 tokens, 3769 ms, $0.0039 [cum $0.064]
+20:09:12 [01-return-type-change hit #1] [agent-b/gpt-5.6-terra] turn 5: done in 3769 ms
+20:09:13   llm gpt-5.6-terra: in 607 out 130 tokens, 2475 ms, $0.0028 [cum $0.067]
+20:09:13 [03-removed-field git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2475 ms
+20:09:14 done  gpt-5.6-terra 01-return-type-change hit #1: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0193, 17.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/01-return-type-change/hit/1.json
+20:09:14 start gpt-5.6-terra 04-symbol-move hit #1
+20:09:16 done  gpt-5.6-terra 01-return-type-change git #1: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0180, 19.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/01-return-type-change/git/1.json
+20:09:16 start gpt-5.6-terra 04-symbol-move git #1
+20:09:16   llm gpt-5.6-terra: in 598 out 144 tokens, 3665 ms, $0.0029 [cum $0.070]
+20:09:16 [03-removed-field hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3665 ms
+20:09:16   llm gpt-5.6-terra: in 1213 out 68 tokens, 2947 ms, $0.0032 [cum $0.073]
+20:09:16 [03-removed-field git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2947 ms
+20:09:17   llm gpt-5.6-terra: in 1299 out 15 tokens, 1517 ms, $0.0028 [cum $0.076]
+20:09:17 [03-removed-field git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1517 ms
+20:09:18   llm gpt-5.6-terra: in 1218 out 71 tokens, 1889 ms, $0.0033 [cum $0.079]
+20:09:18 [03-removed-field hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1889 ms
+20:09:18   llm gpt-5.6-terra: in 689 out 165 tokens, 2105 ms, $0.0034 [cum $0.083]
+20:09:18 [04-symbol-move hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 2105 ms
+20:09:19   llm gpt-5.6-terra: in 1307 out 15 tokens, 1069 ms, $0.0028 [cum $0.086]
+20:09:19 [03-removed-field hit #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1069 ms
+20:09:19   llm gpt-5.6-terra: in 623 out 163 tokens, 2320 ms, $0.0032 [cum $0.089]
+20:09:19 [04-symbol-move git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 2320 ms
+20:09:19   llm gpt-5.6-terra: in 1334 out 38 tokens, 1442 ms, $0.0031 [cum $0.092]
+20:09:19 [03-removed-field git #1] [agent-b/gpt-5.6-terra] turn 4: done in 1442 ms
+20:09:20   llm gpt-5.6-terra: in 1350 out 69 tokens, 2167 ms, $0.0035 [cum $0.095]
+20:09:20 [04-symbol-move hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2167 ms
+20:09:21 done  gpt-5.6-terra 03-removed-field git #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0119, 11.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/03-removed-field/git/1.json
+20:09:21 start gpt-5.6-terra 05-optional-to-required git #1
+20:09:21   llm gpt-5.6-terra: in 1282 out 74 tokens, 1488 ms, $0.0035 [cum $0.099]
+20:09:21 [04-symbol-move git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1488 ms
+20:09:21   llm gpt-5.6-terra: in 1342 out 40 tokens, 1505 ms, $0.0032 [cum $0.102]
+20:09:21 [03-removed-field hit #1] [agent-b/gpt-5.6-terra] turn 4: done in 1505 ms
+20:09:21   llm gpt-5.6-terra: in 1439 out 15 tokens, 1280 ms, $0.0031 [cum $0.105]
+20:09:21 [04-symbol-move hit #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1280 ms
+20:09:22   llm gpt-5.6-terra: in 1376 out 15 tokens, 1138 ms, $0.0029 [cum $0.108]
+20:09:22 [04-symbol-move git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1138 ms
+20:09:22 done  gpt-5.6-terra 03-removed-field hit #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0122, 11.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/03-removed-field/hit/1.json
+20:09:22 start gpt-5.6-terra 05-optional-to-required hit #1
+20:09:24   llm gpt-5.6-terra: in 1474 out 37 tokens, 2220 ms, $0.0034 [cum $0.111]
+20:09:24 [04-symbol-move hit #1] [agent-b/gpt-5.6-terra] turn 4: done in 2220 ms
+20:09:25   llm gpt-5.6-terra: in 1411 out 43 tokens, 2448 ms, $0.0033 [cum $0.115]
+20:09:25 [04-symbol-move git #1] [agent-b/gpt-5.6-terra] turn 4: done in 2448 ms
+20:09:26   llm gpt-5.6-terra: in 805 out 148 tokens, 2152 ms, $0.0034 [cum $0.118]
+20:09:26 [05-optional-to-required hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2152 ms
+20:09:26 done  gpt-5.6-terra 04-symbol-move hit #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0133, 12.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/04-symbol-move/hit/1.json
+20:09:26 start gpt-5.6-terra 06-widen-to-narrow-type hit #1
+20:09:28 done  gpt-5.6-terra 04-symbol-move git #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0129, 12.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/04-symbol-move/git/1.json
+20:09:28 start gpt-5.6-terra 06-widen-to-narrow-type git #1
+20:09:28   llm gpt-5.6-terra: in 1435 out 99 tokens, 1935 ms, $0.0041 [cum $0.122]
+20:09:28 [05-optional-to-required hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1935 ms
+20:09:28   llm gpt-5.6-terra: in 606 out 148 tokens, 2056 ms, $0.0030 [cum $0.125]
+20:09:28 [05-optional-to-required git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2056 ms
+20:09:29   llm gpt-5.6-terra: in 1555 out 15 tokens, 1140 ms, $0.0033 [cum $0.128]
+20:09:29 [05-optional-to-required hit #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1140 ms
+20:09:30   llm gpt-5.6-terra: in 765 out 140 tokens, 1647 ms, $0.0032 [cum $0.132]
+20:09:30 [06-widen-to-narrow-type hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1647 ms
+20:09:30   llm gpt-5.6-terra: in 1236 out 106 tokens, 1747 ms, $0.0037 [cum $0.135]
+20:09:30 [05-optional-to-required git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1747 ms
+20:09:31   llm gpt-5.6-terra: in 1590 out 37 tokens, 1155 ms, $0.0036 [cum $0.139]
+20:09:31 [05-optional-to-required hit #1] [agent-b/gpt-5.6-terra] turn 4: done in 1155 ms
+20:09:32   llm gpt-5.6-terra: in 610 out 148 tokens, 2580 ms, $0.0030 [cum $0.142]
+20:09:32 [06-widen-to-narrow-type git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2580 ms
+20:09:32   llm gpt-5.6-terra: in 1363 out 15 tokens, 1577 ms, $0.0029 [cum $0.145]
+20:09:32 [05-optional-to-required git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1577 ms
+20:09:33 done  gpt-5.6-terra 05-optional-to-required hit #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 4 events, $0.0144, 10.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/05-optional-to-required/hit/1.json
+20:09:33 start gpt-5.6-terra 07-async-contract-change git #1
+20:09:34   llm gpt-5.6-terra: in 1398 out 42 tokens, 1547 ms, $0.0033 [cum $0.148]
+20:09:34 [05-optional-to-required git #1] [agent-b/gpt-5.6-terra] turn 4: done in 1547 ms
+20:09:34   llm gpt-5.6-terra: in 1391 out 291 tokens, 3872 ms, $0.0063 [cum $0.155]
+20:09:34 [06-widen-to-narrow-type hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file in 3872 ms
+20:09:34   llm gpt-5.6-terra: in 1721 out 15 tokens, 981 ms, $0.0036 [cum $0.158]
+20:09:34 [06-widen-to-narrow-type hit #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 981 ms
+20:09:35 done  gpt-5.6-terra 05-optional-to-required git #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0129, 14.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/05-optional-to-required/git/1.json
+20:09:35 start gpt-5.6-terra 07-async-contract-change hit #1
+20:09:37   llm gpt-5.6-terra: in 1244 out 210 tokens, 5724 ms, $0.0050 [cum $0.163]
+20:09:37 [06-widen-to-narrow-type git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 5724 ms
+20:09:37   llm gpt-5.6-terra: in 642 out 144 tokens, 3785 ms, $0.0030 [cum $0.166]
+20:09:37 [07-async-contract-change git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3785 ms
+20:09:37   llm gpt-5.6-terra: in 1756 out 46 tokens, 2139 ms, $0.0041 [cum $0.170]
+20:09:37 [06-widen-to-narrow-type hit #1] [agent-b/gpt-5.6-terra] turn 4: done in 2139 ms
+20:09:39 done  gpt-5.6-terra 06-widen-to-narrow-type hit #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 2 edits, 3 events, $0.0172, 12.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/hit/1.json
+20:09:39 start gpt-5.6-terra 08-import-path-change hit #1
+20:09:41   llm gpt-5.6-terra: in 743 out 140 tokens, 3462 ms, $0.0032 [cum $0.173]
+20:09:41 [07-async-contract-change hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3462 ms
+20:09:41   llm gpt-5.6-terra: in 1475 out 56 tokens, 3460 ms, $0.0036 [cum $0.177]
+20:09:41 [06-widen-to-narrow-type git #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 3460 ms
+20:09:41   llm gpt-5.6-terra: in 1268 out 133 tokens, 3460 ms, $0.0041 [cum $0.181]
+20:09:41 [07-async-contract-change git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3460 ms
+20:09:42   llm gpt-5.6-terra: in 1551 out 15 tokens, 999 ms, $0.0033 [cum $0.184]
+20:09:42 [06-widen-to-narrow-type git #1] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 999 ms
+20:09:43   llm gpt-5.6-terra: in 1365 out 121 tokens, 1779 ms, $0.0042 [cum $0.189]
+20:09:43 [07-async-contract-change hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1779 ms
+20:09:43   llm gpt-5.6-terra: in 600 out 167 tokens, 1948 ms, $0.0032 [cum $0.192]
+20:09:43 [08-import-path-change hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 1948 ms
+20:09:43   llm gpt-5.6-terra: in 1422 out 95 tokens, 2221 ms, $0.0040 [cum $0.196]
+20:09:43 [07-async-contract-change git #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2221 ms
+20:09:43   llm gpt-5.6-terra: in 1586 out 48 tokens, 1258 ms, $0.0037 [cum $0.200]
+20:09:43 [06-widen-to-narrow-type git #1] [agent-b/gpt-5.6-terra] turn 5: done in 1258 ms
+20:09:44   llm gpt-5.6-terra: in 1507 out 95 tokens, 1461 ms, $0.0042 [cum $0.204]
+20:09:44 [07-async-contract-change hit #1] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1461 ms
+20:09:44   llm gpt-5.6-terra: in 1537 out 15 tokens, 1151 ms, $0.0033 [cum $0.207]
+20:09:44 [07-async-contract-change git #1] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1151 ms
+20:09:45   llm gpt-5.6-terra: in 1622 out 15 tokens, 929 ms, $0.0034 [cum $0.210]
+20:09:45 [07-async-contract-change hit #1] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 929 ms
+20:09:45 done  gpt-5.6-terra 06-widen-to-narrow-type git #1: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0187, 17.4 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/git/1.json
+20:09:45 start gpt-5.6-terra 08-import-path-change git #1
+20:09:45   llm gpt-5.6-terra: in 1264 out 155 tokens, 2782 ms, $0.0044 [cum $0.215]
+20:09:45 [08-import-path-change hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2782 ms
+20:09:46   llm gpt-5.6-terra: in 1572 out 47 tokens, 1399 ms, $0.0037 [cum $0.218]
+20:09:46 [07-async-contract-change git #1] [agent-b/gpt-5.6-terra] turn 5: done in 1399 ms
+20:09:47   llm gpt-5.6-terra: in 1657 out 49 tokens, 1490 ms, $0.0039 [cum $0.222]
+20:09:47 [07-async-contract-change hit #1] [agent-b/gpt-5.6-terra] turn 5: done in 1490 ms
+20:09:48   llm gpt-5.6-terra: in 1440 out 15 tokens, 2502 ms, $0.0031 [cum $0.225]
+20:09:48 [08-import-path-change hit #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2502 ms
+20:09:48 done  gpt-5.6-terra 07-async-contract-change git #1: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0181, 15.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/07-async-contract-change/git/1.json
+20:09:48 start gpt-5.6-terra 09-union-value-removed git #1
+20:09:49   llm gpt-5.6-terra: in 616 out 160 tokens, 2340 ms, $0.0032 [cum $0.229]
+20:09:49 [08-import-path-change git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2340 ms
+20:09:49 done  gpt-5.6-terra 07-async-contract-change hit #1: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0188, 13.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/07-async-contract-change/hit/1.json
+20:09:49 start gpt-5.6-terra 09-union-value-removed hit #1
+20:09:51   llm gpt-5.6-terra: in 1475 out 38 tokens, 2259 ms, $0.0034 [cum $0.232]
+20:09:51 [08-import-path-change hit #1] [agent-b/gpt-5.6-terra] turn 4: done in 2259 ms
+20:09:51   llm gpt-5.6-terra: in 1254 out 96 tokens, 2581 ms, $0.0037 [cum $0.236]
+20:09:51 [08-import-path-change git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2581 ms
+20:09:52   llm gpt-5.6-terra: in 1371 out 15 tokens, 896 ms, $0.0029 [cum $0.239]
+20:09:52 [08-import-path-change git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 896 ms
+20:09:53 done  gpt-5.6-terra 08-import-path-change hit #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0141, 13.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/08-import-path-change/hit/1.json
+20:09:53 start gpt-5.6-terra 14-interface-field-rename hit #1
+20:09:54   llm gpt-5.6-terra: in 775 out 141 tokens, 3764 ms, $0.0032 [cum $0.242]
+20:09:54 [09-union-value-removed hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3764 ms
+20:09:54   llm gpt-5.6-terra: in 618 out 150 tokens, 2444 ms, $0.0030 [cum $0.245]
+20:09:54 [09-union-value-removed git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2444 ms
+20:09:54   llm gpt-5.6-terra: in 1406 out 41 tokens, 1779 ms, $0.0033 [cum $0.248]
+20:09:54 [08-import-path-change git #1] [agent-b/gpt-5.6-terra] turn 4: done in 1779 ms
+20:09:56 done  gpt-5.6-terra 08-import-path-change git #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0130, 10.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/08-import-path-change/git/1.json
+20:09:56 start gpt-5.6-terra 14-interface-field-rename git #1
+20:09:56   llm gpt-5.6-terra: in 1378 out 74 tokens, 1675 ms, $0.0036 [cum $0.252]
+20:09:56 [09-union-value-removed hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1675 ms
+20:09:56   llm gpt-5.6-terra: in 598 out 146 tokens, 1768 ms, $0.0029 [cum $0.255]
+20:09:56 [14-interface-field-rename hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1768 ms
+20:09:57   llm gpt-5.6-terra: in 1230 out 81 tokens, 2060 ms, $0.0034 [cum $0.258]
+20:09:57 [09-union-value-removed git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2060 ms
+20:09:57   llm gpt-5.6-terra: in 1473 out 15 tokens, 983 ms, $0.0031 [cum $0.261]
+20:09:57 [09-union-value-removed hit #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 983 ms
+20:09:57   llm gpt-5.6-terra: in 1222 out 64 tokens, 1225 ms, $0.0032 [cum $0.265]
+20:09:57 [14-interface-field-rename hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1225 ms
+20:09:57   llm gpt-5.6-terra: in 1332 out 15 tokens, 931 ms, $0.0028 [cum $0.267]
+20:09:57 [09-union-value-removed git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 931 ms
+20:09:59   llm gpt-5.6-terra: in 1304 out 15 tokens, 1228 ms, $0.0028 [cum $0.270]
+20:09:59 [14-interface-field-rename hit #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1228 ms
+20:09:59   llm gpt-5.6-terra: in 607 out 150 tokens, 2095 ms, $0.0030 [cum $0.273]
+20:09:59 [14-interface-field-rename git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2095 ms
+20:09:59   llm gpt-5.6-terra: in 1508 out 45 tokens, 1595 ms, $0.0036 [cum $0.277]
+20:09:59 [09-union-value-removed hit #1] [agent-b/gpt-5.6-terra] turn 4: done in 1595 ms
+20:10:00   llm gpt-5.6-terra: in 1367 out 44 tokens, 1997 ms, $0.0033 [cum $0.280]
+20:10:00 [09-union-value-removed git #1] [agent-b/gpt-5.6-terra] turn 4: done in 1997 ms
+20:10:00   llm gpt-5.6-terra: in 1339 out 40 tokens, 1341 ms, $0.0032 [cum $0.283]
+20:10:00 [14-interface-field-rename hit #1] [agent-b/gpt-5.6-terra] turn 4: done in 1341 ms
+20:10:02 done  gpt-5.6-terra 09-union-value-removed hit #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0136, 12.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/09-union-value-removed/hit/1.json
+20:10:02 start gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive git #1
+20:10:02   llm gpt-5.6-terra: in 1235 out 70 tokens, 2538 ms, $0.0033 [cum $0.286]
+20:10:02 [14-interface-field-rename git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2538 ms
+20:10:02 done  gpt-5.6-terra 09-union-value-removed git #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0126, 13.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/09-union-value-removed/git/1.json
+20:10:02 start gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive hit #1
+20:10:04 done  gpt-5.6-terra 14-interface-field-rename hit #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0121, 11.3 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/14-interface-field-rename/hit/1.json
+20:10:04 start gpt-5.6-terra 16-two-producers-one-consumer hit #1
+20:10:06   llm gpt-5.6-terra: in 1323 out 15 tokens, 4100 ms, $0.0028 [cum $0.289]
+20:10:06 [14-interface-field-rename git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 4100 ms
+20:10:06   llm gpt-5.6-terra: in 850 out 142 tokens, 2086 ms, $0.0034 [cum $0.293]
+20:10:06 [15-enum-like-union-added-and-consumer-exhaustive hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2086 ms
+20:10:07   llm gpt-5.6-terra: in 1358 out 38 tokens, 1458 ms, $0.0032 [cum $0.296]
+20:10:07 [14-interface-field-rename git #1] [agent-b/gpt-5.6-terra] turn 4: done in 1458 ms
+20:10:08   llm gpt-5.6-terra: in 1544 out 98 tokens, 1931 ms, $0.0043 [cum $0.300]
+20:10:08 [15-enum-like-union-added-and-consumer-exhaustive hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1931 ms
+20:10:08   llm gpt-5.6-terra: in 831 out 144 tokens, 2299 ms, $0.0034 [cum $0.304]
+20:10:08 [16-two-producers-one-consumer hit #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2299 ms
+20:10:09 done  gpt-5.6-terra 14-interface-field-rename git #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0123, 13.0 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/14-interface-field-rename/git/1.json
+20:10:09 start gpt-5.6-terra 16-two-producers-one-consumer git #1
+20:10:09   llm gpt-5.6-terra: in 606 out 144 tokens, 2031 ms, $0.0029 [cum $0.306]
+20:10:09 [15-enum-like-union-added-and-consumer-exhaustive git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2031 ms
+20:10:09   llm gpt-5.6-terra: in 1660 out 15 tokens, 1125 ms, $0.0035 [cum $0.310]
+20:10:09 [15-enum-like-union-added-and-consumer-exhaustive hit #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1125 ms
+20:10:11   llm gpt-5.6-terra: in 1695 out 36 tokens, 1182 ms, $0.0038 [cum $0.314]
+20:10:11 [15-enum-like-union-added-and-consumer-exhaustive hit #1] [agent-b/gpt-5.6-terra] turn 4: done in 1182 ms
+20:10:11   llm gpt-5.6-terra: in 1434 out 279 tokens, 3370 ms, $0.0062 [cum $0.320]
+20:10:11 [16-two-producers-one-consumer hit #1] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file, edit_file in 3370 ms
+20:10:11   llm gpt-5.6-terra: in 1302 out 109 tokens, 2462 ms, $0.0039 [cum $0.324]
+20:10:11 [15-enum-like-union-added-and-consumer-exhaustive git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2462 ms
+20:10:12   llm gpt-5.6-terra: in 662 out 143 tokens, 1984 ms, $0.0030 [cum $0.327]
+20:10:12 [16-two-producers-one-consumer git #1] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1984 ms
+20:10:12 done  gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive hit #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0150, 10.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/hit/1.json
+20:10:12 start gpt-5.6-terra 01-return-type-change hit #2
+20:10:14   llm gpt-5.6-terra: in 1429 out 15 tokens, 2727 ms, $0.0030 [cum $0.330]
+20:10:14 [15-enum-like-union-added-and-consumer-exhaustive git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2727 ms
+20:10:14   llm gpt-5.6-terra: in 1768 out 15 tokens, 3071 ms, $0.0037 [cum $0.334]
+20:10:14 [16-two-producers-one-consumer hit #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 3071 ms
+20:10:15   llm gpt-5.6-terra: in 1264 out 268 tokens, 2646 ms, $0.0057 [cum $0.339]
+20:10:15 [16-two-producers-one-consumer git #1] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file, edit_file in 2646 ms
+20:10:16   llm gpt-5.6-terra: in 777 out 145 tokens, 1860 ms, $0.0033 [cum $0.343]
+20:10:16 [01-return-type-change hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1860 ms
+20:10:16   llm gpt-5.6-terra: in 1587 out 24 tokens, 1348 ms, $0.0035 [cum $0.346]
+20:10:16 [16-two-producers-one-consumer git #1] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1348 ms
+20:10:16   llm gpt-5.6-terra: in 1464 out 39 tokens, 2069 ms, $0.0034 [cum $0.350]
+20:10:16 [15-enum-like-union-added-and-consumer-exhaustive git #1] [agent-b/gpt-5.6-terra] turn 4: done in 2069 ms
+20:10:17   llm gpt-5.6-terra: in 1803 out 56 tokens, 2199 ms, $0.0043 [cum $0.354]
+20:10:17 [16-two-producers-one-consumer hit #1] [agent-b/gpt-5.6-terra] turn 4: done in 2199 ms
+20:10:18   llm gpt-5.6-terra: in 1631 out 61 tokens, 1446 ms, $0.0040 [cum $0.358]
+20:10:18 [16-two-producers-one-consumer git #1] [agent-b/gpt-5.6-terra] turn 4: done in 1446 ms
+20:10:18 done  gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive git #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0133, 16.4 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/git/1.json
+20:10:18 start gpt-5.6-terra 01-return-type-change git #2
+20:10:19   llm gpt-5.6-terra: in 1383 out 157 tokens, 2603 ms, $0.0046 [cum $0.363]
+20:10:19 [01-return-type-change hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2603 ms
+20:10:19 done  gpt-5.6-terra 16-two-producers-one-consumer hit #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 3 edits, 4 events, $0.0176, 15.0 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/hit/1.json
+20:10:19 start gpt-5.6-terra 02-symbol-rename git #2
+20:10:20 done  gpt-5.6-terra 16-two-producers-one-consumer git #1: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 3 edits, 0 events, $0.0162, 10.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/git/1.json
+20:10:20 start gpt-5.6-terra 02-symbol-rename hit #2
+20:10:22   llm gpt-5.6-terra: in 1561 out 93 tokens, 3360 ms, $0.0042 [cum $0.367]
+20:10:22 [01-return-type-change hit #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 3360 ms
+20:10:22   llm gpt-5.6-terra: in 637 out 151 tokens, 2241 ms, $0.0031 [cum $0.370]
+20:10:22 [01-return-type-change git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2241 ms
+20:10:23   llm gpt-5.6-terra: in 1674 out 15 tokens, 964 ms, $0.0035 [cum $0.373]
+20:10:23 [01-return-type-change hit #2] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 964 ms
+20:10:24   llm gpt-5.6-terra: in 681 out 140 tokens, 2076 ms, $0.0030 [cum $0.376]
+20:10:24 [02-symbol-rename hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2076 ms
+20:10:24   llm gpt-5.6-terra: in 611 out 143 tokens, 1675 ms, $0.0029 [cum $0.379]
+20:10:24 [02-symbol-rename git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1675 ms
+20:10:25   llm gpt-5.6-terra: in 1709 out 49 tokens, 1421 ms, $0.0040 [cum $0.383]
+20:10:25 [01-return-type-change hit #2] [agent-b/gpt-5.6-terra] turn 5: done in 1421 ms
+20:10:26   llm gpt-5.6-terra: in 1249 out 263 tokens, 3660 ms, $0.0057 [cum $0.389]
+20:10:26 [01-return-type-change git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file in 3660 ms
+20:10:26   llm gpt-5.6-terra: in 1299 out 134 tokens, 1797 ms, $0.0042 [cum $0.393]
+20:10:26 [02-symbol-rename hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1797 ms
+20:10:26   llm gpt-5.6-terra: in 1232 out 143 tokens, 1834 ms, $0.0042 [cum $0.397]
+20:10:26 [02-symbol-rename git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1834 ms
+20:10:26   llm gpt-5.6-terra: in 1551 out 25 tokens, 929 ms, $0.0034 [cum $0.401]
+20:10:26 [01-return-type-change git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 929 ms
+20:10:27 done  gpt-5.6-terra 01-return-type-change hit #2: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0197, 14.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/01-return-type-change/hit/2.json
+20:10:27 start gpt-5.6-terra 03-removed-field hit #2
+20:10:29   llm gpt-5.6-terra: in 1454 out 15 tokens, 3189 ms, $0.0031 [cum $0.404]
+20:10:29 [02-symbol-rename hit #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 3189 ms
+20:10:29   llm gpt-5.6-terra: in 1396 out 15 tokens, 3181 ms, $0.0030 [cum $0.407]
+20:10:29 [02-symbol-rename git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 3181 ms
+20:10:30   llm gpt-5.6-terra: in 1596 out 54 tokens, 3024 ms, $0.0038 [cum $0.411]
+20:10:30 [01-return-type-change git #2] [agent-b/gpt-5.6-terra] turn 4: done in 3024 ms
+20:10:31   llm gpt-5.6-terra: in 598 out 145 tokens, 1678 ms, $0.0029 [cum $0.414]
+20:10:31 [03-removed-field hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1678 ms
+20:10:31   llm gpt-5.6-terra: in 1489 out 35 tokens, 1654 ms, $0.0034 [cum $0.417]
+20:10:31 [02-symbol-rename hit #2] [agent-b/gpt-5.6-terra] turn 4: done in 1654 ms
+20:10:32 done  gpt-5.6-terra 01-return-type-change git #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 2 edits, 0 events, $0.0160, 13.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/01-return-type-change/git/2.json
+20:10:32 start gpt-5.6-terra 03-removed-field git #2
+20:10:32   llm gpt-5.6-terra: in 1431 out 39 tokens, 1996 ms, $0.0033 [cum $0.420]
+20:10:32 [02-symbol-rename git #2] [agent-b/gpt-5.6-terra] turn 4: done in 1996 ms
+20:10:33   llm gpt-5.6-terra: in 1219 out 75 tokens, 1992 ms, $0.0033 [cum $0.424]
+20:10:33 [03-removed-field hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1992 ms
+20:10:33 done  gpt-5.6-terra 02-symbol-rename hit #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0137, 13.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/02-symbol-rename/hit/2.json
+20:10:33 start gpt-5.6-terra 04-symbol-move git #2
+20:10:34 done  gpt-5.6-terra 02-symbol-rename git #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0134, 14.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/02-symbol-rename/git/2.json
+20:10:34 start gpt-5.6-terra 04-symbol-move hit #2
+20:10:35   llm gpt-5.6-terra: in 1312 out 15 tokens, 2709 ms, $0.0028 [cum $0.427]
+20:10:35 [03-removed-field hit #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2709 ms
+20:10:36   llm gpt-5.6-terra: in 607 out 145 tokens, 2156 ms, $0.0030 [cum $0.429]
+20:10:36 [03-removed-field git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2156 ms
+20:10:37   llm gpt-5.6-terra: in 1228 out 68 tokens, 1295 ms, $0.0033 [cum $0.433]
+20:10:37 [03-removed-field git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1295 ms
+20:10:37   llm gpt-5.6-terra: in 1347 out 39 tokens, 1466 ms, $0.0032 [cum $0.436]
+20:10:37 [03-removed-field hit #2] [agent-b/gpt-5.6-terra] turn 4: done in 1466 ms
+20:10:38   llm gpt-5.6-terra: in 689 out 165 tokens, 2618 ms, $0.0034 [cum $0.439]
+20:10:38 [04-symbol-move hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 2618 ms
+20:10:38   llm gpt-5.6-terra: in 1314 out 15 tokens, 996 ms, $0.0028 [cum $0.442]
+20:10:38 [03-removed-field git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 996 ms
+20:10:39   llm gpt-5.6-terra: in 623 out 162 tokens, 1999 ms, $0.0032 [cum $0.445]
+20:10:39 [04-symbol-move git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 1999 ms
+20:10:39 done  gpt-5.6-terra 03-removed-field hit #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0122, 12.0 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/03-removed-field/hit/2.json
+20:10:39 start gpt-5.6-terra 05-optional-to-required hit #2
+20:10:41   llm gpt-5.6-terra: in 1350 out 75 tokens, 2716 ms, $0.0036 [cum $0.449]
+20:10:41 [04-symbol-move hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2716 ms
+20:10:41   llm gpt-5.6-terra: in 1349 out 37 tokens, 2117 ms, $0.0031 [cum $0.452]
+20:10:41 [03-removed-field git #2] [agent-b/gpt-5.6-terra] turn 4: done in 2117 ms
+20:10:41   llm gpt-5.6-terra: in 1281 out 83 tokens, 2125 ms, $0.0036 [cum $0.456]
+20:10:41 [04-symbol-move git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2125 ms
+20:10:42   llm gpt-5.6-terra: in 1445 out 15 tokens, 994 ms, $0.0031 [cum $0.459]
+20:10:42 [04-symbol-move hit #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 994 ms
+20:10:42 done  gpt-5.6-terra 03-removed-field git #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0122, 10.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/03-removed-field/git/2.json
+20:10:42 start gpt-5.6-terra 05-optional-to-required git #2
+20:10:42   llm gpt-5.6-terra: in 1384 out 15 tokens, 1460 ms, $0.0029 [cum $0.462]
+20:10:42 [04-symbol-move git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1460 ms
+20:10:44   llm gpt-5.6-terra: in 805 out 155 tokens, 2982 ms, $0.0035 [cum $0.465]
+20:10:44 [05-optional-to-required hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2982 ms
+20:10:44   llm gpt-5.6-terra: in 1480 out 37 tokens, 1530 ms, $0.0034 [cum $0.468]
+20:10:44 [04-symbol-move hit #2] [agent-b/gpt-5.6-terra] turn 4: done in 1530 ms
+20:10:45   llm gpt-5.6-terra: in 1419 out 46 tokens, 2046 ms, $0.0034 [cum $0.472]
+20:10:45 [04-symbol-move git #2] [agent-b/gpt-5.6-terra] turn 4: done in 2046 ms
+20:10:45   llm gpt-5.6-terra: in 1442 out 101 tokens, 1583 ms, $0.0041 [cum $0.476]
+20:10:45 [05-optional-to-required hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1583 ms
+20:10:46 done  gpt-5.6-terra 04-symbol-move hit #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0134, 12.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/04-symbol-move/hit/2.json
+20:10:46 start gpt-5.6-terra 06-widen-to-narrow-type git #2
+20:10:46   llm gpt-5.6-terra: in 606 out 148 tokens, 2186 ms, $0.0030 [cum $0.479]
+20:10:46 [05-optional-to-required git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2186 ms
+20:10:46   llm gpt-5.6-terra: in 1564 out 15 tokens, 901 ms, $0.0033 [cum $0.482]
+20:10:46 [05-optional-to-required hit #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 901 ms
+20:10:47 done  gpt-5.6-terra 04-symbol-move git #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0131, 13.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/04-symbol-move/git/2.json
+20:10:47 start gpt-5.6-terra 06-widen-to-narrow-type hit #2
+20:10:48   llm gpt-5.6-terra: in 1236 out 122 tokens, 2676 ms, $0.0039 [cum $0.486]
+20:10:48 [05-optional-to-required git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2676 ms
+20:10:48   llm gpt-5.6-terra: in 1599 out 36 tokens, 1887 ms, $0.0036 [cum $0.490]
+20:10:48 [05-optional-to-required hit #2] [agent-b/gpt-5.6-terra] turn 4: done in 1887 ms
+20:10:50   llm gpt-5.6-terra: in 765 out 141 tokens, 1782 ms, $0.0032 [cum $0.493]
+20:10:50 [06-widen-to-narrow-type hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1782 ms
+20:10:50   llm gpt-5.6-terra: in 1379 out 15 tokens, 1768 ms, $0.0029 [cum $0.496]
+20:10:50 [05-optional-to-required git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1768 ms
+20:10:51 done  gpt-5.6-terra 05-optional-to-required hit #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 4 events, $0.0145, 11.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/05-optional-to-required/hit/2.json
+20:10:51 start gpt-5.6-terra 07-async-contract-change hit #2
+20:10:52   llm gpt-5.6-terra: in 1414 out 40 tokens, 1818 ms, $0.0033 [cum $0.499]
+20:10:52 [05-optional-to-required git #2] [agent-b/gpt-5.6-terra] turn 4: done in 1818 ms
+20:10:52   llm gpt-5.6-terra: in 610 out 148 tokens, 2223 ms, $0.0030 [cum $0.502]
+20:10:52 [06-widen-to-narrow-type git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2223 ms
+20:10:53   llm gpt-5.6-terra: in 1392 out 171 tokens, 3092 ms, $0.0048 [cum $0.507]
+20:10:53 [06-widen-to-narrow-type hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3092 ms
+20:10:54 done  gpt-5.6-terra 05-optional-to-required git #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0132, 11.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/05-optional-to-required/git/2.json
+20:10:54 start gpt-5.6-terra 07-async-contract-change git #2
+20:10:54   llm gpt-5.6-terra: in 743 out 147 tokens, 1763 ms, $0.0032 [cum $0.510]
+20:10:54 [07-async-contract-change hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1763 ms
+20:10:55   llm gpt-5.6-terra: in 1584 out 94 tokens, 1779 ms, $0.0043 [cum $0.515]
+20:10:55 [06-widen-to-narrow-type hit #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1779 ms
+20:10:56   llm gpt-5.6-terra: in 1244 out 238 tokens, 3635 ms, $0.0053 [cum $0.520]
+20:10:56 [06-widen-to-narrow-type git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3635 ms
+20:10:56   llm gpt-5.6-terra: in 1698 out 15 tokens, 1121 ms, $0.0036 [cum $0.524]
+20:10:56 [06-widen-to-narrow-type hit #2] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1121 ms
+20:10:57   llm gpt-5.6-terra: in 1372 out 196 tokens, 2587 ms, $0.0051 [cum $0.529]
+20:10:57 [07-async-contract-change hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2587 ms
+20:10:57   llm gpt-5.6-terra: in 642 out 147 tokens, 1738 ms, $0.0030 [cum $0.532]
+20:10:57 [07-async-contract-change git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1738 ms
+20:10:57   llm gpt-5.6-terra: in 1503 out 56 tokens, 1192 ms, $0.0037 [cum $0.535]
+20:10:57 [06-widen-to-narrow-type git #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1192 ms
+20:10:58   llm gpt-5.6-terra: in 1589 out 95 tokens, 1434 ms, $0.0043 [cum $0.540]
+20:10:58 [07-async-contract-change hit #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1434 ms
+20:10:58   llm gpt-5.6-terra: in 1579 out 15 tokens, 1003 ms, $0.0033 [cum $0.543]
+20:10:58 [06-widen-to-narrow-type git #2] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1003 ms
+20:10:59   llm gpt-5.6-terra: in 1733 out 45 tokens, 2023 ms, $0.0040 [cum $0.547]
+20:10:59 [06-widen-to-narrow-type hit #2] [agent-b/gpt-5.6-terra] turn 5: done in 2023 ms
+20:11:00   llm gpt-5.6-terra: in 1271 out 205 tokens, 2756 ms, $0.0050 [cum $0.552]
+20:11:00 [07-async-contract-change git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2756 ms
+20:11:00   llm gpt-5.6-terra: in 1704 out 15 tokens, 1758 ms, $0.0036 [cum $0.556]
+20:11:00 [07-async-contract-change hit #2] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1758 ms
+20:11:01 done  gpt-5.6-terra 06-widen-to-narrow-type hit #2: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0199, 14.0 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/hit/2.json
+20:11:01 start gpt-5.6-terra 08-import-path-change git #2
+20:11:01   llm gpt-5.6-terra: in 1614 out 49 tokens, 2278 ms, $0.0038 [cum $0.559]
+20:11:01 [06-widen-to-narrow-type git #2] [agent-b/gpt-5.6-terra] turn 5: done in 2278 ms
+20:11:02   llm gpt-5.6-terra: in 1497 out 99 tokens, 2019 ms, $0.0042 [cum $0.564]
+20:11:02 [07-async-contract-change git #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2019 ms
+20:11:02   llm gpt-5.6-terra: in 1739 out 49 tokens, 1703 ms, $0.0041 [cum $0.568]
+20:11:02 [07-async-contract-change hit #2] [agent-b/gpt-5.6-terra] turn 5: done in 1703 ms
+20:11:03 done  gpt-5.6-terra 06-widen-to-narrow-type git #2: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0192, 17.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/git/2.json
+20:11:03 start gpt-5.6-terra 08-import-path-change hit #2
+20:11:05   llm gpt-5.6-terra: in 1616 out 15 tokens, 3575 ms, $0.0034 [cum $0.571]
+20:11:05 [07-async-contract-change git #2] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 3575 ms
+20:11:06 done  gpt-5.6-terra 07-async-contract-change hit #2: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0203, 14.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/07-async-contract-change/hit/2.json
+20:11:06 start gpt-5.6-terra 09-union-value-removed hit #2
+20:11:07   llm gpt-5.6-terra: in 616 out 168 tokens, 5078 ms, $0.0032 [cum $0.574]
+20:11:07 [08-import-path-change git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, list_files in 5078 ms
+20:11:07   llm gpt-5.6-terra: in 1651 out 53 tokens, 1778 ms, $0.0039 [cum $0.578]
+20:11:07 [07-async-contract-change git #2] [agent-b/gpt-5.6-terra] turn 5: done in 1778 ms
+20:11:08   llm gpt-5.6-terra: in 600 out 158 tokens, 2629 ms, $0.0031 [cum $0.581]
+20:11:08 [08-import-path-change hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 2629 ms
+20:11:08   llm gpt-5.6-terra: in 775 out 29 tokens, 1150 ms, $0.0019 [cum $0.583]
+20:11:08 [09-union-value-removed hit #2] [agent-b/gpt-5.6-terra] turn 1: list_files in 1150 ms
+20:11:09 done  gpt-5.6-terra 07-async-contract-change git #2: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0196, 14.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/07-async-contract-change/git/2.json
+20:11:09 start gpt-5.6-terra 09-union-value-removed git #2
+20:11:10   llm gpt-5.6-terra: in 852 out 130 tokens, 1665 ms, $0.0033 [cum $0.587]
+20:11:10 [09-union-value-removed hit #2] [agent-b/gpt-5.6-terra] turn 2: read_file, read_file, read_file, read_file, read_file, read_file in 1665 ms
+20:11:11   llm gpt-5.6-terra: in 1308 out 124 tokens, 3213 ms, $0.0041 [cum $0.591]
+20:11:11 [08-import-path-change git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3213 ms
+20:11:11   llm gpt-5.6-terra: in 1255 out 143 tokens, 2793 ms, $0.0042 [cum $0.595]
+20:11:11 [08-import-path-change hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2793 ms
+20:11:11   llm gpt-5.6-terra: in 1444 out 73 tokens, 1267 ms, $0.0038 [cum $0.599]
+20:11:11 [09-union-value-removed hit #2] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1267 ms
+20:11:11   llm gpt-5.6-terra: in 618 out 146 tokens, 1679 ms, $0.0030 [cum $0.602]
+20:11:11 [09-union-value-removed git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1679 ms
+20:11:12   llm gpt-5.6-terra: in 1453 out 15 tokens, 1032 ms, $0.0031 [cum $0.605]
+20:11:12 [08-import-path-change git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1032 ms
+20:11:12   llm gpt-5.6-terra: in 1419 out 15 tokens, 1361 ms, $0.0030 [cum $0.608]
+20:11:12 [08-import-path-change hit #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1361 ms
+20:11:12   llm gpt-5.6-terra: in 1538 out 15 tokens, 980 ms, $0.0033 [cum $0.611]
+20:11:12 [09-union-value-removed hit #2] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 980 ms
+20:11:13   llm gpt-5.6-terra: in 1226 out 78 tokens, 1453 ms, $0.0034 [cum $0.614]
+20:11:13 [09-union-value-removed git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1453 ms
+20:11:13   llm gpt-5.6-terra: in 1488 out 43 tokens, 1325 ms, $0.0035 [cum $0.618]
+20:11:13 [08-import-path-change git #2] [agent-b/gpt-5.6-terra] turn 4: done in 1325 ms
+20:11:14   llm gpt-5.6-terra: in 1454 out 41 tokens, 1460 ms, $0.0034 [cum $0.621]
+20:11:14 [08-import-path-change hit #2] [agent-b/gpt-5.6-terra] turn 4: done in 1460 ms
+20:11:15   llm gpt-5.6-terra: in 1325 out 15 tokens, 1843 ms, $0.0028 [cum $0.624]
+20:11:15 [09-union-value-removed git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1843 ms
+20:11:15   llm gpt-5.6-terra: in 1573 out 42 tokens, 2548 ms, $0.0037 [cum $0.628]
+20:11:15 [09-union-value-removed hit #2] [agent-b/gpt-5.6-terra] turn 5: done in 2548 ms
+20:11:16 done  gpt-5.6-terra 08-import-path-change git #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0139, 15.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/08-import-path-change/git/2.json
+20:11:16 start gpt-5.6-terra 14-interface-field-rename git #2
+20:11:16 done  gpt-5.6-terra 08-import-path-change hit #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0137, 13.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/08-import-path-change/hit/2.json
+20:11:16 start gpt-5.6-terra 14-interface-field-rename hit #2
+20:11:18 done  gpt-5.6-terra 09-union-value-removed hit #2: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 1 edits, 3 events, $0.0158, 12.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/09-union-value-removed/hit/2.json
+20:11:18 start gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive hit #2
+20:11:20   llm gpt-5.6-terra: in 1360 out 41 tokens, 5014 ms, $0.0032 [cum $0.631]
+20:11:20 [09-union-value-removed git #2] [agent-b/gpt-5.6-terra] turn 4: done in 5014 ms
+20:11:20   llm gpt-5.6-terra: in 598 out 144 tokens, 1940 ms, $0.0029 [cum $0.634]
+20:11:20 [14-interface-field-rename hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1940 ms
+20:11:22 done  gpt-5.6-terra 09-union-value-removed git #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0124, 13.0 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/09-union-value-removed/git/2.json
+20:11:22 start gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive git #2
+20:11:22   llm gpt-5.6-terra: in 1220 out 68 tokens, 1687 ms, $0.0033 [cum $0.637]
+20:11:22 [14-interface-field-rename hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1687 ms
+20:11:22   llm gpt-5.6-terra: in 850 out 150 tokens, 2184 ms, $0.0035 [cum $0.641]
+20:11:22 [15-enum-like-union-added-and-consumer-exhaustive hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2184 ms
+20:11:23   llm gpt-5.6-terra: in 1306 out 15 tokens, 993 ms, $0.0028 [cum $0.643]
+20:11:23 [14-interface-field-rename hit #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 993 ms
+20:11:24   llm gpt-5.6-terra: in 607 out 146 tokens, 1963 ms, $0.0030 [cum $0.646]
+20:11:24 [14-interface-field-rename git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1963 ms
+20:11:24   llm gpt-5.6-terra: in 1552 out 94 tokens, 1366 ms, $0.0042 [cum $0.651]
+20:11:24 [15-enum-like-union-added-and-consumer-exhaustive hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1366 ms
+20:11:24   llm gpt-5.6-terra: in 606 out 143 tokens, 1661 ms, $0.0029 [cum $0.654]
+20:11:24 [15-enum-like-union-added-and-consumer-exhaustive git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1661 ms
+20:11:25   llm gpt-5.6-terra: in 1664 out 15 tokens, 878 ms, $0.0035 [cum $0.657]
+20:11:25 [15-enum-like-union-added-and-consumer-exhaustive hit #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 878 ms
+20:11:25   llm gpt-5.6-terra: in 1341 out 39 tokens, 1792 ms, $0.0032 [cum $0.660]
+20:11:25 [14-interface-field-rename hit #2] [agent-b/gpt-5.6-terra] turn 4: done in 1792 ms
+20:11:26   llm gpt-5.6-terra: in 1231 out 72 tokens, 2234 ms, $0.0033 [cum $0.664]
+20:11:26 [14-interface-field-rename git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2234 ms
+20:11:26   llm gpt-5.6-terra: in 1301 out 100 tokens, 1569 ms, $0.0038 [cum $0.667]
+20:11:26 [15-enum-like-union-added-and-consumer-exhaustive git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1569 ms
+20:11:27   llm gpt-5.6-terra: in 1699 out 40 tokens, 1506 ms, $0.0039 [cum $0.671]
+20:11:27 [15-enum-like-union-added-and-consumer-exhaustive hit #2] [agent-b/gpt-5.6-terra] turn 4: done in 1506 ms
+20:11:27 done  gpt-5.6-terra 14-interface-field-rename hit #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0121, 11.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/14-interface-field-rename/hit/2.json
+20:11:27 start gpt-5.6-terra 16-two-producers-one-consumer git #2
+20:11:28   llm gpt-5.6-terra: in 1419 out 15 tokens, 1453 ms, $0.0030 [cum $0.674]
+20:11:28 [15-enum-like-union-added-and-consumer-exhaustive git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1453 ms
+20:11:28   llm gpt-5.6-terra: in 1321 out 15 tokens, 1965 ms, $0.0028 [cum $0.677]
+20:11:28 [14-interface-field-rename git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1965 ms
+20:11:29 done  gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive hit #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0151, 10.4 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/hit/2.json
+20:11:29 start gpt-5.6-terra 16-two-producers-one-consumer hit #2
+20:11:31   llm gpt-5.6-terra: in 1454 out 40 tokens, 2749 ms, $0.0034 [cum $0.680]
+20:11:31 [15-enum-like-union-added-and-consumer-exhaustive git #2] [agent-b/gpt-5.6-terra] turn 4: done in 2749 ms
+20:11:31   llm gpt-5.6-terra: in 1356 out 43 tokens, 2118 ms, $0.0032 [cum $0.684]
+20:11:31 [14-interface-field-rename git #2] [agent-b/gpt-5.6-terra] turn 4: done in 2118 ms
+20:11:32   llm gpt-5.6-terra: in 831 out 148 tokens, 1329 ms, $0.0034 [cum $0.687]
+20:11:32 [16-two-producers-one-consumer hit #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1329 ms
+20:11:33 done  gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive git #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0131, 10.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/git/2.json
+20:11:33 start gpt-5.6-terra 01-return-type-change git #3
+20:11:33 done  gpt-5.6-terra 14-interface-field-rename git #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0123, 16.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/14-interface-field-rename/git/2.json
+20:11:33 start gpt-5.6-terra 01-return-type-change hit #3
+20:11:35   llm gpt-5.6-terra: in 662 out 152 tokens, 1932 ms, $0.0031 [cum $0.690]
+20:11:35 [16-two-producers-one-consumer git #2] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1932 ms
+20:11:35   llm gpt-5.6-terra: in 1438 out 297 tokens, 2713 ms, $0.0064 [cum $0.697]
+20:11:35 [16-two-producers-one-consumer hit #2] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file, edit_file in 2713 ms
+20:11:36   llm gpt-5.6-terra: in 777 out 148 tokens, 1724 ms, $0.0033 [cum $0.700]
+20:11:36 [01-return-type-change hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1724 ms
+20:11:37   llm gpt-5.6-terra: in 637 out 141 tokens, 1468 ms, $0.0030 [cum $0.703]
+20:11:37 [01-return-type-change git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1468 ms
+20:11:37   llm gpt-5.6-terra: in 1273 out 280 tokens, 2515 ms, $0.0059 [cum $0.709]
+20:11:37 [16-two-producers-one-consumer git #2] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file, edit_file in 2515 ms
+20:11:38   llm gpt-5.6-terra: in 1608 out 25 tokens, 818 ms, $0.0035 [cum $0.712]
+20:11:38 [16-two-producers-one-consumer git #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 818 ms
+20:11:38   llm gpt-5.6-terra: in 1386 out 134 tokens, 2080 ms, $0.0044 [cum $0.717]
+20:11:38 [01-return-type-change hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2080 ms
+20:11:39   llm gpt-5.6-terra: in 1239 out 142 tokens, 1956 ms, $0.0042 [cum $0.721]
+20:11:39 [01-return-type-change git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1956 ms
+20:11:39   llm gpt-5.6-terra: in 1790 out 15 tokens, 4533 ms, $0.0038 [cum $0.725]
+20:11:39 [16-two-producers-one-consumer hit #2] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 4533 ms
+20:11:40   llm gpt-5.6-terra: in 1653 out 63 tokens, 1428 ms, $0.0041 [cum $0.729]
+20:11:40 [16-two-producers-one-consumer git #2] [agent-b/gpt-5.6-terra] turn 4: done in 1428 ms
+20:11:40   llm gpt-5.6-terra: in 1541 out 89 tokens, 1482 ms, $0.0042 [cum $0.733]
+20:11:40 [01-return-type-change hit #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1482 ms
+20:11:41   llm gpt-5.6-terra: in 1402 out 89 tokens, 1666 ms, $0.0039 [cum $0.737]
+20:11:41 [01-return-type-change git #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1666 ms
+20:11:41   llm gpt-5.6-terra: in 1650 out 15 tokens, 1058 ms, $0.0035 [cum $0.740]
+20:11:41 [01-return-type-change hit #3] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1058 ms
+20:11:41 done  gpt-5.6-terra 16-two-producers-one-consumer git #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 3 edits, 0 events, $0.0166, 13.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/git/2.json
+20:11:41 start gpt-5.6-terra 02-symbol-rename hit #3
+20:11:43   llm gpt-5.6-terra: in 1825 out 54 tokens, 3458 ms, $0.0043 [cum $0.745]
+20:11:43 [16-two-producers-one-consumer hit #2] [agent-b/gpt-5.6-terra] turn 4: done in 3458 ms
+20:11:44   llm gpt-5.6-terra: in 1511 out 15 tokens, 3324 ms, $0.0032 [cum $0.748]
+20:11:44 [01-return-type-change git #3] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 3324 ms
+20:11:44   llm gpt-5.6-terra: in 1685 out 55 tokens, 3040 ms, $0.0040 [cum $0.752]
+20:11:44 [01-return-type-change hit #3] [agent-b/gpt-5.6-terra] turn 5: done in 3040 ms
+20:11:45 done  gpt-5.6-terra 16-two-producers-one-consumer hit #2: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 3 edits, 4 events, $0.0179, 16.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/hit/2.json
+20:11:45 start gpt-5.6-terra 02-symbol-rename git #3
+20:11:45   llm gpt-5.6-terra: in 681 out 140 tokens, 2286 ms, $0.0030 [cum $0.755]
+20:11:45 [02-symbol-rename hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2286 ms
+20:11:46 done  gpt-5.6-terra 01-return-type-change hit #3: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0194, 13.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/01-return-type-change/hit/3.json
+20:11:46 start gpt-5.6-terra 03-removed-field git #3
+20:11:47   llm gpt-5.6-terra: in 1546 out 51 tokens, 2600 ms, $0.0037 [cum $0.759]
+20:11:47 [01-return-type-change git #3] [agent-b/gpt-5.6-terra] turn 5: done in 2600 ms
+20:11:48   llm gpt-5.6-terra: in 1299 out 133 tokens, 2361 ms, $0.0042 [cum $0.763]
+20:11:48 [02-symbol-rename hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2361 ms
+20:11:49   llm gpt-5.6-terra: in 611 out 141 tokens, 2298 ms, $0.0029 [cum $0.766]
+20:11:49 [02-symbol-rename git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2298 ms
+20:11:49   llm gpt-5.6-terra: in 1453 out 15 tokens, 896 ms, $0.0031 [cum $0.769]
+20:11:49 [02-symbol-rename hit #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 896 ms
+20:11:49 done  gpt-5.6-terra 01-return-type-change git #3: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0179, 16.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/01-return-type-change/git/3.json
+20:11:49 start gpt-5.6-terra 03-removed-field hit #3
+20:11:51   llm gpt-5.6-terra: in 607 out 144 tokens, 3545 ms, $0.0029 [cum $0.772]
+20:11:51 [03-removed-field git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3545 ms
+20:11:51   llm gpt-5.6-terra: in 1488 out 38 tokens, 1785 ms, $0.0034 [cum $0.775]
+20:11:51 [02-symbol-rename hit #3] [agent-b/gpt-5.6-terra] turn 4: done in 1785 ms
+20:11:52   llm gpt-5.6-terra: in 1230 out 139 tokens, 2946 ms, $0.0041 [cum $0.779]
+20:11:52 [02-symbol-rename git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2946 ms
+20:11:53 done  gpt-5.6-terra 02-symbol-rename hit #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0138, 11.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/02-symbol-rename/hit/3.json
+20:11:53 start gpt-5.6-terra 04-symbol-move hit #3
+20:11:54   llm gpt-5.6-terra: in 598 out 143 tokens, 3378 ms, $0.0029 [cum $0.782]
+20:11:54 [03-removed-field hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3378 ms
+20:11:55   llm gpt-5.6-terra: in 1390 out 15 tokens, 2989 ms, $0.0030 [cum $0.785]
+20:11:55 [02-symbol-rename git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2989 ms
+20:11:56   llm gpt-5.6-terra: in 1217 out 72 tokens, 1507 ms, $0.0033 [cum $0.788]
+20:11:56 [03-removed-field hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1507 ms
+20:11:56   llm gpt-5.6-terra: in 1425 out 42 tokens, 1218 ms, $0.0034 [cum $0.792]
+20:11:56 [02-symbol-rename git #3] [agent-b/gpt-5.6-terra] turn 4: done in 1218 ms
+20:11:57   llm gpt-5.6-terra: in 689 out 166 tokens, 2498 ms, $0.0034 [cum $0.795]
+20:11:57 [04-symbol-move hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 2498 ms
+20:11:57   llm gpt-5.6-terra: in 1307 out 15 tokens, 1212 ms, $0.0028 [cum $0.798]
+20:11:57 [03-removed-field hit #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1212 ms
+20:11:58 done  gpt-5.6-terra 02-symbol-rename git #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0134, 12.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/02-symbol-rename/git/3.json
+20:11:58 start gpt-5.6-terra 04-symbol-move git #3
+20:11:58   llm gpt-5.6-terra: in 1351 out 70 tokens, 1482 ms, $0.0035 [cum $0.802]
+20:11:58 [04-symbol-move hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1482 ms
+20:11:59   llm gpt-5.6-terra: in 1342 out 39 tokens, 1157 ms, $0.0032 [cum $0.805]
+20:11:59 [03-removed-field hit #3] [agent-b/gpt-5.6-terra] turn 4: done in 1157 ms
+20:11:59   llm gpt-5.6-terra: in 1441 out 15 tokens, 1148 ms, $0.0031 [cum $0.808]
+20:11:59 [04-symbol-move hit #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1148 ms
+20:12:00 done  gpt-5.6-terra 03-removed-field hit #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0122, 11.3 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/03-removed-field/hit/3.json
+20:12:00 start gpt-5.6-terra 05-optional-to-required git #3
+20:12:01   llm gpt-5.6-terra: in 623 out 162 tokens, 1791 ms, $0.0032 [cum $0.811]
+20:12:01 [04-symbol-move git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 1791 ms
+20:12:01   llm gpt-5.6-terra: in 1227 out 71 tokens, 10086 ms, $0.0033 [cum $0.814]
+20:12:01 [03-removed-field git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 10086 ms
+20:12:01   llm gpt-5.6-terra: in 1476 out 38 tokens, 1506 ms, $0.0034 [cum $0.818]
+20:12:01 [04-symbol-move hit #3] [agent-b/gpt-5.6-terra] turn 4: done in 1506 ms
+20:12:02   llm gpt-5.6-terra: in 1316 out 15 tokens, 1218 ms, $0.0028 [cum $0.820]
+20:12:02 [03-removed-field git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1218 ms
+20:12:03   llm gpt-5.6-terra: in 1281 out 75 tokens, 2318 ms, $0.0035 [cum $0.824]
+20:12:03 [04-symbol-move git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2318 ms
+20:12:03   llm gpt-5.6-terra: in 606 out 143 tokens, 1618 ms, $0.0029 [cum $0.827]
+20:12:03 [05-optional-to-required git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1618 ms
+20:12:03 done  gpt-5.6-terra 04-symbol-move hit #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0134, 10.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/04-symbol-move/hit/3.json
+20:12:03 start gpt-5.6-terra 05-optional-to-required hit #3
+20:12:05   llm gpt-5.6-terra: in 1376 out 15 tokens, 2525 ms, $0.0029 [cum $0.830]
+20:12:05 [04-symbol-move git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2525 ms
+20:12:06   llm gpt-5.6-terra: in 1351 out 46 tokens, 2927 ms, $0.0033 [cum $0.833]
+20:12:06 [03-removed-field git #3] [agent-b/gpt-5.6-terra] turn 4: done in 2927 ms
+20:12:06   llm gpt-5.6-terra: in 1231 out 108 tokens, 2696 ms, $0.0038 [cum $0.837]
+20:12:06 [05-optional-to-required git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2696 ms
+20:12:07   llm gpt-5.6-terra: in 1360 out 15 tokens, 1077 ms, $0.0029 [cum $0.840]
+20:12:07 [05-optional-to-required git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1077 ms
+20:12:07 done  gpt-5.6-terra 03-removed-field git #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0123, 20.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/03-removed-field/git/3.json
+20:12:07 start gpt-5.6-terra 06-widen-to-narrow-type hit #3
+20:12:09   llm gpt-5.6-terra: in 805 out 149 tokens, 3694 ms, $0.0034 [cum $0.843]
+20:12:09 [05-optional-to-required hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3694 ms
+20:12:09   llm gpt-5.6-terra: in 1411 out 46 tokens, 3357 ms, $0.0034 [cum $0.846]
+20:12:09 [04-symbol-move git #3] [agent-b/gpt-5.6-terra] turn 4: done in 3357 ms
+20:12:09   llm gpt-5.6-terra: in 1395 out 38 tokens, 1880 ms, $0.0032 [cum $0.850]
+20:12:09 [05-optional-to-required git #3] [agent-b/gpt-5.6-terra] turn 4: done in 1880 ms
+20:12:11 done  gpt-5.6-terra 04-symbol-move git #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0130, 12.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/04-symbol-move/git/3.json
+20:12:11 start gpt-5.6-terra 06-widen-to-narrow-type git #3
+20:12:11   llm gpt-5.6-terra: in 765 out 140 tokens, 1965 ms, $0.0032 [cum $0.853]
+20:12:11 [06-widen-to-narrow-type hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1965 ms
+20:12:11 done  gpt-5.6-terra 05-optional-to-required git #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0128, 10.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/05-optional-to-required/git/3.json
+20:12:11 start gpt-5.6-terra 07-async-contract-change git #3
+20:12:11   llm gpt-5.6-terra: in 1436 out 112 tokens, 2082 ms, $0.0042 [cum $0.857]
+20:12:11 [05-optional-to-required hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2082 ms
+20:12:12   llm gpt-5.6-terra: in 1569 out 15 tokens, 1208 ms, $0.0033 [cum $0.860]
+20:12:12 [05-optional-to-required hit #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1208 ms
+20:12:14   llm gpt-5.6-terra: in 1391 out 150 tokens, 2520 ms, $0.0046 [cum $0.865]
+20:12:14 [06-widen-to-narrow-type hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2520 ms
+20:12:14   llm gpt-5.6-terra: in 610 out 148 tokens, 1989 ms, $0.0030 [cum $0.868]
+20:12:14 [06-widen-to-narrow-type git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1989 ms
+20:12:14   llm gpt-5.6-terra: in 1604 out 38 tokens, 1333 ms, $0.0037 [cum $0.872]
+20:12:14 [05-optional-to-required hit #3] [agent-b/gpt-5.6-terra] turn 4: done in 1333 ms
+20:12:15   llm gpt-5.6-terra: in 642 out 143 tokens, 2476 ms, $0.0030 [cum $0.875]
+20:12:15 [07-async-contract-change git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2476 ms
+20:12:15   llm gpt-5.6-terra: in 1562 out 56 tokens, 1602 ms, $0.0038 [cum $0.878]
+20:12:15 [06-widen-to-narrow-type hit #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1602 ms
+20:12:16 done  gpt-5.6-terra 05-optional-to-required hit #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 4 events, $0.0146, 12.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/05-optional-to-required/hit/3.json
+20:12:16 start gpt-5.6-terra 07-async-contract-change hit #3
+20:12:17   llm gpt-5.6-terra: in 1638 out 15 tokens, 2339 ms, $0.0035 [cum $0.882]
+20:12:17 [06-widen-to-narrow-type hit #3] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 2339 ms
+20:12:18   llm gpt-5.6-terra: in 1267 out 126 tokens, 3005 ms, $0.0040 [cum $0.886]
+20:12:18 [07-async-contract-change git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3005 ms
+20:12:18   llm gpt-5.6-terra: in 1244 out 178 tokens, 4190 ms, $0.0046 [cum $0.891]
+20:12:18 [06-widen-to-narrow-type git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 4190 ms
+20:12:19   llm gpt-5.6-terra: in 1673 out 48 tokens, 1374 ms, $0.0039 [cum $0.895]
+20:12:19 [06-widen-to-narrow-type hit #3] [agent-b/gpt-5.6-terra] turn 5: done in 1374 ms
+20:12:20   llm gpt-5.6-terra: in 1414 out 92 tokens, 2201 ms, $0.0039 [cum $0.898]
+20:12:20 [07-async-contract-change git #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2201 ms
+20:12:20   llm gpt-5.6-terra: in 743 out 148 tokens, 2550 ms, $0.0033 [cum $0.902]
+20:12:20 [07-async-contract-change hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2550 ms
+20:12:20   llm gpt-5.6-terra: in 1443 out 94 tokens, 2202 ms, $0.0040 [cum $0.906]
+20:12:20 [06-widen-to-narrow-type git #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2202 ms
+20:12:21   llm gpt-5.6-terra: in 1557 out 15 tokens, 932 ms, $0.0033 [cum $0.909]
+20:12:21 [06-widen-to-narrow-type git #3] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 932 ms
+20:12:21 done  gpt-5.6-terra 06-widen-to-narrow-type hit #3: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0190, 14.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/hit/3.json
+20:12:21 start gpt-5.6-terra 08-import-path-change hit #3
+20:12:23   llm gpt-5.6-terra: in 1526 out 15 tokens, 3099 ms, $0.0032 [cum $0.912]
+20:12:23 [07-async-contract-change git #3] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 3099 ms
+20:12:23   llm gpt-5.6-terra: in 1373 out 197 tokens, 3444 ms, $0.0051 [cum $0.917]
+20:12:23 [07-async-contract-change hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3444 ms
+20:12:23   llm gpt-5.6-terra: in 1592 out 48 tokens, 2125 ms, $0.0038 [cum $0.921]
+20:12:23 [06-widen-to-narrow-type git #3] [agent-b/gpt-5.6-terra] turn 5: done in 2125 ms
+20:12:25 done  gpt-5.6-terra 06-widen-to-narrow-type git #3: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0187, 14.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/git/3.json
+20:12:25 start gpt-5.6-terra 08-import-path-change git #3
+20:12:25   llm gpt-5.6-terra: in 1561 out 44 tokens, 1417 ms, $0.0037 [cum $0.925]
+20:12:25 [07-async-contract-change git #3] [agent-b/gpt-5.6-terra] turn 5: done in 1417 ms
+20:12:25   llm gpt-5.6-terra: in 1591 out 99 tokens, 1874 ms, $0.0044 [cum $0.929]
+20:12:25 [07-async-contract-change hit #3] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1874 ms
+20:12:25   llm gpt-5.6-terra: in 600 out 167 tokens, 2235 ms, $0.0032 [cum $0.932]
+20:12:25 [08-import-path-change hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2235 ms
+20:12:26 done  gpt-5.6-terra 07-async-contract-change git #3: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0179, 15.3 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/07-async-contract-change/git/3.json
+20:12:26 start gpt-5.6-terra 09-union-value-removed git #3
+20:12:26   llm gpt-5.6-terra: in 1710 out 15 tokens, 1024 ms, $0.0036 [cum $0.936]
+20:12:26 [07-async-contract-change hit #3] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1024 ms
+20:12:28   llm gpt-5.6-terra: in 1245 out 147 tokens, 2514 ms, $0.0043 [cum $0.940]
+20:12:28 [08-import-path-change hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2514 ms
+20:12:28   llm gpt-5.6-terra: in 1745 out 48 tokens, 1410 ms, $0.0041 [cum $0.944]
+20:12:28 [07-async-contract-change hit #3] [agent-b/gpt-5.6-terra] turn 5: done in 1410 ms
+20:12:29   llm gpt-5.6-terra: in 616 out 176 tokens, 2536 ms, $0.0033 [cum $0.948]
+20:12:29 [08-import-path-change git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 2536 ms
+20:12:29   llm gpt-5.6-terra: in 1413 out 15 tokens, 1013 ms, $0.0030 [cum $0.951]
+20:12:29 [08-import-path-change hit #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1013 ms
+20:12:30 done  gpt-5.6-terra 07-async-contract-change hit #3: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0204, 14.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/07-async-contract-change/hit/3.json
+20:12:30 start gpt-5.6-terra 09-union-value-removed hit #3
+20:12:32   llm gpt-5.6-terra: in 618 out 147 tokens, 4084 ms, $0.0030 [cum $0.954]
+20:12:32 [09-union-value-removed git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 4084 ms
+20:12:32   llm gpt-5.6-terra: in 1448 out 43 tokens, 2477 ms, $0.0034 [cum $0.957]
+20:12:32 [08-import-path-change hit #3] [agent-b/gpt-5.6-terra] turn 4: done in 2477 ms
+20:12:33   llm gpt-5.6-terra: in 1289 out 128 tokens, 3759 ms, $0.0041 [cum $0.961]
+20:12:33 [08-import-path-change git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3759 ms
+20:12:34 done  gpt-5.6-terra 08-import-path-change hit #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0139, 12.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/08-import-path-change/hit/3.json
+20:12:34 start gpt-5.6-terra 14-interface-field-rename hit #3
+20:12:36   llm gpt-5.6-terra: in 1438 out 15 tokens, 3147 ms, $0.0031 [cum $0.964]
+20:12:36 [08-import-path-change git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 3147 ms
+20:12:36   llm gpt-5.6-terra: in 775 out 140 tokens, 4234 ms, $0.0032 [cum $0.967]
+20:12:36 [09-union-value-removed hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 4234 ms
+20:12:36   llm gpt-5.6-terra: in 1227 out 82 tokens, 4232 ms, $0.0034 [cum $0.971]
+20:12:36 [09-union-value-removed git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 4232 ms
+20:12:37   llm gpt-5.6-terra: in 1330 out 15 tokens, 988 ms, $0.0028 [cum $0.974]
+20:12:37 [09-union-value-removed git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 988 ms
+20:12:38   llm gpt-5.6-terra: in 1473 out 39 tokens, 1419 ms, $0.0034 [cum $0.977]
+20:12:38 [08-import-path-change git #3] [agent-b/gpt-5.6-terra] turn 4: done in 1419 ms
+20:12:38   llm gpt-5.6-terra: in 1377 out 72 tokens, 1430 ms, $0.0036 [cum $0.981]
+20:12:38 [09-union-value-removed hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1430 ms
+20:12:38   llm gpt-5.6-terra: in 598 out 150 tokens, 1828 ms, $0.0030 [cum $0.984]
+20:12:38 [14-interface-field-rename hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1828 ms
+20:12:39   llm gpt-5.6-terra: in 1470 out 15 tokens, 949 ms, $0.0031 [cum $0.987]
+20:12:39 [09-union-value-removed hit #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 949 ms
+20:12:39 done  gpt-5.6-terra 08-import-path-change git #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0139, 14.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/08-import-path-change/git/3.json
+20:12:39 start gpt-5.6-terra 14-interface-field-rename git #3
+20:12:39   llm gpt-5.6-terra: in 1226 out 69 tokens, 1483 ms, $0.0033 [cum $0.990]
+20:12:39 [14-interface-field-rename hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1483 ms
+20:12:39   llm gpt-5.6-terra: in 1365 out 41 tokens, 1515 ms, $0.0032 [cum $0.993]
+20:12:39 [09-union-value-removed git #3] [agent-b/gpt-5.6-terra] turn 4: done in 1515 ms
+20:12:40   llm gpt-5.6-terra: in 1313 out 15 tokens, 894 ms, $0.0028 [cum $0.996]
+20:12:40 [14-interface-field-rename hit #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 894 ms
+20:12:41 done  gpt-5.6-terra 09-union-value-removed git #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0125, 14.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/09-union-value-removed/git/3.json
+20:12:41 start gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive git #3
+20:12:41   llm gpt-5.6-terra: in 1505 out 42 tokens, 1850 ms, $0.0035 [cum $1.000]
+20:12:41 [09-union-value-removed hit #3] [agent-b/gpt-5.6-terra] turn 4: done in 1850 ms
+20:12:42   llm gpt-5.6-terra: in 1348 out 40 tokens, 1810 ms, $0.0032 [cum $1.003]
+20:12:42 [14-interface-field-rename hit #3] [agent-b/gpt-5.6-terra] turn 4: done in 1810 ms
+20:12:43 done  gpt-5.6-terra 09-union-value-removed hit #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0135, 13.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/09-union-value-removed/hit/3.json
+20:12:43 start gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive hit #3
+20:12:46 done  gpt-5.6-terra 14-interface-field-rename hit #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0123, 12.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/14-interface-field-rename/hit/3.json
+20:12:46 start gpt-5.6-terra 16-two-producers-one-consumer hit #3
+20:12:47   llm gpt-5.6-terra: in 607 out 145 tokens, 6492 ms, $0.0030 [cum $1.006]
+20:12:47 [14-interface-field-rename git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 6492 ms
+20:12:48   llm gpt-5.6-terra: in 850 out 144 tokens, 2170 ms, $0.0034 [cum $1.009]
+20:12:48 [15-enum-like-union-added-and-consumer-exhaustive hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2170 ms
+20:12:49   llm gpt-5.6-terra: in 1230 out 63 tokens, 1194 ms, $0.0032 [cum $1.012]
+20:12:49 [14-interface-field-rename git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1194 ms
+20:12:49   llm gpt-5.6-terra: in 1546 out 95 tokens, 1624 ms, $0.0042 [cum $1.017]
+20:12:49 [15-enum-like-union-added-and-consumer-exhaustive hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1624 ms
+20:12:50   llm gpt-5.6-terra: in 1311 out 15 tokens, 984 ms, $0.0028 [cum $1.020]
+20:12:50 [14-interface-field-rename git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 984 ms
+20:12:50   llm gpt-5.6-terra: in 606 out 145 tokens, 2239 ms, $0.0030 [cum $1.022]
+20:12:50 [15-enum-like-union-added-and-consumer-exhaustive git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2239 ms
+20:12:50   llm gpt-5.6-terra: in 831 out 143 tokens, 2594 ms, $0.0034 [cum $1.026]
+20:12:50 [16-two-producers-one-consumer hit #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2594 ms
+20:12:50   llm gpt-5.6-terra: in 1659 out 15 tokens, 994 ms, $0.0035 [cum $1.029]
+20:12:50 [15-enum-like-union-added-and-consumer-exhaustive hit #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 994 ms
+20:12:51   llm gpt-5.6-terra: in 1346 out 47 tokens, 1248 ms, $0.0033 [cum $1.033]
+20:12:51 [14-interface-field-rename git #3] [agent-b/gpt-5.6-terra] turn 4: done in 1248 ms
+20:12:52   llm gpt-5.6-terra: in 1303 out 96 tokens, 1709 ms, $0.0038 [cum $1.036]
+20:12:52 [15-enum-like-union-added-and-consumer-exhaustive git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1709 ms
+20:12:52   llm gpt-5.6-terra: in 1694 out 42 tokens, 1425 ms, $0.0039 [cum $1.040]
+20:12:52 [15-enum-like-union-added-and-consumer-exhaustive hit #3] [agent-b/gpt-5.6-terra] turn 4: done in 1425 ms
+20:12:53 done  gpt-5.6-terra 14-interface-field-rename git #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0122, 13.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/14-interface-field-rename/git/3.json
+20:12:53 start gpt-5.6-terra 16-two-producers-one-consumer git #3
+20:12:53   llm gpt-5.6-terra: in 1417 out 15 tokens, 1321 ms, $0.0030 [cum $1.043]
+20:12:53 [15-enum-like-union-added-and-consumer-exhaustive git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1321 ms
+20:12:54   llm gpt-5.6-terra: in 1433 out 320 tokens, 3555 ms, $0.0067 [cum $1.050]
+20:12:54 [16-two-producers-one-consumer hit #3] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file, edit_file in 3555 ms
+20:12:54 done  gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive hit #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0150, 10.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/hit/3.json
+20:12:54 start gpt-5.6-terra 01-return-type-change hit #4
+20:12:56   llm gpt-5.6-terra: in 1808 out 25 tokens, 2251 ms, $0.0039 [cum $1.054]
+20:12:56 [16-two-producers-one-consumer hit #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2251 ms
+20:12:56   llm gpt-5.6-terra: in 1452 out 40 tokens, 2597 ms, $0.0034 [cum $1.057]
+20:12:56 [15-enum-like-union-added-and-consumer-exhaustive git #3] [agent-b/gpt-5.6-terra] turn 4: done in 2597 ms
+20:12:57   llm gpt-5.6-terra: in 777 out 141 tokens, 1636 ms, $0.0032 [cum $1.061]
+20:12:57 [01-return-type-change hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1636 ms
+20:12:58 done  gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive git #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0131, 17.0 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/git/3.json
+20:12:58 start gpt-5.6-terra 01-return-type-change git #4
+20:12:59   llm gpt-5.6-terra: in 1853 out 67 tokens, 2429 ms, $0.0045 [cum $1.065]
+20:12:59 [16-two-producers-one-consumer hit #3] [agent-b/gpt-5.6-terra] turn 4: done in 2429 ms
+20:12:59   llm gpt-5.6-terra: in 662 out 146 tokens, 2223 ms, $0.0031 [cum $1.068]
+20:12:59 [16-two-producers-one-consumer git #3] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2223 ms
+20:13:00   llm gpt-5.6-terra: in 1379 out 227 tokens, 2700 ms, $0.0055 [cum $1.074]
+20:13:00 [01-return-type-change hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file in 2700 ms
+20:13:00   llm gpt-5.6-terra: in 637 out 143 tokens, 1725 ms, $0.0030 [cum $1.077]
+20:13:00 [01-return-type-change git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1725 ms
+20:13:01 done  gpt-5.6-terra 16-two-producers-one-consumer hit #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 3 edits, 4 events, $0.0185, 14.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/hit/3.json
+20:13:01 start gpt-5.6-terra 02-symbol-rename git #4
+20:13:02   llm gpt-5.6-terra: in 1645 out 15 tokens, 1532 ms, $0.0035 [cum $1.080]
+20:13:02 [01-return-type-change hit #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1532 ms
+20:13:02   llm gpt-5.6-terra: in 1267 out 279 tokens, 2713 ms, $0.0059 [cum $1.086]
+20:13:02 [16-two-producers-one-consumer git #3] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file, edit_file in 2713 ms
+20:13:03   llm gpt-5.6-terra: in 1241 out 185 tokens, 2312 ms, $0.0047 [cum $1.091]
+20:13:03 [01-return-type-change git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2312 ms
+20:13:03   llm gpt-5.6-terra: in 1601 out 15 tokens, 910 ms, $0.0034 [cum $1.094]
+20:13:03 [16-two-producers-one-consumer git #3] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 910 ms
+20:13:03   llm gpt-5.6-terra: in 611 out 140 tokens, 1740 ms, $0.0029 [cum $1.097]
+20:13:03 [02-symbol-rename git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1740 ms
+20:13:04   llm gpt-5.6-terra: in 1680 out 51 tokens, 1518 ms, $0.0040 [cum $1.101]
+20:13:04 [01-return-type-change hit #4] [agent-b/gpt-5.6-terra] turn 4: done in 1518 ms
+20:13:05   llm gpt-5.6-terra: in 1447 out 89 tokens, 2327 ms, $0.0040 [cum $1.105]
+20:13:05 [01-return-type-change git #4] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2327 ms
+20:13:05   llm gpt-5.6-terra: in 1636 out 48 tokens, 1838 ms, $0.0038 [cum $1.109]
+20:13:05 [16-two-producers-one-consumer git #3] [agent-b/gpt-5.6-terra] turn 4: done in 1838 ms
+20:13:06   llm gpt-5.6-terra: in 1229 out 153 tokens, 2683 ms, $0.0043 [cum $1.113]
+20:13:06 [02-symbol-rename git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2683 ms
+20:13:06   llm gpt-5.6-terra: in 1556 out 15 tokens, 1352 ms, $0.0033 [cum $1.116]
+20:13:06 [01-return-type-change git #4] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1352 ms
+20:13:07 done  gpt-5.6-terra 01-return-type-change hit #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 2 edits, 3 events, $0.0162, 12.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/01-return-type-change/hit/4.json
+20:13:07 start gpt-5.6-terra 02-symbol-rename hit #4
+20:13:10 done  gpt-5.6-terra 16-two-producers-one-consumer git #3: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 3 edits, 0 events, $0.0162, 16.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/git/3.json
+20:13:10 start gpt-5.6-terra 03-removed-field hit #4
+20:13:12   llm gpt-5.6-terra: in 1403 out 15 tokens, 5600 ms, $0.0030 [cum $1.119]
+20:13:12 [02-symbol-rename git #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 5600 ms
+20:13:12   llm gpt-5.6-terra: in 1591 out 50 tokens, 5207 ms, $0.0038 [cum $1.123]
+20:13:12 [01-return-type-change git #4] [agent-b/gpt-5.6-terra] turn 5: done in 5207 ms
+20:13:12   llm gpt-5.6-terra: in 681 out 140 tokens, 2624 ms, $0.0030 [cum $1.126]
+20:13:12 [02-symbol-rename hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2624 ms
+20:13:14 done  gpt-5.6-terra 01-return-type-change git #4: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0187, 16.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/01-return-type-change/git/4.json
+20:13:14 start gpt-5.6-terra 03-removed-field git #4
+20:13:14   llm gpt-5.6-terra: in 598 out 144 tokens, 2123 ms, $0.0029 [cum $1.129]
+20:13:14 [03-removed-field hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2123 ms
+20:13:14   llm gpt-5.6-terra: in 1299 out 137 tokens, 1790 ms, $0.0042 [cum $1.133]
+20:13:14 [02-symbol-rename hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1790 ms
+20:13:14   llm gpt-5.6-terra: in 1438 out 41 tokens, 1921 ms, $0.0034 [cum $1.137]
+20:13:14 [02-symbol-rename git #4] [agent-b/gpt-5.6-terra] turn 4: done in 1921 ms
+20:13:15   llm gpt-5.6-terra: in 1457 out 15 tokens, 1350 ms, $0.0031 [cum $1.140]
+20:13:15 [02-symbol-rename hit #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1350 ms
+20:13:16   llm gpt-5.6-terra: in 1218 out 65 tokens, 1908 ms, $0.0032 [cum $1.143]
+20:13:16 [03-removed-field hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1908 ms
+20:13:16 done  gpt-5.6-terra 02-symbol-rename git #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0135, 15.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/02-symbol-rename/git/4.json
+20:13:16 start gpt-5.6-terra 04-symbol-move git #4
+20:13:17   llm gpt-5.6-terra: in 1301 out 15 tokens, 1003 ms, $0.0028 [cum $1.146]
+20:13:17 [03-removed-field hit #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1003 ms
+20:13:17   llm gpt-5.6-terra: in 1492 out 38 tokens, 1380 ms, $0.0034 [cum $1.149]
+20:13:17 [02-symbol-rename hit #4] [agent-b/gpt-5.6-terra] turn 4: done in 1380 ms
+20:13:18   llm gpt-5.6-terra: in 607 out 145 tokens, 2575 ms, $0.0030 [cum $1.152]
+20:13:18 [03-removed-field git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2575 ms
+20:13:19   llm gpt-5.6-terra: in 623 out 164 tokens, 1904 ms, $0.0032 [cum $1.155]
+20:13:19 [04-symbol-move git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 1904 ms
+20:13:19   llm gpt-5.6-terra: in 1336 out 40 tokens, 1553 ms, $0.0032 [cum $1.158]
+20:13:19 [03-removed-field hit #4] [agent-b/gpt-5.6-terra] turn 4: done in 1553 ms
+20:13:20 done  gpt-5.6-terra 02-symbol-rename hit #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0138, 12.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/02-symbol-rename/hit/4.json
+20:13:20 start gpt-5.6-terra 04-symbol-move hit #4
+20:13:22   llm gpt-5.6-terra: in 1228 out 63 tokens, 4388 ms, $0.0032 [cum $1.162]
+20:13:22 [03-removed-field git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 4388 ms
+20:13:22 done  gpt-5.6-terra 03-removed-field hit #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0121, 12.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/03-removed-field/hit/4.json
+20:13:22 start gpt-5.6-terra 05-optional-to-required hit #4
+20:13:24   llm gpt-5.6-terra: in 1283 out 67 tokens, 5645 ms, $0.0034 [cum $1.165]
+20:13:24 [04-symbol-move git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 5645 ms
+20:13:24   llm gpt-5.6-terra: in 1309 out 15 tokens, 2019 ms, $0.0028 [cum $1.168]
+20:13:24 [03-removed-field git #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2019 ms
+20:13:25   llm gpt-5.6-terra: in 689 out 166 tokens, 2415 ms, $0.0034 [cum $1.171]
+20:13:25 [04-symbol-move hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 2415 ms
+20:13:25   llm gpt-5.6-terra: in 1370 out 15 tokens, 1007 ms, $0.0029 [cum $1.174]
+20:13:25 [04-symbol-move git #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1007 ms
+20:13:26   llm gpt-5.6-terra: in 1344 out 47 tokens, 1390 ms, $0.0033 [cum $1.177]
+20:13:26 [03-removed-field git #4] [agent-b/gpt-5.6-terra] turn 4: done in 1390 ms
+20:13:26   llm gpt-5.6-terra: in 805 out 149 tokens, 1802 ms, $0.0034 [cum $1.181]
+20:13:26 [05-optional-to-required hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1802 ms
+20:13:27   llm gpt-5.6-terra: in 1351 out 82 tokens, 1943 ms, $0.0037 [cum $1.184]
+20:13:27 [04-symbol-move hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1943 ms
+20:13:27   llm gpt-5.6-terra: in 1405 out 46 tokens, 1255 ms, $0.0034 [cum $1.188]
+20:13:27 [04-symbol-move git #4] [agent-b/gpt-5.6-terra] turn 4: done in 1255 ms
+20:13:28 done  gpt-5.6-terra 03-removed-field git #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0122, 13.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/03-removed-field/git/4.json
+20:13:28 start gpt-5.6-terra 05-optional-to-required git #4
+20:13:28   llm gpt-5.6-terra: in 1453 out 15 tokens, 1030 ms, $0.0031 [cum $1.191]
+20:13:28 [04-symbol-move hit #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1030 ms
+20:13:28   llm gpt-5.6-terra: in 1436 out 111 tokens, 2065 ms, $0.0042 [cum $1.195]
+20:13:28 [05-optional-to-required hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2065 ms
+20:13:29 done  gpt-5.6-terra 04-symbol-move git #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0129, 12.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/04-symbol-move/git/4.json
+20:13:29 start gpt-5.6-terra 06-widen-to-narrow-type git #4
+20:13:29   llm gpt-5.6-terra: in 1568 out 15 tokens, 1118 ms, $0.0033 [cum $1.198]
+20:13:29 [05-optional-to-required hit #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1118 ms
+20:13:30   llm gpt-5.6-terra: in 1488 out 38 tokens, 1501 ms, $0.0034 [cum $1.202]
+20:13:30 [04-symbol-move hit #4] [agent-b/gpt-5.6-terra] turn 4: done in 1501 ms
+20:13:31   llm gpt-5.6-terra: in 1603 out 38 tokens, 1160 ms, $0.0037 [cum $1.206]
+20:13:31 [05-optional-to-required hit #4] [agent-b/gpt-5.6-terra] turn 4: done in 1160 ms
+20:13:32 done  gpt-5.6-terra 04-symbol-move hit #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0136, 12.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/04-symbol-move/hit/4.json
+20:13:32 start gpt-5.6-terra 06-widen-to-narrow-type hit #4
+20:13:34   llm gpt-5.6-terra: in 606 out 152 tokens, 4785 ms, $0.0030 [cum $1.209]
+20:13:34 [05-optional-to-required git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 4785 ms
+20:13:34 done  gpt-5.6-terra 05-optional-to-required hit #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 4 events, $0.0146, 11.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/05-optional-to-required/hit/4.json
+20:13:34 start gpt-5.6-terra 07-async-contract-change hit #4
+20:13:36   llm gpt-5.6-terra: in 765 out 146 tokens, 1900 ms, $0.0033 [cum $1.212]
+20:13:36 [06-widen-to-narrow-type hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1900 ms
+20:13:36   llm gpt-5.6-terra: in 1240 out 126 tokens, 1903 ms, $0.0040 [cum $1.216]
+20:13:36 [05-optional-to-required git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1903 ms
+20:13:37   llm gpt-5.6-terra: in 1387 out 15 tokens, 1021 ms, $0.0030 [cum $1.219]
+20:13:37 [05-optional-to-required git #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1021 ms
+20:13:38   llm gpt-5.6-terra: in 743 out 141 tokens, 1687 ms, $0.0032 [cum $1.222]
+20:13:38 [07-async-contract-change hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1687 ms
+20:13:38   llm gpt-5.6-terra: in 610 out 130 tokens, 1550 ms, $0.0028 [cum $1.225]
+20:13:38 [06-widen-to-narrow-type git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1550 ms
+20:13:39   llm gpt-5.6-terra: in 1422 out 42 tokens, 1238 ms, $0.0033 [cum $1.228]
+20:13:39 [05-optional-to-required git #4] [agent-b/gpt-5.6-terra] turn 4: done in 1238 ms
+20:13:39   llm gpt-5.6-terra: in 1397 out 164 tokens, 3141 ms, $0.0048 [cum $1.233]
+20:13:39 [06-widen-to-narrow-type hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3141 ms
+20:13:40   llm gpt-5.6-terra: in 1366 out 210 tokens, 2291 ms, $0.0053 [cum $1.238]
+20:13:40 [07-async-contract-change hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2291 ms
+20:13:40 done  gpt-5.6-terra 05-optional-to-required git #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0133, 12.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/05-optional-to-required/git/4.json
+20:13:40 start gpt-5.6-terra 07-async-contract-change git #4
+20:13:40   llm gpt-5.6-terra: in 1582 out 56 tokens, 1097 ms, $0.0038 [cum $1.242]
+20:13:40 [06-widen-to-narrow-type hit #4] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1097 ms
+20:13:40   llm gpt-5.6-terra: in 1226 out 131 tokens, 2031 ms, $0.0040 [cum $1.246]
+20:13:40 [06-widen-to-narrow-type git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2031 ms
+20:13:41   llm gpt-5.6-terra: in 1658 out 15 tokens, 998 ms, $0.0035 [cum $1.249]
+20:13:41 [06-widen-to-narrow-type hit #4] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 998 ms
+20:13:42   llm gpt-5.6-terra: in 1597 out 99 tokens, 1685 ms, $0.0044 [cum $1.254]
+20:13:42 [07-async-contract-change hit #4] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1685 ms
+20:13:42   llm gpt-5.6-terra: in 1378 out 15 tokens, 1368 ms, $0.0029 [cum $1.257]
+20:13:42 [06-widen-to-narrow-type git #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1368 ms
+20:13:43   llm gpt-5.6-terra: in 1716 out 15 tokens, 1236 ms, $0.0036 [cum $1.260]
+20:13:43 [07-async-contract-change hit #4] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1236 ms
+20:13:43   llm gpt-5.6-terra: in 642 out 151 tokens, 2053 ms, $0.0031 [cum $1.263]
+20:13:43 [07-async-contract-change git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2053 ms
+20:13:43   llm gpt-5.6-terra: in 1693 out 47 tokens, 1629 ms, $0.0040 [cum $1.267]
+20:13:43 [06-widen-to-narrow-type hit #4] [agent-b/gpt-5.6-terra] turn 5: done in 1629 ms
+20:13:44   llm gpt-5.6-terra: in 1413 out 37 tokens, 2028 ms, $0.0033 [cum $1.271]
+20:13:44 [06-widen-to-narrow-type git #4] [agent-b/gpt-5.6-terra] turn 4: done in 2028 ms
+20:13:45   llm gpt-5.6-terra: in 1751 out 51 tokens, 1644 ms, $0.0041 [cum $1.275]
+20:13:45 [07-async-contract-change hit #4] [agent-b/gpt-5.6-terra] turn 5: done in 1644 ms
+20:13:46 done  gpt-5.6-terra 06-widen-to-narrow-type git #4: typecheck PASS (0 diag), tests FAIL (0/1), 4 turns, 1 edits, 0 events, $0.0130, 17.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/git/4.json
+20:13:46 start gpt-5.6-terra 08-import-path-change git #4
+20:13:46 done  gpt-5.6-terra 06-widen-to-narrow-type hit #4: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0193, 14.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/hit/4.json
+20:13:46 start gpt-5.6-terra 08-import-path-change hit #4
+20:13:48 done  gpt-5.6-terra 07-async-contract-change hit #4: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0205, 14.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/07-async-contract-change/hit/4.json
+20:13:48 start gpt-5.6-terra 09-union-value-removed hit #4
+20:13:50   llm gpt-5.6-terra: in 1275 out 201 tokens, 6780 ms, $0.0050 [cum $1.280]
+20:13:50 [07-async-contract-change git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 6780 ms
+20:13:50   llm gpt-5.6-terra: in 600 out 176 tokens, 1992 ms, $0.0033 [cum $1.283]
+20:13:50 [08-import-path-change hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, list_files in 1992 ms
+20:13:52   llm gpt-5.6-terra: in 1497 out 99 tokens, 1532 ms, $0.0042 [cum $1.287]
+20:13:52 [07-async-contract-change git #4] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1532 ms
+20:13:52   llm gpt-5.6-terra: in 775 out 142 tokens, 1585 ms, $0.0033 [cum $1.291]
+20:13:52 [09-union-value-removed hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1585 ms
+20:13:53   llm gpt-5.6-terra: in 1616 out 15 tokens, 1216 ms, $0.0034 [cum $1.294]
+20:13:53 [07-async-contract-change git #4] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1216 ms
+20:13:53   llm gpt-5.6-terra: in 616 out 168 tokens, 2070 ms, $0.0032 [cum $1.297]
+20:13:53 [08-import-path-change git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2070 ms
+20:13:53   llm gpt-5.6-terra: in 1300 out 164 tokens, 3035 ms, $0.0046 [cum $1.302]
+20:13:53 [08-import-path-change hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3035 ms
+20:13:53   llm gpt-5.6-terra: in 1379 out 79 tokens, 1632 ms, $0.0037 [cum $1.305]
+20:13:53 [09-union-value-removed hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1632 ms
+20:13:54   llm gpt-5.6-terra: in 1485 out 15 tokens, 972 ms, $0.0032 [cum $1.309]
+20:13:54 [08-import-path-change hit #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 972 ms
+20:13:54   llm gpt-5.6-terra: in 1479 out 15 tokens, 1266 ms, $0.0031 [cum $1.312]
+20:13:54 [09-union-value-removed hit #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1266 ms
+20:13:55   llm gpt-5.6-terra: in 1651 out 52 tokens, 1749 ms, $0.0039 [cum $1.316]
+20:13:55 [07-async-contract-change git #4] [agent-b/gpt-5.6-terra] turn 5: done in 1749 ms
+20:13:56   llm gpt-5.6-terra: in 1262 out 136 tokens, 2469 ms, $0.0042 [cum $1.320]
+20:13:56 [08-import-path-change git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2469 ms
+20:13:56   llm gpt-5.6-terra: in 1520 out 39 tokens, 1294 ms, $0.0035 [cum $1.323]
+20:13:56 [08-import-path-change hit #4] [agent-b/gpt-5.6-terra] turn 4: done in 1294 ms
+20:13:57 done  gpt-5.6-terra 07-async-contract-change git #4: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0196, 16.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/07-async-contract-change/git/4.json
+20:13:57 start gpt-5.6-terra 09-union-value-removed git #4
+20:13:57   llm gpt-5.6-terra: in 1514 out 44 tokens, 1812 ms, $0.0036 [cum $1.327]
+20:13:57 [09-union-value-removed hit #4] [agent-b/gpt-5.6-terra] turn 4: done in 1812 ms
+20:13:58 done  gpt-5.6-terra 08-import-path-change hit #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0145, 11.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/08-import-path-change/hit/4.json
+20:13:58 start gpt-5.6-terra 14-interface-field-rename git #4
+20:13:58   llm gpt-5.6-terra: in 1419 out 15 tokens, 2070 ms, $0.0030 [cum $1.330]
+20:13:58 [08-import-path-change git #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2070 ms
+20:13:59 done  gpt-5.6-terra 09-union-value-removed hit #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0137, 10.4 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/09-union-value-removed/hit/4.json
+20:13:59 start gpt-5.6-terra 14-interface-field-rename hit #4
+20:14:01   llm gpt-5.6-terra: in 1454 out 43 tokens, 2549 ms, $0.0034 [cum $1.333]
+20:14:01 [08-import-path-change git #4] [agent-b/gpt-5.6-terra] turn 4: done in 2549 ms
+20:14:02 done  gpt-5.6-terra 08-import-path-change git #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0138, 16.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/08-import-path-change/git/4.json
+20:14:02 start gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive hit #4
+20:14:05   llm gpt-5.6-terra: in 598 out 147 tokens, 4094 ms, $0.0030 [cum $1.336]
+20:14:05 [14-interface-field-rename hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 4094 ms
+20:14:05   llm gpt-5.6-terra: in 607 out 146 tokens, 2322 ms, $0.0030 [cum $1.339]
+20:14:05 [14-interface-field-rename git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2322 ms
+20:14:05   llm gpt-5.6-terra: in 618 out 150 tokens, 2798 ms, $0.0030 [cum $1.342]
+20:14:05 [09-union-value-removed git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2798 ms
+20:14:06   llm gpt-5.6-terra: in 1223 out 64 tokens, 1201 ms, $0.0032 [cum $1.346]
+20:14:06 [14-interface-field-rename hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1201 ms
+20:14:06   llm gpt-5.6-terra: in 1231 out 66 tokens, 1289 ms, $0.0033 [cum $1.349]
+20:14:06 [14-interface-field-rename git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1289 ms
+20:14:06   llm gpt-5.6-terra: in 1230 out 77 tokens, 1550 ms, $0.0034 [cum $1.352]
+20:14:06 [09-union-value-removed git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1550 ms
+20:14:06   llm gpt-5.6-terra: in 850 out 144 tokens, 1771 ms, $0.0034 [cum $1.356]
+20:14:06 [15-enum-like-union-added-and-consumer-exhaustive hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1771 ms
+20:14:07   llm gpt-5.6-terra: in 1305 out 15 tokens, 1039 ms, $0.0028 [cum $1.358]
+20:14:07 [14-interface-field-rename hit #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1039 ms
+20:14:07   llm gpt-5.6-terra: in 1315 out 15 tokens, 1479 ms, $0.0028 [cum $1.361]
+20:14:07 [14-interface-field-rename git #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1479 ms
+20:14:08   llm gpt-5.6-terra: in 1328 out 15 tokens, 1575 ms, $0.0028 [cum $1.364]
+20:14:08 [09-union-value-removed git #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1575 ms
+20:14:08   llm gpt-5.6-terra: in 1546 out 97 tokens, 1714 ms, $0.0043 [cum $1.368]
+20:14:08 [15-enum-like-union-added-and-consumer-exhaustive hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1714 ms
+20:14:09   llm gpt-5.6-terra: in 1340 out 38 tokens, 1277 ms, $0.0031 [cum $1.371]
+20:14:09 [14-interface-field-rename hit #4] [agent-b/gpt-5.6-terra] turn 4: done in 1277 ms
+20:14:10   llm gpt-5.6-terra: in 1350 out 48 tokens, 1871 ms, $0.0033 [cum $1.375]
+20:14:10 [14-interface-field-rename git #4] [agent-b/gpt-5.6-terra] turn 4: done in 1871 ms
+20:14:10   llm gpt-5.6-terra: in 1661 out 15 tokens, 1523 ms, $0.0035 [cum $1.378]
+20:14:10 [15-enum-like-union-added-and-consumer-exhaustive hit #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1523 ms
+20:14:10   llm gpt-5.6-terra: in 1363 out 40 tokens, 1967 ms, $0.0032 [cum $1.381]
+20:14:10 [09-union-value-removed git #4] [agent-b/gpt-5.6-terra] turn 4: done in 1967 ms
+20:14:11 done  gpt-5.6-terra 14-interface-field-rename hit #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0121, 12.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/14-interface-field-rename/hit/4.json
+20:14:11 start gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive git #4
+20:14:11   llm gpt-5.6-terra: in 1696 out 41 tokens, 1216 ms, $0.0039 [cum $1.385]
+20:14:11 [15-enum-like-union-added-and-consumer-exhaustive hit #4] [agent-b/gpt-5.6-terra] turn 4: done in 1216 ms
+20:14:12 done  gpt-5.6-terra 09-union-value-removed git #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0125, 15.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/09-union-value-removed/git/4.json
+20:14:12 start gpt-5.6-terra 16-two-producers-one-consumer git #4
+20:14:12 done  gpt-5.6-terra 14-interface-field-rename git #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0123, 14.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/14-interface-field-rename/git/4.json
+20:14:12 start gpt-5.6-terra 16-two-producers-one-consumer hit #4
+20:14:15 done  gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive hit #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0151, 12.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/hit/4.json
+20:14:15 start gpt-5.6-terra 01-return-type-change git #5
+20:14:16   llm gpt-5.6-terra: in 831 out 150 tokens, 1532 ms, $0.0035 [cum $1.389]
+20:14:16 [16-two-producers-one-consumer hit #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1532 ms
+20:14:18   llm gpt-5.6-terra: in 606 out 147 tokens, 1844 ms, $0.0030 [cum $1.392]
+20:14:18 [15-enum-like-union-added-and-consumer-exhaustive git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1844 ms
+20:14:18   llm gpt-5.6-terra: in 662 out 143 tokens, 1417 ms, $0.0030 [cum $1.395]
+20:14:18 [16-two-producers-one-consumer git #4] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1417 ms
+20:14:19   llm gpt-5.6-terra: in 637 out 146 tokens, 1832 ms, $0.0030 [cum $1.398]
+20:14:19 [01-return-type-change git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1832 ms
+20:14:19   llm gpt-5.6-terra: in 1440 out 281 tokens, 2320 ms, $0.0063 [cum $1.404]
+20:14:19 [16-two-producers-one-consumer hit #4] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file, edit_file in 2320 ms
+20:14:19   llm gpt-5.6-terra: in 1305 out 96 tokens, 1701 ms, $0.0038 [cum $1.408]
+20:14:19 [15-enum-like-union-added-and-consumer-exhaustive git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1701 ms
+20:14:20   llm gpt-5.6-terra: in 1776 out 15 tokens, 790 ms, $0.0037 [cum $1.412]
+20:14:20 [16-two-producers-one-consumer hit #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 790 ms
+20:14:20   llm gpt-5.6-terra: in 1264 out 279 tokens, 2510 ms, $0.0059 [cum $1.417]
+20:14:20 [16-two-producers-one-consumer git #4] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file, edit_file in 2510 ms
+20:14:20   llm gpt-5.6-terra: in 1419 out 15 tokens, 1089 ms, $0.0030 [cum $1.420]
+20:14:20 [15-enum-like-union-added-and-consumer-exhaustive git #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1089 ms
+20:14:21   llm gpt-5.6-terra: in 1598 out 15 tokens, 792 ms, $0.0034 [cum $1.424]
+20:14:21 [16-two-producers-one-consumer git #4] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 792 ms
+20:14:22   llm gpt-5.6-terra: in 1244 out 211 tokens, 2954 ms, $0.0050 [cum $1.429]
+20:14:22 [01-return-type-change git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2954 ms
+20:14:22   llm gpt-5.6-terra: in 1811 out 56 tokens, 1620 ms, $0.0043 [cum $1.433]
+20:14:22 [16-two-producers-one-consumer hit #4] [agent-b/gpt-5.6-terra] turn 4: done in 1620 ms
+20:14:22   llm gpt-5.6-terra: in 1454 out 40 tokens, 1614 ms, $0.0034 [cum $1.437]
+20:14:22 [15-enum-like-union-added-and-consumer-exhaustive git #4] [agent-b/gpt-5.6-terra] turn 4: done in 1614 ms
+20:14:23   llm gpt-5.6-terra: in 1633 out 50 tokens, 1465 ms, $0.0039 [cum $1.440]
+20:14:23 [16-two-producers-one-consumer git #4] [agent-b/gpt-5.6-terra] turn 4: done in 1465 ms
+20:14:24 done  gpt-5.6-terra 16-two-producers-one-consumer hit #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 3 edits, 4 events, $0.0177, 11.3 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/hit/4.json
+20:14:24 start gpt-5.6-terra 01-return-type-change hit #5
+20:14:26 done  gpt-5.6-terra 16-two-producers-one-consumer git #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 3 edits, 0 events, $0.0162, 13.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/git/4.json
+20:14:26 start gpt-5.6-terra 02-symbol-rename hit #5
+20:14:28 done  gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive git #4: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0131, 17.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/git/4.json
+20:14:28 start gpt-5.6-terra 02-symbol-rename git #5
+20:14:28   llm gpt-5.6-terra: in 1476 out 89 tokens, 6794 ms, $0.0040 [cum $1.444]
+20:14:28 [01-return-type-change git #5] [agent-b/gpt-5.6-terra] turn 3: edit_file in 6794 ms
+20:14:28   llm gpt-5.6-terra: in 777 out 143 tokens, 2241 ms, $0.0033 [cum $1.448]
+20:14:28 [01-return-type-change hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2241 ms
+20:14:29   llm gpt-5.6-terra: in 1585 out 15 tokens, 1102 ms, $0.0034 [cum $1.451]
+20:14:29 [01-return-type-change git #5] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1102 ms
+20:14:30   llm gpt-5.6-terra: in 681 out 144 tokens, 1623 ms, $0.0031 [cum $1.454]
+20:14:30 [02-symbol-rename hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1623 ms
+20:14:30   llm gpt-5.6-terra: in 1381 out 143 tokens, 1852 ms, $0.0045 [cum $1.459]
+20:14:30 [01-return-type-change hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1852 ms
+20:14:31   llm gpt-5.6-terra: in 611 out 143 tokens, 1823 ms, $0.0029 [cum $1.462]
+20:14:31 [02-symbol-rename git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1823 ms
+20:14:32   llm gpt-5.6-terra: in 1620 out 51 tokens, 1750 ms, $0.0039 [cum $1.465]
+20:14:32 [01-return-type-change git #5] [agent-b/gpt-5.6-terra] turn 5: done in 1750 ms
+20:14:32   llm gpt-5.6-terra: in 1545 out 93 tokens, 2018 ms, $0.0042 [cum $1.470]
+20:14:32 [01-return-type-change hit #5] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2018 ms
+20:14:32   llm gpt-5.6-terra: in 1303 out 137 tokens, 2284 ms, $0.0043 [cum $1.474]
+20:14:32 [02-symbol-rename hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2284 ms
+20:14:33   llm gpt-5.6-terra: in 1658 out 15 tokens, 901 ms, $0.0035 [cum $1.477]
+20:14:33 [01-return-type-change hit #5] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 901 ms
+20:14:34 done  gpt-5.6-terra 01-return-type-change git #5: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0193, 18.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/01-return-type-change/git/5.json
+20:14:34 start gpt-5.6-terra 03-removed-field git #5
+20:14:34   llm gpt-5.6-terra: in 1232 out 160 tokens, 2491 ms, $0.0044 [cum $1.482]
+20:14:34 [02-symbol-rename git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2491 ms
+20:14:34   llm gpt-5.6-terra: in 1461 out 15 tokens, 1469 ms, $0.0031 [cum $1.485]
+20:14:34 [02-symbol-rename hit #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1469 ms
+20:14:35   llm gpt-5.6-terra: in 1693 out 52 tokens, 1774 ms, $0.0040 [cum $1.489]
+20:14:35 [01-return-type-change hit #5] [agent-b/gpt-5.6-terra] turn 5: done in 1774 ms
+20:14:37   llm gpt-5.6-terra: in 1413 out 15 tokens, 3035 ms, $0.0030 [cum $1.492]
+20:14:37 [02-symbol-rename git #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 3035 ms
+20:14:37   llm gpt-5.6-terra: in 1496 out 36 tokens, 3047 ms, $0.0034 [cum $1.495]
+20:14:37 [02-symbol-rename hit #5] [agent-b/gpt-5.6-terra] turn 4: done in 3047 ms
+20:14:38 done  gpt-5.6-terra 01-return-type-change hit #5: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0195, 14.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/01-return-type-change/hit/5.json
+20:14:38 start gpt-5.6-terra 03-removed-field hit #5
+20:14:41   llm gpt-5.6-terra: in 607 out 150 tokens, 5886 ms, $0.0030 [cum $1.498]
+20:14:41 [03-removed-field git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 5886 ms
+20:14:41 done  gpt-5.6-terra 02-symbol-rename hit #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0139, 15.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/02-symbol-rename/hit/5.json
+20:14:41 start gpt-5.6-terra 04-symbol-move hit #5
+20:14:44   llm gpt-5.6-terra: in 1448 out 39 tokens, 6203 ms, $0.0034 [cum $1.502]
+20:14:44 [02-symbol-rename git #5] [agent-b/gpt-5.6-terra] turn 4: done in 6203 ms
+20:14:44   llm gpt-5.6-terra: in 1233 out 65 tokens, 2179 ms, $0.0032 [cum $1.505]
+20:14:44 [03-removed-field git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2179 ms
+20:14:44   llm gpt-5.6-terra: in 598 out 148 tokens, 2181 ms, $0.0030 [cum $1.508]
+20:14:44 [03-removed-field hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2181 ms
+20:14:45   llm gpt-5.6-terra: in 1316 out 15 tokens, 1007 ms, $0.0028 [cum $1.511]
+20:14:45 [03-removed-field git #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1007 ms
+20:14:45   llm gpt-5.6-terra: in 1222 out 67 tokens, 1575 ms, $0.0032 [cum $1.514]
+20:14:45 [03-removed-field hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1575 ms
+20:14:45 done  gpt-5.6-terra 02-symbol-rename git #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0137, 16.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/02-symbol-rename/git/5.json
+20:14:45 start gpt-5.6-terra 04-symbol-move git #5
+20:14:46   llm gpt-5.6-terra: in 1307 out 15 tokens, 1314 ms, $0.0028 [cum $1.517]
+20:14:46 [03-removed-field hit #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1314 ms
+20:14:47   llm gpt-5.6-terra: in 689 out 190 tokens, 3428 ms, $0.0037 [cum $1.520]
+20:14:47 [04-symbol-move hit #5] [agent-b/gpt-5.6-terra] turn 1: list_files, read_file, read_file, read_file, read_file, read_file, read_file, read_file in 3428 ms
+20:14:47   llm gpt-5.6-terra: in 1351 out 38 tokens, 1855 ms, $0.0032 [cum $1.524]
+20:14:47 [03-removed-field git #5] [agent-b/gpt-5.6-terra] turn 4: done in 1855 ms
+20:14:48   llm gpt-5.6-terra: in 623 out 162 tokens, 1910 ms, $0.0032 [cum $1.527]
+20:14:48 [04-symbol-move git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 1910 ms
+20:14:48   llm gpt-5.6-terra: in 1428 out 80 tokens, 1470 ms, $0.0038 [cum $1.531]
+20:14:48 [04-symbol-move hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1470 ms
+20:14:49   llm gpt-5.6-terra: in 1342 out 46 tokens, 1555 ms, $0.0032 [cum $1.534]
+20:14:49 [03-removed-field hit #5] [agent-b/gpt-5.6-terra] turn 4: done in 1555 ms
+20:14:49 done  gpt-5.6-terra 03-removed-field git #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0122, 15.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/03-removed-field/git/5.json
+20:14:49 start gpt-5.6-terra 05-optional-to-required git #5
+20:14:49   llm gpt-5.6-terra: in 1528 out 15 tokens, 968 ms, $0.0032 [cum $1.537]
+20:14:49 [04-symbol-move hit #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 968 ms
+20:14:50   llm gpt-5.6-terra: in 1281 out 68 tokens, 1569 ms, $0.0034 [cum $1.540]
+20:14:50 [04-symbol-move git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1569 ms
+20:14:50 done  gpt-5.6-terra 03-removed-field hit #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0123, 11.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/03-removed-field/hit/5.json
+20:14:50 start gpt-5.6-terra 05-optional-to-required hit #5
+20:14:52   llm gpt-5.6-terra: in 1563 out 37 tokens, 2360 ms, $0.0036 [cum $1.544]
+20:14:52 [04-symbol-move hit #5] [agent-b/gpt-5.6-terra] turn 4: done in 2360 ms
+20:14:53   llm gpt-5.6-terra: in 1369 out 15 tokens, 3025 ms, $0.0029 [cum $1.547]
+20:14:53 [04-symbol-move git #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 3025 ms
+20:14:54 done  gpt-5.6-terra 04-symbol-move hit #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0143, 12.6 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/04-symbol-move/hit/5.json
+20:14:54 start gpt-5.6-terra 06-widen-to-narrow-type hit #5
+20:14:56   llm gpt-5.6-terra: in 805 out 149 tokens, 3510 ms, $0.0034 [cum $1.550]
+20:14:56 [05-optional-to-required hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3510 ms
+20:14:56   llm gpt-5.6-terra: in 1404 out 46 tokens, 2375 ms, $0.0034 [cum $1.554]
+20:14:56 [04-symbol-move git #5] [agent-b/gpt-5.6-terra] turn 4: done in 2375 ms
+20:14:56   llm gpt-5.6-terra: in 606 out 150 tokens, 2247 ms, $0.0030 [cum $1.557]
+20:14:56 [05-optional-to-required git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2247 ms
+20:14:57 done  gpt-5.6-terra 04-symbol-move git #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0128, 11.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/04-symbol-move/git/5.json
+20:14:57 start gpt-5.6-terra 06-widen-to-narrow-type git #5
+20:14:57   llm gpt-5.6-terra: in 1436 out 108 tokens, 1464 ms, $0.0042 [cum $1.561]
+20:14:57 [05-optional-to-required hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1464 ms
+20:14:58   llm gpt-5.6-terra: in 765 out 148 tokens, 1931 ms, $0.0033 [cum $1.564]
+20:14:58 [06-widen-to-narrow-type hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1931 ms
+20:14:58   llm gpt-5.6-terra: in 1238 out 120 tokens, 2000 ms, $0.0039 [cum $1.568]
+20:14:58 [05-optional-to-required git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2000 ms
+20:14:58   llm gpt-5.6-terra: in 1565 out 15 tokens, 1001 ms, $0.0033 [cum $1.571]
+20:14:58 [05-optional-to-required hit #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1001 ms
+20:14:59   llm gpt-5.6-terra: in 1379 out 15 tokens, 868 ms, $0.0029 [cum $1.574]
+20:14:59 [05-optional-to-required git #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 868 ms
+20:15:00   llm gpt-5.6-terra: in 610 out 141 tokens, 1577 ms, $0.0029 [cum $1.577]
+20:15:00 [06-widen-to-narrow-type git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1577 ms
+20:15:00   llm gpt-5.6-terra: in 1600 out 38 tokens, 1732 ms, $0.0037 [cum $1.581]
+20:15:00 [05-optional-to-required hit #5] [agent-b/gpt-5.6-terra] turn 4: done in 1732 ms
+20:15:01   llm gpt-5.6-terra: in 1414 out 37 tokens, 1596 ms, $0.0033 [cum $1.584]
+20:15:01 [05-optional-to-required git #5] [agent-b/gpt-5.6-terra] turn 4: done in 1596 ms
+20:15:01   llm gpt-5.6-terra: in 1399 out 249 tokens, 3364 ms, $0.0058 [cum $1.590]
+20:15:01 [06-widen-to-narrow-type hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file in 3364 ms
+20:15:02   llm gpt-5.6-terra: in 1687 out 24 tokens, 1054 ms, $0.0037 [cum $1.594]
+20:15:02 [06-widen-to-narrow-type hit #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1054 ms
+20:15:03 done  gpt-5.6-terra 05-optional-to-required hit #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 4 events, $0.0145, 12.2 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/05-optional-to-required/hit/5.json
+20:15:03 start gpt-5.6-terra 07-async-contract-change git #5
+20:15:03   llm gpt-5.6-terra: in 1237 out 178 tokens, 2867 ms, $0.0046 [cum $1.598]
+20:15:03 [06-widen-to-narrow-type git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2867 ms
+20:15:03 done  gpt-5.6-terra 05-optional-to-required git #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0131, 13.3 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/05-optional-to-required/git/5.json
+20:15:03 start gpt-5.6-terra 07-async-contract-change hit #5
+20:15:05   llm gpt-5.6-terra: in 1436 out 56 tokens, 2119 ms, $0.0035 [cum $1.602]
+20:15:05 [06-widen-to-narrow-type git #5] [agent-b/gpt-5.6-terra] turn 3: edit_file in 2119 ms
+20:15:05   llm gpt-5.6-terra: in 1731 out 54 tokens, 2150 ms, $0.0041 [cum $1.606]
+20:15:05 [06-widen-to-narrow-type hit #5] [agent-b/gpt-5.6-terra] turn 4: done in 2150 ms
+20:15:06   llm gpt-5.6-terra: in 1512 out 15 tokens, 1168 ms, $0.0032 [cum $1.609]
+20:15:06 [06-widen-to-narrow-type git #5] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1168 ms
+20:15:06   llm gpt-5.6-terra: in 743 out 144 tokens, 1663 ms, $0.0032 [cum $1.612]
+20:15:06 [07-async-contract-change hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1663 ms
+20:15:07 done  gpt-5.6-terra 06-widen-to-narrow-type hit #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 2 edits, 3 events, $0.0169, 12.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/hit/5.json
+20:15:07 start gpt-5.6-terra 08-import-path-change hit #5
+20:15:09   llm gpt-5.6-terra: in 1547 out 50 tokens, 2184 ms, $0.0037 [cum $1.616]
+20:15:09 [06-widen-to-narrow-type git #5] [agent-b/gpt-5.6-terra] turn 5: done in 2184 ms
+20:15:09   llm gpt-5.6-terra: in 1369 out 120 tokens, 2182 ms, $0.0042 [cum $1.620]
+20:15:09 [07-async-contract-change hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2182 ms
+20:15:09   llm gpt-5.6-terra: in 642 out 140 tokens, 1814 ms, $0.0030 [cum $1.623]
+20:15:09 [07-async-contract-change git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1814 ms
+20:15:10   llm gpt-5.6-terra: in 1510 out 95 tokens, 1479 ms, $0.0042 [cum $1.627]
+20:15:10 [07-async-contract-change hit #5] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1479 ms
+20:15:10 done  gpt-5.6-terra 06-widen-to-narrow-type git #5: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0180, 13.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/06-widen-to-narrow-type/git/5.json
+20:15:10 start gpt-5.6-terra 08-import-path-change git #5
+20:15:10   llm gpt-5.6-terra: in 600 out 158 tokens, 1742 ms, $0.0031 [cum $1.630]
+20:15:10 [08-import-path-change hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file, read_file in 1742 ms
+20:15:10   llm gpt-5.6-terra: in 1264 out 133 tokens, 1827 ms, $0.0041 [cum $1.634]
+20:15:10 [07-async-contract-change git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1827 ms
+20:15:11   llm gpt-5.6-terra: in 1625 out 15 tokens, 1328 ms, $0.0034 [cum $1.638]
+20:15:11 [07-async-contract-change hit #5] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1328 ms
+20:15:12   llm gpt-5.6-terra: in 1418 out 95 tokens, 1355 ms, $0.0040 [cum $1.642]
+20:15:12 [07-async-contract-change git #5] [agent-b/gpt-5.6-terra] turn 3: edit_file in 1355 ms
+20:15:12   llm gpt-5.6-terra: in 1255 out 104 tokens, 2075 ms, $0.0038 [cum $1.646]
+20:15:12 [08-import-path-change hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2075 ms
+20:15:13   llm gpt-5.6-terra: in 1533 out 15 tokens, 1031 ms, $0.0032 [cum $1.649]
+20:15:13 [07-async-contract-change git #5] [agent-b/gpt-5.6-terra] turn 4: run_typecheck in 1031 ms
+20:15:13   llm gpt-5.6-terra: in 1660 out 47 tokens, 1432 ms, $0.0039 [cum $1.653]
+20:15:13 [07-async-contract-change hit #5] [agent-b/gpt-5.6-terra] turn 5: done in 1432 ms
+20:15:14   llm gpt-5.6-terra: in 616 out 143 tokens, 2628 ms, $0.0029 [cum $1.656]
+20:15:14 [08-import-path-change git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2628 ms
+20:15:14   llm gpt-5.6-terra: in 1380 out 15 tokens, 1629 ms, $0.0029 [cum $1.659]
+20:15:14 [08-import-path-change hit #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1629 ms
+20:15:15   llm gpt-5.6-terra: in 1568 out 44 tokens, 1530 ms, $0.0037 [cum $1.662]
+20:15:15 [07-async-contract-change git #5] [agent-b/gpt-5.6-terra] turn 5: done in 1530 ms
+20:15:15 done  gpt-5.6-terra 07-async-contract-change hit #5: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 3 events, $0.0189, 12.4 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/07-async-contract-change/hit/5.json
+20:15:15 start gpt-5.6-terra 09-union-value-removed git #5
+20:15:16 done  gpt-5.6-terra 07-async-contract-change git #5: typecheck PASS (0 diag), tests PASS (1/1), 5 turns, 2 edits, 0 events, $0.0180, 13.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/07-async-contract-change/git/5.json
+20:15:16 start gpt-5.6-terra 09-union-value-removed hit #5
+20:15:18   llm gpt-5.6-terra: in 1415 out 36 tokens, 3613 ms, $0.0033 [cum $1.666]
+20:15:18 [08-import-path-change hit #5] [agent-b/gpt-5.6-terra] turn 4: done in 3613 ms
+20:15:19   llm gpt-5.6-terra: in 1237 out 117 tokens, 4775 ms, $0.0039 [cum $1.669]
+20:15:19 [08-import-path-change git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 4775 ms
+20:15:19   llm gpt-5.6-terra: in 618 out 151 tokens, 2518 ms, $0.0030 [cum $1.672]
+20:15:19 [09-union-value-removed git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 2518 ms
+20:15:20 done  gpt-5.6-terra 08-import-path-change hit #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0131, 13.0 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/08-import-path-change/hit/5.json
+20:15:20 start gpt-5.6-terra 14-interface-field-rename hit #5
+20:15:22   llm gpt-5.6-terra: in 1375 out 15 tokens, 2815 ms, $0.0029 [cum $1.675]
+20:15:22 [08-import-path-change git #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2815 ms
+20:15:22   llm gpt-5.6-terra: in 1231 out 80 tokens, 3166 ms, $0.0034 [cum $1.679]
+20:15:22 [09-union-value-removed git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3166 ms
+20:15:22   llm gpt-5.6-terra: in 775 out 147 tokens, 3880 ms, $0.0033 [cum $1.682]
+20:15:22 [09-union-value-removed hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3880 ms
+20:15:23   llm gpt-5.6-terra: in 1332 out 15 tokens, 1054 ms, $0.0028 [cum $1.685]
+20:15:23 [09-union-value-removed git #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1054 ms
+20:15:23   llm gpt-5.6-terra: in 1384 out 70 tokens, 1447 ms, $0.0036 [cum $1.689]
+20:15:23 [09-union-value-removed hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1447 ms
+20:15:23   llm gpt-5.6-terra: in 598 out 146 tokens, 1803 ms, $0.0029 [cum $1.692]
+20:15:23 [14-interface-field-rename hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1803 ms
+20:15:24   llm gpt-5.6-terra: in 1410 out 41 tokens, 1575 ms, $0.0033 [cum $1.695]
+20:15:24 [08-import-path-change git #5] [agent-b/gpt-5.6-terra] turn 4: done in 1575 ms
+20:15:24   llm gpt-5.6-terra: in 1475 out 15 tokens, 957 ms, $0.0031 [cum $1.698]
+20:15:24 [09-union-value-removed hit #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 957 ms
+20:15:25   llm gpt-5.6-terra: in 1367 out 41 tokens, 1456 ms, $0.0032 [cum $1.701]
+20:15:25 [09-union-value-removed git #5] [agent-b/gpt-5.6-terra] turn 4: done in 1456 ms
+20:15:25 done  gpt-5.6-terra 08-import-path-change git #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0131, 14.7 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/08-import-path-change/git/5.json
+20:15:25 start gpt-5.6-terra 14-interface-field-rename git #5
+20:15:25   llm gpt-5.6-terra: in 1222 out 70 tokens, 1920 ms, $0.0033 [cum $1.705]
+20:15:25 [14-interface-field-rename hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 1920 ms
+20:15:26 done  gpt-5.6-terra 09-union-value-removed git #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0125, 11.3 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/09-union-value-removed/git/5.json
+20:15:26 start gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive git #5
+20:15:26   llm gpt-5.6-terra: in 1510 out 44 tokens, 1630 ms, $0.0035 [cum $1.708]
+20:15:26 [09-union-value-removed hit #5] [agent-b/gpt-5.6-terra] turn 4: done in 1630 ms
+20:15:27   llm gpt-5.6-terra: in 1310 out 15 tokens, 2120 ms, $0.0028 [cum $1.711]
+20:15:27 [14-interface-field-rename hit #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 2120 ms
+20:15:28   llm gpt-5.6-terra: in 607 out 145 tokens, 1608 ms, $0.0030 [cum $1.714]
+20:15:28 [14-interface-field-rename git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1608 ms
+20:15:29 done  gpt-5.6-terra 09-union-value-removed hit #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0136, 12.4 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/09-union-value-removed/hit/5.json
+20:15:29 start gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive hit #5
+20:15:31   llm gpt-5.6-terra: in 1230 out 73 tokens, 2955 ms, $0.0033 [cum $1.717]
+20:15:31 [14-interface-field-rename git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2955 ms
+20:15:31   llm gpt-5.6-terra: in 1345 out 38 tokens, 3059 ms, $0.0031 [cum $1.720]
+20:15:31 [14-interface-field-rename hit #5] [agent-b/gpt-5.6-terra] turn 4: done in 3059 ms
+20:15:33   llm gpt-5.6-terra: in 850 out 145 tokens, 1692 ms, $0.0034 [cum $1.724]
+20:15:33 [15-enum-like-union-added-and-consumer-exhaustive hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1692 ms
+20:15:33   llm gpt-5.6-terra: in 1321 out 15 tokens, 1874 ms, $0.0028 [cum $1.727]
+20:15:33 [14-interface-field-rename git #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1874 ms
+20:15:34 done  gpt-5.6-terra 14-interface-field-rename hit #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 1 events, $0.0122, 13.8 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/14-interface-field-rename/hit/5.json
+20:15:34 start gpt-5.6-terra 16-two-producers-one-consumer hit #5
+20:15:36   llm gpt-5.6-terra: in 606 out 144 tokens, 3198 ms, $0.0029 [cum $1.729]
+20:15:36 [15-enum-like-union-added-and-consumer-exhaustive git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 3198 ms
+20:15:36   llm gpt-5.6-terra: in 1547 out 96 tokens, 3136 ms, $0.0042 [cum $1.734]
+20:15:36 [15-enum-like-union-added-and-consumer-exhaustive hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 3136 ms
+20:15:36   llm gpt-5.6-terra: in 1356 out 49 tokens, 2283 ms, $0.0033 [cum $1.737]
+20:15:36 [14-interface-field-rename git #5] [agent-b/gpt-5.6-terra] turn 4: done in 2283 ms
+20:15:37   llm gpt-5.6-terra: in 1661 out 15 tokens, 1049 ms, $0.0035 [cum $1.741]
+20:15:37 [15-enum-like-union-added-and-consumer-exhaustive hit #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1049 ms
+20:15:37 done  gpt-5.6-terra 14-interface-field-rename git #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0124, 12.5 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/14-interface-field-rename/git/5.json
+20:15:37 start gpt-5.6-terra 16-two-producers-one-consumer git #5
+20:15:37   llm gpt-5.6-terra: in 831 out 140 tokens, 1621 ms, $0.0033 [cum $1.744]
+20:15:37 [16-two-producers-one-consumer hit #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1621 ms
+20:15:38   llm gpt-5.6-terra: in 1302 out 91 tokens, 2088 ms, $0.0037 [cum $1.748]
+20:15:38 [15-enum-like-union-added-and-consumer-exhaustive git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file in 2088 ms
+20:15:39   llm gpt-5.6-terra: in 1696 out 40 tokens, 1308 ms, $0.0039 [cum $1.751]
+20:15:39 [15-enum-like-union-added-and-consumer-exhaustive hit #5] [agent-b/gpt-5.6-terra] turn 4: done in 1308 ms
+20:15:40   llm gpt-5.6-terra: in 1411 out 15 tokens, 1818 ms, $0.0030 [cum $1.754]
+20:15:40 [15-enum-like-union-added-and-consumer-exhaustive git #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1818 ms
+20:15:40   llm gpt-5.6-terra: in 662 out 146 tokens, 1885 ms, $0.0031 [cum $1.758]
+20:15:40 [16-two-producers-one-consumer git #5] [agent-b/gpt-5.6-terra] turn 1: read_file, read_file, read_file, read_file, read_file, read_file in 1885 ms
+20:15:40   llm gpt-5.6-terra: in 1430 out 291 tokens, 2916 ms, $0.0064 [cum $1.764]
+20:15:40 [16-two-producers-one-consumer hit #5] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file, edit_file in 2916 ms
+20:15:41 done  gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive hit #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 3 events, $0.0151, 12.1 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/hit/5.json
+20:15:41   llm gpt-5.6-terra: in 1776 out 15 tokens, 897 ms, $0.0037 [cum $1.768]
+20:15:41 [16-two-producers-one-consumer hit #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 897 ms
+20:15:42   llm gpt-5.6-terra: in 1446 out 40 tokens, 1581 ms, $0.0034 [cum $1.771]
+20:15:42 [15-enum-like-union-added-and-consumer-exhaustive git #5] [agent-b/gpt-5.6-terra] turn 4: done in 1581 ms
+20:15:43   llm gpt-5.6-terra: in 1267 out 295 tokens, 2660 ms, $0.0061 [cum $1.777]
+20:15:43 [16-two-producers-one-consumer git #5] [agent-b/gpt-5.6-terra] turn 2: edit_file, edit_file, edit_file in 2660 ms
+20:15:43   llm gpt-5.6-terra: in 1811 out 55 tokens, 1456 ms, $0.0043 [cum $1.781]
+20:15:43 [16-two-producers-one-consumer hit #5] [agent-b/gpt-5.6-terra] turn 4: done in 1456 ms
+20:15:44 done  gpt-5.6-terra 15-enum-like-union-added-and-consumer-exhaustive git #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 1 edits, 0 events, $0.0130, 17.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/15-enum-like-union-added-and-consumer-exhaustive/git/5.json
+20:15:44   llm gpt-5.6-terra: in 1617 out 24 tokens, 1338 ms, $0.0035 [cum $1.785]
+20:15:44 [16-two-producers-one-consumer git #5] [agent-b/gpt-5.6-terra] turn 3: run_typecheck in 1338 ms
+20:15:45 done  gpt-5.6-terra 16-two-producers-one-consumer hit #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 3 edits, 4 events, $0.0177, 11.9 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/hit/5.json
+20:15:46   llm gpt-5.6-terra: in 1661 out 55 tokens, 1444 ms, $0.0040 [cum $1.789]
+20:15:46 [16-two-producers-one-consumer git #5] [agent-b/gpt-5.6-terra] turn 4: done in 1444 ms
+20:15:48 done  gpt-5.6-terra 16-two-producers-one-consumer git #5: typecheck PASS (0 diag), tests PASS (1/1), 4 turns, 3 edits, 0 events, $0.0167, 10.4 s -> /home/es/code/hit/reports/runs/mode1/gpt-5.6-terra/16-two-producers-one-consumer/git/5.json
+
+# Mode 1 - scripted breaking change, LLM repair
+
+Generated 2026-10-09T20:15:48.377Z from 120 run(s) under `reports/runs/mode1/`.
+Values are mean +- sd [min, max] over repetitions; pass rates are the fraction of runs.
+
+## Per (model, condition, scenario)
+
+| Model |Condition |Scenario |Runs |Errors |Typecheck pass |Tests pass |Edits |Turns |Input tok |Output tok |Cost USD |Wall clock s |Latency p50 s |Merge conflicts |
+| --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
+| gpt-5.6-terra |git |01-return-type-change |5 |0 |100% |100% |2.0 +- 0.0 [2.0, 2.0] |4.8 +- 0.4 [4.0, 5.0] |6152 +- 632 [5033, 6562] |473 +- 32 [438, 512] |0.0180 +- 0.0012 [0.0160, 0.0193] |17.0 +- 2.3 [13.9, 19.7] |2.0 +- 0.3 [1.7, 2.3] |0.0 |
+| gpt-5.6-terra |git |02-symbol-rename |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4672 +- 21 [4650, 4704] |343 +- 11 [330, 357] |0.0135 +- 0.0002 [0.0133, 0.0137] |13.9 +- 2.5 [10.3, 16.8] |2.1 +- 0.3 [1.8, 2.5] |0.0 |
+| gpt-5.6-terra |git |03-removed-field |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4489 +- 21 [4453, 4507] |266 +- 9 [251, 276] |0.0122 +- 0.0001 [0.0119, 0.0123] |14.4 +- 4.2 [10.2, 20.8] |1.9 +- 0.6 [1.3, 2.9] |0.0 |
+| gpt-5.6-terra |git |04-symbol-move |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4690 +- 12 [4677, 4707] |296 +- 6 [291, 306] |0.0129 +- 0.0001 [0.0128, 0.0131] |12.7 +- 0.7 [11.9, 13.7] |1.8 +- 0.4 [1.3, 2.3] |0.0 |
+| gpt-5.6-terra |git |05-optional-to-required |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4624 +- 26 [4592, 4655] |319 +- 12 [304, 335] |0.0131 +- 0.0002 [0.0128, 0.0133] |12.5 +- 1.5 [10.6, 14.5] |1.6 +- 0.2 [1.2, 1.8] |0.0 |
+| gpt-5.6-terra |git |06-widen-to-narrow-type |5 |0 |100% |80% |1.8 +- 0.4 [1.0, 2.0] |4.8 +- 0.4 [4.0, 5.0] |6086 +- 819 [4627, 6550] |444 +- 77 [313, 506] |0.0175 +- 0.0025 [0.0130, 0.0192] |15.9 +- 2.1 [13.1, 17.5] |2.1 +- 0.4 [1.5, 2.6] |0.0 |
+| gpt-5.6-terra |git |07-async-contract-change |5 |0 |100% |100% |2.0 +- 0.0 [2.0, 2.0] |5.0 +- 0.0 [5.0, 5.0] |6527 +- 139 [6410, 6681] |464 +- 50 [420, 519] |0.0186 +- 0.0009 [0.0179, 0.0196] |15.3 +- 1.1 [13.7, 16.6] |2.0 +- 0.4 [1.5, 2.5] |0.0 |
+| gpt-5.6-terra |git |08-import-path-change |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4743 +- 101 [4638, 4865] |340 +- 24 [312, 362] |0.0136 +- 0.0005 [0.0130, 0.0139] |14.3 +- 2.3 [10.5, 16.5] |2.1 +- 0.5 [1.3, 2.6] |0.0 |
+| gpt-5.6-terra |git |09-union-value-removed |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4541 +- 8 [4529, 4548] |285 +- 4 [280, 290] |0.0125 +- 0.0001 [0.0124, 0.0126] |13.5 +- 1.7 [11.3, 15.8] |1.6 +- 0.2 [1.5, 2.0] |0.0 |
+| gpt-5.6-terra |git |14-interface-field-rename |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4510 +- 11 [4494, 4523] |275 +- 4 [270, 282] |0.0123 +- 0.0001 [0.0122, 0.0124] |14.2 +- 1.6 [12.5, 16.5] |1.7 +- 0.4 [1.2, 2.1] |0.0 |
+| gpt-5.6-terra |git |15-enum-like-union-added-and-consumer-exhaustive |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4782 +- 13 [4765, 4801] |298 +- 6 [290, 307] |0.0131 +- 0.0001 [0.0130, 0.0133] |16.0 +- 2.9 [10.8, 17.9] |1.8 +- 0.2 [1.6, 2.1] |0.0 |
+| gpt-5.6-terra |git |16-two-producers-one-consumer |5 |0 |100% |100% |3.0 +- 0.0 [3.0, 3.0] |4.0 +- 0.0 [4.0, 4.0] |5174 +- 27 [5144, 5207] |502 +- 17 [487, 520] |0.0164 +- 0.0002 [0.0162, 0.0167] |13.1 +- 2.5 [10.4, 16.5] |1.5 +- 0.2 [1.4, 1.8] |0.0 |
+| gpt-5.6-terra |hit |01-return-type-change |5 |0 |100% |100% |2.0 +- 0.0 [2.0, 2.0] |4.8 +- 0.4 [4.0, 5.0] |6742 +- 705 [5481, 7104] |443 +- 10 [434, 459] |0.0188 +- 0.0015 [0.0162, 0.0197] |14.7 +- 1.8 [12.9, 17.7] |1.8 +- 0.2 [1.5, 2.1] |0.0 |
+| gpt-5.6-terra |hit |02-symbol-rename |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4930 +- 9 [4921, 4941] |329 +- 4 [324, 332] |0.0138 +- 0.0001 [0.0137, 0.0139] |12.6 +- 1.7 [10.9, 15.2] |1.6 +- 0.2 [1.3, 1.8] |0.0 |
+| gpt-5.6-terra |hit |03-removed-field |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4465 +- 8 [4453, 4476] |271 +- 5 [264, 276] |0.0122 +- 0.0001 [0.0121, 0.0123] |12.0 +- 0.5 [11.3, 12.7] |1.5 +- 0.2 [1.2, 1.7] |0.0 |
+| gpt-5.6-terra |hit |04-symbol-move |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |5012 +- 110 [4952, 5208] |298 +- 15 [286, 322] |0.0136 +- 0.0004 [0.0133, 0.0143] |12.0 +- 0.7 [10.7, 12.6] |1.6 +- 0.3 [1.5, 2.1] |0.0 |
+| gpt-5.6-terra |hit |05-optional-to-required |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |5405 +- 12 [5385, 5414] |309 +- 6 [299, 314] |0.0145 +- 0.0001 [0.0144, 0.0146] |11.7 +- 0.9 [10.2, 12.5] |1.3 +- 0.2 [1.2, 1.6] |0.0 |
+| gpt-5.6-terra |hit |06-widen-to-narrow-type |5 |0 |100% |100% |2.0 +- 0.0 [2.0, 2.0] |4.6 +- 0.5 [4.0, 5.0] |6502 +- 819 [5582, 7172] |454 +- 34 [409, 492] |0.0185 +- 0.0014 [0.0169, 0.0199] |13.6 +- 0.7 [12.8, 14.2] |1.8 +- 0.2 [1.6, 2.0] |0.0 |
+| gpt-5.6-terra |hit |07-async-contract-change |5 |0 |100% |100% |2.0 +- 0.0 [2.0, 2.0] |5.0 +- 0.0 [5.0, 5.0] |7057 +- 143 [6894, 7173] |473 +- 48 [420, 516] |0.0198 +- 0.0009 [0.0188, 0.0205] |13.9 +- 0.9 [12.4, 14.9] |1.7 +- 0.2 [1.5, 1.9] |0.0 |
+| gpt-5.6-terra |hit |08-import-path-change |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4754 +- 96 [4650, 4905] |362 +- 30 [313, 394] |0.0139 +- 0.0005 [0.0131, 0.0145] |12.8 +- 0.8 [11.8, 13.7] |1.8 +- 0.4 [1.3, 2.3] |0.0 |
+| gpt-5.6-terra |hit |09-union-value-removed |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.2 +- 0.4 [4.0, 5.0] |5347 +- 467 [5127, 6182] |278 +- 7 [269, 289] |0.0140 +- 0.0010 [0.0135, 0.0158] |12.3 +- 1.1 [10.4, 13.5] |1.5 +- 0.1 [1.3, 1.6] |0.0 |
+| gpt-5.6-terra |hit |14-interface-field-rename |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |4471 +- 9 [4463, 4485] |268 +- 4 [264, 274] |0.0122 +- 0.0001 [0.0121, 0.0123] |12.1 +- 1.1 [11.2, 13.8] |1.5 +- 0.3 [1.2, 1.9] |0.0 |
+| gpt-5.6-terra |hit |15-enum-like-union-added-and-consumer-exhaustive |5 |0 |100% |100% |1.0 +- 0.0 [1.0, 1.0] |4.0 +- 0.0 [4.0, 4.0] |5754 +- 7 [5749, 5765] |296 +- 3 [291, 299] |0.0151 +- 0.0000 [0.0150, 0.0151] |11.3 +- 1.0 [10.4, 12.6] |1.4 +- 0.1 [1.2, 1.5] |0.0 |
+| gpt-5.6-terra |hit |16-two-producers-one-consumer |5 |0 |100% |100% |3.0 +- 0.0 [3.0, 3.0] |4.0 +- 0.0 [4.0, 4.0] |5870 +- 35 [5836, 5925] |513 +- 24 [494, 555] |0.0179 +- 0.0004 [0.0176, 0.0185] |13.9 +- 2.2 [11.3, 16.6] |2.1 +- 0.6 [1.5, 2.7] |0.0 |
+
+## Paired hit vs git per scenario
+
+| Model |Scenario |hit runs |git runs |Typecheck hit |Typecheck git |Tests hit |Tests git |Cost hit |Cost git |Wall hit s |Wall git s |Turns hit |Turns git |
+| --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
+| gpt-5.6-terra |01-return-type-change |5 |5 |100% |100% |100% |100% |0.0188 |0.0180 |14.7 |17.0 |4.8 |4.8 |
+| gpt-5.6-terra |02-symbol-rename |5 |5 |100% |100% |100% |100% |0.0138 |0.0135 |12.6 |13.9 |4.0 |4.0 |
+| gpt-5.6-terra |03-removed-field |5 |5 |100% |100% |100% |100% |0.0122 |0.0122 |12.0 |14.4 |4.0 |4.0 |
+| gpt-5.6-terra |04-symbol-move |5 |5 |100% |100% |100% |100% |0.0136 |0.0129 |12.0 |12.7 |4.0 |4.0 |
+| gpt-5.6-terra |05-optional-to-required |5 |5 |100% |100% |100% |100% |0.0145 |0.0131 |11.7 |12.5 |4.0 |4.0 |
+| gpt-5.6-terra |06-widen-to-narrow-type |5 |5 |100% |100% |100% |80% |0.0185 |0.0175 |13.6 |15.9 |4.6 |4.8 |
+| gpt-5.6-terra |07-async-contract-change |5 |5 |100% |100% |100% |100% |0.0198 |0.0186 |13.9 |15.3 |5.0 |5.0 |
+| gpt-5.6-terra |08-import-path-change |5 |5 |100% |100% |100% |100% |0.0139 |0.0136 |12.8 |14.3 |4.0 |4.0 |
+| gpt-5.6-terra |09-union-value-removed |5 |5 |100% |100% |100% |100% |0.0140 |0.0125 |12.3 |13.5 |4.2 |4.0 |
+| gpt-5.6-terra |14-interface-field-rename |5 |5 |100% |100% |100% |100% |0.0122 |0.0123 |12.1 |14.2 |4.0 |4.0 |
+| gpt-5.6-terra |15-enum-like-union-added-and-consumer-exhaustive |5 |5 |100% |100% |100% |100% |0.0151 |0.0131 |11.3 |16.0 |4.0 |4.0 |
+| gpt-5.6-terra |16-two-producers-one-consumer |5 |5 |100% |100% |100% |100% |0.0179 |0.0164 |13.9 |13.1 |4.0 |4.0 |
+
+## Cost per model
+
+| Model |Runs |Input tokens |Output tokens |Cost USD |
+| --- |--- |--- |--- |--- |
+| gpt-5.6-terra |120 |636500 |42987 |1.7888 |
+
+20:15:48 spend this batch: gpt-5.6-terra $1.7888
+MODE1_EXIT 0

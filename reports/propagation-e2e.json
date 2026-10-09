@@ -1,12 +1,43 @@
 {
-  "script": "packages/eval/src/bench-e2e.ts",
-  "commit": "135a0f9 (working tree: bench-e2e.ts added)",
-  "iterations": 25,
-  "eventsPerIteration": 3,
-  "stagesMs": {
-    "edit": { "min": 0.40, "max": 2.49, "p50": 0.44, "p95": 0.50 },
-    "sync": { "min": 2.40, "max": 5.92, "p50": 2.68, "p95": 2.88 },
-    "observe": { "min": 297.70, "max": 412.95, "p50": 328.68, "p95": 353.19 }
+  "environment": {
+    "cpu": "AMD Ryzen 9 5950X 16-Core Processor",
+    "cores": 32,
+    "os": "Linux 6.18.54-1-lts",
+    "node": "v26.10.0",
+    "loadAvgAtStart": [
+      3.47,
+      3.6,
+      3.85
+    ]
   },
-  "totalMs": { "min": 300.62, "max": 416.04, "p50": 331.98, "p95": 358.82 }
+  "iterations": 50,
+  "warmup": 5,
+  "clock": "performance.now",
+  "eventsPerIteration": 3,
+  "stages": {
+    "edit": {
+      "min": 0.3697870000032708,
+      "max": 0.5275830000009591,
+      "p50": 0.4060479999970994,
+      "p95": 0.4612300000007963
+    },
+    "sync": {
+      "min": 2.4857190000002447,
+      "max": 3.7071329999962472,
+      "p50": 2.644225000003644,
+      "p95": 2.799662999999782
+    },
+    "observe": {
+      "min": 317.51009599999816,
+      "max": 433.4624330000006,
+      "p50": 343.05722300000343,
+      "p95": 384.94741500000237
+    }
+  },
+  "total": {
+    "min": 320.4533549999978,
+    "max": 436.5406470000016,
+    "p50": 346.06904499999655,
+    "p95": 388.24479900000006
+  }
 }
