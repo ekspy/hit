@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/patients.ts",
+      "search": "export function findPatient(id: string): Patient {\n  return patients.find((patient) => patient.id === id) ?? patients[0]!",
+      "replace": "export function findPatient(id: string): Patient | null {\n  return patients.find((patient) => patient.id === id) ?? null"
+    }
+  ]
+}

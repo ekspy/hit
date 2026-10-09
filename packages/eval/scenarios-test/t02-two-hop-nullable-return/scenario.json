@@ -1,0 +1,11 @@
+{
+  "id": "t02-two-hop-nullable-return",
+  "title": "findPatient may return null; a new visit header reaches it through visitPatient and dereferences without a check",
+  "fixture": "clinic",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

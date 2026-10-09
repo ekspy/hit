@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/format.ts",
+      "search": "export function formatPhone(phone: string): string {\n  return `(${phone.slice(0, 2)}) ${phone.slice(2)}`",
+      "replace": "export function formatPhone(phone: string | number): string {\n  const digits = String(phone)\n  return `(${digits.slice(0, 2)}) ${digits.slice(2)}`"
+    }
+  ]
+}

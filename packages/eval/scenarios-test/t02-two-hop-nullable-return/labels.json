@@ -1,0 +1,23 @@
+{
+  "conflicts": [
+    {
+      "rule": "R5",
+      "acceptableRules": [
+        "R1",
+        "R4"
+      ],
+      "level": 1,
+      "rationale": "findPatient's return widens from Patient to Patient | null (no more fallback to the first patient). visits.ts passes the value through unchanged (visitPatient has an inferred return type) and still compiles; the concurrently created visit page, two hops away, reads patient.name without a null check (TS18047). R1 (signature change) and R4 (error at the use site) also describe it.",
+      "origin": {
+        "file": "src/lib/patients.ts",
+        "symbol": "findPatient"
+      },
+      "affected": [
+        {
+          "file": "src/app/visit/page.tsx",
+          "symbol": "visitPatient"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "t06-barrel-reexport-removed",
+  "title": "The lib barrel stops re-exporting formatSlot while a new agenda page imports it from the barrel",
+  "fixture": "clinic",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

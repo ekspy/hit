@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/types.ts",
+      "search": "  specialty: Specialty\n}",
+      "replace": "  specialty: Specialty\n  note?: string\n}"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/scheduler.ts",
+      "search": "  book(patientId: string, slot: Slot, specialty: Specialty): Booking {\n    const booking: Booking = { id: `b${this.nextId++}`, patientId, slot, specialty }",
+      "replace": "  book(patientId: string, slot: Slot, specialty: Specialty, note?: string): Booking {\n    const booking: Booking = { id: `b${this.nextId++}`, patientId, slot, specialty, note }"
+    }
+  ]
+}

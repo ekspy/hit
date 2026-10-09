@@ -1,0 +1,11 @@
+{
+  "id": "t01-readonly-field-written",
+  "title": "Patient.notes becomes readonly while a new intake page assigns to it",
+  "fixture": "clinic",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

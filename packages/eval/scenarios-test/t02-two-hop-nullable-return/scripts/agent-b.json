@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "create_file",
+      "path": "src/app/visit/page.tsx",
+      "lang": "tsx",
+      "content": "import { visitPatient } from '../../lib/visits'\nimport type { Booking } from '../../lib/types'\n\nexport function VisitHeader(booking: Booking): string {\n  const patient = visitPatient(booking)\n  return `${patient.name} - ${booking.slot.start}`\n}\n"
+    }
+  ]
+}

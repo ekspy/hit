@@ -283,7 +283,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const argv = process.argv.slice(2)
 
   if (argv[0] === 'detector') {
-    // Detector-quality report only: `harness.ts detector [--set dev|heldout] [--out <report-name>]`.
+    // Detector-quality report only: `harness.ts detector [--set dev|heldout|test] [--out <report-name>]`.
     const option = (name: string): string | undefined => {
       const index = argv.indexOf(name)
       return index === -1 ? undefined : argv[index + 1]
