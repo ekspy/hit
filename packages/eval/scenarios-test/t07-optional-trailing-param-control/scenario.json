@@ -1,0 +1,11 @@
+{
+  "id": "t07-optional-trailing-param-control",
+  "title": "Scheduler.book gains an optional trailing note while a new rebook page calls and binds the old signature",
+  "fixture": "clinic",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

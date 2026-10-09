@@ -1,0 +1,22 @@
+{
+  "conflicts": [
+    {
+      "rule": "R4",
+      "acceptableRules": [
+        "R2"
+      ],
+      "level": 1,
+      "rationale": "Scheduler.cancel is made private (cancelWithReason is the new public entry point). The schedule page concurrently adds CancelPage, which calls scheduler.cancel from outside the class (TS2341). The public member disappears from the class contract, so R2 (removal of an exported member) is also acceptable.",
+      "origin": {
+        "file": "src/lib/scheduler.ts",
+        "symbol": "Scheduler.cancel"
+      },
+      "affected": [
+        {
+          "file": "src/app/schedule/page.tsx",
+          "symbol": "cancel"
+        }
+      ]
+    }
+  ]
+}

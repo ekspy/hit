@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/reminders.ts",
+      "search": "import type { Patient } from './types'\n\nconst handlers: Array<(patient: Patient, hoursBefore: number) => void> = []\n\nexport function onReminder(handler: (patient: Patient, hoursBefore: number) => void): void {",
+      "replace": "export interface ReminderEvent {\n  patientId: string\n  hoursBefore: number\n  channel: 'sms' | 'email'\n}\n\nconst handlers: Array<(event: ReminderEvent) => void> = []\n\nexport function onReminder(handler: (event: ReminderEvent) => void): void {"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/reminders.ts",
+      "search": "      handler(patient, hoursBefore)",
+      "replace": "      handler({ patientId: patient.id, hoursBefore, channel: 'sms' })"
+    }
+  ]
+}

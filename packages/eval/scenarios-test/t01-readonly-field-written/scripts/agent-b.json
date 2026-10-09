@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "create_file",
+      "path": "src/app/intake/page.tsx",
+      "lang": "tsx",
+      "content": "import { findPatient } from '../../lib'\n\nexport function IntakeNote(patientId: string, text: string): string {\n  const patient = findPatient(patientId)\n  patient.notes = `${patient.notes}\\n${text}`.trim()\n  return patient.notes\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "create_file",
+      "path": "src/app/rebook/page.tsx",
+      "lang": "tsx",
+      "content": "import { Scheduler, type Booking, type Slot, type Specialty } from '../../lib'\n\nexport function RebookPage(scheduler: Scheduler, previous: Booking, slot: Slot): Booking {\n  const book: (patientId: string, slot: Slot, specialty: Specialty) => Booking = scheduler.book.bind(scheduler)\n  return book(previous.patientId, slot, previous.specialty)\n}\n"
+    }
+  ]
+}

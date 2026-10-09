@@ -36,13 +36,16 @@ export interface ScenarioRunResult {
 
 /**
  * Scenario sets: `dev` is the original set used while developing the detector;
- * `heldout` is an independent test set written and labelled before being run.
+ * `heldout` is an independent test set written and labelled before being run;
+ * `test` is a further independent set (fixture `clinic`) labelled without
+ * running or reading the detector.
  */
-export type ScenarioSet = 'dev' | 'heldout'
+export type ScenarioSet = 'dev' | 'heldout' | 'test'
 
 const scenarioSetDirs: Record<ScenarioSet, string> = {
   dev: 'packages/eval/scenarios',
   heldout: 'packages/eval/scenarios-heldout',
+  test: 'packages/eval/scenarios-test',
 }
 
 export function listScenarioIds(set: ScenarioSet): string[] {

@@ -1,0 +1,11 @@
+{
+  "id": "t03-reordered-positional-params",
+  "title": "estimateMinutes swaps baseMinutes and specialty while a new triage page calls it in the old order",
+  "fixture": "clinic",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

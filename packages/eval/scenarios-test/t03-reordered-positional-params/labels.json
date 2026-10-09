@@ -1,0 +1,22 @@
+{
+  "conflicts": [
+    {
+      "rule": "R1",
+      "acceptableRules": [
+        "R4"
+      ],
+      "level": 1,
+      "rationale": "The second and third positional parameters of estimateMinutes are swapped (number <-> Specialty). The producer updates the existing caller in schedule/page.tsx, but the concurrently created triage page calls estimateMinutes(patientId, 20, 'pediatrics') in the old order, so both arguments mismatch (TS2345).",
+      "origin": {
+        "file": "src/lib/timing.ts",
+        "symbol": "estimateMinutes"
+      },
+      "affected": [
+        {
+          "file": "src/app/triage/page.tsx",
+          "symbol": "estimateMinutes"
+        }
+      ]
+    }
+  ]
+}

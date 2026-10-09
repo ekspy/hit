@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "create_file",
+      "path": "src/app/contacts/page.tsx",
+      "lang": "tsx",
+      "content": "import { formatPhone, listPatients } from '../../lib'\n\nconst formatter: (phone: string) => string = formatPhone\n\nexport function ContactsPage(): string[] {\n  return listPatients().map((patient) => `${patient.name}: ${formatter(patient.phone)}`)\n}\n"
+    }
+  ]
+}

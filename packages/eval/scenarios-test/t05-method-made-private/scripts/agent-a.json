@@ -1,0 +1,23 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/scheduler.ts",
+      "search": "  cancel(bookingId: string): boolean {",
+      "replace": "  private cancel(bookingId: string): boolean {"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/scheduler.ts",
+      "search": "  upcoming(): Booking[] {",
+      "replace": "  cancelWithReason(bookingId: string, reason: string): boolean {\n    this.cancellations.push(`${bookingId}: ${reason}`)\n    return this.cancel(bookingId)\n  }\n\n  upcoming(): Booking[] {"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/scheduler.ts",
+      "search": "  private nextId = 1\n",
+      "replace": "  private nextId = 1\n  private cancellations: string[] = []\n"
+    }
+  ]
+}

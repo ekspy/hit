@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R4",
+      "level": 1,
+      "rationale": "Patient.notes gains the readonly modifier (producer adds an immutable withNote helper instead). The concurrently created intake page obtains a Patient through the barrel's findPatient and assigns patient.notes, which no longer type-checks (TS2540) in the integrated state. The member's write contract changed; reads are unaffected.",
+      "origin": {
+        "file": "src/lib/types.ts",
+        "symbol": "Patient.notes"
+      },
+      "affected": [
+        {
+          "file": "src/app/intake/page.tsx",
+          "symbol": "notes"
+        }
+      ]
+    }
+  ]
+}

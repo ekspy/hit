@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/types.ts",
+      "search": "  notes: string",
+      "replace": "  readonly notes: string"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/patients.ts",
+      "search": "export function listPatients(): Patient[] {",
+      "replace": "export function withNote(patient: Patient, text: string): Patient {\n  return { ...patient, notes: `${patient.notes}\\n${text}`.trim() }\n}\n\nexport function listPatients(): Patient[] {"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/app/reminders/page.tsx",
+      "search": "import { fireReminders } from '../../lib/reminders'\n",
+      "replace": "import { fireReminders, onReminder } from '../../lib/reminders'\n\nconst outbox: string[] = []\n\nonReminder((patient, hoursBefore) => {\n  outbox.push(`${patient.phone}: appointment in ${hoursBefore}h`)\n})\n\nexport function Outbox(): string[] {\n  return outbox\n}\n"
+    }
+  ]
+}
