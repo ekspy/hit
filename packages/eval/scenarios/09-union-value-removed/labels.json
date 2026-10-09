@@ -2,8 +2,11 @@
   "conflicts": [
     {
       "rule": "R4",
+      "acceptableRules": [
+        "R1"
+      ],
       "level": 1,
-      "rationale": "PaymentResult.status removes 'failed', producing a createPayment contract drift and concrete type errors.",
+      "rationale": "PaymentResult.status removes 'failed', producing a createPayment contract drift and concrete type errors. R1 is also acceptable: the removed union value is provable from the diff of createPayment's return type, so a signature/contract change description is equally legitimate.",
       "origin": {
         "file": "src/lib/payments.ts",
         "symbol": "createPayment"

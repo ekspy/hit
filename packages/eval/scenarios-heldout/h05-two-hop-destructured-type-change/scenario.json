@@ -1,0 +1,11 @@
+{
+  "id": "h05-two-hop-destructured-type-change",
+  "title": "Item.quantity becomes string while item page, two hops away, destructures it as a number",
+  "fixture": "warehouse",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

@@ -1,0 +1,19 @@
+{
+  "conflicts": [
+    {
+      "rule": "R6",
+      "level": 2,
+      "rationale": "The type parameter of paginate now requires T extends { id: string }, narrowing the accepted argument type; catalog/page.tsx passes Item[] (no id), so the call no longer type-checks.",
+      "origin": {
+        "file": "src/lib/catalog.ts",
+        "symbol": "paginate"
+      },
+      "affected": [
+        {
+          "file": "src/app/catalog/page.tsx",
+          "symbol": "paginate"
+        }
+      ]
+    }
+  ]
+}

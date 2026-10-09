@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/format.ts",
+      "search": "export function formatQuantity(value: number, unit: Unit): string\n",
+      "replace": ""
+    }
+  ]
+}

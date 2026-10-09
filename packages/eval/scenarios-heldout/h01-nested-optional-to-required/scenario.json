@@ -1,0 +1,11 @@
+{
+  "id": "h01-nested-optional-to-required",
+  "title": "Nested tracking.notify becomes required while dispatch builds options without it",
+  "fixture": "warehouse",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

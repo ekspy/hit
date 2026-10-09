@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/inventory.ts",
+      "search": "  Backorder = 'backorder',\n  Discontinued = 'discontinued',\n",
+      "replace": "  Backorder = 'backorder',\n"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/inventory.ts",
+      "search": "  reserve(sku: string, quantity: number): boolean {",
+      "replace": "  hold(sku: string, quantity: number): boolean {"
+    }
+  ]
+}

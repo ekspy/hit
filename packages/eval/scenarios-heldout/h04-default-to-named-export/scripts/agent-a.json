@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/pricing.ts",
+      "search": "export default function priceOf",
+      "replace": "export function priceOf"
+    }
+  ]
+}

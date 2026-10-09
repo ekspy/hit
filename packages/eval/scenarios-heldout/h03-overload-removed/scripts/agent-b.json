@@ -1,0 +1,9 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "noop",
+      "note": "Label page keeps calling formatQuantity(3, 'kg')"
+    }
+  ]
+}

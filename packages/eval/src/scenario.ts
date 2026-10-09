@@ -34,8 +34,30 @@ export interface ScenarioRunResult {
   files: string[]
 }
 
-export function loadScenario(id: string): ScenarioConfig {
-  return JSON.parse(readFileSync(scenarioPath(id, 'scenario.json'), 'utf8')) as ScenarioConfig
+/**
+ * Scenario sets: `dev` is the original set used while developing the detector;
+ * `heldout` is an independent test set written and labelled before being run.
+ */
+export type ScenarioSet = 'dev' | 'heldout'
+
+const scenarioSetDirs: Record<ScenarioSet, string> = {
+  dev: 'packages/eval/scenarios',
+  heldout: 'packages/eval/scenarios-heldout',
+}
+
+export function listScenarioIds(set: ScenarioSet): string[] {
+  const root = path.join(workspaceRoot(), scenarioSetDirs[set])
+  return readdirSync(root)
+    .filter((entry) => statSync(path.join(root, entry)).isDirectory())
+    .sort()
+}
+
+export function loadScenario(id: string, set: ScenarioSet = 'dev'): ScenarioConfig {
+  return JSON.parse(readFileSync(scenarioPath(id, set, 'scenario.json'), 'utf8')) as ScenarioConfig
+}
+
+export function loadLabelsFile<T>(id: string, set: ScenarioSet = 'dev'): T {
+  return JSON.parse(readFileSync(scenarioPath(id, set, 'labels.json'), 'utf8')) as T
 }
 
 export function loadFixtureRepo(fixture: string, actorId = 'fixture'): Repo {
@@ -50,8 +72,8 @@ export function loadFixtureRepo(fixture: string, actorId = 'fixture'): Repo {
   return repo
 }
 
-export function loadAgentScript(scenarioId: string, agentId: string): AgentScript {
-  return JSON.parse(readFileSync(scenarioPath(scenarioId, 'scripts', `${agentId}.json`), 'utf8')) as AgentScript
+export function loadAgentScript(scenarioId: string, agentId: string, set: ScenarioSet = 'dev'): AgentScript {
+  return JSON.parse(readFileSync(scenarioPath(scenarioId, set, 'scripts', `${agentId}.json`), 'utf8')) as AgentScript
 }
 
 export function applyScript(repo: Repo, script: AgentScript): void {
@@ -149,8 +171,8 @@ export function scriptedRepairs(id: string): ReplacementRule[] {
   return []
 }
 
-function scenarioPath(id: string, ...parts: string[]): string {
-  return path.join(workspaceRoot(), 'packages/eval/scenarios', id, ...parts)
+function scenarioPath(id: string, set: ScenarioSet, ...parts: string[]): string {
+  return path.join(workspaceRoot(), scenarioSetDirs[set], id, ...parts)
 }
 
 function workspaceRoot(): string {

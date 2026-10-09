@@ -1,0 +1,9 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "noop",
+      "note": "Catalog page keeps paginating Item rows, which have sku but no id"
+    }
+  ]
+}

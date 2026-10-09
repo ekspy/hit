@@ -1,0 +1,11 @@
+{
+  "id": "h04-default-to-named-export",
+  "title": "pricing switches from default to named export while labels keeps a default import",
+  "fixture": "warehouse",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}
