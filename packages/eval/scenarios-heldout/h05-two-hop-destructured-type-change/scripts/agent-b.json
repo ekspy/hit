@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/app/item/page.tsx",
+      "search": "  return item.name\n",
+      "replace": "  const { name, quantity } = item\n  return quantity > 10 ? name : `${name} (low stock)`\n"
+    }
+  ]
+}

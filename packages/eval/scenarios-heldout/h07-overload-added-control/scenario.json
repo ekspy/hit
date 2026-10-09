@@ -1,0 +1,11 @@
+{
+  "id": "h07-overload-added-control",
+  "title": "Control: formatQuantity gains a string overload and a widened implementation",
+  "fixture": "warehouse",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

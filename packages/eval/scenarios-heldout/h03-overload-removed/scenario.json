@@ -1,0 +1,11 @@
+{
+  "id": "h03-overload-removed",
+  "title": "formatQuantity drops its (value, unit) overload while labels still passes a unit",
+  "fixture": "warehouse",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

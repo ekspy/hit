@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/shipping.ts",
+      "search": "    notify?: boolean",
+      "replace": "    notify: boolean"
+    }
+  ]
+}

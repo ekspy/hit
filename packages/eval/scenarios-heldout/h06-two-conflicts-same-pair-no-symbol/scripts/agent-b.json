@@ -1,0 +1,9 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "noop",
+      "note": "Stock page keeps its switch case for StockStatus.Discontinued and keeps calling service.reserve"
+    }
+  ]
+}

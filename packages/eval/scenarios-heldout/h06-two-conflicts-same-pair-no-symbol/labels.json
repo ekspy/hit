@@ -1,0 +1,34 @@
+{
+  "conflicts": [
+    {
+      "rule": "R4",
+      "level": 1,
+      "rationale": "Enum member StockStatus.Discontinued is removed; the switch in stock/page.tsx still has a case for it. Enums are not indexed as symbols, so no producer symbol is resolvable.",
+      "origin": {
+        "file": "src/lib/inventory.ts",
+        "symbol": "StockStatus.Discontinued"
+      },
+      "affected": [
+        {
+          "file": "src/app/stock/page.tsx",
+          "symbol": "Discontinued"
+        }
+      ]
+    },
+    {
+      "rule": "R4",
+      "level": 1,
+      "rationale": "Method InventoryService.reserve is renamed to hold; stock/page.tsx still calls service.reserve. Independent of the enum change (different member, different repair), on the same producer/consumer pair; class members are not part of the indexed class signature.",
+      "origin": {
+        "file": "src/lib/inventory.ts",
+        "symbol": "InventoryService.reserve"
+      },
+      "affected": [
+        {
+          "file": "src/app/stock/page.tsx",
+          "symbol": "reserve"
+        }
+      ]
+    }
+  ]
+}

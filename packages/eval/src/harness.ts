@@ -1,6 +1,4 @@
-import { readFileSync } from 'node:fs'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 
 import { ImpactEngine, scoreConflicts, type Conflict, type LabelsFile, type LogicalConflict, type QualityReport } from '@hit/impact-engine'
 import { Repo } from '@hit/repo-crdt'
@@ -9,7 +7,7 @@ import { SemanticIndex, semanticDiff } from '@hit/semantic-indexer'
 import { propagationBench } from './bench.js'
 import { gitPilot } from './git-baseline.js'
 import { table, writeReport } from './report.js'
-import { applyScript, loadAgentScript, loadFixtureRepo, runScenario } from './scenario.js'
+import { applyScript, listScenarioIds, loadAgentScript, loadFixtureRepo, loadLabelsFile, loadScenario, runScenario, type ScenarioSet } from './scenario.js'
 
 const scenarios = [
   '01-return-type-change',
@@ -30,7 +28,6 @@ const scenarios = [
   '16-two-producers-one-consumer',
 ]
 
-const here = path.dirname(fileURLToPath(import.meta.url))
 
 export async function runAnalyses(): Promise<void> {
   writeConvergenceReport()
@@ -97,16 +94,18 @@ function convergenceCase(actorIds: string[]): {
   }
 }
 
-function writeDetectorQualityReport(): void {
-  const rows = scenarios.map((id) => {
-    const actual = detectorConflicts(id)
-    const expected = loadLabels(id).conflicts
+export function writeDetectorQualityReport(set: ScenarioSet = 'dev', reportName = 'detector-quality'): void {
+  const ids = set === 'dev' ? scenarios : listScenarioIds(set)
+  const rows = ids.map((id) => {
+    const actual = detectorConflicts(id, set)
+    const expected = loadLabels(id, set).conflicts
     const score = scoreConflicts(actual, expected)
     return { id, actual, expected, score }
   })
   const overall = aggregateQuality(rows.map((row) => row.score))
   const json = {
     seed: 1701,
+    scenarioSet: set,
     overall: {
       conflictLevel: overall.conflictLevel,
       ruleAttribution: overall.ruleAttribution,
@@ -127,9 +126,9 @@ function writeDetectorQualityReport(): void {
   }
 
   writeReport(
-    'detector-quality',
+    reportName,
     json,
-    `# Detector Quality
+    `# Detector Quality (${set} set)
 
 Conflict-level precision: ${overall.conflictLevel.precision.toFixed(2)}
 Conflict-level recall: ${overall.conflictLevel.recall.toFixed(2)}
@@ -145,20 +144,20 @@ ${table(['Rule', 'Expected', 'Actual', 'Matched'], Object.entries(overall.rawRul
   )
 }
 
-function detectorConflicts(id: string): Conflict[] {
-  const repo = loadFixtureRepo('shopapp', `detector-${id}`)
+function detectorConflicts(id: string, set: ScenarioSet): Conflict[] {
+  const repo = loadFixtureRepo(loadScenario(id, set).fixture, `detector-${id}`)
   const before = SemanticIndex.build(repo)
 
   for (const agentId of ['agent-a', 'agent-b']) {
-    applyScript(repo, loadAgentScript(id, agentId))
+    applyScript(repo, loadAgentScript(id, agentId, set))
   }
 
   const after = SemanticIndex.build(repo)
   return new ImpactEngine().analyze(semanticDiff(before, after), after)
 }
 
-function loadLabels(id: string): LabelsFile {
-  return JSON.parse(readFileSync(path.resolve(here, '..', 'scenarios', id, 'labels.json'), 'utf8')) as LabelsFile
+function loadLabels(id: string, set: ScenarioSet): LabelsFile {
+  return loadLabelsFile<LabelsFile>(id, set)
 }
 
 function conflictLevelScore(score: QualityReport): Pick<QualityReport, 'precision' | 'recall' | 'f1' | 'truePositives' | 'falsePositives' | 'falseNegatives'> {
@@ -271,5 +270,17 @@ This is a pilot comparison on scripted operations, not a wall-clock comparison o
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  await runAnalyses()
+  const argv = process.argv.slice(2)
+
+  if (argv[0] === 'detector') {
+    // Detector-quality report only: `harness.ts detector [--set dev|heldout] [--out <report-name>]`.
+    const option = (name: string): string | undefined => {
+      const index = argv.indexOf(name)
+      return index === -1 ? undefined : argv[index + 1]
+    }
+    const set = (option('--set') ?? 'dev') as ScenarioSet
+    writeDetectorQualityReport(set, option('--out') ?? (set === 'dev' ? 'detector-quality' : `detector-quality-${set}`))
+  } else {
+    await runAnalyses()
+  }
 }

@@ -1,0 +1,23 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/types.ts",
+      "search": "  quantity: number",
+      "replace": "  quantity: string"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/catalog.ts",
+      "search": "quantity: 120",
+      "replace": "quantity: '120'"
+    },
+    {
+      "kind": "replace",
+      "path": "src/lib/catalog.ts",
+      "search": "quantity: 0",
+      "replace": "quantity: '0'"
+    }
+  ]
+}

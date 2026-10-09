@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/app/labels/page.tsx",
+      "search": "return `${formatQuantity(3, 'kg')} - ${price}`",
+      "replace": "return `${formatQuantity(3, 'kg')} | ${price} cents`"
+    }
+  ]
+}
