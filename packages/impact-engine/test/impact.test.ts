@@ -207,4 +207,23 @@ describe('ImpactEngine', () => {
     expect(report.falsePositives).toBe(1)
     expect(report.recall).toBe(1)
   })
+
+  it('reports an undecided (unknown) change only to consumers the checker rejects', () => {
+    const analyze = (consumer: string) => {
+      const repo = Repo.create('unknown-policy')
+      repo.createFile('src/model.ts', 'export interface Opts { mode: string }\n', 'ts')
+      repo.createFile('src/use.ts', consumer, 'ts')
+      const previous = SemanticIndex.build(repo)
+      repo.editFile('src/model.ts', { start: 0, deleteCount: repo.fileContent('src/model.ts').length, insert: 'export interface Opts { mode: string; level: number }\n' })
+      const current = SemanticIndex.build(repo)
+      return new ImpactEngine().analyze(semanticDiff(previous, current), current)
+    }
+
+    // Reading the type keeps compiling: the added required property is undecided by the classifier, and not reported.
+    expect(analyze("import type { Opts } from './model'\nexport const read = (o: Opts): string => o.mode\n")).toEqual([])
+
+    // Constructing it no longer compiles: the undecided change is reported alongside the diagnostic.
+    const rules = analyze("import type { Opts } from './model'\nexport const made: Opts = { mode: 'a' }\n").map((conflict) => [conflict.rule, conflict.classification])
+    expect(rules).toEqual(expect.arrayContaining([['R1', 'unknown'], ['R4', 'breaking']]))
+  })
 })

@@ -35,7 +35,7 @@ function signatureConflicts(diff: SemanticDiff, index: SemanticIndex): Conflict[
         return []
       }
 
-      const consumers = index.consumersOf(change.after.id)
+      const consumers = corroboratedConsumers(index.consumersOf(change.after.id), verdict.classification, index)
 
       if (consumers.length === 0) {
         return []
@@ -48,6 +48,21 @@ function signatureConflicts(diff: SemanticDiff, index: SemanticIndex): Conflict[
 
       return makeConflict('R1', change.after.file, change.after.id, consumers, withDetails(reason, verdict.findings), verdict.classification)
     })
+}
+
+/**
+ * A change the classifier could not decide (`unknown`) is only reported to consumers the type checker does not accept:
+ * the index holds the consumers' current code, so a consumer file without any diagnostic type-checks against the new
+ * contract and an undecided change is, for that code, compatible. Proven-breaking changes keep every consumer, since
+ * they warn before the consumer writes code that relies on the old contract.
+ */
+function corroboratedConsumers<T extends { fromFile: string }>(consumers: T[], classification: 'breaking' | 'compatible' | 'unknown', index: SemanticIndex): T[] {
+  if (classification !== 'unknown') {
+    return consumers
+  }
+
+  const flagged = new Set(index.diagnostics().flatMap((diagnostic) => (diagnostic.file ? [diagnostic.file] : [])))
+  return consumers.filter((consumer) => flagged.has(consumer.fromFile))
 }
 
 function removedSymbolConflicts(diff: SemanticDiff, index: SemanticIndex): Conflict[] {
@@ -78,7 +93,7 @@ function returnShapeConflict(change: SymbolChange, index: SemanticIndex): Confli
     return []
   }
 
-  const consumers = index.consumersOf(change.after.id)
+  const consumers = corroboratedConsumers(index.consumersOf(change.after.id), classification, index)
 
   if (consumers.length === 0) {
     return []
