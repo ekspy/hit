@@ -46,6 +46,8 @@ export interface ChatResponse {
   /** Provider-specific payload that must be echoed back verbatim in the next turn (reasoning items, thought signatures). */
   raw?: unknown
   stopReason?: string
+  /** Exact model snapshot reported by the provider for this response (e.g. a dated id behind the alias). */
+  modelSnapshot?: string
 }
 
 export interface LlmProvider {

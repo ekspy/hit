@@ -36,6 +36,8 @@ export interface TurnRecord {
   usage: Usage
   latencyMs: number
   costUsd: number
+  /** Model snapshot the provider reported for this turn's response. */
+  modelSnapshot?: string
   error?: string
 }
 
@@ -181,6 +183,7 @@ export class LlmAgent implements Agent, TaskAgent {
     record.assistantText = response.text
     record.usage = response.usage
     record.latencyMs = response.latencyMs
+    record.modelSnapshot = response.modelSnapshot
     record.costUsd = costUsd(this.provider.model, response.usage)
     session.usage = { input: session.usage.input + response.usage.input, output: session.usage.output + response.usage.output }
     session.costUsd += record.costUsd

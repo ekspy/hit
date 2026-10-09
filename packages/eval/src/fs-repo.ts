@@ -76,10 +76,51 @@ export async function runFixtureTests(repo: Repo, fixture: string): Promise<Fixt
   }
 }
 
-export function runVitest(dir: string): Promise<FixtureTestResult> {
+export interface AcceptanceResult extends FixtureTestResult {
+  /** Contract-adherence violations: `file: pattern` for each forbidden pattern found in a consumer non-test file. */
+  contractViolations: string[]
+}
+
+interface ContractRules {
+  generic: string[]
+  pairs: Record<string, Record<string, string[]>>
+}
+
+/**
+ * Hidden acceptance oracle for a Mode 2 task pair: the pair's vitest file (never shown to agents) runs against the final
+ * files in a temp copy, and consumer files are scanned for accesses to the producer's old contract through type assertions.
+ */
+export async function runAcceptance(repo: Repo, fixture: string, pairId: string, consumerFiles: string[]): Promise<AcceptanceResult> {
+  const acceptance = path.join(workspaceRoot(), 'packages/eval/acceptance')
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'hit-acceptance-'))
+  try {
+    materializeFixture(fixture, dir)
+    writeRepoToDir(repo, dir)
+    const target = path.join(dir, 'src', '__acceptance__')
+    mkdirSync(target, { recursive: true })
+    cpSync(path.join(acceptance, '_helpers.ts'), path.join(target, '_helpers.ts'))
+    cpSync(path.join(acceptance, `${pairId}.test.ts`), path.join(target, `${pairId}.test.ts`))
+    const tests = await runVitest(dir, 'src/__acceptance__/')
+    const rules = JSON.parse(readFileSync(path.join(acceptance, 'contract.json'), 'utf8')) as ContractRules
+    const contractViolations: string[] = []
+    for (const file of consumerFiles.filter((name) => !/\.test\.tsx?$/.test(name) && repo.listFiles().includes(name))) {
+      const content = repo.fileContent(file)
+      for (const pattern of [...rules.generic, ...(rules.pairs[pairId]?.[file] ?? [])]) {
+        if (new RegExp(pattern).test(content)) {
+          contractViolations.push(`${file}: ${pattern}`)
+        }
+      }
+    }
+    return { ...tests, contractViolations }
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+}
+
+export function runVitest(dir: string, filter?: string): Promise<FixtureTestResult> {
   const vitest = path.join(workspaceRoot(), 'node_modules', '.bin', 'vitest')
   return new Promise((resolve) => {
-    execFile(vitest, ['run', '--root', dir, '--reporter=json', '--passWithNoTests'], { cwd: dir, timeout: 120_000, maxBuffer: 16 * 1024 * 1024 }, (error, stdout, stderr) => {
+    execFile(vitest, ['run', ...(filter ? [filter] : []), '--root', dir, '--reporter=json', '--passWithNoTests'], { cwd: dir, timeout: 120_000, maxBuffer: 16 * 1024 * 1024 }, (error, stdout, stderr) => {
       const json = parseVitestJson(stdout)
       if (json) {
         resolve({ ok: json.success && !error, passed: json.numPassedTests, failed: json.numFailedTests, output: stderr.slice(-4000) })

@@ -144,13 +144,16 @@ export async function runBatch(options: BatchOptions): Promise<BatchSummary> {
   })
 
   const specs: RunSpec[] = []
+  // Interleaved order: repetition is the outer loop and the condition order rotates per (rep, scenario), so no
+  // condition runs as one contiguous block and time-dependent provider effects spread across conditions.
   for (const model of availableModels) {
-    for (const scenario of scenarios) {
-      for (const condition of options.conditions) {
-        for (let rep = 1; rep <= options.reps; rep += 1) {
+    for (let rep = 1; rep <= options.reps; rep += 1) {
+      scenarios.forEach((scenario, index) => {
+        const shift = (rep + index) % options.conditions.length
+        for (const condition of [...options.conditions.slice(shift), ...options.conditions.slice(0, shift)]) {
           specs.push({ mode: options.mode, model, scenario, condition, rep })
         }
-      }
+      })
     }
   }
 

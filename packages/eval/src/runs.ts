@@ -6,7 +6,7 @@ import { MultiReplicaRuntime, type SemanticEvent } from '@hit/coordinator'
 import type { LabelsFile } from '@hit/impact-engine'
 import { Repo } from '@hit/repo-crdt'
 
-import { runFixtureTests, typecheckRepo } from './fs-repo.js'
+import { runAcceptance, runFixtureTests, typecheckRepo } from './fs-repo.js'
 import { GitPair } from './git-worktree.js'
 import { percentiles } from './metrics.js'
 import { scenarioDir, tasksDir } from './paths.js'
@@ -43,6 +43,11 @@ export interface RunMetrics {
   actedAfterEvent: boolean
   mergeConflicts: number
   converged: boolean
+  /** Mode 2 only: hidden acceptance tests passed (behaviour), and consumer reaches the new contract without assertions. */
+  acceptancePass?: boolean
+  acceptancePassed?: number
+  acceptanceFailed?: number
+  contractAdherent?: boolean
 }
 
 export interface RunResult {
@@ -55,6 +60,12 @@ export interface RunResult {
   eventsDelivered: Array<{ memberId: string; events: SemanticEvent[] }>
   finalDiagnostics: string[]
   testOutput: string
+  acceptanceOutput?: string
+  contractViolations?: string[]
+  /** Distinct model snapshots the provider reported across this run's calls. */
+  modelSnapshots?: string[]
+  /** Final file contents of the checked replica, for audit. */
+  finalFiles?: Record<string, string>
   agents: Array<{ id: string; ownFiles: string[]; sessions: SessionResult[] }>
   calls: LlmCallLog[]
   transcriptPath?: string
@@ -133,6 +144,14 @@ export async function executeRun(spec: RunSpec, options: RunOptions): Promise<Ru
     actedAfterEvent: sessions.some(actedAfterEvent),
     mergeConflicts: partial.metrics?.mergeConflicts ?? 0,
     converged: partial.metrics?.converged ?? true,
+    ...(partial.acceptance
+      ? {
+          acceptancePass: partial.acceptance.ok,
+          acceptancePassed: partial.acceptance.passed,
+          acceptanceFailed: partial.acceptance.failed,
+          contractAdherent: partial.acceptance.contractViolations.length === 0,
+        }
+      : {}),
   }
 
   return {
@@ -145,6 +164,9 @@ export async function executeRun(spec: RunSpec, options: RunOptions): Promise<Ru
     eventsDelivered: partial.eventsDelivered ?? [],
     finalDiagnostics: partial.finalDiagnostics ?? [],
     testOutput: partial.testOutput ?? '',
+    ...(partial.acceptance ? { acceptanceOutput: partial.acceptance.output, contractViolations: partial.acceptance.contractViolations } : {}),
+    modelSnapshots: [...new Set(sessions.flatMap((session) => session.turnRecords.flatMap((record) => (record.modelSnapshot ? [record.modelSnapshot] : []))))].sort(),
+    finalFiles: partial.finalFiles,
     agents: partial.agents,
     calls,
   }
@@ -164,15 +186,19 @@ export function actedAfterEvent(session: SessionResult): boolean {
   return false
 }
 
-type PartialResult = Omit<RunResult, 'spec' | 'startedAt' | 'finishedAt' | 'calls' | 'metrics' | 'transcriptPath'> & {
+type PartialResult = Omit<RunResult, 'spec' | 'startedAt' | 'finishedAt' | 'calls' | 'metrics' | 'transcriptPath' | 'modelSnapshots' | 'acceptanceOutput' | 'contractViolations'> & {
+  acceptance?: Awaited<ReturnType<typeof runAcceptance>>
   metrics: Pick<RunMetrics, 'typecheckPass' | 'diagnostics' | 'testsPass' | 'testsPassed' | 'testsFailed' | 'mergeConflicts' | 'converged'>
 }
 type PartialLike = Omit<globalThis.Partial<PartialResult>, 'agents'> & { agents: RunResult['agents'] }
 
-async function finalChecks(repo: Repo, fixture: string, extra: { mergeConflicts?: number; converged?: boolean } = {}): Promise<Pick<PartialResult, 'metrics' | 'finalDiagnostics' | 'testOutput'>> {
+async function finalChecks(repo: Repo, fixture: string, extra: { mergeConflicts?: number; converged?: boolean; acceptance?: { pairId: string; consumerFiles: string[] } } = {}): Promise<Pick<PartialResult, 'metrics' | 'finalDiagnostics' | 'testOutput' | 'acceptance' | 'finalFiles'>> {
   const diagnostics = typecheckRepo(repo)
   const tests = await runFixtureTests(repo, fixture)
+  const acceptance = extra.acceptance ? await runAcceptance(repo, fixture, extra.acceptance.pairId, extra.acceptance.consumerFiles) : undefined
   return {
+    acceptance,
+    finalFiles: Object.fromEntries(repo.listFiles().map((file) => [file, repo.fileContent(file)])),
     metrics: {
       typecheckPass: diagnostics.length === 0,
       diagnostics: diagnostics.length,
@@ -265,7 +291,7 @@ async function mode2Hit(spec: RunSpec, options: RunOptions): Promise<PartialResu
   const runtime = new MultiReplicaRuntime(members.map(({ id, repo, agent }) => ({ id, repo, agent })), { deliverEvents: spec.condition !== 'hit-silent' })
   await runtime.runTasks(maxTurns + 1)
 
-  const checks = await finalChecks(members[0]!.repo, pair.fixture, { converged: runtime.converged() })
+  const checks = await finalChecks(members[0]!.repo, pair.fixture, { converged: runtime.converged(), acceptance: { pairId: pair.id, consumerFiles: pair.agents.at(-1)!.ownFiles } })
   return { ...checks, eventsDelivered: runtime.eventsDelivered, agents: members.map((member) => ({ id: member.id, ownFiles: member.ownFiles, sessions: member.agent.sessions })) }
 }
 
@@ -304,7 +330,7 @@ async function mode2Git(spec: RunSpec, options: RunOptions): Promise<PartialResu
       await git.commit(git.mergedTarget(), `${repairer.definition.id}: post-merge repair`)
     }
 
-    const checks = await finalChecks(merged, pair.fixture, { mergeConflicts: merge.conflictedFiles.length })
+    const checks = await finalChecks(merged, pair.fixture, { mergeConflicts: merge.conflictedFiles.length, acceptance: { pairId: pair.id, consumerFiles: pair.agents.at(-1)!.ownFiles } })
     return {
       ...checks,
       mergeNote: merge.message,

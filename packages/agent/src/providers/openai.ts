@@ -90,6 +90,7 @@ export function parseOpenAIResponse(response: Response, latencyMs: number): Chat
     latencyMs,
     raw: response.output,
     stopReason: response.status ?? undefined,
+    modelSnapshot: response.model,
   }
 }
 

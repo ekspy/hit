@@ -1,0 +1,11 @@
+{
+  "$comment": "Contract adherence: consumer (agent-b) non-test files must reach the producer's new contract directly. Generic patterns apply to every such file; per-pair patterns flag access to members the producer removed or renamed.",
+  "generic": ["\\bas\\s+any\\b", "\\bas\\s+unknown\\b", "\\bas\\s*\\{", "<any>", "@ts-ignore", "@ts-expect-error", "@ts-nocheck"],
+  "pairs": {
+    "pair-01": { "src/app/checkout/page.tsx": ["\\.status\\b", "\\.redirectUrl\\b", "['\"]status['\"]", "['\"]redirectUrl['\"]"] },
+    "pair-03": { "src/lib/orders.ts": ["\\.customerEmail\\b", "['\"]customerEmail['\"]"] },
+    "pair-07": {},
+    "pair-10": {},
+    "pair-16": { "src/app/checkout/page.tsx": ["\\.status\\b", "['\"]status['\"]"], "src/lib/orders.ts": ["\\.customerEmail\\b", "['\"]customerEmail['\"]"] }
+  }
+}
