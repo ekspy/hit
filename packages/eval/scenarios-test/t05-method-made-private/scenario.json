@@ -1,0 +1,11 @@
+{
+  "id": "t05-method-made-private",
+  "title": "Scheduler.cancel becomes private behind cancelWithReason while the schedule page starts calling cancel",
+  "fixture": "clinic",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

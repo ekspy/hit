@@ -28,6 +28,13 @@ export interface SymbolInfo {
   exported: boolean
   /** Structured parameter list (functions only). */
   parameters?: ParameterInfo[]
+  /** Type parameters with their constraint text (generic functions only). */
+  typeParameters?: Array<{ name: string; constraint?: string }>
+  /**
+   * Public call signatures of an overloaded function (the implementation signature is not callable from outside),
+   * each as `(params): return`. Absent for functions without overloads.
+   */
+  overloads?: Array<{ text: string; arity: number }>
   /** Declared return type text (functions only), e.g. `Promise<PaymentResult>`. */
   returnTypeText?: string
   /** Property shape of interfaces and object-like type aliases. */
@@ -40,12 +47,27 @@ export interface Reference {
   loc: Loc
 }
 
+/**
+ * Declaration in another project file that the code flagged by a diagnostic uses, resolved with the type checker.
+ * `symbol` is the top-level declaration name in `file`, `member` the path inside it (`Item` + `quantity`).
+ * `via`: `call` (argument of a call to it), `import` (the import itself fails), `reference` (identifier, member
+ * access or destructuring, possibly through local initializers), `cascade` (the diagnostic resolves to nothing,
+ * and inherits the producer of another diagnostic in the same function).
+ */
+export interface DiagnosticProducer {
+  file: string
+  symbol?: string
+  member?: string
+  via: 'call' | 'import' | 'reference' | 'cascade'
+}
+
 export interface Diagnostic {
   file?: string
   line?: number
   column?: number
   code: number
   message: string
+  producer?: DiagnosticProducer
 }
 
 export interface SymbolChange {

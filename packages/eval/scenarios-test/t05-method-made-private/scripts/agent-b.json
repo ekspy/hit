@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/app/schedule/page.tsx",
+      "search": "export function UpcomingPage(): string[] {",
+      "replace": "export function CancelPage(bookingId: string): string {\n  return scheduler.cancel(bookingId) ? 'Booking cancelled' : 'Booking not found'\n}\n\nexport function UpcomingPage(): string[] {"
+    }
+  ]
+}

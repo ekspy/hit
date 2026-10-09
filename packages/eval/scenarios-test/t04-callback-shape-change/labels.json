@@ -1,0 +1,22 @@
+{
+  "conflicts": [
+    {
+      "rule": "R1",
+      "acceptableRules": [
+        "R4"
+      ],
+      "level": 1,
+      "rationale": "onReminder's handler parameter changes from (patient: Patient, hoursBefore: number) => void to (event: ReminderEvent) => void. The reminders page, edited concurrently, registers a two-parameter handler that reads patient.phone; the integrated call to onReminder no longer type-checks (TS2345). R4 also describes the use-site incompatibility.",
+      "origin": {
+        "file": "src/lib/reminders.ts",
+        "symbol": "onReminder"
+      },
+      "affected": [
+        {
+          "file": "src/app/reminders/page.tsx",
+          "symbol": "onReminder"
+        }
+      ]
+    }
+  ]
+}

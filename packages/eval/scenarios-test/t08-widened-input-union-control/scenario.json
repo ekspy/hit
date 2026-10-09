@@ -1,0 +1,11 @@
+{
+  "id": "t08-widened-input-union-control",
+  "title": "formatPhone accepts string | number while a new contacts page calls it with strings and stores it as (phone: string) => string",
+  "fixture": "clinic",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

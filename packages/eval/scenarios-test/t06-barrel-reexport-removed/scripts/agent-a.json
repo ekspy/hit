@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/index.ts",
+      "search": "export { formatPhone, formatSlot } from './format'",
+      "replace": "export { formatPhone } from './format'"
+    },
+    {
+      "kind": "replace",
+      "path": "src/app/schedule/page.tsx",
+      "search": "import { Scheduler, formatSlot } from '../../lib'\n",
+      "replace": "import { Scheduler } from '../../lib'\nimport { formatSlot } from '../../lib/format'\n"
+    }
+  ]
+}

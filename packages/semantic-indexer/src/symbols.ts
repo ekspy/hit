@@ -40,17 +40,35 @@ function functionSymbol(node: FunctionDeclaration): SymbolInfo {
   const name = node.getName() ?? '<anonymous>'
   const returnType = node.getReturnType()
 
+  const typeParameters = node.getTypeParameters().map((parameter) => {
+    const constraint = parameter.getConstraint()?.getText()
+    return { name: parameter.getName(), ...(constraint ? { constraint } : {}) }
+  })
+  const overloads = node.getOverloads().map((overload) => ({ text: callSignatureText(overload), arity: overload.getParameters().length }))
+  const ownSignature = `${name}${typeParameterText(node)}(${node.getParameters().map((param) => param.getText()).join(', ')}): ${returnType.getText(node)}`
+
   return {
     id: symbolId(file, name),
     name,
     kind: 'function',
     file,
-    signature: `${name}(${node.getParameters().map((param) => param.getText()).join(', ')}): ${returnType.getText(node)}`,
+    signature: overloads.length > 0 ? [...overloads.map((overload) => `${name}${overload.text}`), ownSignature].join('; ') : ownSignature,
     returnShape: returnTypeShape(returnType, node),
     exported: true,
     parameters: node.getParameters().map((param) => parameterInfo(param)),
     returnTypeText: returnType.getText(node),
+    ...(typeParameters.length > 0 ? { typeParameters } : {}),
+    ...(overloads.length > 0 ? { overloads } : {}),
   }
+}
+
+function typeParameterText(node: FunctionDeclaration): string {
+  const parameters = node.getTypeParameters()
+  return parameters.length > 0 ? `<${parameters.map((parameter) => parameter.getText()).join(', ')}>` : ''
+}
+
+function callSignatureText(node: FunctionDeclaration): string {
+  return `${typeParameterText(node)}(${node.getParameters().map((param) => param.getText()).join(', ')}): ${node.getReturnType().getText(node)}`
 }
 
 function classSymbol(node: ClassDeclaration): SymbolInfo {

@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "create_file",
+      "path": "src/app/triage/page.tsx",
+      "lang": "tsx",
+      "content": "import { estimateMinutes } from '../../lib/timing'\n\nexport function TriageEstimate(patientId: string): string {\n  return `${estimateMinutes(patientId, 20, 'pediatrics')} min`\n}\n"
+    }
+  ]
+}

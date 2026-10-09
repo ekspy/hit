@@ -1,0 +1,11 @@
+{
+  "agentId": "agent-b",
+  "operations": [
+    {
+      "kind": "create_file",
+      "path": "src/app/agenda/page.tsx",
+      "lang": "tsx",
+      "content": "import { Scheduler, formatSlot, type Booking } from '../../lib'\n\nexport function AgendaPage(scheduler: Scheduler): string {\n  const rows = scheduler.upcoming().map((booking: Booking) => `${booking.patientId}: ${formatSlot(booking.slot)}`)\n  return rows.join('\\n')\n}\n"
+    }
+  ]
+}

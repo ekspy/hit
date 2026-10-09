@@ -1,0 +1,11 @@
+{
+  "id": "t04-callback-shape-change",
+  "title": "onReminder handlers now receive a ReminderEvent while a new handler expects (patient, hoursBefore)",
+  "fixture": "clinic",
+  "typecheckCommand": "pnpm exec tsc --noEmit",
+  "agents": [
+    "agent-a",
+    "agent-b"
+  ],
+  "maxSteps": 8
+}

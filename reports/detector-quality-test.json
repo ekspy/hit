@@ -1,0 +1,1220 @@
+{
+  "seed": 1701,
+  "scenarioSet": "test",
+  "overall": {
+    "conflictLevel": {
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "truePositives": 6,
+      "falsePositives": 0,
+      "falseNegatives": 0
+    },
+    "ruleAttribution": {
+      "correct": 1,
+      "total": 6,
+      "accuracy": 0.16666666666666666
+    },
+    "ruleAttributionAcceptable": {
+      "correct": 4,
+      "total": 6,
+      "accuracy": 0.6666666666666666
+    },
+    "rawRuleFirings": {
+      "R9": {
+        "expected": 0,
+        "actual": 4,
+        "matched": 0
+      },
+      "R4": {
+        "expected": 2,
+        "actual": 2,
+        "matched": 0
+      },
+      "R1": {
+        "expected": 2,
+        "actual": 3,
+        "matched": 2
+      },
+      "R5": {
+        "expected": 1,
+        "actual": 1,
+        "matched": 0
+      },
+      "R3": {
+        "expected": 1,
+        "actual": 1,
+        "matched": 1
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "t01-readonly-field-written",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "Patient.notes gains the readonly modifier (producer adds an immutable withNote helper instead). The concurrently created intake page obtains a Patient through the barrel's findPatient and assigns patient.notes, which no longer type-checks (TS2540) in the integrated state. The member's write contract changed; reads are unaffected.",
+          "origin": {
+            "file": "src/lib/types.ts",
+            "symbol": "Patient.notes"
+          },
+          "affected": [
+            {
+              "file": "src/app/intake/page.tsx",
+              "symbol": "notes"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R9:src/lib/types.ts:src/lib/types.ts#Patient:src/app/intake/page.tsx:2540",
+          "rule": "R9",
+          "level": 3,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/types.ts",
+            "symbolId": "src/lib/types.ts#Patient"
+          },
+          "affected": [
+            {
+              "file": "src/app/intake/page.tsx",
+              "loc": {
+                "line": 5,
+                "column": 11
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2540: Cannot assign to 'notes' because it is a read-only property. [uses member 'notes' (Patient.notes) of 'Patient' declared in src/lib/types.ts, resolved by reference]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/intake/page.tsx,src/lib/types.ts:Patient,notes",
+          "primaryRule": "R9",
+          "level": 3,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/intake/page.tsx",
+              "src/lib/types.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/types.ts#Patient"
+            ],
+            "bareSymbols": [
+              "Patient",
+              "notes"
+            ],
+            "filePairs": [
+              "src/app/intake/page.tsx<->src/lib/types.ts"
+            ],
+            "rules": [
+              "R9"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R9:src/lib/types.ts:src/lib/types.ts#Patient:src/app/intake/page.tsx:2540",
+              "rule": "R9",
+              "level": 3,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/types.ts",
+                "symbolId": "src/lib/types.ts#Patient"
+              },
+              "affected": [
+                {
+                  "file": "src/app/intake/page.tsx",
+                  "loc": {
+                    "line": 5,
+                    "column": 11
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2540: Cannot assign to 'notes' because it is a read-only property. [uses member 'notes' (Patient.notes) of 'Patient' declared in src/lib/types.ts, resolved by reference]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/intake/page.tsx,src/lib/types.ts:Patient,notes",
+          "score": 80,
+          "expectedRule": "R4",
+          "acceptableRules": [],
+          "primaryRule": "R9",
+          "rawRules": [
+            "R9"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 1,
+          "accuracy": 0
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 0,
+          "total": 1,
+          "accuracy": 0
+        },
+        "rawRuleFirings": {
+          "R9": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 1,
+            "actual": 0,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "t02-two-hop-nullable-return",
+      "labels": [
+        {
+          "rule": "R5",
+          "acceptableRules": [
+            "R1",
+            "R4"
+          ],
+          "level": 1,
+          "rationale": "findPatient's return widens from Patient to Patient | null (no more fallback to the first patient). visits.ts passes the value through unchanged (visitPatient has an inferred return type) and still compiles; the concurrently created visit page, two hops away, reads patient.name without a null check (TS18047). R1 (signature change) and R4 (error at the use site) also describe it.",
+          "origin": {
+            "file": "src/lib/patients.ts",
+            "symbol": "findPatient"
+          },
+          "affected": [
+            {
+              "file": "src/app/visit/page.tsx",
+              "symbol": "visitPatient"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/visits.ts:src/lib/visits.ts#visitPatient:src/app/visit/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/visits.ts",
+            "symbolId": "src/lib/visits.ts#visitPatient"
+          },
+          "affected": [
+            {
+              "file": "src/app/visit/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/visits.ts#visitPatient"
+            }
+          ],
+          "reason": "Contract changed from visitPatient(booking: Booking): import(\"/src/lib/types\").Patient to visitPatient(booking: Booking): import(\"/src/lib/types\").Patient | null",
+          "status": "pending",
+          "classification": "unknown"
+        },
+        {
+          "id": "R5:src/lib/visits.ts:src/lib/visits.ts#visitPatient:src/app/visit/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/visits.ts",
+            "symbolId": "src/lib/visits.ts#visitPatient"
+          },
+          "affected": [
+            {
+              "file": "src/app/visit/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/visits.ts#visitPatient"
+            }
+          ],
+          "reason": "Return shape changed for visitPatient",
+          "status": "pending",
+          "classification": "unknown"
+        },
+        {
+          "id": "R9:src/lib/visits.ts:src/lib/visits.ts#visitPatient:src/app/visit/page.tsx:18047",
+          "rule": "R9",
+          "level": 3,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/visits.ts",
+            "symbolId": "src/lib/visits.ts#visitPatient"
+          },
+          "affected": [
+            {
+              "file": "src/app/visit/page.tsx",
+              "loc": {
+                "line": 6,
+                "column": 13
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 18047: 'patient' is possibly 'null'. [uses 'visitPatient' declared in src/lib/visits.ts, resolved by reference]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/visit/page.tsx,src/lib/visits.ts:null,patient,visitPatient",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/visit/page.tsx",
+              "src/lib/visits.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/visits.ts#visitPatient"
+            ],
+            "bareSymbols": [
+              "null",
+              "patient",
+              "visitPatient"
+            ],
+            "filePairs": [
+              "src/app/visit/page.tsx<->src/lib/visits.ts"
+            ],
+            "rules": [
+              "R1",
+              "R5",
+              "R9"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/visits.ts:src/lib/visits.ts#visitPatient:src/app/visit/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/visits.ts",
+                "symbolId": "src/lib/visits.ts#visitPatient"
+              },
+              "affected": [
+                {
+                  "file": "src/app/visit/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/visits.ts#visitPatient"
+                }
+              ],
+              "reason": "Contract changed from visitPatient(booking: Booking): import(\"/src/lib/types\").Patient to visitPatient(booking: Booking): import(\"/src/lib/types\").Patient | null",
+              "status": "pending",
+              "classification": "unknown"
+            },
+            {
+              "id": "R5:src/lib/visits.ts:src/lib/visits.ts#visitPatient:src/app/visit/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/visits.ts",
+                "symbolId": "src/lib/visits.ts#visitPatient"
+              },
+              "affected": [
+                {
+                  "file": "src/app/visit/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/visits.ts#visitPatient"
+                }
+              ],
+              "reason": "Return shape changed for visitPatient",
+              "status": "pending",
+              "classification": "unknown"
+            },
+            {
+              "id": "R9:src/lib/visits.ts:src/lib/visits.ts#visitPatient:src/app/visit/page.tsx:18047",
+              "rule": "R9",
+              "level": 3,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/visits.ts",
+                "symbolId": "src/lib/visits.ts#visitPatient"
+              },
+              "affected": [
+                {
+                  "file": "src/app/visit/page.tsx",
+                  "loc": {
+                    "line": 6,
+                    "column": 13
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 18047: 'patient' is possibly 'null'. [uses 'visitPatient' declared in src/lib/visits.ts, resolved by reference]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/visit/page.tsx,src/lib/visits.ts:null,patient,visitPatient",
+          "score": 80,
+          "expectedRule": "R5",
+          "acceptableRules": [
+            "R1",
+            "R4"
+          ],
+          "primaryRule": "R1",
+          "rawRules": [
+            "R1",
+            "R5",
+            "R9"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 1,
+          "accuracy": 0
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 0
+          },
+          "R9": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "t03-reordered-positional-params",
+      "labels": [
+        {
+          "rule": "R1",
+          "acceptableRules": [
+            "R4"
+          ],
+          "level": 1,
+          "rationale": "The second and third positional parameters of estimateMinutes are swapped (number <-> Specialty). The producer updates the existing caller in schedule/page.tsx, but the concurrently created triage page calls estimateMinutes(patientId, 20, 'pediatrics') in the old order, so both arguments mismatch (TS2345).",
+          "origin": {
+            "file": "src/lib/timing.ts",
+            "symbol": "estimateMinutes"
+          },
+          "affected": [
+            {
+              "file": "src/app/triage/page.tsx",
+              "symbol": "estimateMinutes"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/timing.ts:src/lib/timing.ts#estimateMinutes:src/app/triage/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/timing.ts",
+            "symbolId": "src/lib/timing.ts#estimateMinutes"
+          },
+          "affected": [
+            {
+              "file": "src/app/triage/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/timing.ts#estimateMinutes"
+            }
+          ],
+          "reason": "Contract changed from estimateMinutes(patientId: string, baseMinutes: number, specialty: Specialty): number to estimateMinutes(patientId: string, specialty: Specialty, baseMinutes: number): number (parameter specialty type changed from number to \"cardiology\" | \"dermatology\" | \"pediatrics\"; parameter baseMinutes type changed from \"cardiology\" | \"dermatology\" | \"pediatrics\" to number)",
+          "status": "pending",
+          "classification": "unknown"
+        },
+        {
+          "id": "R4:src/lib/timing.ts:src/lib/timing.ts#estimateMinutes:src/app/triage/page.tsx:2345",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/timing.ts",
+            "symbolId": "src/lib/timing.ts#estimateMinutes"
+          },
+          "affected": [
+            {
+              "file": "src/app/triage/page.tsx",
+              "loc": {
+                "line": 4,
+                "column": 40
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2345: Argument of type '20' is not assignable to parameter of type 'Specialty'. [uses 'estimateMinutes' declared in src/lib/timing.ts, resolved by call]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/triage/page.tsx,src/lib/timing.ts:Specialty,estimateMinutes",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/triage/page.tsx",
+              "src/lib/timing.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/timing.ts#estimateMinutes"
+            ],
+            "bareSymbols": [
+              "Specialty",
+              "estimateMinutes"
+            ],
+            "filePairs": [
+              "src/app/triage/page.tsx<->src/lib/timing.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/timing.ts:src/lib/timing.ts#estimateMinutes:src/app/triage/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/timing.ts",
+                "symbolId": "src/lib/timing.ts#estimateMinutes"
+              },
+              "affected": [
+                {
+                  "file": "src/app/triage/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/timing.ts#estimateMinutes"
+                }
+              ],
+              "reason": "Contract changed from estimateMinutes(patientId: string, baseMinutes: number, specialty: Specialty): number to estimateMinutes(patientId: string, specialty: Specialty, baseMinutes: number): number (parameter specialty type changed from number to \"cardiology\" | \"dermatology\" | \"pediatrics\"; parameter baseMinutes type changed from \"cardiology\" | \"dermatology\" | \"pediatrics\" to number)",
+              "status": "pending",
+              "classification": "unknown"
+            },
+            {
+              "id": "R4:src/lib/timing.ts:src/lib/timing.ts#estimateMinutes:src/app/triage/page.tsx:2345",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/timing.ts",
+                "symbolId": "src/lib/timing.ts#estimateMinutes"
+              },
+              "affected": [
+                {
+                  "file": "src/app/triage/page.tsx",
+                  "loc": {
+                    "line": 4,
+                    "column": 40
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2345: Argument of type '20' is not assignable to parameter of type 'Specialty'. [uses 'estimateMinutes' declared in src/lib/timing.ts, resolved by call]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/triage/page.tsx,src/lib/timing.ts:Specialty,estimateMinutes",
+          "score": 100,
+          "expectedRule": "R1",
+          "acceptableRules": [
+            "R4"
+          ],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R1",
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 1,
+          "accuracy": 0
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          },
+          "R4": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "t04-callback-shape-change",
+      "labels": [
+        {
+          "rule": "R1",
+          "acceptableRules": [
+            "R4"
+          ],
+          "level": 1,
+          "rationale": "onReminder's handler parameter changes from (patient: Patient, hoursBefore: number) => void to (event: ReminderEvent) => void. The reminders page, edited concurrently, registers a two-parameter handler that reads patient.phone; the integrated call to onReminder no longer type-checks (TS2345). R4 also describes the use-site incompatibility.",
+          "origin": {
+            "file": "src/lib/reminders.ts",
+            "symbol": "onReminder"
+          },
+          "affected": [
+            {
+              "file": "src/app/reminders/page.tsx",
+              "symbol": "onReminder"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/reminders.ts:src/lib/reminders.ts#onReminder:src/app/reminders/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/reminders.ts",
+            "symbolId": "src/lib/reminders.ts#onReminder"
+          },
+          "affected": [
+            {
+              "file": "src/app/reminders/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/reminders.ts#onReminder"
+            }
+          ],
+          "reason": "Contract changed from onReminder(handler: (patient: Patient, hoursBefore: number) => void): void to onReminder(handler: (event: ReminderEvent) => void): void (parameter handler type changed from (patient: Patient, hoursBefore: number) => void to (event: ReminderEvent) => void)",
+          "status": "pending",
+          "classification": "unknown"
+        },
+        {
+          "id": "R4:src/lib/reminders.ts:src/lib/reminders.ts#onReminder:src/app/reminders/page.tsx:2345",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/reminders.ts",
+            "symbolId": "src/lib/reminders.ts#onReminder"
+          },
+          "affected": [
+            {
+              "file": "src/app/reminders/page.tsx",
+              "loc": {
+                "line": 5,
+                "column": 12
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2345: Argument of type '(patient: any, hoursBefore: any) => void' is not assignable to parameter of type '(event: ReminderEvent) => void'.   Target signature provides too few arguments. Expected 2 or more, but got 1. [uses 'onReminder' declared in src/lib/reminders.ts, resolved by call]",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R9:src/lib/reminders.ts:src/lib/reminders.ts#onReminder:src/app/reminders/page.tsx:7006",
+          "rule": "R9",
+          "level": 3,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/reminders.ts",
+            "symbolId": "src/lib/reminders.ts#onReminder"
+          },
+          "affected": [
+            {
+              "file": "src/app/reminders/page.tsx",
+              "loc": {
+                "line": 5,
+                "column": 22
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 7006: Parameter 'hoursBefore' implicitly has an 'any' type. [uses 'onReminder' declared in src/lib/reminders.ts, resolved by call]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/reminders/page.tsx,src/lib/reminders.ts:any,hoursBefore,onReminder",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/reminders/page.tsx",
+              "src/lib/reminders.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/reminders.ts#onReminder"
+            ],
+            "bareSymbols": [
+              "any",
+              "hoursBefore",
+              "onReminder"
+            ],
+            "filePairs": [
+              "src/app/reminders/page.tsx<->src/lib/reminders.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4",
+              "R9"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/reminders.ts:src/lib/reminders.ts#onReminder:src/app/reminders/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/reminders.ts",
+                "symbolId": "src/lib/reminders.ts#onReminder"
+              },
+              "affected": [
+                {
+                  "file": "src/app/reminders/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/reminders.ts#onReminder"
+                }
+              ],
+              "reason": "Contract changed from onReminder(handler: (patient: Patient, hoursBefore: number) => void): void to onReminder(handler: (event: ReminderEvent) => void): void (parameter handler type changed from (patient: Patient, hoursBefore: number) => void to (event: ReminderEvent) => void)",
+              "status": "pending",
+              "classification": "unknown"
+            },
+            {
+              "id": "R4:src/lib/reminders.ts:src/lib/reminders.ts#onReminder:src/app/reminders/page.tsx:2345",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/reminders.ts",
+                "symbolId": "src/lib/reminders.ts#onReminder"
+              },
+              "affected": [
+                {
+                  "file": "src/app/reminders/page.tsx",
+                  "loc": {
+                    "line": 5,
+                    "column": 12
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2345: Argument of type '(patient: any, hoursBefore: any) => void' is not assignable to parameter of type '(event: ReminderEvent) => void'.   Target signature provides too few arguments. Expected 2 or more, but got 1. [uses 'onReminder' declared in src/lib/reminders.ts, resolved by call]",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R9:src/lib/reminders.ts:src/lib/reminders.ts#onReminder:src/app/reminders/page.tsx:7006",
+              "rule": "R9",
+              "level": 3,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/reminders.ts",
+                "symbolId": "src/lib/reminders.ts#onReminder"
+              },
+              "affected": [
+                {
+                  "file": "src/app/reminders/page.tsx",
+                  "loc": {
+                    "line": 5,
+                    "column": 22
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 7006: Parameter 'hoursBefore' implicitly has an 'any' type. [uses 'onReminder' declared in src/lib/reminders.ts, resolved by call]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/reminders/page.tsx,src/lib/reminders.ts:any,hoursBefore,onReminder",
+          "score": 100,
+          "expectedRule": "R1",
+          "acceptableRules": [
+            "R4"
+          ],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R1",
+            "R4",
+            "R9"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 1,
+          "accuracy": 0
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          },
+          "R4": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R9": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "t05-method-made-private",
+      "labels": [
+        {
+          "rule": "R4",
+          "acceptableRules": [
+            "R2"
+          ],
+          "level": 1,
+          "rationale": "Scheduler.cancel is made private (cancelWithReason is the new public entry point). The schedule page concurrently adds CancelPage, which calls scheduler.cancel from outside the class (TS2341). The public member disappears from the class contract, so R2 (removal of an exported member) is also acceptable.",
+          "origin": {
+            "file": "src/lib/scheduler.ts",
+            "symbol": "Scheduler.cancel"
+          },
+          "affected": [
+            {
+              "file": "src/app/schedule/page.tsx",
+              "symbol": "cancel"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R9:src/lib/scheduler.ts:src/lib/scheduler.ts#Scheduler:src/app/schedule/page.tsx:2341",
+          "rule": "R9",
+          "level": 3,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/scheduler.ts",
+            "symbolId": "src/lib/scheduler.ts#Scheduler"
+          },
+          "affected": [
+            {
+              "file": "src/app/schedule/page.tsx",
+              "loc": {
+                "line": 14,
+                "column": 20
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2341: Property 'cancel' is private and only accessible within class 'Scheduler'. [uses member 'cancel' (Scheduler.cancel) of 'Scheduler' declared in src/lib/scheduler.ts, resolved by reference]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/schedule/page.tsx,src/lib/scheduler.ts:Scheduler,cancel",
+          "primaryRule": "R9",
+          "level": 3,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/schedule/page.tsx",
+              "src/lib/scheduler.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/scheduler.ts#Scheduler"
+            ],
+            "bareSymbols": [
+              "Scheduler",
+              "cancel"
+            ],
+            "filePairs": [
+              "src/app/schedule/page.tsx<->src/lib/scheduler.ts"
+            ],
+            "rules": [
+              "R9"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R9:src/lib/scheduler.ts:src/lib/scheduler.ts#Scheduler:src/app/schedule/page.tsx:2341",
+              "rule": "R9",
+              "level": 3,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/scheduler.ts",
+                "symbolId": "src/lib/scheduler.ts#Scheduler"
+              },
+              "affected": [
+                {
+                  "file": "src/app/schedule/page.tsx",
+                  "loc": {
+                    "line": 14,
+                    "column": 20
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2341: Property 'cancel' is private and only accessible within class 'Scheduler'. [uses member 'cancel' (Scheduler.cancel) of 'Scheduler' declared in src/lib/scheduler.ts, resolved by reference]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/schedule/page.tsx,src/lib/scheduler.ts:Scheduler,cancel",
+          "score": 80,
+          "expectedRule": "R4",
+          "acceptableRules": [
+            "R2"
+          ],
+          "primaryRule": "R9",
+          "rawRules": [
+            "R9"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 1,
+          "accuracy": 0
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 0,
+          "total": 1,
+          "accuracy": 0
+        },
+        "rawRuleFirings": {
+          "R9": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 1,
+            "actual": 0,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "t06-barrel-reexport-removed",
+      "labels": [
+        {
+          "rule": "R3",
+          "acceptableRules": [
+            "R2"
+          ],
+          "level": 1,
+          "rationale": "src/lib/index.ts no longer re-exports formatSlot (format.ts itself still exports it, and the producer repoints schedule/page.tsx to lib/format). The concurrently created agenda page imports formatSlot from the barrel, an import that no longer resolves (TS2305). R2 also applies: an exported name of the barrel module was removed while it had a consumer.",
+          "origin": {
+            "file": "src/lib/index.ts",
+            "symbol": "formatSlot"
+          },
+          "affected": [
+            {
+              "file": "src/app/agenda/page.tsx",
+              "symbol": "formatSlot"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R3:src/lib/index.ts:src/lib/index.ts#formatSlot:src/app/agenda/page.tsx:2305",
+          "rule": "R3",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/index.ts",
+            "symbolId": "src/lib/index.ts#formatSlot"
+          },
+          "affected": [
+            {
+              "file": "src/app/agenda/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 21
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2305: Module '\"../../lib\"' has no exported member 'formatSlot'. [uses 'formatSlot' declared in src/lib/index.ts, resolved by import]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/agenda/page.tsx,src/lib/index.ts:formatSlot",
+          "primaryRule": "R3",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/agenda/page.tsx",
+              "src/lib/index.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/index.ts#formatSlot"
+            ],
+            "bareSymbols": [
+              "formatSlot"
+            ],
+            "filePairs": [
+              "src/app/agenda/page.tsx<->src/lib/index.ts"
+            ],
+            "rules": [
+              "R3"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R3:src/lib/index.ts:src/lib/index.ts#formatSlot:src/app/agenda/page.tsx:2305",
+              "rule": "R3",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/index.ts",
+                "symbolId": "src/lib/index.ts#formatSlot"
+              },
+              "affected": [
+                {
+                  "file": "src/app/agenda/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 21
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2305: Module '\"../../lib\"' has no exported member 'formatSlot'. [uses 'formatSlot' declared in src/lib/index.ts, resolved by import]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/agenda/page.tsx,src/lib/index.ts:formatSlot",
+          "score": 100,
+          "expectedRule": "R3",
+          "acceptableRules": [
+            "R2"
+          ],
+          "primaryRule": "R3",
+          "rawRules": [
+            "R3"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R3": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "t07-optional-trailing-param-control",
+      "labels": [],
+      "rawConflicts": [],
+      "logicalConflicts": [],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {}
+      }
+    },
+    {
+      "id": "t08-widened-input-union-control",
+      "labels": [],
+      "rawConflicts": [],
+      "logicalConflicts": [],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {}
+      }
+    }
+  ]
+}

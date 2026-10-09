@@ -1,0 +1,1327 @@
+{
+  "seed": 1701,
+  "scenarioSet": "heldout",
+  "overall": {
+    "conflictLevel": {
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "truePositives": 7,
+      "falsePositives": 0,
+      "falseNegatives": 0
+    },
+    "ruleAttribution": {
+      "correct": 7,
+      "total": 7,
+      "accuracy": 1
+    },
+    "ruleAttributionAcceptable": {
+      "correct": 7,
+      "total": 7,
+      "accuracy": 1
+    },
+    "rawRuleFirings": {
+      "R1": {
+        "expected": 1,
+        "actual": 3,
+        "matched": 1
+      },
+      "R4": {
+        "expected": 4,
+        "actual": 7,
+        "matched": 0
+      },
+      "R6": {
+        "expected": 1,
+        "actual": 1,
+        "matched": 1
+      },
+      "R3": {
+        "expected": 1,
+        "actual": 1,
+        "matched": 1
+      },
+      "R9": {
+        "expected": 0,
+        "actual": 1,
+        "matched": 0
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "h01-nested-optional-to-required",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "ShipmentOptions.tracking.notify (nested inside an optional object) becomes required; dispatch/page.tsx still builds a ShipmentOptions literal whose tracking object omits notify, a type incompatibility at the point of use.",
+          "origin": {
+            "file": "src/lib/shipping.ts",
+            "symbol": "ShipmentOptions.tracking.notify"
+          },
+          "affected": [
+            {
+              "file": "src/app/dispatch/page.tsx",
+              "symbol": "ShipmentOptions"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/shipping.ts:src/lib/shipping.ts#ShipmentOptions:src/app/dispatch/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/shipping.ts",
+            "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+          },
+          "affected": [
+            {
+              "file": "src/app/dispatch/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+            }
+          ],
+          "reason": "Contract changed from export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify?: boolean\n  }\n} to export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify: boolean\n  }\n} (property tracking type changed from undefined | { number: string; notify?: boolean | undefined; } to undefined | { number: string; notify: boolean; })",
+          "status": "pending",
+          "classification": "unknown"
+        },
+        {
+          "id": "R4:src/lib/shipping.ts:src/lib/shipping.ts#ShipmentOptions:src/app/dispatch/page.tsx:2741",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/shipping.ts",
+            "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+          },
+          "affected": [
+            {
+              "file": "src/app/dispatch/page.tsx",
+              "loc": {
+                "line": 4,
+                "column": 54
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2741: Property 'notify' is missing in type '{ number: string; }' but required in type '{ number: string; notify: boolean; }'. [uses member 'tracking' (ShipmentOptions.tracking) of 'ShipmentOptions' declared in src/lib/shipping.ts, resolved by reference]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/dispatch/page.tsx,src/lib/shipping.ts:ShipmentOptions,notify,tracking",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/dispatch/page.tsx",
+              "src/lib/shipping.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/shipping.ts#ShipmentOptions"
+            ],
+            "bareSymbols": [
+              "ShipmentOptions",
+              "notify",
+              "tracking"
+            ],
+            "filePairs": [
+              "src/app/dispatch/page.tsx<->src/lib/shipping.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/shipping.ts:src/lib/shipping.ts#ShipmentOptions:src/app/dispatch/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/shipping.ts",
+                "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+              },
+              "affected": [
+                {
+                  "file": "src/app/dispatch/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+                }
+              ],
+              "reason": "Contract changed from export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify?: boolean\n  }\n} to export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify: boolean\n  }\n} (property tracking type changed from undefined | { number: string; notify?: boolean | undefined; } to undefined | { number: string; notify: boolean; })",
+              "status": "pending",
+              "classification": "unknown"
+            },
+            {
+              "id": "R4:src/lib/shipping.ts:src/lib/shipping.ts#ShipmentOptions:src/app/dispatch/page.tsx:2741",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/shipping.ts",
+                "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+              },
+              "affected": [
+                {
+                  "file": "src/app/dispatch/page.tsx",
+                  "loc": {
+                    "line": 4,
+                    "column": 54
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2741: Property 'notify' is missing in type '{ number: string; }' but required in type '{ number: string; notify: boolean; }'. [uses member 'tracking' (ShipmentOptions.tracking) of 'ShipmentOptions' declared in src/lib/shipping.ts, resolved by reference]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/dispatch/page.tsx,src/lib/shipping.ts:ShipmentOptions,notify,tracking",
+          "score": 80,
+          "expectedRule": "R4",
+          "acceptableRules": [],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R1",
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h02-generic-constraint-added",
+      "labels": [
+        {
+          "rule": "R6",
+          "level": 2,
+          "rationale": "The type parameter of paginate now requires T extends { id: string }, narrowing the accepted argument type; catalog/page.tsx passes Item[] (no id), so the call no longer type-checks.",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbol": "paginate"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "symbol": "paginate"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#paginate:src/app/catalog/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#paginate"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#paginate"
+            }
+          ],
+          "reason": "Contract changed from paginate<T>(rows: T[], size: number): Page<T> to paginate<T extends { id: string }>(rows: T[], size: number): Page<T> (type parameter T gained constraint { id: string })",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/catalog.ts:src/lib/catalog.ts#paginate:src/app/catalog/page.tsx:2339",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#paginate"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 5,
+                "column": 43
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'name' does not exist on type '{ id: string; }'. [uses 'paginate' declared in src/lib/catalog.ts, resolved by reference]",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/catalog.ts:src/lib/catalog.ts#paginate:src/app/catalog/page.tsx:2345",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#paginate"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 4,
+                "column": 25
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2345: Argument of type 'Item[]' is not assignable to parameter of type '{ id: string; }[]'.   Property 'id' is missing in type 'Item' but required in type '{ id: string; }'. [uses 'paginate' declared in src/lib/catalog.ts, resolved by call]",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R6:src/lib/catalog.ts:src/lib/catalog.ts#paginate:src/app/catalog/page.tsx",
+          "rule": "R6",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#paginate"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#paginate"
+            }
+          ],
+          "reason": "Parameter contract narrowed for paginate (type parameter T gained constraint { id: string })",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:Item,id,name,paginate",
+          "primaryRule": "R6",
+          "level": 2,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/catalog/page.tsx",
+              "src/lib/catalog.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/catalog.ts#paginate"
+            ],
+            "bareSymbols": [
+              "Item",
+              "id",
+              "name",
+              "paginate"
+            ],
+            "filePairs": [
+              "src/app/catalog/page.tsx<->src/lib/catalog.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4",
+              "R6"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#paginate:src/app/catalog/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#paginate"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#paginate"
+                }
+              ],
+              "reason": "Contract changed from paginate<T>(rows: T[], size: number): Page<T> to paginate<T extends { id: string }>(rows: T[], size: number): Page<T> (type parameter T gained constraint { id: string })",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R4:src/lib/catalog.ts:src/lib/catalog.ts#paginate:src/app/catalog/page.tsx:2339",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#paginate"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 5,
+                    "column": 43
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'name' does not exist on type '{ id: string; }'. [uses 'paginate' declared in src/lib/catalog.ts, resolved by reference]",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R4:src/lib/catalog.ts:src/lib/catalog.ts#paginate:src/app/catalog/page.tsx:2345",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#paginate"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 4,
+                    "column": 25
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2345: Argument of type 'Item[]' is not assignable to parameter of type '{ id: string; }[]'.   Property 'id' is missing in type 'Item' but required in type '{ id: string; }'. [uses 'paginate' declared in src/lib/catalog.ts, resolved by call]",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R6:src/lib/catalog.ts:src/lib/catalog.ts#paginate:src/app/catalog/page.tsx",
+              "rule": "R6",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#paginate"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#paginate"
+                }
+              ],
+              "reason": "Parameter contract narrowed for paginate (type parameter T gained constraint { id: string })",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:Item,id,name,paginate",
+          "score": 100,
+          "expectedRule": "R6",
+          "acceptableRules": [],
+          "primaryRule": "R6",
+          "rawRules": [
+            "R1",
+            "R4",
+            "R6"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 0,
+            "actual": 2,
+            "matched": 0
+          },
+          "R6": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "h03-overload-removed",
+      "labels": [
+        {
+          "rule": "R1",
+          "level": 1,
+          "rationale": "The public call signatures of formatQuantity lose the (value, unit) overload (the implementation signature is unchanged and not callable from outside); labels/page.tsx still calls it with two arguments.",
+          "origin": {
+            "file": "src/lib/format.ts",
+            "symbol": "formatQuantity"
+          },
+          "affected": [
+            {
+              "file": "src/app/labels/page.tsx",
+              "symbol": "formatQuantity"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/format.ts:src/lib/format.ts#formatQuantity:src/app/labels/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/format.ts",
+            "symbolId": "src/lib/format.ts#formatQuantity"
+          },
+          "affected": [
+            {
+              "file": "src/app/labels/page.tsx",
+              "loc": {
+                "line": 2,
+                "column": 1
+              },
+              "symbolId": "src/lib/format.ts#formatQuantity"
+            }
+          ],
+          "reason": "Contract changed from formatQuantity(value: number): string; formatQuantity(value: number, unit: Unit): string; formatQuantity(value: number, unit?: Unit): string to formatQuantity(value: number): string; formatQuantity(value: number, unit?: Unit): string (call signature formatQuantity(value: number, unit: Unit): string was removed and no remaining signature takes 2 arguments)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/format.ts:src/lib/format.ts#formatQuantity:src/app/labels/page.tsx:2554",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/format.ts",
+            "symbolId": "src/lib/format.ts#formatQuantity"
+          },
+          "affected": [
+            {
+              "file": "src/app/labels/page.tsx",
+              "loc": {
+                "line": 8,
+                "column": 31
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2554: Expected 1 arguments, but got 2. [uses 'formatQuantity' declared in src/lib/format.ts, resolved by call]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/labels/page.tsx,src/lib/format.ts:formatQuantity",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/labels/page.tsx",
+              "src/lib/format.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/format.ts#formatQuantity"
+            ],
+            "bareSymbols": [
+              "formatQuantity"
+            ],
+            "filePairs": [
+              "src/app/labels/page.tsx<->src/lib/format.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/format.ts:src/lib/format.ts#formatQuantity:src/app/labels/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/format.ts",
+                "symbolId": "src/lib/format.ts#formatQuantity"
+              },
+              "affected": [
+                {
+                  "file": "src/app/labels/page.tsx",
+                  "loc": {
+                    "line": 2,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/format.ts#formatQuantity"
+                }
+              ],
+              "reason": "Contract changed from formatQuantity(value: number): string; formatQuantity(value: number, unit: Unit): string; formatQuantity(value: number, unit?: Unit): string to formatQuantity(value: number): string; formatQuantity(value: number, unit?: Unit): string (call signature formatQuantity(value: number, unit: Unit): string was removed and no remaining signature takes 2 arguments)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R4:src/lib/format.ts:src/lib/format.ts#formatQuantity:src/app/labels/page.tsx:2554",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/format.ts",
+                "symbolId": "src/lib/format.ts#formatQuantity"
+              },
+              "affected": [
+                {
+                  "file": "src/app/labels/page.tsx",
+                  "loc": {
+                    "line": 8,
+                    "column": 31
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2554: Expected 1 arguments, but got 2. [uses 'formatQuantity' declared in src/lib/format.ts, resolved by call]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/labels/page.tsx,src/lib/format.ts:formatQuantity",
+          "score": 100,
+          "expectedRule": "R1",
+          "acceptableRules": [],
+          "primaryRule": "R1",
+          "rawRules": [
+            "R1",
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          },
+          "R4": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h04-default-to-named-export",
+      "labels": [
+        {
+          "rule": "R3",
+          "level": 1,
+          "rationale": "pricing.ts no longer has a default export; labels/page.tsx (edited concurrently on an unrelated line) still uses `import priceOf from '../../lib/pricing'`, so the import no longer resolves.",
+          "origin": {
+            "file": "src/lib/pricing.ts",
+            "symbol": "priceOf"
+          },
+          "affected": [
+            {
+              "file": "src/app/labels/page.tsx",
+              "symbol": "priceOf"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R3:src/lib/pricing.ts:src/lib/pricing.ts#priceOf:src/app/labels/page.tsx:2613",
+          "rule": "R3",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/pricing.ts",
+            "symbolId": "src/lib/pricing.ts#priceOf"
+          },
+          "affected": [
+            {
+              "file": "src/app/labels/page.tsx",
+              "loc": {
+                "line": 3,
+                "column": 8
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2613: Module '\"/src/lib/pricing\"' has no default export. Did you mean to use 'import { priceOf } from \"/src/lib/pricing\"' instead? [uses 'priceOf' declared in src/lib/pricing.ts, resolved by import]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/labels/page.tsx,src/lib/pricing.ts:priceOf",
+          "primaryRule": "R3",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/labels/page.tsx",
+              "src/lib/pricing.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/pricing.ts#priceOf"
+            ],
+            "bareSymbols": [
+              "priceOf"
+            ],
+            "filePairs": [
+              "src/app/labels/page.tsx<->src/lib/pricing.ts"
+            ],
+            "rules": [
+              "R3"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R3:src/lib/pricing.ts:src/lib/pricing.ts#priceOf:src/app/labels/page.tsx:2613",
+              "rule": "R3",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/pricing.ts",
+                "symbolId": "src/lib/pricing.ts#priceOf"
+              },
+              "affected": [
+                {
+                  "file": "src/app/labels/page.tsx",
+                  "loc": {
+                    "line": 3,
+                    "column": 8
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2613: Module '\"/src/lib/pricing\"' has no default export. Did you mean to use 'import { priceOf } from \"/src/lib/pricing\"' instead? [uses 'priceOf' declared in src/lib/pricing.ts, resolved by import]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/labels/page.tsx,src/lib/pricing.ts:priceOf",
+          "score": 100,
+          "expectedRule": "R3",
+          "acceptableRules": [],
+          "primaryRule": "R3",
+          "rawRules": [
+            "R3"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R3": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "h05-two-hop-destructured-type-change",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "Item.quantity changes from number to string (producer also updates its seed data). item/page.tsx never imports Item: it reaches it through catalog.findItem's inferred return type (two hops) and, concurrently, starts destructuring quantity and comparing it with a number.",
+          "origin": {
+            "file": "src/lib/types.ts",
+            "symbol": "Item.quantity"
+          },
+          "affected": [
+            {
+              "file": "src/app/item/page.tsx",
+              "symbol": "quantity"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R4:src/lib/types.ts:src/lib/types.ts#Item:src/app/item/page.tsx:2365",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/types.ts",
+            "symbolId": "src/lib/types.ts#Item"
+          },
+          "affected": [
+            {
+              "file": "src/app/item/page.tsx",
+              "loc": {
+                "line": 11,
+                "column": 10
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2365: Operator '>' cannot be applied to types 'string' and 'number'. [uses member 'quantity' (Item.quantity) of 'Item' declared in src/lib/types.ts, resolved by reference]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/item/page.tsx,src/lib/types.ts:Item,number,quantity,string",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/item/page.tsx",
+              "src/lib/types.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/types.ts#Item"
+            ],
+            "bareSymbols": [
+              "Item",
+              "number",
+              "quantity",
+              "string"
+            ],
+            "filePairs": [
+              "src/app/item/page.tsx<->src/lib/types.ts"
+            ],
+            "rules": [
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R4:src/lib/types.ts:src/lib/types.ts#Item:src/app/item/page.tsx:2365",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/types.ts",
+                "symbolId": "src/lib/types.ts#Item"
+              },
+              "affected": [
+                {
+                  "file": "src/app/item/page.tsx",
+                  "loc": {
+                    "line": 11,
+                    "column": 10
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2365: Operator '>' cannot be applied to types 'string' and 'number'. [uses member 'quantity' (Item.quantity) of 'Item' declared in src/lib/types.ts, resolved by reference]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/item/page.tsx,src/lib/types.ts:Item,number,quantity,string",
+          "score": 80,
+          "expectedRule": "R4",
+          "acceptableRules": [],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R4": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h06-two-conflicts-same-pair-no-symbol",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "Enum member StockStatus.Discontinued is removed; the switch in stock/page.tsx still has a case for it. Enums are not indexed as symbols, so no producer symbol is resolvable.",
+          "origin": {
+            "file": "src/lib/inventory.ts",
+            "symbol": "StockStatus.Discontinued"
+          },
+          "affected": [
+            {
+              "file": "src/app/stock/page.tsx",
+              "symbol": "Discontinued"
+            }
+          ]
+        },
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "Method InventoryService.reserve is renamed to hold; stock/page.tsx still calls service.reserve. Independent of the enum change (different member, different repair), on the same producer/consumer pair; class members are not part of the indexed class signature.",
+          "origin": {
+            "file": "src/lib/inventory.ts",
+            "symbol": "InventoryService.reserve"
+          },
+          "affected": [
+            {
+              "file": "src/app/stock/page.tsx",
+              "symbol": "reserve"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R4:src/lib/inventory.ts:src/lib/inventory.ts#InventoryService:src/app/stock/page.tsx:2339",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/inventory.ts",
+            "symbolId": "src/lib/inventory.ts#InventoryService"
+          },
+          "affected": [
+            {
+              "file": "src/app/stock/page.tsx",
+              "loc": {
+                "line": 17,
+                "column": 18
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'reserve' does not exist on type 'InventoryService'. [uses 'InventoryService' declared in src/lib/inventory.ts, resolved by reference]",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/inventory.ts:src/lib/inventory.ts#StockStatus:src/app/stock/page.tsx:2339",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/inventory.ts",
+            "symbolId": "src/lib/inventory.ts#StockStatus"
+          },
+          "affected": [
+            {
+              "file": "src/app/stock/page.tsx",
+              "loc": {
+                "line": 11,
+                "column": 22
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'Discontinued' does not exist on type 'typeof StockStatus'. [uses 'StockStatus' declared in src/lib/inventory.ts, resolved by reference]",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R9:src/lib/inventory.ts:src/lib/inventory.ts#StockStatus:src/app/stock/page.tsx:2366",
+          "rule": "R9",
+          "level": 3,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/inventory.ts",
+            "symbolId": "src/lib/inventory.ts#StockStatus"
+          },
+          "affected": [
+            {
+              "file": "src/app/stock/page.tsx",
+              "loc": {
+                "line": 5,
+                "column": 51
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2366: Function lacks ending return statement and return type does not include 'undefined'. [uses 'StockStatus' declared in src/lib/inventory.ts, resolved by cascade]",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/stock/page.tsx,src/lib/inventory.ts:InventoryService,reserve",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/stock/page.tsx",
+              "src/lib/inventory.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/inventory.ts#InventoryService"
+            ],
+            "bareSymbols": [
+              "InventoryService",
+              "reserve"
+            ],
+            "filePairs": [
+              "src/app/stock/page.tsx<->src/lib/inventory.ts"
+            ],
+            "rules": [
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R4:src/lib/inventory.ts:src/lib/inventory.ts#InventoryService:src/app/stock/page.tsx:2339",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/inventory.ts",
+                "symbolId": "src/lib/inventory.ts#InventoryService"
+              },
+              "affected": [
+                {
+                  "file": "src/app/stock/page.tsx",
+                  "loc": {
+                    "line": 17,
+                    "column": 18
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'reserve' does not exist on type 'InventoryService'. [uses 'InventoryService' declared in src/lib/inventory.ts, resolved by reference]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        },
+        {
+          "id": "logical:2:src/app/stock/page.tsx,src/lib/inventory.ts:Discontinued,StockStatus,undefined",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/stock/page.tsx",
+              "src/lib/inventory.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/inventory.ts#StockStatus"
+            ],
+            "bareSymbols": [
+              "Discontinued",
+              "StockStatus",
+              "undefined"
+            ],
+            "filePairs": [
+              "src/app/stock/page.tsx<->src/lib/inventory.ts"
+            ],
+            "rules": [
+              "R4",
+              "R9"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R4:src/lib/inventory.ts:src/lib/inventory.ts#StockStatus:src/app/stock/page.tsx:2339",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/inventory.ts",
+                "symbolId": "src/lib/inventory.ts#StockStatus"
+              },
+              "affected": [
+                {
+                  "file": "src/app/stock/page.tsx",
+                  "loc": {
+                    "line": 11,
+                    "column": 22
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'Discontinued' does not exist on type 'typeof StockStatus'. [uses 'StockStatus' declared in src/lib/inventory.ts, resolved by reference]",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R9:src/lib/inventory.ts:src/lib/inventory.ts#StockStatus:src/app/stock/page.tsx:2366",
+              "rule": "R9",
+              "level": 3,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/inventory.ts",
+                "symbolId": "src/lib/inventory.ts#StockStatus"
+              },
+              "affected": [
+                {
+                  "file": "src/app/stock/page.tsx",
+                  "loc": {
+                    "line": 5,
+                    "column": 51
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2366: Function lacks ending return statement and return type does not include 'undefined'. [uses 'StockStatus' declared in src/lib/inventory.ts, resolved by cascade]",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:2:src/app/stock/page.tsx,src/lib/inventory.ts:Discontinued,StockStatus,undefined",
+          "score": 80,
+          "expectedRule": "R4",
+          "acceptableRules": [],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R4",
+            "R9"
+          ]
+        },
+        {
+          "labelIndex": 1,
+          "logicalConflictId": "logical:1:src/app/stock/page.tsx,src/lib/inventory.ts:InventoryService,reserve",
+          "score": 80,
+          "expectedRule": "R4",
+          "acceptableRules": [],
+          "primaryRule": "R4",
+          "rawRules": [
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 2,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 2,
+          "total": 2,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 2,
+          "total": 2,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R4": {
+            "expected": 2,
+            "actual": 2,
+            "matched": 0
+          },
+          "R9": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h07-overload-added-control",
+      "labels": [],
+      "rawConflicts": [],
+      "logicalConflicts": [],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {}
+      }
+    },
+    {
+      "id": "h08-required-to-optional-input-control",
+      "labels": [],
+      "rawConflicts": [],
+      "logicalConflicts": [],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "ruleAttributionAcceptable": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {}
+      }
+    }
+  ]
+}

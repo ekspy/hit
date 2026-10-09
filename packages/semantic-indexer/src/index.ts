@@ -30,7 +30,7 @@ export class SemanticIndex {
     const symbolIds = new Set(symbols.map((symbol) => symbol.id))
     const references = sourceFiles.flatMap((sourceFile) => collectReferences(sourceFile, files, symbolIds))
     const graph = collectDependencies(sourceFiles, files)
-    const diagnostics = collectDiagnostics(project)
+    const diagnostics = collectDiagnostics(project, files)
 
     return new SemanticIndex(project, symbols, references, graph, diagnostics)
   }
@@ -62,4 +62,4 @@ export class SemanticIndex {
 }
 
 export { semanticDiff }
-export type { Diagnostic, Loc, ParameterInfo, Reference, SemanticDiff, SymbolChange, SymbolInfo, TypeShape } from './types.js'
+export type { Diagnostic, DiagnosticProducer, Loc, ParameterInfo, Reference, SemanticDiff, SymbolChange, SymbolInfo, TypeShape } from './types.js'

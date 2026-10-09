@@ -1,0 +1,17 @@
+{
+  "agentId": "agent-a",
+  "operations": [
+    {
+      "kind": "replace",
+      "path": "src/lib/timing.ts",
+      "search": "estimateMinutes(patientId: string, baseMinutes: number, specialty: Specialty)",
+      "replace": "estimateMinutes(patientId: string, specialty: Specialty, baseMinutes: number)"
+    },
+    {
+      "kind": "replace",
+      "path": "src/app/schedule/page.tsx",
+      "search": "estimateMinutes(patientId, 30, specialty)",
+      "replace": "estimateMinutes(patientId, specialty, 30)"
+    }
+  ]
+}

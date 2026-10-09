@@ -1,0 +1,22 @@
+{
+  "conflicts": [
+    {
+      "rule": "R3",
+      "acceptableRules": [
+        "R2"
+      ],
+      "level": 1,
+      "rationale": "src/lib/index.ts no longer re-exports formatSlot (format.ts itself still exports it, and the producer repoints schedule/page.tsx to lib/format). The concurrently created agenda page imports formatSlot from the barrel, an import that no longer resolves (TS2305). R2 also applies: an exported name of the barrel module was removed while it had a consumer.",
+      "origin": {
+        "file": "src/lib/index.ts",
+        "symbol": "formatSlot"
+      },
+      "affected": [
+        {
+          "file": "src/app/agenda/page.tsx",
+          "symbol": "formatSlot"
+        }
+      ]
+    }
+  ]
+}
