@@ -1,0 +1,2247 @@
+{
+  "seed": 1701,
+  "scenarioSet": "heldout",
+  "overall": {
+    "conflictLevel": {
+      "precision": 0.23529411764705882,
+      "recall": 0.5714285714285714,
+      "f1": 0.3333333333333333,
+      "truePositives": 4,
+      "falsePositives": 13,
+      "falseNegatives": 3
+    },
+    "ruleAttribution": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 0.75
+    },
+    "rawRuleFirings": {
+      "R1": {
+        "expected": 1,
+        "actual": 12,
+        "matched": 0
+      },
+      "R4": {
+        "expected": 4,
+        "actual": 6,
+        "matched": 0
+      },
+      "R5": {
+        "expected": 0,
+        "actual": 8,
+        "matched": 0
+      },
+      "R6": {
+        "expected": 1,
+        "actual": 0,
+        "matched": 0
+      },
+      "R9": {
+        "expected": 0,
+        "actual": 3,
+        "matched": 0
+      },
+      "R3": {
+        "expected": 1,
+        "actual": 0,
+        "matched": 0
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "h01-nested-optional-to-required",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "ShipmentOptions.tracking.notify (nested inside an optional object) becomes required; dispatch/page.tsx still builds a ShipmentOptions literal whose tracking object omits notify, a type incompatibility at the point of use.",
+          "origin": {
+            "file": "src/lib/shipping.ts",
+            "symbol": "ShipmentOptions.tracking.notify"
+          },
+          "affected": [
+            {
+              "file": "src/app/dispatch/page.tsx",
+              "symbol": "ShipmentOptions"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@10 was removed or renamed; property __@unscopables@12 was removed or renamed; required property __@iterator@23715 was added; required property __@unscopables@23717 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R1:src/lib/shipping.ts:src/lib/shipping.ts#ShipmentOptions:src/app/dispatch/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/shipping.ts",
+            "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+          },
+          "affected": [
+            {
+              "file": "src/app/dispatch/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+            }
+          ],
+          "reason": "Contract changed from export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify?: boolean\n  }\n} to export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify: boolean\n  }\n} (property tracking type changed from undefined | { number: string; notify?: boolean | undefined; } to undefined | { number: string; notify: boolean; })",
+          "status": "pending",
+          "classification": "unknown"
+        },
+        {
+          "id": "R4:src/lib/shipping.ts:src/lib/shipping.ts#ShipmentOptions:src/app/dispatch/page.tsx:2741",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/shipping.ts",
+            "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+          },
+          "affected": [
+            {
+              "file": "src/app/dispatch/page.tsx",
+              "loc": {
+                "line": 4,
+                "column": 54
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2741: Property 'notify' is missing in type '{ number: string; }' but required in type '{ number: string; notify: boolean; }'.",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems (property __@iterator@10 was removed or renamed; property __@unscopables@12 was removed or renamed; required property __@iterator@23715 was added; required property __@unscopables@23717 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:listItems",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/catalog/page.tsx",
+              "src/lib/catalog.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/catalog.ts#listItems"
+            ],
+            "bareSymbols": [
+              "listItems"
+            ],
+            "filePairs": [
+              "src/app/catalog/page.tsx<->src/lib/catalog.ts"
+            ],
+            "rules": [
+              "R1",
+              "R5"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@10 was removed or renamed; property __@unscopables@12 was removed or renamed; required property __@iterator@23715 was added; required property __@unscopables@23717 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems (property __@iterator@10 was removed or renamed; property __@unscopables@12 was removed or renamed; required property __@iterator@23715 was added; required property __@unscopables@23717 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        },
+        {
+          "id": "logical:2:src/app/dispatch/page.tsx,src/lib/shipping.ts:ShipmentOptions,notify",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/dispatch/page.tsx",
+              "src/lib/shipping.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/shipping.ts#ShipmentOptions"
+            ],
+            "bareSymbols": [
+              "ShipmentOptions",
+              "notify"
+            ],
+            "filePairs": [
+              "src/app/dispatch/page.tsx<->src/lib/shipping.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/shipping.ts:src/lib/shipping.ts#ShipmentOptions:src/app/dispatch/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/shipping.ts",
+                "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+              },
+              "affected": [
+                {
+                  "file": "src/app/dispatch/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+                }
+              ],
+              "reason": "Contract changed from export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify?: boolean\n  }\n} to export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify: boolean\n  }\n} (property tracking type changed from undefined | { number: string; notify?: boolean | undefined; } to undefined | { number: string; notify: boolean; })",
+              "status": "pending",
+              "classification": "unknown"
+            },
+            {
+              "id": "R4:src/lib/shipping.ts:src/lib/shipping.ts#ShipmentOptions:src/app/dispatch/page.tsx:2741",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/shipping.ts",
+                "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+              },
+              "affected": [
+                {
+                  "file": "src/app/dispatch/page.tsx",
+                  "loc": {
+                    "line": 4,
+                    "column": 54
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2741: Property 'notify' is missing in type '{ number: string; }' but required in type '{ number: string; notify: boolean; }'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:2:src/app/dispatch/page.tsx,src/lib/shipping.ts:ShipmentOptions,notify",
+          "score": 80,
+          "expectedRule": "R4",
+          "primaryRule": "R4",
+          "rawRules": [
+            "R1",
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 0.5,
+          "recall": 1,
+          "f1": 0.6666666666666666,
+          "truePositives": 1,
+          "falsePositives": 1,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 2,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h02-generic-constraint-added",
+      "labels": [
+        {
+          "rule": "R6",
+          "level": 2,
+          "rationale": "The type parameter of paginate now requires T extends { id: string }, narrowing the accepted argument type; catalog/page.tsx passes Item[] (no id), so the call no longer type-checks.",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbol": "paginate"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "symbol": "paginate"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@47421 was removed or renamed; property __@unscopables@47423 was removed or renamed; required property __@iterator@71126 was added; required property __@unscopables@71128 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx:2339",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 5,
+                "column": 43
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'name' does not exist on type '{ id: string; }'.",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx:2345",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 4,
+                "column": 25
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2345: undefined",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems (property __@iterator@47421 was removed or renamed; property __@unscopables@47423 was removed or renamed; required property __@iterator@71126 was added; required property __@unscopables@71128 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:listItems,name",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/catalog/page.tsx",
+              "src/lib/catalog.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/catalog.ts#listItems"
+            ],
+            "bareSymbols": [
+              "listItems",
+              "name"
+            ],
+            "filePairs": [
+              "src/app/catalog/page.tsx<->src/lib/catalog.ts"
+            ],
+            "rules": [
+              "R1",
+              "R4",
+              "R5"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@47421 was removed or renamed; property __@unscopables@47423 was removed or renamed; required property __@iterator@71126 was added; required property __@unscopables@71128 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R4:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx:2339",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 5,
+                    "column": 43
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'name' does not exist on type '{ id: string; }'.",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R4:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx:2345",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 4,
+                    "column": 25
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2345: undefined",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems (property __@iterator@47421 was removed or renamed; property __@unscopables@47423 was removed or renamed; required property __@iterator@71126 was added; required property __@unscopables@71128 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:listItems,name",
+          "score": 60,
+          "expectedRule": "R6",
+          "primaryRule": "R1",
+          "rawRules": [
+            "R1",
+            "R4",
+            "R5"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 1,
+          "accuracy": 0
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 0,
+            "actual": 2,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R6": {
+            "expected": 1,
+            "actual": 0,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h03-overload-removed",
+      "labels": [
+        {
+          "rule": "R1",
+          "level": 1,
+          "rationale": "The public call signatures of formatQuantity lose the (value, unit) overload (the implementation signature is unchanged and not callable from outside); labels/page.tsx still calls it with two arguments.",
+          "origin": {
+            "file": "src/lib/format.ts",
+            "symbol": "formatQuantity"
+          },
+          "affected": [
+            {
+              "file": "src/app/labels/page.tsx",
+              "symbol": "formatQuantity"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@94833 was removed or renamed; property __@unscopables@94835 was removed or renamed; required property __@iterator@118538 was added; required property __@unscopables@118540 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/app/labels/page.tsx:-:src/app/labels/page.tsx:2554:8:31",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/app/labels/page.tsx"
+          },
+          "affected": [
+            {
+              "file": "src/app/labels/page.tsx",
+              "loc": {
+                "line": 8,
+                "column": 31
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2554: Expected 1 arguments, but got 2.",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems (property __@iterator@94833 was removed or renamed; property __@unscopables@94835 was removed or renamed; required property __@iterator@118538 was added; required property __@unscopables@118540 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:listItems",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/catalog/page.tsx",
+              "src/lib/catalog.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/catalog.ts#listItems"
+            ],
+            "bareSymbols": [
+              "listItems"
+            ],
+            "filePairs": [
+              "src/app/catalog/page.tsx<->src/lib/catalog.ts"
+            ],
+            "rules": [
+              "R1",
+              "R5"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@94833 was removed or renamed; property __@unscopables@94835 was removed or renamed; required property __@iterator@118538 was added; required property __@unscopables@118540 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems (property __@iterator@94833 was removed or renamed; property __@unscopables@94835 was removed or renamed; required property __@iterator@118538 was added; required property __@unscopables@118540 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        },
+        {
+          "id": "logical:2:src/app/labels/page.tsx:",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/labels/page.tsx"
+            ],
+            "symbolTokens": [],
+            "bareSymbols": [],
+            "filePairs": [],
+            "rules": [
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R4:src/app/labels/page.tsx:-:src/app/labels/page.tsx:2554:8:31",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/app/labels/page.tsx"
+              },
+              "affected": [
+                {
+                  "file": "src/app/labels/page.tsx",
+                  "loc": {
+                    "line": 8,
+                    "column": 31
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2554: Expected 1 arguments, but got 2.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 0,
+          "recall": 0,
+          "f1": 0,
+          "truePositives": 0,
+          "falsePositives": 2,
+          "falseNegatives": 1
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 1,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h04-default-to-named-export",
+      "labels": [
+        {
+          "rule": "R3",
+          "level": 1,
+          "rationale": "pricing.ts no longer has a default export; labels/page.tsx (edited concurrently on an unrelated line) still uses `import priceOf from '../../lib/pricing'`, so the import no longer resolves.",
+          "origin": {
+            "file": "src/lib/pricing.ts",
+            "symbol": "priceOf"
+          },
+          "affected": [
+            {
+              "file": "src/app/labels/page.tsx",
+              "symbol": "priceOf"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@142241 was removed or renamed; property __@unscopables@142243 was removed or renamed; required property __@iterator@165946 was added; required property __@unscopables@165948 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems (property __@iterator@142241 was removed or renamed; property __@unscopables@142243 was removed or renamed; required property __@iterator@165946 was added; required property __@unscopables@165948 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R9:src/app/labels/page.tsx:-:src/app/labels/page.tsx:2613:3:8",
+          "rule": "R9",
+          "level": 3,
+          "severity": "high",
+          "origin": {
+            "file": "src/app/labels/page.tsx"
+          },
+          "affected": [
+            {
+              "file": "src/app/labels/page.tsx",
+              "loc": {
+                "line": 3,
+                "column": 8
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2613: Module '\"/src/lib/pricing\"' has no default export. Did you mean to use 'import { priceOf } from \"/src/lib/pricing\"' instead?",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:listItems",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/catalog/page.tsx",
+              "src/lib/catalog.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/catalog.ts#listItems"
+            ],
+            "bareSymbols": [
+              "listItems"
+            ],
+            "filePairs": [
+              "src/app/catalog/page.tsx<->src/lib/catalog.ts"
+            ],
+            "rules": [
+              "R1",
+              "R5"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@142241 was removed or renamed; property __@unscopables@142243 was removed or renamed; required property __@iterator@165946 was added; required property __@unscopables@165948 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems (property __@iterator@142241 was removed or renamed; property __@unscopables@142243 was removed or renamed; required property __@iterator@165946 was added; required property __@unscopables@165948 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        },
+        {
+          "id": "logical:2:src/app/labels/page.tsx:",
+          "primaryRule": "R9",
+          "level": 3,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/labels/page.tsx"
+            ],
+            "symbolTokens": [],
+            "bareSymbols": [],
+            "filePairs": [],
+            "rules": [
+              "R9"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R9:src/app/labels/page.tsx:-:src/app/labels/page.tsx:2613:3:8",
+              "rule": "R9",
+              "level": 3,
+              "severity": "high",
+              "origin": {
+                "file": "src/app/labels/page.tsx"
+              },
+              "affected": [
+                {
+                  "file": "src/app/labels/page.tsx",
+                  "loc": {
+                    "line": 3,
+                    "column": 8
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2613: Module '\"/src/lib/pricing\"' has no default export. Did you mean to use 'import { priceOf } from \"/src/lib/pricing\"' instead?",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 0,
+          "recall": 0,
+          "f1": 0,
+          "truePositives": 0,
+          "falsePositives": 2,
+          "falseNegatives": 1
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R9": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R3": {
+            "expected": 1,
+            "actual": 0,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h05-two-hop-destructured-type-change",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "Item.quantity changes from number to string (producer also updates its seed data). item/page.tsx never imports Item: it reaches it through catalog.findItem's inferred return type (two hops) and, concurrently, starts destructuring quantity and comparing it with a number.",
+          "origin": {
+            "file": "src/lib/types.ts",
+            "symbol": "Item.quantity"
+          },
+          "affected": [
+            {
+              "file": "src/app/item/page.tsx",
+              "symbol": "quantity"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@189650 was removed or renamed; property __@unscopables@189652 was removed or renamed; required property __@iterator@213355 was added; required property __@unscopables@213357 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R1:src/lib/types.ts:src/lib/types.ts#Item:src/lib/catalog.ts:src/lib/pricing.ts",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/types.ts",
+            "symbolId": "src/lib/types.ts#Item"
+          },
+          "affected": [
+            {
+              "file": "src/lib/catalog.ts",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/types.ts#Item"
+            },
+            {
+              "file": "src/lib/pricing.ts",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/types.ts#Item"
+            }
+          ],
+          "reason": "Contract changed from export interface Item {\n  sku: string\n  name: string\n  quantity: number\n} to export interface Item {\n  sku: string\n  name: string\n  quantity: string\n} (property quantity type changed from number to string)",
+          "status": "pending",
+          "classification": "unknown"
+        },
+        {
+          "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems (property __@iterator@189650 was removed or renamed; property __@unscopables@189652 was removed or renamed; required property __@iterator@213355 was added; required property __@unscopables@213357 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R9:src/app/item/page.tsx:-:src/app/item/page.tsx:2365:11:10",
+          "rule": "R9",
+          "level": 3,
+          "severity": "high",
+          "origin": {
+            "file": "src/app/item/page.tsx"
+          },
+          "affected": [
+            {
+              "file": "src/app/item/page.tsx",
+              "loc": {
+                "line": 11,
+                "column": 10
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2365: Operator '>' cannot be applied to types 'string' and 'number'.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:listItems",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/catalog/page.tsx",
+              "src/lib/catalog.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/catalog.ts#listItems"
+            ],
+            "bareSymbols": [
+              "listItems"
+            ],
+            "filePairs": [
+              "src/app/catalog/page.tsx<->src/lib/catalog.ts"
+            ],
+            "rules": [
+              "R1",
+              "R5"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@189650 was removed or renamed; property __@unscopables@189652 was removed or renamed; required property __@iterator@213355 was added; required property __@unscopables@213357 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems (property __@iterator@189650 was removed or renamed; property __@unscopables@189652 was removed or renamed; required property __@iterator@213355 was added; required property __@unscopables@213357 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        },
+        {
+          "id": "logical:2:src/lib/catalog.ts,src/lib/pricing.ts,src/lib/types.ts:Item",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/lib/catalog.ts",
+              "src/lib/pricing.ts",
+              "src/lib/types.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/types.ts#Item"
+            ],
+            "bareSymbols": [
+              "Item"
+            ],
+            "filePairs": [
+              "src/lib/catalog.ts<->src/lib/pricing.ts",
+              "src/lib/catalog.ts<->src/lib/types.ts",
+              "src/lib/pricing.ts<->src/lib/types.ts"
+            ],
+            "rules": [
+              "R1"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/types.ts:src/lib/types.ts#Item:src/lib/catalog.ts:src/lib/pricing.ts",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/types.ts",
+                "symbolId": "src/lib/types.ts#Item"
+              },
+              "affected": [
+                {
+                  "file": "src/lib/catalog.ts",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/types.ts#Item"
+                },
+                {
+                  "file": "src/lib/pricing.ts",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/types.ts#Item"
+                }
+              ],
+              "reason": "Contract changed from export interface Item {\n  sku: string\n  name: string\n  quantity: number\n} to export interface Item {\n  sku: string\n  name: string\n  quantity: string\n} (property quantity type changed from number to string)",
+              "status": "pending",
+              "classification": "unknown"
+            }
+          ]
+        },
+        {
+          "id": "logical:3:src/app/item/page.tsx:number,string",
+          "primaryRule": "R9",
+          "level": 3,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/item/page.tsx"
+            ],
+            "symbolTokens": [],
+            "bareSymbols": [
+              "number",
+              "string"
+            ],
+            "filePairs": [],
+            "rules": [
+              "R9"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R9:src/app/item/page.tsx:-:src/app/item/page.tsx:2365:11:10",
+              "rule": "R9",
+              "level": 3,
+              "severity": "high",
+              "origin": {
+                "file": "src/app/item/page.tsx"
+              },
+              "affected": [
+                {
+                  "file": "src/app/item/page.tsx",
+                  "loc": {
+                    "line": 11,
+                    "column": 10
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2365: Operator '>' cannot be applied to types 'string' and 'number'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 0,
+          "recall": 0,
+          "f1": 0,
+          "truePositives": 0,
+          "falsePositives": 3,
+          "falseNegatives": 1
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 3,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R9": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 1,
+            "actual": 0,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h06-two-conflicts-same-pair-no-symbol",
+      "labels": [
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "Enum member StockStatus.Discontinued is removed; the switch in stock/page.tsx still has a case for it. Enums are not indexed as symbols, so no producer symbol is resolvable.",
+          "origin": {
+            "file": "src/lib/inventory.ts",
+            "symbol": "StockStatus.Discontinued"
+          },
+          "affected": [
+            {
+              "file": "src/app/stock/page.tsx",
+              "symbol": "Discontinued"
+            }
+          ]
+        },
+        {
+          "rule": "R4",
+          "level": 1,
+          "rationale": "Method InventoryService.reserve is renamed to hold; stock/page.tsx still calls service.reserve. Independent of the enum change (different member, different repair), on the same producer/consumer pair; class members are not part of the indexed class signature.",
+          "origin": {
+            "file": "src/lib/inventory.ts",
+            "symbol": "InventoryService.reserve"
+          },
+          "affected": [
+            {
+              "file": "src/app/stock/page.tsx",
+              "symbol": "reserve"
+            }
+          ]
+        }
+      ],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@237062 was removed or renamed; property __@unscopables@237064 was removed or renamed; required property __@iterator@260767 was added; required property __@unscopables@260769 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/app/stock/page.tsx:-:src/app/stock/page.tsx:2339:11:22",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/app/stock/page.tsx"
+          },
+          "affected": [
+            {
+              "file": "src/app/stock/page.tsx",
+              "loc": {
+                "line": 11,
+                "column": 22
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'Discontinued' does not exist on type 'typeof StockStatus'.",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R4:src/app/stock/page.tsx:-:src/app/stock/page.tsx:2339:17:18",
+          "rule": "R4",
+          "level": 1,
+          "severity": "high",
+          "origin": {
+            "file": "src/app/stock/page.tsx"
+          },
+          "affected": [
+            {
+              "file": "src/app/stock/page.tsx",
+              "loc": {
+                "line": 17,
+                "column": 18
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2339: Property 'reserve' does not exist on type 'InventoryService'.",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems (property __@iterator@237062 was removed or renamed; property __@unscopables@237064 was removed or renamed; required property __@iterator@260767 was added; required property __@unscopables@260769 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R9:src/app/stock/page.tsx:-:src/app/stock/page.tsx:2366:5:51",
+          "rule": "R9",
+          "level": 3,
+          "severity": "high",
+          "origin": {
+            "file": "src/app/stock/page.tsx"
+          },
+          "affected": [
+            {
+              "file": "src/app/stock/page.tsx",
+              "loc": {
+                "line": 5,
+                "column": 51
+              }
+            }
+          ],
+          "reason": "TypeScript diagnostic 2366: Function lacks ending return statement and return type does not include 'undefined'.",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:listItems",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/catalog/page.tsx",
+              "src/lib/catalog.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/catalog.ts#listItems"
+            ],
+            "bareSymbols": [
+              "listItems"
+            ],
+            "filePairs": [
+              "src/app/catalog/page.tsx<->src/lib/catalog.ts"
+            ],
+            "rules": [
+              "R1",
+              "R5"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@237062 was removed or renamed; property __@unscopables@237064 was removed or renamed; required property __@iterator@260767 was added; required property __@unscopables@260769 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems (property __@iterator@237062 was removed or renamed; property __@unscopables@237064 was removed or renamed; required property __@iterator@260767 was added; required property __@unscopables@260769 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        },
+        {
+          "id": "logical:2:src/app/stock/page.tsx:Discontinued",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/stock/page.tsx"
+            ],
+            "symbolTokens": [],
+            "bareSymbols": [
+              "Discontinued"
+            ],
+            "filePairs": [],
+            "rules": [
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R4:src/app/stock/page.tsx:-:src/app/stock/page.tsx:2339:11:22",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/app/stock/page.tsx"
+              },
+              "affected": [
+                {
+                  "file": "src/app/stock/page.tsx",
+                  "loc": {
+                    "line": 11,
+                    "column": 22
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'Discontinued' does not exist on type 'typeof StockStatus'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        },
+        {
+          "id": "logical:3:src/app/stock/page.tsx:InventoryService,reserve",
+          "primaryRule": "R4",
+          "level": 1,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/stock/page.tsx"
+            ],
+            "symbolTokens": [],
+            "bareSymbols": [
+              "InventoryService",
+              "reserve"
+            ],
+            "filePairs": [],
+            "rules": [
+              "R4"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R4:src/app/stock/page.tsx:-:src/app/stock/page.tsx:2339:17:18",
+              "rule": "R4",
+              "level": 1,
+              "severity": "high",
+              "origin": {
+                "file": "src/app/stock/page.tsx"
+              },
+              "affected": [
+                {
+                  "file": "src/app/stock/page.tsx",
+                  "loc": {
+                    "line": 17,
+                    "column": 18
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2339: Property 'reserve' does not exist on type 'InventoryService'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        },
+        {
+          "id": "logical:4:src/app/stock/page.tsx:undefined",
+          "primaryRule": "R9",
+          "level": 3,
+          "severity": "high",
+          "evidence": {
+            "files": [
+              "src/app/stock/page.tsx"
+            ],
+            "symbolTokens": [],
+            "bareSymbols": [
+              "undefined"
+            ],
+            "filePairs": [],
+            "rules": [
+              "R9"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R9:src/app/stock/page.tsx:-:src/app/stock/page.tsx:2366:5:51",
+              "rule": "R9",
+              "level": 3,
+              "severity": "high",
+              "origin": {
+                "file": "src/app/stock/page.tsx"
+              },
+              "affected": [
+                {
+                  "file": "src/app/stock/page.tsx",
+                  "loc": {
+                    "line": 5,
+                    "column": 51
+                  }
+                }
+              ],
+              "reason": "TypeScript diagnostic 2366: Function lacks ending return statement and return type does not include 'undefined'.",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [
+        {
+          "labelIndex": 0,
+          "logicalConflictId": "logical:2:src/app/stock/page.tsx:Discontinued",
+          "score": 80,
+          "expectedRule": "R4",
+          "primaryRule": "R4",
+          "rawRules": [
+            "R4"
+          ]
+        },
+        {
+          "labelIndex": 1,
+          "logicalConflictId": "logical:3:src/app/stock/page.tsx:InventoryService,reserve",
+          "score": 80,
+          "expectedRule": "R4",
+          "primaryRule": "R4",
+          "rawRules": [
+            "R4"
+          ]
+        }
+      ],
+      "score": {
+        "conflictLevel": {
+          "precision": 0.5,
+          "recall": 1,
+          "f1": 0.6666666666666666,
+          "truePositives": 2,
+          "falsePositives": 2,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 2,
+          "total": 2,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R4": {
+            "expected": 2,
+            "actual": 2,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R9": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h07-overload-added-control",
+      "labels": [],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@284470 was removed or renamed; property __@unscopables@284472 was removed or renamed; required property __@iterator@308175 was added; required property __@unscopables@308177 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems (property __@iterator@284470 was removed or renamed; property __@unscopables@284472 was removed or renamed; required property __@iterator@308175 was added; required property __@unscopables@308177 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:listItems",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/catalog/page.tsx",
+              "src/lib/catalog.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/catalog.ts#listItems"
+            ],
+            "bareSymbols": [
+              "listItems"
+            ],
+            "filePairs": [
+              "src/app/catalog/page.tsx<->src/lib/catalog.ts"
+            ],
+            "rules": [
+              "R1",
+              "R5"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@284470 was removed or renamed; property __@unscopables@284472 was removed or renamed; required property __@iterator@308175 was added; required property __@unscopables@308177 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems (property __@iterator@284470 was removed or renamed; property __@unscopables@284472 was removed or renamed; required property __@iterator@308175 was added; required property __@unscopables@308177 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        }
+      ],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 0,
+          "recall": 1,
+          "f1": 0,
+          "truePositives": 0,
+          "falsePositives": 1,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "h08-required-to-optional-input-control",
+      "labels": [],
+      "rawConflicts": [
+        {
+          "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@331881 was removed or renamed; property __@unscopables@331883 was removed or renamed; required property __@iterator@355586 was added; required property __@unscopables@355588 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        },
+        {
+          "id": "R1:src/lib/shipping.ts:src/lib/shipping.ts#ShipmentOptions:src/app/dispatch/page.tsx",
+          "rule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/shipping.ts",
+            "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+          },
+          "affected": [
+            {
+              "file": "src/app/dispatch/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+            }
+          ],
+          "reason": "Contract changed from export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify?: boolean\n  }\n} to export interface ShipmentOptions {\n  carrier?: string\n  tracking?: {\n    number: string\n    notify?: boolean\n  }\n} (property carrier type changed from string to string | undefined)",
+          "status": "pending",
+          "classification": "unknown"
+        },
+        {
+          "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+          "rule": "R5",
+          "level": 2,
+          "severity": "medium",
+          "origin": {
+            "file": "src/lib/catalog.ts",
+            "symbolId": "src/lib/catalog.ts#listItems"
+          },
+          "affected": [
+            {
+              "file": "src/app/catalog/page.tsx",
+              "loc": {
+                "line": 1,
+                "column": 1
+              },
+              "symbolId": "src/lib/catalog.ts#listItems"
+            }
+          ],
+          "reason": "Return shape changed for listItems (property __@iterator@331881 was removed or renamed; property __@unscopables@331883 was removed or renamed; required property __@iterator@355586 was added; required property __@unscopables@355588 was added)",
+          "status": "pending",
+          "classification": "breaking"
+        }
+      ],
+      "logicalConflicts": [
+        {
+          "id": "logical:1:src/app/catalog/page.tsx,src/lib/catalog.ts:listItems",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/catalog/page.tsx",
+              "src/lib/catalog.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/catalog.ts#listItems"
+            ],
+            "bareSymbols": [
+              "listItems"
+            ],
+            "filePairs": [
+              "src/app/catalog/page.tsx<->src/lib/catalog.ts"
+            ],
+            "rules": [
+              "R1",
+              "R5"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems while signature text stayed listItems(): Item[] (property __@iterator@331881 was removed or renamed; property __@unscopables@331883 was removed or renamed; required property __@iterator@355586 was added; required property __@unscopables@355588 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            },
+            {
+              "id": "R5:src/lib/catalog.ts:src/lib/catalog.ts#listItems:src/app/catalog/page.tsx",
+              "rule": "R5",
+              "level": 2,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/catalog.ts",
+                "symbolId": "src/lib/catalog.ts#listItems"
+              },
+              "affected": [
+                {
+                  "file": "src/app/catalog/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/catalog.ts#listItems"
+                }
+              ],
+              "reason": "Return shape changed for listItems (property __@iterator@331881 was removed or renamed; property __@unscopables@331883 was removed or renamed; required property __@iterator@355586 was added; required property __@unscopables@355588 was added)",
+              "status": "pending",
+              "classification": "breaking"
+            }
+          ]
+        },
+        {
+          "id": "logical:2:src/app/dispatch/page.tsx,src/lib/shipping.ts:ShipmentOptions",
+          "primaryRule": "R1",
+          "level": 1,
+          "severity": "medium",
+          "evidence": {
+            "files": [
+              "src/app/dispatch/page.tsx",
+              "src/lib/shipping.ts"
+            ],
+            "symbolTokens": [
+              "src/lib/shipping.ts#ShipmentOptions"
+            ],
+            "bareSymbols": [
+              "ShipmentOptions"
+            ],
+            "filePairs": [
+              "src/app/dispatch/page.tsx<->src/lib/shipping.ts"
+            ],
+            "rules": [
+              "R1"
+            ]
+          },
+          "conflicts": [
+            {
+              "id": "R1:src/lib/shipping.ts:src/lib/shipping.ts#ShipmentOptions:src/app/dispatch/page.tsx",
+              "rule": "R1",
+              "level": 1,
+              "severity": "medium",
+              "origin": {
+                "file": "src/lib/shipping.ts",
+                "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+              },
+              "affected": [
+                {
+                  "file": "src/app/dispatch/page.tsx",
+                  "loc": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "symbolId": "src/lib/shipping.ts#ShipmentOptions"
+                }
+              ],
+              "reason": "Contract changed from export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify?: boolean\n  }\n} to export interface ShipmentOptions {\n  carrier?: string\n  tracking?: {\n    number: string\n    notify?: boolean\n  }\n} (property carrier type changed from string to string | undefined)",
+              "status": "pending",
+              "classification": "unknown"
+            }
+          ]
+        }
+      ],
+      "matches": [],
+      "score": {
+        "conflictLevel": {
+          "precision": 0,
+          "recall": 1,
+          "f1": 0,
+          "truePositives": 0,
+          "falsePositives": 2,
+          "falseNegatives": 0
+        },
+        "ruleAttribution": {
+          "correct": 0,
+          "total": 0,
+          "accuracy": 1
+        },
+        "rawRuleFirings": {
+          "R1": {
+            "expected": 0,
+            "actual": 2,
+            "matched": 0
+          },
+          "R5": {
+            "expected": 0,
+            "actual": 1,
+            "matched": 0
+          }
+        }
+      }
+    }
+  ]
+}
