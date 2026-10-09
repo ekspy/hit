@@ -1,12 +1,13 @@
 import type { SourceFile } from 'ts-morph'
 
 import { repoPath, resolveImportPath } from './dependencies.js'
-import type { Reference, SymbolInfo } from './types.js'
+import type { Reference } from './types.js'
 
-export function collectReferences(sourceFile: SourceFile, files: Set<string>, symbols: SymbolInfo[]): Reference[] {
+/** `knownSymbolIds` is built once per index by the caller, so collecting references stays linear in the number of files. */
+export function collectReferences(sourceFile: SourceFile, files: Set<string>, knownSymbolIds: ReadonlySet<string>): Reference[] {
   const fromFile = repoPath(sourceFile)
   const refs: Reference[] = []
-  const known = new Map(symbols.map((symbol) => [symbol.id, symbol]))
+  const known = knownSymbolIds
 
   for (const importDeclaration of sourceFile.getImportDeclarations()) {
     const targetFile = resolveImportPath(fromFile, importDeclaration.getModuleSpecifierValue(), files)
