@@ -132,6 +132,30 @@ describe('ImpactEngine', () => {
     expect(groupLogicalConflicts(unresolved)).toHaveLength(2)
   })
 
+  it('reports rule attribution strictly and accepting alternative label rules', () => {
+    const conflict: Conflict = {
+      id: 'r1',
+      rule: 'R1',
+      level: 1,
+      severity: 'medium',
+      origin: { file: 'src/payments.ts', symbolId: 'src/payments.ts#createPayment' },
+      affected: [{ file: 'src/checkout.ts' }],
+      reason: 'Contract changed',
+      status: 'pending',
+      classification: 'breaking',
+    }
+    const label = { rule: 'R4' as const, level: 1 as const, origin: { file: 'src/payments.ts', symbol: 'createPayment' }, affected: [{ file: 'src/checkout.ts', symbol: 'createPayment' }] }
+
+    const strict = scoreConflicts([conflict], [label])
+    const lenient = scoreConflicts([conflict], [{ ...label, acceptableRules: ['R1'] }])
+
+    expect(strict.ruleAttribution.correct).toBe(0)
+    expect(strict.ruleAttributionAcceptable.correct).toBe(0)
+    expect(lenient.ruleAttribution.correct).toBe(0)
+    expect(lenient.ruleAttributionAcceptable.correct).toBe(1)
+    expect(lenient.truePositives).toBe(1)
+  })
+
   it('matches diagnostic-only removed field evidence through quoted identifiers', () => {
     const report = scoreConflicts(
       [

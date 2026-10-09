@@ -3,6 +3,13 @@ import { evidenceMatchScore, groupLogicalConflicts, labelEvidence, type LogicalC
 
 export interface LabelConflict {
   rule: RuleId
+  /**
+   * Other rules that also describe this phenomenon legitimately (e.g. a union
+   * value removal provable from the diff, R1, that also surfaces as a type
+   * error at the use site, R4). `rule` stays the reference; attribution is
+   * reported both strictly (only `rule`) and accepting these alternatives.
+   */
+  acceptableRules?: RuleId[]
   level: 1 | 2 | 3
   rationale?: string
   origin: {
@@ -29,6 +36,8 @@ export interface QualityReport {
   logicalConflicts: LogicalConflict[]
   matches: LabelMatch[]
   ruleAttribution: RuleAttributionReport
+  /** Rule attribution counting a primary rule listed in `acceptableRules` as correct. */
+  ruleAttributionAcceptable: RuleAttributionReport
   rawRuleFirings: Record<string, { expected: number; actual: number; matched: number }>
   byRule: Record<string, { expected: number; actual: number; matched: number }>
 }
@@ -38,6 +47,7 @@ export interface LabelMatch {
   logicalConflictId: string
   score: 100 | 80 | 60
   expectedRule: RuleId
+  acceptableRules: RuleId[]
   primaryRule: RuleId
   rawRules: RuleId[]
 }
@@ -59,6 +69,7 @@ export function scoreConflicts(actual: Conflict[], expected: LabelConflict[]): Q
   const f1 = precision + recall === 0 ? 0 : (2 * precision * recall) / (precision + recall)
   const rawRuleFirings = byRule(actual, expected)
   const ruleAttribution = attribution(matches)
+  const ruleAttributionAcceptable = attribution(matches, true)
 
   return {
     precision,
@@ -70,6 +81,7 @@ export function scoreConflicts(actual: Conflict[], expected: LabelConflict[]): Q
     logicalConflicts,
     matches,
     ruleAttribution,
+    ruleAttributionAcceptable,
     rawRuleFirings,
     byRule: rawRuleFirings,
   }
@@ -108,6 +120,7 @@ export function matchLabels(expected: LabelConflict[], logicalConflicts: Logical
       logicalConflictId: candidate.logical.id,
       score: candidate.score,
       expectedRule: expected[candidate.labelIndex]!.rule,
+      acceptableRules: expected[candidate.labelIndex]!.acceptableRules ?? [],
       primaryRule: candidate.logical.primaryRule,
       rawRules: [...new Set(candidate.logical.conflicts.map((conflict) => conflict.rule))],
     })
@@ -144,8 +157,10 @@ function byRule(actual: Conflict[], expected: LabelConflict[]): QualityReport['b
   return report
 }
 
-function attribution(matches: LabelMatch[]): RuleAttributionReport {
-  const correct = matches.filter((match) => match.expectedRule === match.primaryRule).length
+function attribution(matches: LabelMatch[], acceptAlternatives = false): RuleAttributionReport {
+  const correct = matches.filter(
+    (match) => match.expectedRule === match.primaryRule || (acceptAlternatives && match.acceptableRules.includes(match.primaryRule)),
+  ).length
   const total = matches.length
 
   return {

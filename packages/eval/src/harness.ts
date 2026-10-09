@@ -109,6 +109,7 @@ export function writeDetectorQualityReport(set: ScenarioSet = 'dev', reportName 
     overall: {
       conflictLevel: overall.conflictLevel,
       ruleAttribution: overall.ruleAttribution,
+      ruleAttributionAcceptable: overall.ruleAttributionAcceptable,
       rawRuleFirings: overall.rawRuleFirings,
     },
     scenarios: rows.map((row) => ({
@@ -120,6 +121,7 @@ export function writeDetectorQualityReport(set: ScenarioSet = 'dev', reportName 
       score: {
         conflictLevel: conflictLevelScore(row.score),
         ruleAttribution: row.score.ruleAttribution,
+        ruleAttributionAcceptable: row.score.ruleAttributionAcceptable,
         rawRuleFirings: row.score.rawRuleFirings,
       },
     })),
@@ -133,9 +135,10 @@ export function writeDetectorQualityReport(set: ScenarioSet = 'dev', reportName 
 Conflict-level precision: ${overall.conflictLevel.precision.toFixed(2)}
 Conflict-level recall: ${overall.conflictLevel.recall.toFixed(2)}
 Conflict-level F1: ${overall.conflictLevel.f1.toFixed(2)}
-Rule-attribution accuracy: ${overall.ruleAttribution.accuracy.toFixed(2)}
+Rule-attribution accuracy (strict, label rule only): ${overall.ruleAttribution.accuracy.toFixed(2)} (${overall.ruleAttribution.correct}/${overall.ruleAttribution.total})
+Rule-attribution accuracy (accepting acceptableRules): ${overall.ruleAttributionAcceptable.accuracy.toFixed(2)} (${overall.ruleAttributionAcceptable.correct}/${overall.ruleAttributionAcceptable.total})
 
-${table(['Scenario', 'Precision', 'Recall', 'F1', 'TP', 'FP', 'FN'], rows.map((row) => [row.id, row.score.precision.toFixed(2), row.score.recall.toFixed(2), row.score.f1.toFixed(2), row.score.truePositives, row.score.falsePositives, row.score.falseNegatives]))}
+${table(['Scenario', 'Precision', 'Recall', 'F1', 'TP', 'FP', 'FN', 'Rule (strict)', 'Rule (acceptable)'], rows.map((row) => [row.id, row.score.precision.toFixed(2), row.score.recall.toFixed(2), row.score.f1.toFixed(2), row.score.truePositives, row.score.falsePositives, row.score.falseNegatives, `${row.score.ruleAttribution.correct}/${row.score.ruleAttribution.total}`, `${row.score.ruleAttributionAcceptable.correct}/${row.score.ruleAttributionAcceptable.total}`]))}
 
 ## Raw Rule-Firing Table
 
@@ -174,6 +177,7 @@ function conflictLevelScore(score: QualityReport): Pick<QualityReport, 'precisio
 function aggregateQuality(scores: QualityReport[]): {
   conflictLevel: Pick<QualityReport, 'precision' | 'recall' | 'f1' | 'truePositives' | 'falsePositives' | 'falseNegatives'>
   ruleAttribution: QualityReport['ruleAttribution']
+  ruleAttributionAcceptable: QualityReport['ruleAttributionAcceptable']
   rawRuleFirings: QualityReport['rawRuleFirings']
 } {
   const truePositives = scores.reduce((sum, score) => sum + score.truePositives, 0)
@@ -184,6 +188,7 @@ function aggregateQuality(scores: QualityReport[]): {
   const f1 = precision + recall === 0 ? 0 : (2 * precision * recall) / (precision + recall)
   const correct = scores.reduce((sum, score) => sum + score.ruleAttribution.correct, 0)
   const total = scores.reduce((sum, score) => sum + score.ruleAttribution.total, 0)
+  const correctAcceptable = scores.reduce((sum, score) => sum + score.ruleAttributionAcceptable.correct, 0)
   const rawRuleFirings: QualityReport['rawRuleFirings'] = {}
 
   for (const score of scores) {
@@ -208,6 +213,11 @@ function aggregateQuality(scores: QualityReport[]): {
       correct,
       total,
       accuracy: total === 0 ? 1 : correct / total,
+    },
+    ruleAttributionAcceptable: {
+      correct: correctAcceptable,
+      total,
+      accuracy: total === 0 ? 1 : correctAcceptable / total,
     },
     rawRuleFirings,
   }
