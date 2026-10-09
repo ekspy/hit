@@ -3,7 +3,7 @@
 | Set |Changed symbols |Compatible |Incompatible |Unknown |Raw conflicts |Raw unknown |Logical |Logical w/ unknown |Logical only-unknown |FP |FP w/ unknown |FP only-unknown |
 | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 | dev |18 |5 |11 |2 |26 |2 |13 |2 |0 |0 |0 |0 |
-| heldout |12 |1 |8 |3 |28 |3 |17 |3 |2 |13 |2 |2 |
+| heldout |6 |1 |2 |3 |13 |1 |7 |1 |0 |0 |0 |0 |
 
 ## dev
 
@@ -30,11 +30,11 @@
 
 | Scenario |Changed symbols (classification) |Raw unknown |FP |FP w/ unknown |
 | --- |--- |--- |--- |--- |
-| h01-nested-optional-to-required |listItems:breaking, ShipmentOptions:unknown |1 |1 |0 |
-| h02-generic-constraint-added |listItems:breaking |0 |0 |0 |
-| h03-overload-removed |listItems:breaking |0 |2 |0 |
-| h04-default-to-named-export |listItems:breaking |0 |2 |0 |
-| h05-two-hop-destructured-type-change |listItems:breaking, Item:unknown |1 |3 |1 |
-| h06-two-conflicts-same-pair-no-symbol |listItems:breaking |0 |2 |0 |
-| h07-overload-added-control |listItems:breaking, formatQuantity:compatible |0 |1 |0 |
-| h08-required-to-optional-input-control |listItems:breaking, ShipmentOptions:unknown |1 |2 |1 |
+| h01-nested-optional-to-required |ShipmentOptions:unknown |1 |0 |0 |
+| h02-generic-constraint-added |paginate:breaking |0 |0 |0 |
+| h03-overload-removed |formatQuantity:breaking |0 |0 |0 |
+| h04-default-to-named-export |- |0 |0 |0 |
+| h05-two-hop-destructured-type-change |Item:unknown |0 |0 |0 |
+| h06-two-conflicts-same-pair-no-symbol |- |0 |0 |0 |
+| h07-overload-added-control |formatQuantity:compatible |0 |0 |0 |
+| h08-required-to-optional-input-control |ShipmentOptions:unknown |0 |0 |0 |

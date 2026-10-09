@@ -377,33 +377,23 @@
   },
   "heldout": {
     "summary": {
-      "changedSymbols": 12,
+      "changedSymbols": 6,
       "compatible": 1,
-      "incompatible": 8,
+      "incompatible": 2,
       "unknown": 3,
-      "rawConflicts": 28,
-      "rawUnknown": 3,
-      "logicalConflicts": 17,
-      "logicalWithUnknown": 3,
-      "logicalOnlyUnknown": 2,
-      "falsePositives": 13,
-      "falsePositivesWithUnknown": 2,
-      "falsePositivesOnlyUnknown": 2
+      "rawConflicts": 13,
+      "rawUnknown": 1,
+      "logicalConflicts": 7,
+      "logicalWithUnknown": 1,
+      "logicalOnlyUnknown": 0,
+      "falsePositives": 0,
+      "falsePositivesWithUnknown": 0,
+      "falsePositivesOnlyUnknown": 0
     },
     "scenarios": [
       {
         "id": "h01-nested-optional-to-required",
         "changedSymbols": [
-          {
-            "symbol": "src/lib/catalog.ts#listItems",
-            "classification": "breaking",
-            "findings": [
-              "breaking: property __@iterator@756341 was removed or renamed",
-              "breaking: property __@unscopables@756343 was removed or renamed",
-              "unknown: required property __@iterator@780046 was added",
-              "unknown: required property __@unscopables@780048 was added"
-            ]
-          },
           {
             "symbol": "src/lib/shipping.ts#ShipmentOptions",
             "classification": "unknown",
@@ -412,12 +402,12 @@
             ]
           }
         ],
-        "rawConflicts": 4,
+        "rawConflicts": 2,
         "rawUnknown": 1,
-        "logicalConflicts": 2,
+        "logicalConflicts": 1,
         "logicalWithUnknown": 1,
         "logicalOnlyUnknown": 0,
-        "falsePositives": 1,
+        "falsePositives": 0,
         "falsePositivesWithUnknown": 0,
         "falsePositivesOnlyUnknown": 0,
         "unknownFalsePositives": []
@@ -426,13 +416,10 @@
         "id": "h02-generic-constraint-added",
         "changedSymbols": [
           {
-            "symbol": "src/lib/catalog.ts#listItems",
+            "symbol": "src/lib/catalog.ts#paginate",
             "classification": "breaking",
             "findings": [
-              "breaking: property __@iterator@803752 was removed or renamed",
-              "breaking: property __@unscopables@803754 was removed or renamed",
-              "unknown: required property __@iterator@827457 was added",
-              "unknown: required property __@unscopables@827459 was added"
+              "breaking: type parameter T gained constraint { id: string }"
             ]
           }
         ],
@@ -450,133 +437,10 @@
         "id": "h03-overload-removed",
         "changedSymbols": [
           {
-            "symbol": "src/lib/catalog.ts#listItems",
-            "classification": "breaking",
-            "findings": [
-              "breaking: property __@iterator@851164 was removed or renamed",
-              "breaking: property __@unscopables@851166 was removed or renamed",
-              "unknown: required property __@iterator@874869 was added",
-              "unknown: required property __@unscopables@874871 was added"
-            ]
-          }
-        ],
-        "rawConflicts": 3,
-        "rawUnknown": 0,
-        "logicalConflicts": 2,
-        "logicalWithUnknown": 0,
-        "logicalOnlyUnknown": 0,
-        "falsePositives": 2,
-        "falsePositivesWithUnknown": 0,
-        "falsePositivesOnlyUnknown": 0,
-        "unknownFalsePositives": []
-      },
-      {
-        "id": "h04-default-to-named-export",
-        "changedSymbols": [
-          {
-            "symbol": "src/lib/catalog.ts#listItems",
-            "classification": "breaking",
-            "findings": [
-              "breaking: property __@iterator@898572 was removed or renamed",
-              "breaking: property __@unscopables@898574 was removed or renamed",
-              "unknown: required property __@iterator@922277 was added",
-              "unknown: required property __@unscopables@922279 was added"
-            ]
-          }
-        ],
-        "rawConflicts": 3,
-        "rawUnknown": 0,
-        "logicalConflicts": 2,
-        "logicalWithUnknown": 0,
-        "logicalOnlyUnknown": 0,
-        "falsePositives": 2,
-        "falsePositivesWithUnknown": 0,
-        "falsePositivesOnlyUnknown": 0,
-        "unknownFalsePositives": []
-      },
-      {
-        "id": "h05-two-hop-destructured-type-change",
-        "changedSymbols": [
-          {
-            "symbol": "src/lib/catalog.ts#listItems",
-            "classification": "breaking",
-            "findings": [
-              "breaking: property __@iterator@945981 was removed or renamed",
-              "breaking: property __@unscopables@945983 was removed or renamed",
-              "unknown: required property __@iterator@969686 was added",
-              "unknown: required property __@unscopables@969688 was added"
-            ]
-          },
-          {
-            "symbol": "src/lib/types.ts#Item",
-            "classification": "unknown",
-            "findings": [
-              "unknown: property quantity type changed from number to string"
-            ]
-          }
-        ],
-        "rawConflicts": 4,
-        "rawUnknown": 1,
-        "logicalConflicts": 3,
-        "logicalWithUnknown": 1,
-        "logicalOnlyUnknown": 1,
-        "falsePositives": 3,
-        "falsePositivesWithUnknown": 1,
-        "falsePositivesOnlyUnknown": 1,
-        "unknownFalsePositives": [
-          {
-            "logicalId": "logical:2:src/lib/catalog.ts,src/lib/pricing.ts,src/lib/types.ts:Item",
-            "rules": [
-              "R1(unknown)"
-            ],
-            "reasons": [
-              "Contract changed from export interface Item {\n  sku: string\n  name: string\n  quantity: number\n} to export interface Item {\n  sku: string\n  name: string\n  quanti"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "h06-two-conflicts-same-pair-no-symbol",
-        "changedSymbols": [
-          {
-            "symbol": "src/lib/catalog.ts#listItems",
-            "classification": "breaking",
-            "findings": [
-              "breaking: property __@iterator@993393 was removed or renamed",
-              "breaking: property __@unscopables@993395 was removed or renamed",
-              "unknown: required property __@iterator@1017098 was added",
-              "unknown: required property __@unscopables@1017100 was added"
-            ]
-          }
-        ],
-        "rawConflicts": 5,
-        "rawUnknown": 0,
-        "logicalConflicts": 4,
-        "logicalWithUnknown": 0,
-        "logicalOnlyUnknown": 0,
-        "falsePositives": 2,
-        "falsePositivesWithUnknown": 0,
-        "falsePositivesOnlyUnknown": 0,
-        "unknownFalsePositives": []
-      },
-      {
-        "id": "h07-overload-added-control",
-        "changedSymbols": [
-          {
-            "symbol": "src/lib/catalog.ts#listItems",
-            "classification": "breaking",
-            "findings": [
-              "breaking: property __@iterator@1040801 was removed or renamed",
-              "breaking: property __@unscopables@1040803 was removed or renamed",
-              "unknown: required property __@iterator@1064506 was added",
-              "unknown: required property __@unscopables@1064508 was added"
-            ]
-          },
-          {
             "symbol": "src/lib/format.ts#formatQuantity",
-            "classification": "compatible",
+            "classification": "breaking",
             "findings": [
-              "compatible: parameter value type widened from number to number | string"
+              "breaking: call signature formatQuantity(value: number, unit: Unit): string was removed and no remaining signature takes 2 arguments"
             ]
           }
         ],
@@ -585,7 +449,75 @@
         "logicalConflicts": 1,
         "logicalWithUnknown": 0,
         "logicalOnlyUnknown": 0,
-        "falsePositives": 1,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "h04-default-to-named-export",
+        "changedSymbols": [],
+        "rawConflicts": 1,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "h05-two-hop-destructured-type-change",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/types.ts#Item",
+            "classification": "unknown",
+            "findings": [
+              "unknown: property quantity type changed from number to string"
+            ]
+          }
+        ],
+        "rawConflicts": 1,
+        "rawUnknown": 0,
+        "logicalConflicts": 1,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "h06-two-conflicts-same-pair-no-symbol",
+        "changedSymbols": [],
+        "rawConflicts": 3,
+        "rawUnknown": 0,
+        "logicalConflicts": 2,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
+      },
+      {
+        "id": "h07-overload-added-control",
+        "changedSymbols": [
+          {
+            "symbol": "src/lib/format.ts#formatQuantity",
+            "classification": "compatible",
+            "findings": [
+              "compatible: call signature formatQuantity(value: string): string was added"
+            ]
+          }
+        ],
+        "rawConflicts": 0,
+        "rawUnknown": 0,
+        "logicalConflicts": 0,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
         "falsePositivesWithUnknown": 0,
         "falsePositivesOnlyUnknown": 0,
         "unknownFalsePositives": []
@@ -594,16 +526,6 @@
         "id": "h08-required-to-optional-input-control",
         "changedSymbols": [
           {
-            "symbol": "src/lib/catalog.ts#listItems",
-            "classification": "breaking",
-            "findings": [
-              "breaking: property __@iterator@1088212 was removed or renamed",
-              "breaking: property __@unscopables@1088214 was removed or renamed",
-              "unknown: required property __@iterator@1111917 was added",
-              "unknown: required property __@unscopables@1111919 was added"
-            ]
-          },
-          {
             "symbol": "src/lib/shipping.ts#ShipmentOptions",
             "classification": "unknown",
             "findings": [
@@ -611,25 +533,15 @@
             ]
           }
         ],
-        "rawConflicts": 3,
-        "rawUnknown": 1,
-        "logicalConflicts": 2,
-        "logicalWithUnknown": 1,
-        "logicalOnlyUnknown": 1,
-        "falsePositives": 2,
-        "falsePositivesWithUnknown": 1,
-        "falsePositivesOnlyUnknown": 1,
-        "unknownFalsePositives": [
-          {
-            "logicalId": "logical:2:src/app/dispatch/page.tsx,src/lib/shipping.ts:ShipmentOptions",
-            "rules": [
-              "R1(unknown)"
-            ],
-            "reasons": [
-              "Contract changed from export interface ShipmentOptions {\n  carrier: string\n  tracking?: {\n    number: string\n    notify?: boolean\n  }\n} to export interface Ship"
-            ]
-          }
-        ]
+        "rawConflicts": 0,
+        "rawUnknown": 0,
+        "logicalConflicts": 0,
+        "logicalWithUnknown": 0,
+        "logicalOnlyUnknown": 0,
+        "falsePositives": 0,
+        "falsePositivesWithUnknown": 0,
+        "falsePositivesOnlyUnknown": 0,
+        "unknownFalsePositives": []
       }
     ]
   }
